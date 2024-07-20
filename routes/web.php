@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CertificateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,17 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+ 
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [CertificateController::class, 'index'])->name('certificates.index');
+    Route::get('certificates/{certificate}', [CertificateController::class, 'show'])->name('certificates.show');
+    Route::get('/daniel', [CertificateController::class, 'students_boy'])->name('certificates.students_boy');
+    Route::get('/maedot', [CertificateController::class, 'students_girls'])->name('certificates.students_girls');
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
