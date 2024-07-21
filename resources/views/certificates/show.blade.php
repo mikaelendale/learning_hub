@@ -9,9 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- PDF Preview Column -->
+                    <!-- Image Preview Column -->
                     <div class="flex justify-center">
-                        <iframe src="{{asset('files/Daniel_Abiy_Certificate_lalo_dev.pdf')}}" width="100%" height="600px" class="border rounded-lg"></iframe>
+                        <img src="{{ asset('files/Maedot_Tadesse_Certificate_lalo_dev.jpg') }}" alt="Certificate Preview" class="w-full h-auto border rounded-lg">
                     </div>
 
                     <!-- Certificate Details Column -->
@@ -32,8 +32,11 @@
 
                         <a href="{{ $linkedin_url }}" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded mr-2">Add to LinkedIn</a>
                         <a href="{{ $certificate->certificate_url }}" target="_blank" class="inline-block bg-green-500 text-white px-4 py-2 rounded mr-2">Download Certificate</a>
-                        <a href="{{ route('certificates.index') }}" class="inline-block bg-gray-500 text-white px-4 py-2 rounded">Back to Certificates</a>
+                        <a href="{{ route('dashboard') }}" class="inline-block bg-gray-500 text-white px-4 py-2 rounded">Back to Certificates</a>
                     </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <a href="{{ $certificate->certificate_url }}" target="_blank" class="inline-block bg-yellow-500 text-white px-4 py-2 rounded">View Certificate</a>
                 </div>
             </div>
         </div>
