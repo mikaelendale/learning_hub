@@ -1,133 +1,1202 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.main')
+@section('title')
+    Learn
+@endsection
+@section('content')
+    <!-- Hero -->
+    <section class="cku5t ccok8">
 
-        <title>Laravel</title>
+        <!-- Bg -->
+        <div class="c09n0 crfj0 cqh0z cyaoe c1j64" aria-hidden="true"></div>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+        <!-- Illustration -->
+        <div class="c09n0 crfj0 c6m1e cyaoe cz8m8 cqt4q" aria-hidden="true">
+            <object type="image/svg+xml" data="images/hero-illustration.svg" width="1440" height="1214"></object>
+        </div>
 
-        <!-- Styles -->
-        <style>
-            /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Figtree, sans-serif;font-feature-settings:normal}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::-webkit-backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.relative{position:relative}.mx-auto{margin-left:auto;margin-right:auto}.mx-6{margin-left:1.5rem;margin-right:1.5rem}.ml-4{margin-left:1rem}.mt-16{margin-top:4rem}.mt-6{margin-top:1.5rem}.mt-4{margin-top:1rem}.-mt-px{margin-top:-1px}.mr-1{margin-right:0.25rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.h-16{height:4rem}.h-7{height:1.75rem}.h-6{height:1.5rem}.h-5{height:1.25rem}.min-h-screen{min-height:100vh}.w-auto{width:auto}.w-16{width:4rem}.w-7{width:1.75rem}.w-6{width:1.5rem}.w-5{width:1.25rem}.max-w-7xl{max-width:80rem}.shrink-0{flex-shrink:0}.scale-100{--tw-scale-x:1;--tw-scale-y:1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.gap-6{gap:1.5rem}.gap-4{gap:1rem}.self-center{align-self:center}.rounded-lg{border-radius:0.5rem}.rounded-full{border-radius:9999px}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity))}.bg-dots-darker{background-image:url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E")}.from-gray-700\/50{--tw-gradient-from:rgb(55 65 81 / 0.5);--tw-gradient-to:rgb(55 65 81 / 0);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-transparent{--tw-gradient-to:rgb(0 0 0 / 0);--tw-gradient-stops:var(--tw-gradient-from), transparent, var(--tw-gradient-to)}.bg-center{background-position:center}.stroke-red-500{stroke:#ef4444}.stroke-gray-400{stroke:#9ca3af}.p-6{padding:1.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.text-center{text-align:center}.text-right{text-align:right}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-gray-500\/20{--tw-shadow-color:rgb(107 114 128 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.selection\:bg-red-500 *::selection{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity))}.selection\:text-white *::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.selection\:bg-red-500::selection{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity))}.focus\:rounded-sm:focus{border-radius:0.125rem}.focus\:outline:focus{outline-style:solid}.focus\:outline-2:focus{outline-width:2px}.focus\:outline-red-500:focus{outline-color:#ef4444}.group:hover .group-hover\:stroke-gray-600{stroke:#4b5563}.z-10{z-index: 10}@media (prefers-reduced-motion: no-preference){.motion-safe\:hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}}@media (prefers-color-scheme: dark){.dark\:bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity))}.dark\:bg-gray-800\/50{background-color:rgb(31 41 55 / 0.5)}.dark\:bg-red-800\/20{background-color:rgb(153 27 27 / 0.2)}.dark\:bg-dots-lighter{background-image:url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E")}.dark\:bg-gradient-to-bl{background-image:linear-gradient(to bottom left, var(--tw-gradient-stops))}.dark\:stroke-gray-600{stroke:#4b5563}.dark\:text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity))}.dark\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:shadow-none{--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.dark\:ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.dark\:ring-inset{--tw-ring-inset:inset}.dark\:ring-white\/5{--tw-ring-color:rgb(255 255 255 / 0.05)}.dark\:hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.group:hover .dark\:group-hover\:stroke-gray-400{stroke:#9ca3af}}@media (min-width: 640px){.sm\:fixed{position:fixed}.sm\:top-0{top:0px}.sm\:right-0{right:0px}.sm\:ml-0{margin-left:0px}.sm\:flex{display:flex}.sm\:items-center{align-items:center}.sm\:justify-center{justify-content:center}.sm\:justify-between{justify-content:space-between}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:gap-8{gap:2rem}.lg\:p-8{padding:2rem}}
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+        <div class="csj5a cmqkr crfvq c82m6">
+            <div class="c98u7 ca1e3 cuyc0 cmfra">
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
+                <!-- Hero content -->
+                <div class="csj5a cap4d cz3g0">
+
+                    <h1 class="cv1uh chux1 cmbv1 codph" data-aos="fade-up">Hire reliable and trustworthy
+                        talents.</h1>
+                    <p class="c8a2r cbbk4 codph co7su cvwps" data-aos="fade-up" data-aos-delay="100">Our
+                        landing page template works on all devices, so you only have to set it up once, and
+                        get beautiful results forever.</p>
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <a class="cxgiq ckmsd c48w7 crmv9 codph cxokd cscc8" href="schedule-call.html">
+                            Schedule A Call
+                            <span class="c2rlx ccwp8 cxc90 cw0we chqn7 cgshh cfgtz">
+                                <svg class="cvd88" xmlns="http://www.w3.org/2000/svg" width="16" height="8">
+                                    <path
+                                        d="m10.865.013.747.148c.243.065.481.143.716.235.495.18.97.42 1.415.716.265.192.571.343.858.55.096.064.192.135.288.209l.196.154.192.178c.09.08.175.168.254.262.189.21.33.466.414.747.076.275.073.568-.008.84-.09.27-.236.513-.427.708-.096.1-.198.191-.306.274l-.152.117-.116.074c-.369.252-.75.482-1.14.69-.577.315-1.153.585-1.701.932-.408.262-.803.549-1.182.86-.083.064-.16.136-.247.193a.918.918 0 0 1-.113.072.644.644 0 0 1-.118.016.708.708 0 0 1-.191.01.559.559 0 0 1-.246-.088l-.072-.054a1.481 1.481 0 0 1-.141-.107c-.128-.122-.1-.377.05-.726.036-.08.079-.156.128-.226l.316-.401c.164-.188.336-.372.514-.543.178-.17.356-.342.546-.493.19-.152.394-.265.59-.39.53-.329 1.05-.626 1.552-.93-.159.018-.32.034-.48.04-.511.036-1.026.044-1.546.048a43.432 43.432 0 0 1-2.31-.058l-.005-.02a78.728 78.728 0 0 0-2.292-.148c-.279-.016-.558.01-.837-.006L4.543 3.81l-.977-.046a19.357 19.357 0 0 1-.49-.029 12.6 12.6 0 0 0-1.303.013l-.828.055-.406.021H.335l-.18.008c-.145 0-.208-.15-.102-.356.16-.268.422-.46.723-.531.57-.117 1.144-.205 1.72-.264.287-.026.576-.048.865-.053.29-.004.578.01.865.042.69.065 1.408-.015 2.113-.015.776.003 1.549.02 2.324.04l1.428.039 1.087.039c.359.012.716.02 1.075.013.442-.008.879-.065 1.318-.112a3.672 3.672 0 0 0-.186-.166 9.045 9.045 0 0 0-1.06-.762 9.82 9.82 0 0 0-1.034-.537 5.9 5.9 0 0 1-1.284-.854c-.12-.115-.053-.199.12-.26a1.55 1.55 0 0 1 .738-.083Z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+
                 </div>
-            @endif
 
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <div class="flex justify-center">
-                    <svg viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto bg-gray-100 dark:bg-gray-900">
-                        <path d="M61.8548 14.6253C61.8778 14.7102 61.8895 14.7978 61.8897 14.8858V28.5615C61.8898 28.737 61.8434 28.9095 61.7554 29.0614C61.6675 29.2132 61.5409 29.3392 61.3887 29.4265L49.9104 36.0351V49.1337C49.9104 49.4902 49.7209 49.8192 49.4118 49.9987L25.4519 63.7916C25.3971 63.8227 25.3372 63.8427 25.2774 63.8639C25.255 63.8714 25.2338 63.8851 25.2101 63.8913C25.0426 63.9354 24.8666 63.9354 24.6991 63.8913C24.6716 63.8838 24.6467 63.8689 24.6205 63.8589C24.5657 63.8389 24.5084 63.8215 24.456 63.7916L0.501061 49.9987C0.348882 49.9113 0.222437 49.7853 0.134469 49.6334C0.0465019 49.4816 0.000120578 49.3092 0 49.1337L0 8.10652C0 8.01678 0.0124642 7.92953 0.0348998 7.84477C0.0423783 7.8161 0.0598282 7.78993 0.0697995 7.76126C0.0884958 7.70891 0.105946 7.65531 0.133367 7.6067C0.152063 7.5743 0.179485 7.54812 0.20192 7.51821C0.230588 7.47832 0.256763 7.43719 0.290416 7.40229C0.319084 7.37362 0.356476 7.35243 0.388883 7.32751C0.425029 7.29759 0.457436 7.26518 0.498568 7.2415L12.4779 0.345059C12.6296 0.257786 12.8015 0.211853 12.9765 0.211853C13.1515 0.211853 13.3234 0.257786 13.475 0.345059L25.4531 7.2415H25.4556C25.4955 7.26643 25.5292 7.29759 25.5653 7.32626C25.5977 7.35119 25.6339 7.37362 25.6625 7.40104C25.6974 7.43719 25.7224 7.47832 25.7523 7.51821C25.7735 7.54812 25.8021 7.5743 25.8196 7.6067C25.8483 7.65656 25.8645 7.70891 25.8844 7.76126C25.8944 7.78993 25.9118 7.8161 25.9193 7.84602C25.9423 7.93096 25.954 8.01853 25.9542 8.10652V33.7317L35.9355 27.9844V14.8846C35.9355 14.7973 35.948 14.7088 35.9704 14.6253C35.9792 14.5954 35.9954 14.5692 36.0053 14.5405C36.0253 14.4882 36.0427 14.4346 36.0702 14.386C36.0888 14.3536 36.1163 14.3274 36.1375 14.2975C36.1674 14.2576 36.1923 14.2165 36.2272 14.1816C36.2559 14.1529 36.292 14.1317 36.3244 14.1068C36.3618 14.0769 36.3942 14.0445 36.4341 14.0208L48.4147 7.12434C48.5663 7.03694 48.7383 6.99094 48.9133 6.99094C49.0883 6.99094 49.2602 7.03694 49.4118 7.12434L61.3899 14.0208C61.4323 14.0457 61.4647 14.0769 61.5021 14.1055C61.5333 14.1305 61.5694 14.1529 61.5981 14.1803C61.633 14.2165 61.6579 14.2576 61.6878 14.2975C61.7103 14.3274 61.7377 14.3536 61.7551 14.386C61.7838 14.4346 61.8 14.4882 61.8199 14.5405C61.8312 14.5692 61.8474 14.5954 61.8548 14.6253ZM59.893 27.9844V16.6121L55.7013 19.0252L49.9104 22.3593V33.7317L59.8942 27.9844H59.893ZM47.9149 48.5566V37.1768L42.2187 40.4299L25.953 49.7133V61.2003L47.9149 48.5566ZM1.99677 9.83281V48.5566L23.9562 61.199V49.7145L12.4841 43.2219L12.4804 43.2194L12.4754 43.2169C12.4368 43.1945 12.4044 43.1621 12.3682 43.1347C12.3371 43.1097 12.3009 43.0898 12.2735 43.0624L12.271 43.0586C12.2386 43.0275 12.2162 42.9888 12.1887 42.9539C12.1638 42.9203 12.1339 42.8916 12.114 42.8567L12.1127 42.853C12.0903 42.8156 12.0766 42.7707 12.0604 42.7283C12.0442 42.6909 12.023 42.656 12.013 42.6161C12.0005 42.5688 11.998 42.5177 11.9931 42.4691C11.9881 42.4317 11.9781 42.3943 11.9781 42.3569V15.5801L6.18848 12.2446L1.99677 9.83281ZM12.9777 2.36177L2.99764 8.10652L12.9752 13.8513L22.9541 8.10527L12.9752 2.36177H12.9777ZM18.1678 38.2138L23.9574 34.8809V9.83281L19.7657 12.2459L13.9749 15.5801V40.6281L18.1678 38.2138ZM48.9133 9.14105L38.9344 14.8858L48.9133 20.6305L58.8909 14.8846L48.9133 9.14105ZM47.9149 22.3593L42.124 19.0252L37.9323 16.6121V27.9844L43.7219 31.3174L47.9149 33.7317V22.3593ZM24.9533 47.987L39.59 39.631L46.9065 35.4555L36.9352 29.7145L25.4544 36.3242L14.9907 42.3482L24.9533 47.987Z" fill="#FF2D20"/>
-                    </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="crmv9">
+
+        <div class="cm28u cnvm7">
+
+            <!-- Section header -->
+            <div class="csj5a cap4d cxfpf cz3g0 cpv3s">
+                <h2 class="c0wf0 cmbv1 cqr0e">Trusting by leading brands, including:</h2>
+            </div>
+
+            <!-- Carousel built with Swiper.js [https://swiperjs.com/] -->
+            <!-- * Initialized in src/js/main.js -->
+            <!-- * Custom styles in src/css/additional-styles/theme.scss -->
+            <div
+                class="clients-carousel swiper-container cku5t c6tth cz0eq c916p cmd23 cgjcy csg5r c9mi3 csyrr cuegs clkjz ccbt2 cn34t cfo4e c1jh7 c4swk">
+                <div class="swiper-wrapper c1g4v cxs7a">
+                    <!-- Carousel items -->
+                    <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="images/client-01.svg" alt="Client 01">
+                    </div>
+                    <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="images/client-02.svg" alt="Client 02">
+                    </div>
+                    <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="images/client-03.svg" alt="Client 03">
+                    </div>
+                    <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="images/client-04.svg" alt="Client 04">
+                    </div>
+                    <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="images/client-05.svg" alt="Client 05">
+                    </div>
+                    <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="images/client-06.svg" alt="Client 06">
+                    </div>
+                    <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="images/client-07.svg" alt="Client 07">
+                    </div>
+                    <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="images/client-08.svg" alt="Client 08">
+                    </div>
+                    <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="images/client-09.svg" alt="Client 09">
+                    </div>
+                    <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="images/client-10.svg" alt="Client 10">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Explainer -->
+    <section>
+        <div class="csj5a cmqkr crfvq c82m6">
+            <div class="cm28u cnvm7">
+
+                <!-- Section header -->
+                <div class="csj5a cap4d cxfpf cz3g0 cpv3s">
+                    <h2 class="cdlyt cmbv1">We support early stage startups and leading tech giants.</h2>
                 </div>
 
-                <div class="mt-16">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                        <a href="https://laravel.com/docs" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                <!-- Section image -->
+                <div class="chv0p cz9fi cxfpf cpv3s" x-data="{ modalExpanded: false }" data-aos="fade-up">
+                    <div class="cku5t ckmsd c48w7 cz9fi">
+                        <img src="images/explainer.jpg" width="768" height="432" alt="Explainer">
+                        <!-- Illustration -->
+                        <svg class="crfj0 ck9jk c7d50 cd5ga c6gbl" xmlns="http://www.w3.org/2000/svg" width="69"
+                            height="77">
+                            <path class="cz9k3"
+                                d="M19.987 69.903a16 16 0 0 1-4.12.88 10 10 0 0 1-4.6-.76 9.15 9.15 0 0 1-3.71-3l-.63-.93-.51-1a9.07 9.07 0 0 1-.76-2.31 16.42 16.42 0 0 1 1-8.18 46 46 0 0 1 3.11-6.78 58.58 58.58 0 0 1 8.65-11.79 60.66 60.66 0 0 1 11.18-9.44 45.88 45.88 0 0 1 9.67-4.87 28.1 28.1 0 0 1 11-1.65 25.07 25.07 0 0 1 9.68 2.59 18.08 18.08 0 0 1 4.34 2.92 12.86 12.86 0 0 1 3.16 4.55 13.64 13.64 0 0 1 1 5.31 20.71 20.71 0 0 1-.7 5 35.54 35.54 0 0 1-3.79 8.91 52.15 52.15 0 0 1-5.46 7.63 72.54 72.54 0 0 1-6.52 6.6 58.48 58.48 0 0 1-15.51 10.06 39.78 39.78 0 0 1-3.91 1.47c-.67.2-1.35.39-2 .56a10.66 10.66 0 0 1-2.74.25 7.59 7.59 0 0 1-2.73-.63 3.17 3.17 0 0 1-1.82-1.94c-.48-1.77.65-3.57 1.92-5 .15-.17.33-.38.46-.51l.37-.37c.25-.25.5-.5.75-.73.5-.49 1-.94 1.54-1.4 1-.91 2.11-1.76 3.2-2.59a66 66 0 0 1 6.81-4.53 44.56 44.56 0 0 1 9.75-4.32 22.28 22.28 0 0 1 5.53-.91 13.5 13.5 0 0 1 5.91 1.09 10.75 10.75 0 0 1 4.61 4.13l.74 1.32c.229.488.42.993.57 1.51.28.977.438 1.984.47 3a17.19 17.19 0 0 1-.73 5.58 21.73 21.73 0 0 1-2.16 5.06c-1.24 2-2.26 2.51-2.44 2.23-.18-.28.17-1.39.5-3.15a24.07 24.07 0 0 0 .33-7 13.91 13.91 0 0 0-.83-3.9 8.73 8.73 0 0 0-2.2-2.87 6.64 6.64 0 0 0-3-1.32 12.39 12.39 0 0 0-4 .05 31.68 31.68 0 0 0-8.84 3.07 59.18 59.18 0 0 0-8.36 5.16c-1.34 1-2.64 2-3.84 3.05-.3.27-.61.54-.88.81l-.54.52c-.11.1-.08.06-.12.11-.04.05 0 .15.12.16h.17l.42-.09.56-.14c.75-.2 1.51-.44 2.26-.71a47.25 47.25 0 0 0 8.79-4.41 65.55 65.55 0 0 0 14.92-13.36 41 41 0 0 0 6.16-10.25c1.47-3.62 2.17-7.66.82-10.69a8.43 8.43 0 0 0-3.29-3.74 19.61 19.61 0 0 0-2.45-1.33c-.45-.17-.89-.37-1.34-.54l-1.37-.43a23 23 0 0 0-11.5 0 38.32 38.32 0 0 0-12.15 5.44 58.11 58.11 0 0 0-10.35 8.85 53.09 53.09 0 0 0-8 11.06 32.11 32.11 0 0 0-2.51 6.2c-.57 2.09-.72 4.22.06 5.77a6.4 6.4 0 0 0 2.2 2.63 5.15 5.15 0 0 0 1.51.61 6.23 6.23 0 0 0 1.74.11 17.27 17.27 0 0 0 7.38-2.8c4.75-2.91 9-6.88 13.05-10.89a97.44 97.44 0 0 0 16-20.33 49.73 49.73 0 0 0 4.91-11.72l.37-1.49.27-1.54c.199-.989.32-1.992.36-3a9.11 9.11 0 0 0-1.23-5.27 6.61 6.61 0 0 0-3.08-2.43 13.93 13.93 0 0 0-4.31-.84 32 32 0 0 0-9.31 1.08 59.27 59.27 0 0 0-9.08 3.11 60.65 60.65 0 0 0-8.39 4.66c-2.37 1.57-4.58 3.3-6.83 5.12-2.09 1.69-3.79 3.15-5.22 4.38a77.994 77.994 0 0 1-3.64 2.95 14 14 0 0 1-4.68 2.64 10.65 10.65 0 0 1-1.73.49c-.72 0-.44-.89.68-2.61a54.19 54.19 0 0 1 5.93-7.22 86.61 86.61 0 0 1 14.37-12.19 60.24 60.24 0 0 1 4.18-2.53 45.5 45.5 0 0 1 4.49-2.2 55.38 55.38 0 0 1 9.54-3 37.12 37.12 0 0 1 10.52-.89 17.78 17.78 0 0 1 5.84 1.44 12.52 12.52 0 0 1 5.32 4.36 13.2 13.2 0 0 1 2.19 6.31 21.59 21.59 0 0 1-.28 5.76 45.26 45.26 0 0 1-2.91 9.94 68.73 68.73 0 0 1-7.37 13 104.64 104.64 0 0 1-9.37 11.25 134.3 134.3 0 0 1-10.58 9.94 61.69 61.69 0 0 1-6 4.45 32.1 32.1 0 0 1-6.92 3.51l-.04-.12Z">
+                            </path>
+                        </svg>
+                        <!-- Play button -->
+                        <div class="crfj0">
+                            <button class="cxgiq ckmsd c29xx c48w7 ceo57 crfvq c2m9f cpbu6"
+                                @click.prevent="modalExpanded = true" aria-controls="video-modal">
+                                <span class="ctmm0 ccwp8 cxc90">
+                                    <svg class="cvd88" width="9" height="12" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M.783.088A.5.5 0 0 0 0 .5v11a.5.5 0 0 0 .783.412l8-5.5a.5.5 0 0 0 0-.824l-8-5.5Z">
+                                        </path>
                                     </svg>
-                                </div>
+                                </span>
+                                Quick Explainer
+                            </button>
+                        </div>
+                    </div>
 
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Documentation</h2>
+                    <!-- Modal backdrop -->
+                    <div class="cqpw2 cqh0z ciu8i crmv9 cu8dg ckl60" x-show="modalExpanded"
+                        x-transition:enter="chten cwk0s cyx5o" x-transition:enter-start="ce4w9"
+                        x-transition:enter-end="cbkfv" x-transition:leave="chten cwk0s cwihk"
+                        x-transition:leave-start="cbkfv" x-transition:leave-end="ce4w9" aria-hidden="true"
+                        x-cloak=""></div>
 
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
-                                </p>
-                            </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <a href="https://laracasts.com" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Laracasts</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </p>
-                            </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <a href="https://laravel-news.com" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Laravel News</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </p>
-                            </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Forge</a>, <a href="https://vapor.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Vapor</a>, <a href="https://nova.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Nova</a>, and <a href="https://envoyer.io" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Telescope</a>, and more.
-                                </p>
-                            </div>
+                    <!-- Modal dialog -->
+                    <div id="video-modal" class="cqpw2 cqh0z ciu8i chv0p c48w7 cz9fi ccok8 crfvq c82m6" role="dialog"
+                        aria-modal="true" aria-labelledby="modal-headline" x-show="modalExpanded"
+                        x-transition:enter="chten cwk0s cyx5o" x-transition:enter-start="ce4w9 cj0b0"
+                        x-transition:enter-end="cbkfv c9d9u" x-transition:leave="chten cwk0s cyx5o"
+                        x-transition:leave-start="cbkfv c9d9u" x-transition:leave-end="ce4w9 cj0b0" x-cloak="">
+                        <div class="cacd0 cocui cmqkr ci5np ceo57" @click.away="modalExpanded = false"
+                            @keydown.escape.window="modalExpanded = false">
+                            <video x-init="$watch('modalExpanded', value => value ? $el.play() : $el.pause())" class="ccign cocui" width="1920" height="1080"
+                                loop="" controls="">
+                                <source src="videos/video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm sm:text-left">
-                        &nbsp;
+                <!-- Steps -->
+                <div class="cku5t cxfpf">
+
+                    <!-- Line -->
+                    <div class="crfj0 cxc97 c7dem c94cd cyaoe cpgai cdwiy czvb2 cm457 crsho" aria-hidden="true"></div>
+
+                    <!-- Grid -->
+                    <div class="csj5a ctzz2 cwxnr cxauk crwjn ccp2j cblm1 c3wv7 cog19">
+
+                        <!-- #1 -->
+                        <div class="cz3g0">
+                            <div class="ctjhd ckmsd cowvk cx8rc c48w7 cz9fi cy8ew cbesf ckn8d crmv9 cbuk0 c30rs codph">
+                                1</div>
+                            <h3 class="cmbv1 cbbk4 c30rs">Personalised Outreach</h3>
+                            <div class="cof1o">Work is is changing faster than at any other time in history.
+                            </div>
+                        </div>
+
+                        <!-- #2 -->
+                        <div class="cz3g0">
+                            <div class="ctjhd ckmsd cowvk cx8rc c48w7 cz9fi cy8ew cbesf ckn8d crmv9 cbuk0 c30rs codph">
+                                2</div>
+                            <h3 class="cmbv1 cbbk4 c30rs">Personalised Outreach</h3>
+                            <div class="cof1o">Work is is changing faster than at any other time in history.
+                            </div>
+                        </div>
+
+                        <!-- #3 -->
+                        <div class="cz3g0">
+                            <div class="ctjhd ckmsd cowvk cx8rc c48w7 cz9fi cy8ew cbesf ckn8d crmv9 cbuk0 c30rs codph">
+                                3</div>
+                            <h3 class="cmbv1 cbbk4 c30rs">Personalised Outreach</h3>
+                            <div class="cof1o">Work is is changing faster than at any other time in history.
+                            </div>
+                        </div>
+
+                        <!-- #4 -->
+                        <div class="cz3g0">
+                            <div class="ctjhd ckmsd cowvk cx8rc c48w7 cz9fi cy8ew cbesf ckn8d crmv9 cbuk0 c30rs codph">
+                                4</div>
+                            <h3 class="cmbv1 cbbk4 c30rs">Personalised Outreach</h3>
+                            <div class="cof1o">Work is is changing faster than at any other time in history.
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </div>
                 </div>
+
+                <!-- CTA -->
+                <div class="cz3g0">
+                    <a class="cxgiq ckmsd c48w7 crmv9 codph cxokd cscc8" href="schedule-call.html">
+                        Schedule A Call
+                        <span class="c2rlx ccwp8 cxc90 cw0we chqn7 cgshh cfgtz">
+                            <svg class="cvd88" xmlns="http://www.w3.org/2000/svg" width="16" height="8">
+                                <path
+                                    d="m10.865.013.747.148c.243.065.481.143.716.235.495.18.97.42 1.415.716.265.192.571.343.858.55.096.064.192.135.288.209l.196.154.192.178c.09.08.175.168.254.262.189.21.33.466.414.747.076.275.073.568-.008.84-.09.27-.236.513-.427.708-.096.1-.198.191-.306.274l-.152.117-.116.074c-.369.252-.75.482-1.14.69-.577.315-1.153.585-1.701.932-.408.262-.803.549-1.182.86-.083.064-.16.136-.247.193a.918.918 0 0 1-.113.072.644.644 0 0 1-.118.016.708.708 0 0 1-.191.01.559.559 0 0 1-.246-.088l-.072-.054a1.481 1.481 0 0 1-.141-.107c-.128-.122-.1-.377.05-.726.036-.08.079-.156.128-.226l.316-.401c.164-.188.336-.372.514-.543.178-.17.356-.342.546-.493.19-.152.394-.265.59-.39.53-.329 1.05-.626 1.552-.93-.159.018-.32.034-.48.04-.511.036-1.026.044-1.546.048a43.432 43.432 0 0 1-2.31-.058l-.005-.02a78.728 78.728 0 0 0-2.292-.148c-.279-.016-.558.01-.837-.006L4.543 3.81l-.977-.046a19.357 19.357 0 0 1-.49-.029 12.6 12.6 0 0 0-1.303.013l-.828.055-.406.021H.335l-.18.008c-.145 0-.208-.15-.102-.356.16-.268.422-.46.723-.531.57-.117 1.144-.205 1.72-.264.287-.026.576-.048.865-.053.29-.004.578.01.865.042.69.065 1.408-.015 2.113-.015.776.003 1.549.02 2.324.04l1.428.039 1.087.039c.359.012.716.02 1.075.013.442-.008.879-.065 1.318-.112a3.672 3.672 0 0 0-.186-.166 9.045 9.045 0 0 0-1.06-.762 9.82 9.82 0 0 0-1.034-.537 5.9 5.9 0 0 1-1.284-.854c-.12-.115-.053-.199.12-.26a1.55 1.55 0 0 1 .738-.083Z">
+                                </path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
             </div>
         </div>
-    </body>
-</html>
+    </section>
+
+    <!-- Features #1 -->
+    <section class="cku5t">
+
+        <!-- Bg -->
+        <div class="crfj0 cqh0z cyaoe c1j64" aria-hidden="true"></div>
+
+        <!-- Illustration -->
+        <div class="c09n0 crfj0 c6m1e c7d50 cyaoe c94z9" aria-hidden="true">
+            <img class="c9nx8" src="images/features-illustration.svg" width="2120" height="931">
+        </div>
+
+        <div class="csj5a cmqkr crfvq c82m6">
+            <div class="cm28u cnvm7">
+
+                <!-- Section header -->
+                <div class="cap4d cxfpf cpv3s">
+                    <h2 class="cdlyt cmbv1 codph">We bring you high-quality talents from 72+ countries</h2>
+                </div>
+
+                <!-- Carousel -->
+                <div class="cxfpf cpv3s">
+                    <!-- Carousel built with Swiper.js [https://swiperjs.com/] -->
+                    <!-- * Initialized in src/js/main.js -->
+                    <!-- * Custom styles in src/css/additional-styles/theme.scss -->
+                    <div class="carousel swiper-container csj5a cwxnr c5tu0">
+                        <div class="swiper-wrapper">
+                            <!-- Carousel items -->
+                            <div class="swiper-slide cnm1s cc8cr">
+                                <!-- Image -->
+                                <img class="c4pnb ctnht cocui c4onr" src="images/carousel-01.jpg" width="446"
+                                    height="335" alt="Carousel 01">
+                            </div>
+                            <div class="swiper-slide cnm1s cc8cr">
+                                <!-- Image -->
+                                <img class="c4pnb ctnht cocui c4onr" src="images/carousel-02.jpg" width="446"
+                                    height="335" alt="Carousel 02">
+                            </div>
+                            <div class="swiper-slide cnm1s cc8cr">
+                                <!-- Image -->
+                                <img class="c4pnb ctnht cocui c4onr" src="images/carousel-03.jpg" width="446"
+                                    height="335" alt="Carousel 03">
+                            </div>
+                            <div class="swiper-slide cnm1s cc8cr">
+                                <!-- Image -->
+                                <img class="c4pnb ctnht cocui c4onr" src="images/carousel-04.jpg" width="446"
+                                    height="335" alt="Carousel 04">
+                            </div>
+                            <div class="swiper-slide cnm1s cc8cr">
+                                <!-- Image -->
+                                <img class="c4pnb ctnht cocui c4onr" src="images/carousel-05.jpg" width="446"
+                                    height="335" alt="Carousel 05">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrows -->
+                    <div class="cip6d chv0p c7gp2 czfug">
+                        <button class="carousel-prev cku5t cvxkj chv0p ciq1k cwqw2 c48w7 cz9fi cy8ew crmv9 cscc8">
+                            <span class="cphi0">Previous</span>
+                            <svg class="c5oxa chten chqn7 cgshh c3awe" width="13" height="12" viewBox="0 0 13 12"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m3.914 5 3.5-3.5L6 .086 1.086 5H1v.086L.086 6 1 6.914V7h.086L6 11.914 7.414 10.5 3.914 7H13V5z">
+                                </path>
+                            </svg>
+                        </button>
+                        <button class="carousel-next cku5t cvxkj chv0p ciq1k cwqw2 c48w7 cz9fi cy8ew crmv9 cscc8">
+                            <span class="cphi0">Next</span>
+                            <svg class="c5oxa chten chqn7 cgshh c3awe" width="13" height="12" viewBox="0 0 13 12"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m9.086 5-3.5-3.5L7 .086 11.914 5H12v.086l.914.914-.914.914V7h-.086L7 11.914 5.586 10.5l3.5-3.5H0V5z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Grid -->
+                <div class="csj5a ctzz2 cwxnr cxauk ccp2j cblm1 c3wv7 cog19">
+
+                    <!-- #1 -->
+                    <div class="cku5t cj8sk cz0eq c916p clx8g c6x4y chjvz cfk6x cehcr c7v21 cl2e3 c8puu cj24j coekp"
+                        data-aos="fade-up">
+                        <img class="ctjhd" src="images/icon-01.svg" width="40" height="40" alt="Icon 01">
+                        <h3 class="cmbv1 cbbk4 c30rs codph">Reward Performers</h3>
+                        <div class="codph co7su">No more endless task or wasted budget. With us, you and your
+                            team are taken care of.</div>
+                    </div>
+
+                    <!-- #2 -->
+                    <div class="cku5t cj8sk cz0eq c916p clx8g c6x4y chjvz cfk6x cehcr c7v21 cl2e3 c8puu cj24j coekp"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <img class="ctjhd" src="images/icon-02.svg" width="40" height="40" alt="Icon 02">
+                        <h3 class="cmbv1 cbbk4 c30rs codph">Reward Performers</h3>
+                        <div class="codph co7su">No more endless task or wasted budget. With us, you and your
+                            team are taken care of.</div>
+                    </div>
+
+                    <!-- #3 -->
+                    <div class="cku5t cj8sk cz0eq c916p clx8g c6x4y chjvz cfk6x cehcr c7v21 cl2e3 c8puu cj24j coekp"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <img class="ctjhd" src="images/icon-03.svg" width="40" height="40" alt="Icon 03">
+                        <h3 class="cmbv1 cbbk4 c30rs codph">Reward Performers</h3>
+                        <div class="codph co7su">No more endless task or wasted budget. With us, you and your
+                            team are taken care of.</div>
+                    </div>
+
+                    <!-- #4 -->
+                    <div class="cku5t cj8sk cz0eq c916p clx8g c6x4y chjvz cfk6x cehcr c7v21 cl2e3 c8puu cj24j coekp"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <img class="ctjhd" src="images/icon-04.svg" width="40" height="40" alt="Icon 04">
+                        <h3 class="cmbv1 cbbk4 c30rs codph">Reward Performers</h3>
+                        <div class="codph co7su">No more endless task or wasted budget. With us, you and your
+                            team are taken care of.</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features #2 -->
+    <section>
+        <div class="csj5a cmqkr crfvq c82m6">
+            <div class="cm28u cnvm7">
+
+                <!-- Section header -->
+                <div class="csj5a cap4d cxfpf cz3g0 cpv3s">
+                    <h2 class="cdlyt cmbv1">Everything you need to find, hire, and manage talents</h2>
+                </div>
+
+                <div x-data="{ category: '1' }">
+
+                    <!-- Category buttons -->
+                    <div class="cxfpf cmfra">
+                        <div class="c7rxt chv0p cwqz6 cz9fi">
+                            <button class="cz0ts cz4h4 clwal ckcn2"
+                                :class="category === '1' ? 'cslwk codph' : 'ceo57 c2m9f cpbu6'"
+                                @click="category = '1'">Flexible Features</button>
+                            <button class="cz0ts cz4h4 clwal ckcn2"
+                                :class="category === '2' ? 'cslwk codph' : 'ceo57 c2m9f cpbu6'"
+                                @click="category = '2'">Flexible Features</button>
+                            <button class="cz0ts cz4h4 clwal ckcn2"
+                                :class="category === '3' ? 'cslwk codph' : 'ceo57 c2m9f cpbu6'"
+                                @click="category = '3'">Flexible Features</button>
+                            <button class="cz0ts cz4h4 clwal ckcn2"
+                                :class="category === '4' ? 'cslwk codph' : 'ceo57 c2m9f cpbu6'"
+                                @click="category = '4'">Flexible Features</button>
+                        </div>
+                    </div>
+
+                    <!-- Section content -->
+                    <div class="csj5a chv0p c57w9 cbev8 c01kp cddjv cal7l cpg0y c1vog c09vw cqhy4 c0ryo">
+
+                        <!-- Content -->
+                        <div class="cvm8j ck2ct cnl0c c1a6j" data-aos="fade-up">
+                            <!-- Content #1 -->
+                            <div x-show="category === '1'">
+                                <h3 class="cunz1 ctjhd cmbv1">The member-owned tech society.</h3>
+                                <p class="c8a2r cbbk4 cof1o">Work is is changing faster than at any other
+                                    time in history. This rapid change requires a new hiring model. A model
+                                    that is fair, inclusive, and empowering. That's why we built this.</p>
+                                <ul class="ckmsd cbev8 c3v31">
+                                    <li class="chv0p cxauk">
+                                        <svg class="cbi53 cwozf cvpja crkvv checm cvd88 cxc90" viewBox="0 0 12 12"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                            </path>
+                                        </svg>
+                                        <div>
+                                            <div class="c5sy4 cmbv1 cbbk4 c30rs">Ensure Quick Turnarounds
+                                            </div>
+                                            <div class="cof1o">
+                                                Work is is changing faster than at any other time in history.
+                                                This rapid change requires a new hiring model.
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="chv0p cxauk">
+                                        <svg class="cbi53 cwozf cvpja crkvv checm cvd88 cxc90" viewBox="0 0 12 12"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                            </path>
+                                        </svg>
+                                        <div>
+                                            <div class="c5sy4 cmbv1 cbbk4 c30rs">Ensure Quick Turnarounds
+                                            </div>
+                                            <div class="cof1o">
+                                                Work is is changing faster than at any other time in history.
+                                                This rapid change requires a new hiring model.
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="chv0p cxauk">
+                                        <svg class="cbi53 cwozf cvpja crkvv checm cvd88 cxc90" viewBox="0 0 12 12"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                            </path>
+                                        </svg>
+                                        <div>
+                                            <div class="c5sy4 cmbv1 cbbk4 c30rs">Ensure Quick Turnarounds
+                                            </div>
+                                            <div class="cof1o">
+                                                Work is is changing faster than at any other time in history.
+                                                This rapid change requires a new hiring model.
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Content #2 -->
+                            <div x-show="category === '2'">
+                                <h3 class="cunz1 ctjhd cmbv1">Find talents, hire and manage them.</h3>
+                                <p class="c8a2r cbbk4 cof1o">Work is is changing faster than at any other
+                                    time in history. This rapid change requires a new hiring model. A model
+                                    that is fair, inclusive, and empowering. That's why we built this.</p>
+                                <ul class="ckmsd cbev8 c3v31">
+                                    <li class="chv0p cxauk">
+                                        <svg class="cbi53 cwozf cvpja crkvv checm cvd88 cxc90" viewBox="0 0 12 12"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                            </path>
+                                        </svg>
+                                        <div>
+                                            <div class="c5sy4 cmbv1 cbbk4 c30rs">Ensure Quick Turnarounds
+                                            </div>
+                                            <div class="cof1o">
+                                                Work is is changing faster than at any other time in history.
+                                                This rapid change requires a new hiring model.
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="chv0p cxauk">
+                                        <svg class="cbi53 cwozf cvpja crkvv checm cvd88 cxc90" viewBox="0 0 12 12"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                            </path>
+                                        </svg>
+                                        <div>
+                                            <div class="c5sy4 cmbv1 cbbk4 c30rs">Ensure Quick Turnarounds
+                                            </div>
+                                            <div class="cof1o">
+                                                Work is is changing faster than at any other time in history.
+                                                This rapid change requires a new hiring model.
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Content #3 -->
+                            <div x-show="category === '3'">
+                                <h3 class="cunz1 ctjhd cmbv1">A model that is fair, inclusive, and
+                                    empowering.</h3>
+                                <p class="c8a2r cbbk4 cof1o">Work is is changing faster than at any other
+                                    time in history. This rapid change requires a new hiring model. A model
+                                    that is fair, inclusive, and empowering. That's why we built this.</p>
+                                <ul class="ckmsd cbev8 c3v31">
+                                    <li class="chv0p cxauk">
+                                        <svg class="cbi53 cwozf cvpja crkvv checm cvd88 cxc90" viewBox="0 0 12 12"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                            </path>
+                                        </svg>
+                                        <div>
+                                            <div class="c5sy4 cmbv1 cbbk4 c30rs">Ensure Quick Turnarounds
+                                            </div>
+                                            <div class="cof1o">
+                                                Work is is changing faster than at any other time in history.
+                                                This rapid change requires a new hiring model.
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="chv0p cxauk">
+                                        <svg class="cbi53 cwozf cvpja crkvv checm cvd88 cxc90" viewBox="0 0 12 12"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                            </path>
+                                        </svg>
+                                        <div>
+                                            <div class="c5sy4 cmbv1 cbbk4 c30rs">Ensure Quick Turnarounds
+                                            </div>
+                                            <div class="cof1o">
+                                                Work is is changing faster than at any other time in history.
+                                                This rapid change requires a new hiring model.
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Content #4 -->
+                            <div x-show="category === '4'">
+                                <h3 class="cunz1 ctjhd cmbv1">This rapid change requires a new hiring model.
+                                </h3>
+                                <p class="c8a2r cbbk4 cof1o">Work is is changing faster than at any other
+                                    time in history. This rapid change requires a new hiring model. A model
+                                    that is fair, inclusive, and empowering. That's why we built this.</p>
+                                <ul class="ckmsd cbev8 c3v31">
+                                    <li class="chv0p cxauk">
+                                        <svg class="cbi53 cwozf cvpja crkvv checm cvd88 cxc90" viewBox="0 0 12 12"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                            </path>
+                                        </svg>
+                                        <div>
+                                            <div class="c5sy4 cmbv1 cbbk4 c30rs">Ensure Quick Turnarounds
+                                            </div>
+                                            <div class="cof1o">
+                                                Work is is changing faster than at any other time in history.
+                                                This rapid change requires a new hiring model.
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="chv0p cxauk">
+                                        <svg class="cbi53 cwozf cvpja crkvv checm cvd88 cxc90" viewBox="0 0 12 12"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                            </path>
+                                        </svg>
+                                        <div>
+                                            <div class="c5sy4 cmbv1 cbbk4 c30rs">Ensure Quick Turnarounds
+                                            </div>
+                                            <div class="cof1o">
+                                                Work is is changing faster than at any other time in history.
+                                                This rapid change requires a new hiring model.
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="chv0p cxauk">
+                                        <svg class="cbi53 cwozf cvpja crkvv checm cvd88 cxc90" viewBox="0 0 12 12"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                            </path>
+                                        </svg>
+                                        <div>
+                                            <div class="c5sy4 cmbv1 cbbk4 c30rs">Ensure Quick Turnarounds
+                                            </div>
+                                            <div class="cof1o">
+                                                Work is is changing faster than at any other time in history.
+                                                This rapid change requires a new hiring model.
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Image -->
+                        <div class="cguaa c1a6j" data-aos="fade-up" data-aos-delay="100">
+                            <img class="csj5a cal7l" src="images/features-01.png" width="540" height="405"
+                                alt="Features">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="crmv9">
+        <div class="csj5a cmqkr crfvq c82m6">
+            <div class="cm28u cnvm7">
+
+                <div class="cku5t">
+                    <!-- Section header -->
+                    <div class="csj5a cap4d cxfpf cz3g0 cpv3s">
+                        <h2 class="cdlyt cmbv1 cqr0e">Scale your business with ready-to-buy services</h2>
+                    </div>
+
+                    <!-- Grid -->
+                    <div class="csj5a ctzz2 cw11t ca63s cxauk c6xht cg6q2 crtld c3wv7 cv3zc">
+                        <!-- Item #1 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-01.jpg"
+                                        width="202" height="128" alt="Item 01">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">System
+                                    Design</a>
+                            </div>
+                        </div>
+                        <!-- Item #2 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-02.jpg"
+                                        width="202" height="128" alt="Item 02">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Remote
+                                    Team</a>
+                            </div>
+                        </div>
+                        <!-- Item #3 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-03.jpg"
+                                        width="202" height="128" alt="Item 03">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Illustration</a>
+                            </div>
+                        </div>
+                        <!-- Item #4 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-04.jpg"
+                                        width="202" height="128" alt="Item 04">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Articles
+                                    &amp; Posts</a>
+                            </div>
+                        </div>
+                        <!-- Item #5 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-05.jpg"
+                                        width="202" height="128" alt="Item 05">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Wireframing</a>
+                            </div>
+                        </div>
+                        <!-- Item #6 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-06.jpg"
+                                        width="202" height="128" alt="Item 06">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Website
+                                    Content</a>
+                            </div>
+                        </div>
+                        <!-- Item #7 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-07.jpg"
+                                        width="202" height="128" alt="Item 07">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Copywriting</a>
+                            </div>
+                        </div>
+                        <!-- Item #8 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-08.jpg"
+                                        width="202" height="128" alt="Item 08">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Virtual
+                                    Assistant</a>
+                            </div>
+                        </div>
+                        <!-- Item #9 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-09.jpg"
+                                        width="202" height="128" alt="Item 09">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Video
+                                    Editing</a>
+                            </div>
+                        </div>
+                        <!-- Item #10 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-10.jpg"
+                                        width="202" height="128" alt="Item 10">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Web
+                                    Development</a>
+                            </div>
+                        </div>
+                        <!-- Item #11 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-11.jpg"
+                                        width="202" height="128" alt="Item 11">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Signage</a>
+                            </div>
+                        </div>
+                        <!-- Item #12 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-12.jpg"
+                                        width="202" height="128" alt="Item 12">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Web
+                                    Apps</a>
+                            </div>
+                        </div>
+                        <!-- Item #13 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-13.jpg"
+                                        width="202" height="128" alt="Item 13">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">E-Commerce</a>
+                            </div>
+                        </div>
+                        <!-- Item #14 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-14.jpg"
+                                        width="202" height="128" alt="Item 14">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Data
+                                    Entry</a>
+                            </div>
+                        </div>
+                        <!-- Item #15 -->
+                        <div class="chv0p ctnht cbev8">
+                            <!-- Image -->
+                            <div class="cqjtt">
+                                <a class="clsb1 ccok8 cscc8" href="#0">
+                                    <img class="caenn cocui c4onr chten comi7 cwk0s cb3pe" src="images/service-15.jpg"
+                                        width="202" height="128" alt="Item 15">
+                                </a>
+                            </div>
+                            <div class="c2yat cz3g0">
+                                <a class="cmbv1 c30rs cqr0e chten chqn7 cgshh c55qq" href="#0">Voice
+                                    Recording</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom gradient -->
+                    <div class="c09n0 crfj0 cd4al chv0p cjx8w cocui c48w7 cz9fi co2p5 cbbj1">
+                        <div>
+                            <a class="cxgiq clf8n ckmsd c48w7 cslwk codph cf8id cscc8" href="#0">
+                                See All Services
+                                <span class="c2rlx ccwp8 codph cw0we chqn7 cgshh cfgtz">
+                                    <svg class="cvd88" xmlns="http://www.w3.org/2000/svg" width="16"
+                                        height="8">
+                                        <path
+                                            d="m10.865.013.747.148c.243.065.481.143.716.235.495.18.97.42 1.415.716.265.192.571.343.858.55.096.064.192.135.288.209l.196.154.192.178c.09.08.175.168.254.262.189.21.33.466.414.747.076.275.073.568-.008.84-.09.27-.236.513-.427.708-.096.1-.198.191-.306.274l-.152.117-.116.074c-.369.252-.75.482-1.14.69-.577.315-1.153.585-1.701.932-.408.262-.803.549-1.182.86-.083.064-.16.136-.247.193a.918.918 0 0 1-.113.072.644.644 0 0 1-.118.016.708.708 0 0 1-.191.01.559.559 0 0 1-.246-.088l-.072-.054a1.481 1.481 0 0 1-.141-.107c-.128-.122-.1-.377.05-.726.036-.08.079-.156.128-.226l.316-.401c.164-.188.336-.372.514-.543.178-.17.356-.342.546-.493.19-.152.394-.265.59-.39.53-.329 1.05-.626 1.552-.93-.159.018-.32.034-.48.04-.511.036-1.026.044-1.546.048a43.432 43.432 0 0 1-2.31-.058l-.005-.02a78.728 78.728 0 0 0-2.292-.148c-.279-.016-.558.01-.837-.006L4.543 3.81l-.977-.046a19.357 19.357 0 0 1-.49-.029 12.6 12.6 0 0 0-1.303.013l-.828.055-.406.021H.335l-.18.008c-.145 0-.208-.15-.102-.356.16-.268.422-.46.723-.531.57-.117 1.144-.205 1.72-.264.287-.026.576-.048.865-.053.29-.004.578.01.865.042.69.065 1.408-.015 2.113-.015.776.003 1.549.02 2.324.04l1.428.039 1.087.039c.359.012.716.02 1.075.013.442-.008.879-.065 1.318-.112a3.672 3.672 0 0 0-.186-.166 9.045 9.045 0 0 0-1.06-.762 9.82 9.82 0 0 0-1.034-.537 5.9 5.9 0 0 1-1.284-.854c-.12-.115-.053-.199.12-.26a1.55 1.55 0 0 1 .738-.083Z">
+                                        </path>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section>
+        <div class="csj5a cmqkr crfvq c82m6">
+            <div class="cw10u c7b5q">
+
+                <!-- Section header -->
+                <div class="csj5a cap4d cwkzu cz3g0">
+                    <h2 class="cdlyt cmbv1">Find a plan that fits your business best</h2>
+                </div>
+
+                <!-- Pricing tables -->
+                <div x-data="{ annual: false }">
+
+                    <!-- Pricing toggle -->
+                    <div class="cuiie c8a2r chv0p c9y4e cz9fi cws7b">
+                        <div class="cku5t chv0p cocui cy8ew c23s9 cf8v1">
+                            <span class="c09n0 crfj0 cqh0z cf0e5" aria-hidden="true">
+                                <span class="crfj0 cqh0z cq766 cgrxs cy8ew cslwk cp8nh chten chqn7 cgshh"
+                                    :class="annual ? 'cxmoa' : 'cb2zj'"></span>
+                            </span>
+                            <button class="cku5t clwal ccnie cmbv1 cvwst c30rs chten chqn7 cgshh"
+                                :class="annual ? 'c2m9f' : 'codph'" @click.prevent="annual = false">Monthly</button>
+                            <button class="cku5t clwal ccnie cmbv1 cvwst c30rs chten chqn7 cgshh"
+                                :class="annual ? 'codph' : 'c2m9f'" @click.prevent="annual = true">Annual</button>
+
+                        </div>
+                    </div>
+
+                    <div class="csj5a ctzz2 cwxnr cxauk clce0 cjoca c3wv7 cn441 c6m7b">
+
+                        <!-- Pricing table 1 -->
+                        <div class="cku5t chv0p ctnht cbev8 cy1zp c5gof" data-aos="fade-up" data-aos-delay="100">
+                            <div class="c9poj">
+                                <div class="c5sy4 cmbv1 c1bsm c30rs">Basic</div>
+                                <div class="chux1 ckmsd c7are cmbv1 c30rs c2m9f">
+                                    <span class="cg15m">$</span>
+                                    <span class="cmbl2" x-text="annual ? '449' : '499'"></span>
+                                    <span>/mo</span>
+                                </div>
+                                <div class="c9poj cof1o">Start building your team and hire the most talented
+                                    workers in the world.</div>
+                                <a class="cxgiq ckmsd cocui c48w7 crmv9 codph cxokd cscc8" href="schedule-call.html">
+                                    Schedule A Call
+                                    <span class="c2rlx ccwp8 cxc90 cw0we chqn7 cgshh cfgtz">
+                                        <svg class="cvd88" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="8">
+                                            <path
+                                                d="m10.865.013.747.148c.243.065.481.143.716.235.495.18.97.42 1.415.716.265.192.571.343.858.55.096.064.192.135.288.209l.196.154.192.178c.09.08.175.168.254.262.189.21.33.466.414.747.076.275.073.568-.008.84-.09.27-.236.513-.427.708-.096.1-.198.191-.306.274l-.152.117-.116.074c-.369.252-.75.482-1.14.69-.577.315-1.153.585-1.701.932-.408.262-.803.549-1.182.86-.083.064-.16.136-.247.193a.918.918 0 0 1-.113.072.644.644 0 0 1-.118.016.708.708 0 0 1-.191.01.559.559 0 0 1-.246-.088l-.072-.054a1.481 1.481 0 0 1-.141-.107c-.128-.122-.1-.377.05-.726.036-.08.079-.156.128-.226l.316-.401c.164-.188.336-.372.514-.543.178-.17.356-.342.546-.493.19-.152.394-.265.59-.39.53-.329 1.05-.626 1.552-.93-.159.018-.32.034-.48.04-.511.036-1.026.044-1.546.048a43.432 43.432 0 0 1-2.31-.058l-.005-.02a78.728 78.728 0 0 0-2.292-.148c-.279-.016-.558.01-.837-.006L4.543 3.81l-.977-.046a19.357 19.357 0 0 1-.49-.029 12.6 12.6 0 0 0-1.303.013l-.828.055-.406.021H.335l-.18.008c-.145 0-.208-.15-.102-.356.16-.268.422-.46.723-.531.57-.117 1.144-.205 1.72-.264.287-.026.576-.048.865-.053.29-.004.578.01.865.042.69.065 1.408-.015 2.113-.015.776.003 1.549.02 2.324.04l1.428.039 1.087.039c.359.012.716.02 1.075.013.442-.008.879-.065 1.318-.112a3.672 3.672 0 0 0-.186-.166 9.045 9.045 0 0 0-1.06-.762 9.82 9.82 0 0 0-1.034-.537 5.9 5.9 0 0 1-1.284-.854c-.12-.115-.053-.199.12-.26a1.55 1.55 0 0 1 .738-.083Z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="cqjtt cmbv1 c30rs">Features include:</div>
+                            <ul class="c2yat ctojb cof1o">
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Unlimited placeholder texts</span>
+                                </li>
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Consectetur adipiscing elit</span>
+                                </li>
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Excepteur sint occaecat cupidatat</span>
+                                </li>
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Officia deserunt mollit anim</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Pricing table 2 -->
+                        <div class="cku5t chv0p ctnht cbev8 cy1zp caajd c5gof" data-aos="fade-up">
+                            <div class="c9poj">
+                                <div class="c5sy4 cmbv1 c1bsm c30rs">Pro</div>
+                                <div class="chux1 ckmsd c7are cmbv1 c30rs c2m9f">
+                                    <span class="cg15m">$</span>
+                                    <span class="cmbl2" x-text="annual ? '749' : '799'"></span>
+                                    <span>/mo</span>
+                                </div>
+                                <div class="c9poj cof1o">Start building your team and hire the most talented
+                                    workers in the world.</div>
+                                <a class="cxgiq ckmsd cocui c48w7 cslwk codph cf8id cscc8" href="schedule-call.html">
+                                    Schedule A Call
+                                    <span class="c2rlx ccwp8 codph cw0we chqn7 cgshh cfgtz">
+                                        <svg class="cvd88" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="8">
+                                            <path
+                                                d="m10.865.013.747.148c.243.065.481.143.716.235.495.18.97.42 1.415.716.265.192.571.343.858.55.096.064.192.135.288.209l.196.154.192.178c.09.08.175.168.254.262.189.21.33.466.414.747.076.275.073.568-.008.84-.09.27-.236.513-.427.708-.096.1-.198.191-.306.274l-.152.117-.116.074c-.369.252-.75.482-1.14.69-.577.315-1.153.585-1.701.932-.408.262-.803.549-1.182.86-.083.064-.16.136-.247.193a.918.918 0 0 1-.113.072.644.644 0 0 1-.118.016.708.708 0 0 1-.191.01.559.559 0 0 1-.246-.088l-.072-.054a1.481 1.481 0 0 1-.141-.107c-.128-.122-.1-.377.05-.726.036-.08.079-.156.128-.226l.316-.401c.164-.188.336-.372.514-.543.178-.17.356-.342.546-.493.19-.152.394-.265.59-.39.53-.329 1.05-.626 1.552-.93-.159.018-.32.034-.48.04-.511.036-1.026.044-1.546.048a43.432 43.432 0 0 1-2.31-.058l-.005-.02a78.728 78.728 0 0 0-2.292-.148c-.279-.016-.558.01-.837-.006L4.543 3.81l-.977-.046a19.357 19.357 0 0 1-.49-.029 12.6 12.6 0 0 0-1.303.013l-.828.055-.406.021H.335l-.18.008c-.145 0-.208-.15-.102-.356.16-.268.422-.46.723-.531.57-.117 1.144-.205 1.72-.264.287-.026.576-.048.865-.053.29-.004.578.01.865.042.69.065 1.408-.015 2.113-.015.776.003 1.549.02 2.324.04l1.428.039 1.087.039c.359.012.716.02 1.075.013.442-.008.879-.065 1.318-.112a3.672 3.672 0 0 0-.186-.166 9.045 9.045 0 0 0-1.06-.762 9.82 9.82 0 0 0-1.034-.537 5.9 5.9 0 0 1-1.284-.854c-.12-.115-.053-.199.12-.26a1.55 1.55 0 0 1 .738-.083Z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="cqjtt cmbv1 c30rs">Everything in Basic, plus:</div>
+                            <ul class="c2yat ctojb cof1o">
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Unlimited placeholder texts</span>
+                                </li>
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Consectetur adipiscing elit</span>
+                                </li>
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Excepteur sint occaecat cupidatat</span>
+                                </li>
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Officia deserunt mollit anim</span>
+                                </li>
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Excepteur sint occaecat cupidatat</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Pricing table 3 -->
+                        <div class="cku5t chv0p ctnht cbev8 cy1zp c23s9 c5gof" data-aos="fade-up" data-aos-delay="100">
+                            <div class="c9poj">
+                                <div class="c5sy4 cmbv1 c1bsm c30rs">Enterprise</div>
+                                <div class="chux1 ckmsd c7are cmbv1 c30rs c2m9f">
+                                    <span class="ctsdg cg15m">Contact us</span>
+                                </div>
+                                <div class="c9poj cof1o">Start building your team and hire the most talented
+                                    workers in the world.</div>
+                                <a class="cxgiq ckmsd cocui c48w7 crmv9 codph cxokd cscc8" href="schedule-call.html">
+                                    Schedule A Call
+                                    <span class="c2rlx ccwp8 cxc90 cw0we chqn7 cgshh cfgtz">
+                                        <svg class="cvd88" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="8">
+                                            <path
+                                                d="m10.865.013.747.148c.243.065.481.143.716.235.495.18.97.42 1.415.716.265.192.571.343.858.55.096.064.192.135.288.209l.196.154.192.178c.09.08.175.168.254.262.189.21.33.466.414.747.076.275.073.568-.008.84-.09.27-.236.513-.427.708-.096.1-.198.191-.306.274l-.152.117-.116.074c-.369.252-.75.482-1.14.69-.577.315-1.153.585-1.701.932-.408.262-.803.549-1.182.86-.083.064-.16.136-.247.193a.918.918 0 0 1-.113.072.644.644 0 0 1-.118.016.708.708 0 0 1-.191.01.559.559 0 0 1-.246-.088l-.072-.054a1.481 1.481 0 0 1-.141-.107c-.128-.122-.1-.377.05-.726.036-.08.079-.156.128-.226l.316-.401c.164-.188.336-.372.514-.543.178-.17.356-.342.546-.493.19-.152.394-.265.59-.39.53-.329 1.05-.626 1.552-.93-.159.018-.32.034-.48.04-.511.036-1.026.044-1.546.048a43.432 43.432 0 0 1-2.31-.058l-.005-.02a78.728 78.728 0 0 0-2.292-.148c-.279-.016-.558.01-.837-.006L4.543 3.81l-.977-.046a19.357 19.357 0 0 1-.49-.029 12.6 12.6 0 0 0-1.303.013l-.828.055-.406.021H.335l-.18.008c-.145 0-.208-.15-.102-.356.16-.268.422-.46.723-.531.57-.117 1.144-.205 1.72-.264.287-.026.576-.048.865-.053.29-.004.578.01.865.042.69.065 1.408-.015 2.113-.015.776.003 1.549.02 2.324.04l1.428.039 1.087.039c.359.012.716.02 1.075.013.442-.008.879-.065 1.318-.112a3.672 3.672 0 0 0-.186-.166 9.045 9.045 0 0 0-1.06-.762 9.82 9.82 0 0 0-1.034-.537 5.9 5.9 0 0 1-1.284-.854c-.12-.115-.053-.199.12-.26a1.55 1.55 0 0 1 .738-.083Z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="cqjtt cmbv1 c30rs">Everything in Pro, plus:</div>
+                            <ul class="c2yat ctojb cof1o">
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Unlimited placeholder texts</span>
+                                </li>
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Consectetur adipiscing elit</span>
+                                </li>
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Excepteur sint occaecat cupidatat</span>
+                                </li>
+                                <li class="chv0p c48w7">
+                                    <svg class="cwozf cvpja crkvv checm cvd88 co13d" viewBox="0 0 12 12"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z">
+                                        </path>
+                                    </svg>
+                                    <span>Officia deserunt mollit anim</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Single testimonial -->
+    <section class="cku5t" data-aos="fade-up">
+
+        <!-- Illustration -->
+        <div class="c09n0 crfj0 c6m1e ctofx cyaoe c1u1n c94z9 cml5m" aria-hidden="true">
+            <img class="c9nx8" src="images/testimonial-illustration.svg" width="1440" height="350">
+        </div>
+
+        <div class="csj5a cmqkr crfvq c82m6">
+            <div class="cm28u cn9le">
+
+                <div class="csj5a cap4d">
+
+                    <div class="cz3g0">
+                        <div class="ctjhd ckmsd">
+                            <img class="cy8ew" src="images/testimonial-01.jpg" width="40" height="40"
+                                alt="Testimonial 01">
+                        </div>
+                        <div class="chux1 cmbv1 cbbk4 c30rs c2m9f">
+                            "The service helped me find the perfect match. Two clear benefits I gained are a
+                            good assessment of my needs and a pool of reliable potential talents."
+                        </div>
+                        <div class="cmbv1 cpnvy c2m9f">
+                            Patrick Mills <span class="chf96">-</span> CEO, <a class="c30rs cxc90 crwih"
+                                href="#0">PraxyNet</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs -->
+    <section>
+        <div class="csj5a cmqkr crfvq c82m6">
+            <div class="cxfpf cmfra">
+
+                <!-- Section header -->
+                <div class="csj5a cap4d cljgq">
+                    <h2 class="cdlyt cmbv1">Frequently asked questions</h2>
+                </div>
+
+                <div class="csj5a cap4d c3v31">
+                    <!-- Item -->
+                    <div class="cjxsl">
+                        <h4 class="cmbv1 c1bsm c30rs">How much is this going to cost?</h4>
+                        <p class="cof1o">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim
+                            veniam.</p>
+                    </div>
+                    <!-- Item -->
+                    <div class="cjxsl">
+                        <h4 class="cmbv1 c1bsm c30rs">What is the difference between the basic and pro plans?
+                        </h4>
+                        <p class="cof1o">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim
+                            veniam.</p>
+                    </div>
+                    <!-- Item -->
+                    <div class="cjxsl">
+                        <h4 class="cmbv1 c1bsm c30rs">Do you have student or non-profit discounts?</h4>
+                        <p class="cof1o">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim
+                            veniam.</p>
+                    </div>
+                    <!-- Item -->
+                    <div class="cjxsl">
+                        <h4 class="cmbv1 c1bsm c30rs">How is the price determined?</h4>
+                        <p class="cof1o">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim
+                            veniam.</p>
+                    </div>
+                    <!-- Item -->
+                    <div class="cjxsl">
+                        <h4 class="cmbv1 c1bsm c30rs">Have more questions?</h4>
+                        <p class="cof1o">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim
+                            veniam.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cku5t ccok8">
+
+        <!-- Bg -->
+        <div class="c09n0 crfj0 cqh0z cyaoe c1j64" aria-hidden="true"></div>
+
+        <!-- Illustration -->
+        <div class="c09n0 crfj0 c6m1e cyaoe c94z9" aria-hidden="true">
+            <img class="c9nx8" src="images/cta-illustration.svg" width="1440" height="242">
+        </div>
+
+        <div class="csj5a cmqkr crfvq c82m6">
+            <div class="cm28u cnvm7">
+
+                <div class="csj5a cap4d cz3g0">
+                    <h2 class="cdlyt c9poj cmbv1 codph" data-aos="fade-up">Start hiring reliable and
+                        trustworthy talents today.</h2>
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <a class="cxgiq ckmsd c48w7 crmv9 codph cxokd cscc8" href="schedule-call.html">
+                            Schedule A Call
+                            <span class="c2rlx ccwp8 cxc90 cw0we chqn7 cgshh cfgtz">
+                                <svg class="cvd88" xmlns="http://www.w3.org/2000/svg" width="16" height="8">
+                                    <path
+                                        d="m10.865.013.747.148c.243.065.481.143.716.235.495.18.97.42 1.415.716.265.192.571.343.858.55.096.064.192.135.288.209l.196.154.192.178c.09.08.175.168.254.262.189.21.33.466.414.747.076.275.073.568-.008.84-.09.27-.236.513-.427.708-.096.1-.198.191-.306.274l-.152.117-.116.074c-.369.252-.75.482-1.14.69-.577.315-1.153.585-1.701.932-.408.262-.803.549-1.182.86-.083.064-.16.136-.247.193a.918.918 0 0 1-.113.072.644.644 0 0 1-.118.016.708.708 0 0 1-.191.01.559.559 0 0 1-.246-.088l-.072-.054a1.481 1.481 0 0 1-.141-.107c-.128-.122-.1-.377.05-.726.036-.08.079-.156.128-.226l.316-.401c.164-.188.336-.372.514-.543.178-.17.356-.342.546-.493.19-.152.394-.265.59-.39.53-.329 1.05-.626 1.552-.93-.159.018-.32.034-.48.04-.511.036-1.026.044-1.546.048a43.432 43.432 0 0 1-2.31-.058l-.005-.02a78.728 78.728 0 0 0-2.292-.148c-.279-.016-.558.01-.837-.006L4.543 3.81l-.977-.046a19.357 19.357 0 0 1-.49-.029 12.6 12.6 0 0 0-1.303.013l-.828.055-.406.021H.335l-.18.008c-.145 0-.208-.15-.102-.356.16-.268.422-.46.723-.531.57-.117 1.144-.205 1.72-.264.287-.026.576-.048.865-.053.29-.004.578.01.865.042.69.065 1.408-.015 2.113-.015.776.003 1.549.02 2.324.04l1.428.039 1.087.039c.359.012.716.02 1.075.013.442-.008.879-.065 1.318-.112a3.672 3.672 0 0 0-.186-.166 9.045 9.045 0 0 0-1.06-.762 9.82 9.82 0 0 0-1.034-.537 5.9 5.9 0 0 1-1.284-.854c-.12-.115-.053-.199.12-.26a1.55 1.55 0 0 1 .738-.083Z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+@endsection
