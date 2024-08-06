@@ -11,7 +11,7 @@ return [
     | by the framework. The "local" disk, as well as a variety of cloud
     | based disks are available to your application. Just store away!
     |
-    */
+     */
 
     'default' => env('FILESYSTEM_DISK', 'local'),
 
@@ -26,7 +26,7 @@ return [
     |
     | Supported Drivers: "local", "ftp", "sftp", "s3"
     |
-    */
+     */
 
     'disks' => [
 
@@ -35,11 +35,17 @@ return [
             'root' => storage_path('app'),
             'throw' => false,
         ],
+        'students_pic' => [
+            'driver' => 'local',
+            'root' => '../../students_pic', // Full path to the directory outside the Laravel project folder
+            'url' => env('APP_URL') . '/students_pic', // URL to access the files
+            'visibility' => 'public',
+        ],
 
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -67,10 +73,11 @@ return [
     | `storage:link` Artisan command is executed. The array keys should be
     | the locations of the links and the values should be their targets.
     |
-    */
+     */
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('students_pic') => storage_path('../../students_pic'),
     ],
 
 ];
