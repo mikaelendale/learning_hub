@@ -26,12 +26,16 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:students,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'dob' => ['required', 'string', 'max:255'],
+            'class_attended' => ['required', 'string', 'max:255'],
         ]);
 
         $student = Students::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'dob' => $request->dob,
+            'class_attended' => $request->class_attended,
         ]);
 
         event(new Registered($student));

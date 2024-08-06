@@ -73,8 +73,15 @@
                                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                                 </div>
                                 <div>
+                                    <label class="cpnvy cvwst clsb1 c5sy4" for="Password">Date of birth <span
+                                            class="co8du">*</span></label>
+                                    <input id="password_confirmation" class="cm1n1 cocui" type="date"
+                                        name="dob" required autocomplete="date">
+                                    <x-input-error :messages="$errors->get('dob')" class="mt-2" />
+                                </div>
+                                <div>
                                     <label class="cpnvy cvwst clsb1 c5sy4" for="role">Which trach are you enrolling <span class="co8du">*</span></label>
-                                    <select id="role" name="class" class="c4jp2 cocui" required="">
+                                    <select id="role" name="class_attended" class="c4jp2 cocui" required="">
                                         <option value="beginners">Beginners</option>
                                         <option value="intermediate">Intermediate</option>
                                         <option value="advanced">Advanced</option>

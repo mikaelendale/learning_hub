@@ -134,7 +134,7 @@
 
                     <!-- Copyrights -->
                     <div class="cvwst cmgfc">
-                        © Cruip.com. All rights reserved.
+                        © lalodev.com. All rights reserved.
                     </div>
 
                 </div>

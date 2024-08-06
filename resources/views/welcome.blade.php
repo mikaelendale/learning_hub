@@ -70,34 +70,54 @@
                 <div class="swiper-wrapper c1g4v cxs7a">
                     <!-- Carousel items -->
                     <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
-                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/badge-html-5-512.png" width="100" alt="Client 01">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy"
+                            src="https://cdn1.iconfinder.com/data/icons/logotypes/32/badge-html-5-512.png" width="100"
+                            alt="Client 01">
                     </div>
                     <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
-                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/badge-css-3-512.png" width="100" alt="Client 02">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy"
+                            src="https://cdn1.iconfinder.com/data/icons/logotypes/32/badge-css-3-512.png" width="100"
+                            alt="Client 02">
                     </div>
                     <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
-                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-javascript-software-develop-command-language-512.png" width="100" alt="Client 03">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy"
+                            src="https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-javascript-software-develop-command-language-512.png"
+                            width="100" alt="Client 03">
                     </div>
                     <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
-                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/267_Python_logo-512.png" width="100" alt="Client 04">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy"
+                            src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/267_Python_logo-512.png"
+                            width="100" alt="Client 04">
                     </div>
                     <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
-                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="https://cdn4.iconfinder.com/data/icons/logos-3/568/php-logo-512.png" width="100" alt="Client 05">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy"
+                            src="https://cdn4.iconfinder.com/data/icons/logos-3/568/php-logo-512.png" width="100"
+                            alt="Client 05">
                     </div>
                     <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
-                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="https://cdn4.iconfinder.com/data/icons/logos-3/181/MySQL-512.png" width="100" alt="Client 06">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy"
+                            src="https://cdn4.iconfinder.com/data/icons/logos-3/181/MySQL-512.png" width="100"
+                            alt="Client 06">
                     </div>
                     <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
-                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="https://cdn0.iconfinder.com/data/icons/logos-brands-in-colors/128/react-512.png" width="100" alt="Client 07">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy"
+                            src="https://cdn0.iconfinder.com/data/icons/logos-brands-in-colors/128/react-512.png"
+                            width="100" alt="Client 07">
                     </div>
                     <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
-                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="https://cdn1.iconfinder.com/data/icons/logos-3/304/codeigniter-128.png" width="100" alt="Client 08">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy"
+                            src="https://cdn1.iconfinder.com/data/icons/logos-3/304/codeigniter-128.png" width="100"
+                            alt="Client 08">
                     </div>
                     <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
-                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-3/24/github-alt-512.png" width="100" alt="Client 09">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy"
+                            src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-3/24/github-alt-512.png"
+                            width="100" alt="Client 09">
                     </div>
                     <div class="swiper-slide chv0p cld7y c56ct c48w7 cz9fi cw1kf cw4rw cscc8">
-                        <img class="cgrxs citjf c6xw5 cgshh csxzy" src="https://cdn0.iconfinder.com/data/icons/server-it-2/64/01-Big_data-256.png" width="100" alt="Client 10">
+                        <img class="cgrxs citjf c6xw5 cgshh csxzy"
+                            src="https://cdn0.iconfinder.com/data/icons/server-it-2/64/01-Big_data-256.png" width="100"
+                            alt="Client 10">
                     </div>
                 </div>
             </div>
@@ -114,7 +134,7 @@
                 <!-- Section header -->
                 <div class="csj5a cap4d cxfpf cz3g0 cpv3s">
                     <h2 class="cdlyt cmbv1">We support lifelong learners and professionals from all fields.</h2>
-                </div> 
+                </div>
 
                 <!-- Steps -->
                 <div class="cku5t cxfpf">
@@ -157,7 +177,8 @@
                             <div class="ctjhd ckmsd cowvk cx8rc c48w7 cz9fi cy8ew cbesf ckn8d crmv9 cbuk0 c30rs codph">
                                 4</div>
                             <h3 class="cmbv1 cbbk4 c30rs">Accessible Anywhere</h3>
-                            <div class="cof1o">Our platform works seamlessly on all devices, ensuring you can learn wherever you are.
+                            <div class="cof1o">Our platform works seamlessly on all devices, ensuring you can learn
+                                wherever you are.
                             </div>
                         </div>
 
@@ -167,7 +188,7 @@
 
                 <!-- CTA -->
                 <div class="cz3g0">
-                    <a class="cxgiq ckmsd c48w7 crmv9 codph cxokd cscc8" href="{{route('register')}}">
+                    <a class="cxgiq ckmsd c48w7 crmv9 codph cxokd cscc8" href="{{ route('register') }}">
                         Register today
                         <span class="c2rlx ccwp8 cxc90 cw0we chqn7 cgshh cfgtz">
                             <svg class="cvd88" xmlns="http://www.w3.org/2000/svg" width="16" height="8">
@@ -186,7 +207,7 @@
     <!-- Features #1 -->
     <section class="cku5t">
 
-        <!-- Bg --> 
+        <!-- Bg -->
 
         <div class="csj5a cmqkr crfvq c82m6">
             <div class="cm28u cnvm7">
@@ -194,7 +215,7 @@
                 <!-- Section header -->
                 <div class="cap4d cxfpf cpv3s">
                     <h2 class="cdlyt cmbv1 codph" style="color:black;">We Bring You High-Quality Learning Experiences</h2>
-                </div> 
+                </div>
 
                 <!-- Grid -->
                 <div class="csj5a ctzz2 cwxnr cxauk ccp2j cblm1 c3wv7 cog19">
@@ -202,40 +223,51 @@
                     <!-- #1 -->
                     <div class="cku5t cj8sk cz0eq c916p clx8g c6x4y chjvz cfk6x cehcr c7v21 cl2e3 c8puu cj24j coekp"
                         data-aos="fade-up">
-                        <img class="ctjhd" src="https://cdn4.iconfinder.com/data/icons/business-1221/24/Certificate-512.png" width="40" height="40" alt="Icon 01">
+                        <img class="ctjhd"
+                            src="https://cdn4.iconfinder.com/data/icons/business-1221/24/Certificate-512.png"
+                            width="40" height="40" alt="Icon 01">
                         <h3 class="cmbv1 cbbk4 c30rs codph" style="color:black;">Earn Certificates</h3>
-                        <div class="codph co7su" style="color:black;">Complete courses and earn certificates to showcase your achievements.</div>
+                        <div class="codph co7su" style="color:black;">Complete courses and earn certificates to showcase
+                            your achievements.</div>
                     </div>
 
                     <!-- #2 -->
                     <div class="cku5t cj8sk cz0eq c916p clx8g c6x4y chjvz cfk6x cehcr c7v21 cl2e3 c8puu cj24j coekp"
                         data-aos="fade-up" data-aos-delay="100">
-                        <img class="ctjhd" src="https://cdn0.iconfinder.com/data/icons/science-192/64/rocket-innovation-launch-start_up-creativity-transportation-idea-project-transport-256.png" width="40" height="40" alt="Icon 02">
+                        <img class="ctjhd"
+                            src="https://cdn0.iconfinder.com/data/icons/science-192/64/rocket-innovation-launch-start_up-creativity-transportation-idea-project-transport-256.png"
+                            width="40" height="40" alt="Icon 02">
                         <h3 class="cmbv1 cbbk4 c30rs codph" style="color:black;">Real-World Projects</h3>
-                        <div class="codph co7su" style="color:black;">Apply your knowledge through hands-on projects and practical assignments.</div>
+                        <div class="codph co7su" style="color:black;">Apply your knowledge through hands-on projects and
+                            practical assignments.</div>
                     </div>
 
                     <!-- #3 -->
                     <div class="cku5t cj8sk cz0eq c916p clx8g c6x4y chjvz cfk6x cehcr c7v21 cl2e3 c8puu cj24j coekp"
                         data-aos="fade-up" data-aos-delay="200">
-                        <img class="ctjhd" src="https://cdn2.iconfinder.com/data/icons/entrepreneur-line-color-overweight-invest/512/Expert-512.png" width="40" height="40" alt="Icon 03">
+                        <img class="ctjhd"
+                            src="https://cdn2.iconfinder.com/data/icons/entrepreneur-line-color-overweight-invest/512/Expert-512.png"
+                            width="40" height="40" alt="Icon 03">
                         <h3 class="cmbv1 cbbk4 c30rs codph" style="color:black;">Expert Guidance</h3>
-                        <div class="codph co7su" style="color:black;">Receive mentorship and guidance from industry professionals.</div>
+                        <div class="codph co7su" style="color:black;">Receive mentorship and guidance from industry
+                            professionals.</div>
                     </div>
 
                     <!-- #4 -->
                     <div class="cku5t cj8sk cz0eq c916p clx8g c6x4y chjvz cfk6x cehcr c7v21 cl2e3 c8puu cj24j coekp"
                         data-aos="fade-up" data-aos-delay="300">
-                        <img class="ctjhd" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/linkedin-512.png" width="40" height="40" alt="Icon 04">
+                        <img class="ctjhd" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/linkedin-512.png"
+                            width="40" height="40" alt="Icon 04">
                         <h3 class="cmbv1 cbbk4 c30rs codph" style="color:black;">Career Advancement</h3>
-                        <div class="codph co7su" style="color:black;">Gain skills that enhance your career prospects and open up new opportunities.</div>
+                        <div class="codph co7su" style="color:black;">Gain skills that enhance your career prospects and
+                            open up new opportunities.</div>
                     </div>
 
                 </div>
 
             </div>
         </div>
-    </section>   
+    </section>
 
     <!-- CTA -->
     <section class="cku5t ccok8">
@@ -252,10 +284,11 @@
             <div class="cm28u cnvm7">
 
                 <div class="csj5a cap4d cz3g0">
-                    <h2 class="cdlyt c9poj cmbv1 codph" data-aos="fade-up">Start your learning journey with Lalo Learn.</h2>
+                    <h2 class="cdlyt c9poj cmbv1 codph" data-aos="fade-up">Start your learning journey with Lalo Learn.
+                    </h2>
                     <div data-aos="fade-up" data-aos-delay="100">
                         <a class="cxgiq ckmsd c48w7 crmv9 codph cxokd cscc8" href="https://forms.gle/uvoxmNU4Lg2rokN79">
-                           Haven't registered fill out the G-form
+                            Haven't registered fill out the G-form
                             <span class="c2rlx ccwp8 cxc90 cw0we chqn7 cgshh cfgtz">
                                 <svg class="cvd88" xmlns="http://www.w3.org/2000/svg" width="16" height="8">
                                     <path
