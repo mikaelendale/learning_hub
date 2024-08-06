@@ -458,18 +458,7 @@
 
                 </div>
             </div>
-        </div>
-        <div class="flex items-center text-2sm text-gray-800 gap-5 lg:pb-4">
-            <a class="hover:text-primary" target="_blank" href="https://t.me/lalo_developer_1">
-                Help
-            </a>
-            <a class="hover:text-primary" target="_blank" href="https://t.me/lalo_dev">
-                Contact
-            </a>
-            <a class="hover:text-primary" target="_blank" href="https://report.lalodev.com/">
-                Report a problem
-            </a>
-        </div>
+        </div> 
     </div>
     <!-- End of Container -->
 </div>

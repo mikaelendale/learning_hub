@@ -287,7 +287,7 @@
                     <h2 class="cdlyt c9poj cmbv1 codph" data-aos="fade-up">Start your learning journey with Lalo Learn.
                     </h2>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <a class="cxgiq ckmsd c48w7 crmv9 codph cxokd cscc8" href="https://forms.gle/uvoxmNU4Lg2rokN79">
+                        <a class="cxgiq ckmsd c48w7 crmv9 codph cxokd cscc8" target="_blank" href="https://forms.gle/uvoxmNU4Lg2rokN79">
                             Haven't registered fill out the G-form
                             <span class="c2rlx ccwp8 cxc90 cw0we chqn7 cgshh cfgtz">
                                 <svg class="cvd88" xmlns="http://www.w3.org/2000/svg" width="16" height="8">

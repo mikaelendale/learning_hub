@@ -54,7 +54,7 @@
                     </div>
                     <nav class="flex order-1 md:order-2 gap-4 font-normal text-2sm text-gray-600">
                         <a class="hover:text-primary" target="_blank" href="https://www.linkedin.com/in/mikael-endale-7572722b3">
-                            Contact on linkedin
+                            LinkedIn
                         </a>
                         <a class="hover:text-primary" target="_blank" href="https://t.me/lalo_dev_community">
                             Pricing
