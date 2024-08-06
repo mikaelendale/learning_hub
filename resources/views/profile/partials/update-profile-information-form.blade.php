@@ -16,8 +16,7 @@
                 <div class="flex items-center justify-between flex-wrap grow gap-2.5">
                     <span class="text-2sm font-medium text-gray-600">150x150px JPEG, PNG Image</span>
                     <div class="image-input size-16" data-image-input="true">
-                        <input accept=".png, .jpg, .jpeg" name="profile" type="file" />
-                        <input name="avatar_remove" type="hidden" />
+                        <input  name="profile" type="file" />
                         <div class="btn btn-icon btn-icon-xs btn-light shadow-default absolute z-1 size-5 -top-0.5 -right-0.5 rounded-full"
                             data-image-input-remove="" data-tooltip="#image_input_tooltip" data-tooltip-trigger="hover">
                             <i class="ki-filled ki-cross"></i>
