@@ -149,11 +149,12 @@
                                 </div>
                                 </img>
                             </div>
-                            @if (Auth::user()->status == 'pending')
+                            @if (Auth::user()->status == 'pending' || Auth::user()->status == 'oncheck')
                                 <span class="badge badge-xs badge-danger badge-outline">
                                     Unverified
                                 </span>
-                            @else
+                            @endif
+                            @if (Auth::user()->status == 'approved')
                                 <span class="badge badge-xs badge-primary badge-outline">
                                     verified
                                 </span>
@@ -328,19 +329,65 @@
         <div class="grid">
             <div class="scrollable-x-auto">
                 <div class="menu gap-5 lg:gap-7.5" data-menu="true">
-                    <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900 here"
-                        data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
-                        data-menu-item-trigger="click">
-                        <div class="menu-link gap-1.5 pb-2 lg:pb-4" tabindex="0">
-                            <span
-                                class="menu-title text-nowrap text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-                                Dashboard
-                            </span>
-                            <span class="menu-arrow">
-                                <i class="ki-filled ki-down text-2xs text-gray-500">
-                                </i>
-                            </span>
+                    @if (Auth::user()->status == 'pending' || Auth::user()->status == 'oncheck')
+                        <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900 here"
+                            data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
+                            data-menu-item-trigger="click">
+                            <div class="menu-link gap-1.5 pb-2 lg:pb-4" tabindex="0">
+                                <span
+                                    class="menu-title text-nowrap text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
+                                    Dashboard
+                                </span>
+                                <span class="menu-arrow">
+                                    <i class="ki-filled ki-down text-2xs text-gray-500">
+                                    </i>
+                                </span>
+                            </div>
+                            <div class="menu-dropdown menu-default py-2 min-w-[200px]">
+                                <div class="menu-item {{ request()->is('dashboard') ? 'active' : '' }}">
+                                    <a class="menu-link" href="/dashboard" tabindex="0">
+                                        <span class="menu-title">
+                                            Index
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+                        <div
+                            class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900">
+                            <a class="menu-link gap-2.5 pb-2 lg:pb-4 {{ request()->is('account/completed-certificates') ? 'active' : '' }}"
+                                tabindex="0">
+                                <span
+                                    class="menu-title text-nowrap font-medium text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
+                                    !! There will be more menu once you finish the transaction
+                                </span>
+                            </a>
+                        </div>
+                    @endif
+                    @if (Auth::user()->status == 'approved')
+                        <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900 here"
+                            data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
+                            data-menu-item-trigger="click">
+                            <div class="menu-link gap-1.5 pb-2 lg:pb-4" tabindex="0">
+                                <span
+                                    class="menu-title text-nowrap text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
+                                    Dashboard
+                                </span>
+                                <span class="menu-arrow">
+                                    <i class="ki-filled ki-down text-2xs text-gray-500">
+                                    </i>
+                                </span>
+                            </div>
+                            <div class="menu-dropdown menu-default py-2 min-w-[200px]">
+                                <div class="menu-item {{ request()->is('dashboard') ? 'active' : '' }}">
+                                    <a class="menu-link" href="/dashboard" tabindex="0">
+                                        <span class="menu-title">
+                                            Index
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> 
                         <div class="menu-dropdown menu-default py-2 min-w-[200px]">
                             <div class="menu-item {{ request()->is('dashboard') ? 'active' : '' }}">
                                 <a class="menu-link" href="/dashboard" tabindex="0">
@@ -364,101 +411,102 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900"
-                        data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
-                        data-menu-item-trigger="click">
-                        <div class="menu-link gap-1.5 pb-2 lg:pb-4" tabindex="0">
-                            <span
-                                class="menu-title text-nowrap text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-                                Courses
-                            </span>
-                            <span class="menu-arrow">
-                                <i class="ki-filled ki-down text-2xs text-gray-500">
-                                </i>
-                            </span>
-                        </div>
-                        <div class="menu-dropdown menu-default py-2 min-w-[200px]">
-                            <div class="menu-item {{ request()->is('courses/list') ? 'active' : '' }}">
-                                <a class="menu-link" href="/courses/list" tabindex="0">
-                                    <span class="menu-title">
-                                        Available Courses
-                                    </span>
-                                </a>
+                        <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900"
+                            data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
+                            data-menu-item-trigger="click">
+                            <div class="menu-link gap-1.5 pb-2 lg:pb-4" tabindex="0">
+                                <span
+                                    class="menu-title text-nowrap text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
+                                    Courses
+                                </span>
+                                <span class="menu-arrow">
+                                    <i class="ki-filled ki-down text-2xs text-gray-500">
+                                    </i>
+                                </span>
                             </div>
-                            <div class="menu-item {{ request()->is('courses/enrolled') ? 'active' : '' }}">
-                                <a class="menu-link" href="/courses/enrolled" tabindex="0">
-                                    <span class="menu-title">
-                                        Enrolled Courses
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="menu-item {{ request()->is('courses/progress') ? 'active' : '' }}">
-                                <a class="menu-link" href="/courses/progress" tabindex="0">
-                                    <span class="menu-title">
-                                        Progress
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900"
-                        data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
-                        data-menu-item-trigger="click">
-                        <div class="menu-link gap-1.5 pb-2 lg:pb-4" tabindex="0">
-                            <span
-                                class="menu-title text-nowrap text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-                                Status
-                            </span>
-                            <span class="menu-arrow">
-                                <i class="ki-filled ki-down text-2xs text-gray-500">
-                                </i>
-                            </span>
-                        </div>
-                        <div class="menu-dropdown menu-default py-2 min-w-[200px]">
-                            <div class="menu-item {{ request()->is('status/rank') ? 'active' : '' }}">
-                                <a class="menu-link" href="/status/rank" tabindex="0">
-                                    <span class="menu-title">
-                                        Rank
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="menu-item {{ request()->is('status/leaderboard') ? 'active' : '' }}">
-                                <a class="menu-link" href="/status/leaderboard" tabindex="0">
-                                    <span class="menu-title">
-                                        Leader Board
-                                    </span>
-                                </a>
+                            <div class="menu-dropdown menu-default py-2 min-w-[200px]">
+                                <div class="menu-item {{ request()->is('courses/list') ? 'active' : '' }}">
+                                    <a class="menu-link" href="/courses/list" tabindex="0">
+                                        <span class="menu-title">
+                                            Available Courses
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="menu-item {{ request()->is('courses/enrolled') ? 'active' : '' }}">
+                                    <a class="menu-link" href="/courses/enrolled" tabindex="0">
+                                        <span class="menu-title">
+                                            Enrolled Courses
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="menu-item {{ request()->is('courses/progress') ? 'active' : '' }}">
+                                    <a class="menu-link" href="/courses/progress" tabindex="0">
+                                        <span class="menu-title">
+                                            Progress
+                                        </span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900"
+                            data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
+                            data-menu-item-trigger="click">
+                            <div class="menu-link gap-1.5 pb-2 lg:pb-4" tabindex="0">
+                                <span
+                                    class="menu-title text-nowrap text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
+                                    Status
+                                </span>
+                                <span class="menu-arrow">
+                                    <i class="ki-filled ki-down text-2xs text-gray-500">
+                                    </i>
+                                </span>
+                            </div>
+                            <div class="menu-dropdown menu-default py-2 min-w-[200px]">
+                                <div class="menu-item {{ request()->is('status/rank') ? 'active' : '' }}">
+                                    <a class="menu-link" href="/status/rank" tabindex="0">
+                                        <span class="menu-title">
+                                            Rank
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="menu-item {{ request()->is('status/leaderboard') ? 'active' : '' }}">
+                                    <a class="menu-link" href="/status/leaderboard" tabindex="0">
+                                        <span class="menu-title">
+                                            Leader Board
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div
-                        class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900">
-                        <a class="menu-link gap-2.5 pb-2 lg:pb-4 {{ request()->is('account/completed-certificates') ? 'active' : '' }}"
-                            href="/account/completed-certificates" tabindex="0">
-                            <span
-                                class="menu-title text-nowrap font-medium text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-                                Completed & Certificates
-                            </span>
-                        </a>
-                    </div>
+                        <div
+                            class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900">
+                            <a class="menu-link gap-2.5 pb-2 lg:pb-4 {{ request()->is('account/completed-certificates') ? 'active' : '' }}"
+                                href="/account/completed-certificates" tabindex="0">
+                                <span
+                                    class="menu-title text-nowrap font-medium text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
+                                    Completed & Certificates
+                                </span>
+                            </a>
+                        </div>
 
-                    <div
-                        class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900">
-                        <a class="menu-link gap-2.5 pb-2 lg:pb-4 {{ request()->is('account/subscription') ? 'active' : '' }}"
-                            href="/account/subscription" tabindex="0">
-                            <span
-                                class="menu-title text-nowrap font-medium text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-                                Subscription
-                            </span>
-                        </a>
-                    </div>
+                        <div
+                            class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900">
+                            <a class="menu-link gap-2.5 pb-2 lg:pb-4 {{ request()->is('account/subscription') ? 'active' : '' }}"
+                                href="/account/subscription" tabindex="0">
+                                <span
+                                    class="menu-title text-nowrap font-medium text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
+                                    Subscription
+                                </span>
+                            </a>
+                        </div>
+                    @endif
+
 
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
     <!-- End of Container -->
 </div>
