@@ -1,17 +1,29 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
-    public function update(Request $request)
+    public function index()
     {
         $user = Auth::user();
-        $user->notification = $request->input('notification');
-        $user->save();
+        $notifications = $user->notifications()->where('is_read', false)->get();
+        
+        return view('notifications.index', compact('notifications'));
+    }
 
-        return response()->json(['success' => true]);
+    public function show($id)
+    {
+        $user = Auth::user();
+        $notification = $user->notifications()->findOrFail($id);
+
+        // Mark as read
+        $notification->is_read = true;
+        $notification->save();
+
+        return view('notifications.show', compact('notification'));
     }
 }

@@ -2,25 +2,22 @@
 
 namespace App\Models;
 
+use App\Models\Notification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+// Import the Notification model
 
 class Students extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<string, string>
-     */
     protected $fillable = [
         'name',
         'email',
         'phone_no',
         'password',
         'class_attended',
-        'profile',
+        'profile_pic',
         'status',
         'payment',
         'telegram_username',
@@ -30,24 +27,22 @@ class Students extends Authenticatable
         'notification',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array<string, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'dob' => 'date',
         'payment' => 'boolean',
     ];
+
+    /**
+     * Get the notifications for the student.
+     */
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

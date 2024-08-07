@@ -35,6 +35,7 @@ return [
             'root' => storage_path('app'),
             'throw' => false,
         ],
+
         'students_pic' => [
             'driver' => 'local',
             'root' => '../../students_pic', // Full path to the directory outside the Laravel project folder
@@ -77,7 +78,6 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
-        public_path('students_pic') => storage_path('../../students_pic'),
     ],
 
 ];

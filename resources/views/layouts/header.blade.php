@@ -59,54 +59,42 @@
                                     data-scrollable-dependencies="#header" data-scrollable-max-height="auto"
                                     data-scrollable-offset="200px">
                                     <div class="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
-                                        <div class="flex grow gap-2.5 px-5">
-                                            <div class="flex flex-col gap-3.5">
-                                                <div class="flex flex-col gap-1">
-                                                    <div class="text-2sm font-medium">
-                                                        <a class="hover:text-primary-active text-gray-900 font-semibold"
-                                                            href="#">
-                                                            Joe Lincoln
-                                                        </a>
-                                                        <span class="text-gray-700">
-                                                            mentioned you in
-                                                        </span>
-                                                        <a class="hover:text-primary-active text-primary"
-                                                            href="#">
-                                                            Latest Trends
-                                                        </a>
-                                                        <span class="text-gray-700">
-                                                            topic
-                                                        </span>
+                                        @if (Auth::check())
+                                            @forelse ($notifications as $notification)
+                                                <div class="flex grow gap-2.5 px-5">
+                                                    <div class="flex flex-col gap-3.5">
+                                                        <div class="flex flex-col gap-1">
+                                                            <div class="text-2sm font-medium">
+                                                                <a class="hover:text-primary-active text-gray-900 font-semibold"
+                                                                    href="{{ $notification->data['url'] }}">
+                                                                    {{ $notification->data['message'] }}
+                                                                </a>
+                                                            </div>
+                                                            <span
+                                                                class="flex items-center text-2xs font-medium text-gray-500">
+                                                                {{ $notification->created_at->diffForHumans() }}
+                                                                <span
+                                                                    class="badge badge-circle bg-gray-500 size-1 mx-1.5">
+                                                                </span>
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                    <span class="flex items-center text-2xs font-medium text-gray-500">
-                                                        18 mins ago
-                                                        <span class="badge badge-circle bg-gray-500 size-1 mx-1.5">
-                                                        </span>
-                                                        Web Design 2024
-                                                    </span>
                                                 </div>
-                                                <div
-                                                    class="card shadow-none flex flex-col gap-2.5 p-3.5 rounded-lg bg-light-active">
-                                                    <div class="text-2sm font-semibold text-gray-600 mb-px">
-                                                        <a class="hover:text-primary-active text-gray-900 font-semibold"
-                                                            href="#">
-                                                            @Cody
-                                                        </a>
-                                                        <span class="text-gray-700 font-medium">
-                                                            For an expert opinion, check out what Mike has to
-                                                            say on this topic!
-                                                        </span>
+                                            @empty
+                                                <div class="flex grow gap-2.5 px-5">
+                                                    <div class="flex flex-col gap-3.5">
+                                                        <div class="flex flex-col gap-1">
+                                                            <div class="text-2sm font-medium">
+                                                                <a class="hover:text-primary-active text-gray-900 font-semibold"
+                                                                    href="{{ $notification->data['url'] }}">
+                                                                    NO new notification
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <label class="input input-sm">
-                                                        <input placeholder="Reply" type="text" value="" />
-                                                        <button class="btn btn-icon">
-                                                            <i class="ki-filled ki-picture">
-                                                            </i>
-                                                        </button>
-                                                    </label>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            @endforelse
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="border-b border-b-gray-200">
@@ -130,14 +118,14 @@
                     <div class="menu-toggle btn btn-icon rounded-full">
                         <img alt=""
                             class="size-9 rounded-full justify-center rounded-full border border-gray-900 shrink-0"
-                            src="students_pic/{{ Auth::user()->profile }}">
+                            src="{{ asset('students_pic/' . Auth::user()->profile_pic) }}">
                         </img>
                     </div>
                     <div class="menu-dropdown menu-default light:border-gray-300 w-full max-w-[250px]">
                         <div class="flex items-center justify-between px-5 py-1.5 gap-1.5">
                             <div class="flex items-center gap-2">
                                 <img alt="" class="size-9 rounded-full border-2 border-success"
-                                    src="students_pic/{{ Auth::user()->profile }}">
+                                    src="{{ asset('students_pic/' . Auth::user()->profile_pic) }}">
                                 <div class="flex flex-col gap-1.5">
                                     <span class="text-sm text-gray-800 font-semibold leading-none">
                                         {{ Auth::user()->name }}
@@ -387,7 +375,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         <div class="menu-dropdown menu-default py-2 min-w-[200px]">
                             <div class="menu-item {{ request()->is('dashboard') ? 'active' : '' }}">
                                 <a class="menu-link" href="/dashboard" tabindex="0">

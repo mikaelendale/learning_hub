@@ -27,9 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::middleware('auth')->group(function () {
-    Route::get('/notification', [NotificationController::class, 'update'])->name('notification.update');
-    Route::get('/notification/update', [NotificationController::class, 'update'])->name('notification.update');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/notifications', [NotificationController::class, 'showNotifications']);   
 });
 
 require __DIR__.'/auth.php';
