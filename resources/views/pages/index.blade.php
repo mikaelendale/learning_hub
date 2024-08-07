@@ -5,6 +5,9 @@
             Dashboard
         @endslot
         @slot('title')
+            Dashboard
+        @endslot
+        @slot('subtitle')
             Index
         @endslot
     @endcomponent

@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
+use App\Mail\TestMail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +33,25 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware(['auth'])->group(function () {
     Route::get('/notifications', [NotificationController::class, 'showNotifications']);   
+    Route::get('/send-notification', [ExampleController::class, 'sendNotification']);
+
+
+Route::get('/send-test-email', function () {
+    Mail::to('mikaelendale00@gmail.com')->send(new TestMail());
+    return 'Test email sent!';
 });
+
+});
+
+//courses pages
+Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
+
+
+
+
+
+
+
+
 
 require __DIR__.'/auth.php';

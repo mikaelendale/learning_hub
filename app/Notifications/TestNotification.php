@@ -7,32 +7,16 @@ use Illuminate\Notifications\Notification;
 
 class TestNotification extends Notification
 {
-    public $message;
-    public $url;
-
-    public function __construct($message, $url)
-    {
-        $this->message = $message;
-        $this->url = $url;
-    }
-
     public function via($notifiable)
     {
-        return ['database', 'mail']; // Add 'database' to store in the database and 'mail' to send an email
-    }
-
-    public function toDatabase($notifiable)
-    {
-        return [
-            'message' => $this->message,
-            'url' => $this->url,
-        ];
+        return ['mail'];
     }
 
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line($this->message)
-            ->action('View Notification', $this->url);
+            ->line('This is a test notification.')
+            ->action('View Notification', url('/'))
+            ->line('Thank you for using our application!');
     }
 }

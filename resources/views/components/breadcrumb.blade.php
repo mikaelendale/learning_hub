@@ -13,7 +13,7 @@
             </span>
         @endisset
         <span class="text-gray-900">
-            {{ $title }}
+            {{ $subtitle }}
         </span>
     </div>
 </div>

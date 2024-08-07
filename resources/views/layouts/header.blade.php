@@ -60,6 +60,11 @@
                                     data-scrollable-offset="200px">
                                     <div class="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
                                         @if (Auth::check())
+                                            @php
+                                                // Get notifications from the controller
+                                                $notifications = $notifications ?? [];
+                                            @endphp
+
                                             @forelse ($notifications as $notification)
                                                 <div class="flex grow gap-2.5 px-5">
                                                     <div class="flex flex-col gap-3.5">
@@ -74,8 +79,7 @@
                                                                 class="flex items-center text-2xs font-medium text-gray-500">
                                                                 {{ $notification->created_at->diffForHumans() }}
                                                                 <span
-                                                                    class="badge badge-circle bg-gray-500 size-1 mx-1.5">
-                                                                </span>
+                                                                    class="badge badge-circle bg-gray-500 size-1 mx-1.5"></span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -85,16 +89,14 @@
                                                     <div class="flex flex-col gap-3.5">
                                                         <div class="flex flex-col gap-1">
                                                             <div class="text-2sm font-medium">
-                                                                <a class="hover:text-primary-active text-gray-900 font-semibold"
-                                                                    href="{{ $notification->data['url'] }}">
-                                                                    NO new notification
-                                                                </a>
+                                                                No new notifications
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             @endforelse
                                         @endif
+
                                     </div>
                                 </div>
                                 <div class="border-b border-b-gray-200">
@@ -373,30 +375,21 @@
                                             Index
                                         </span>
                                     </a>
+                                </div> 
+                                <div class="menu-item {{ request()->is('courses') ? 'active' : '' }}">
+                                    <a class="menu-link" href="/courses" tabindex="0">
+                                        <span class="menu-title">
+                                            Courses Attended
+                                        </span>
+                                    </a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="menu-dropdown menu-default py-2 min-w-[200px]">
-                            <div class="menu-item {{ request()->is('dashboard') ? 'active' : '' }}">
-                                <a class="menu-link" href="/dashboard" tabindex="0">
-                                    <span class="menu-title">
-                                        Index
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="menu-item {{ request()->is('courses') ? 'active' : '' }}">
-                                <a class="menu-link" href="/courses" tabindex="0">
-                                    <span class="menu-title">
-                                        Courses Attended
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="menu-item {{ request()->is('courses/level') ? 'active' : '' }}">
-                                <a class="menu-link" href="/courses/level" tabindex="0">
-                                    <span class="menu-title">
-                                        My level
-                                    </span>
-                                </a>
+                                <div class="menu-item {{ request()->is('courses/level') ? 'active' : '' }}">
+                                    <a class="menu-link" href="/courses/level" tabindex="0">
+                                        <span class="menu-title">
+                                            My level
+                                        </span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
