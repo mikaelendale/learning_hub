@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class Progress extends Model
 {
     protected $fillable = [
-        'user_id', 'message', 'type', 'status',
+        'user_id', 'lesson_id', 'status',
     ];
+
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
 
     public function user()
     {

@@ -150,49 +150,7 @@
                                             Next bill date
                                         </span>
                                     </div>
-                                </div>
-                                <div class="flex flex-wrap gap-6 lg:gap-12">
-                                    <div class="flex flex-col gap-3.5 grow">
-                                        <div class="text-2sm font-medium text-gray-600">
-                                            UQuery runs:
-                                            <span class="text-2sm font-semibold text-gray-900">
-                                                2239 of 10,000 used
-                                            </span>
-                                        </div>
-                                        <div class="progress progress-primary max-w-2xl w-full">
-                                            <div class="progress-bar" style="width: 47%">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col gap-2.5 lg:min-w-24 shrink-0 -mt-3 max-w-auto">
-                                        <div class="text-2sm font-medium text-gray-600">
-                                            Seats:
-                                            <span class="text-2sm font-semibold text-gray-800">
-                                                29 of 120 used
-                                            </span>
-                                        </div>
-                                        <div class="flex -space-x-2">
-                                            <div class="flex">
-                                                <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                    src="assets/media/avatars/300-4.png">
-                                            </div>
-                                            <div class="flex">
-                                                <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                    src="assets/media/avatars/300-1.png">
-                                            </div>
-                                            <div class="flex">
-                                                <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                    src="assets/media/avatars/300-2.png">
-                                            </div>
-                                            <div class="flex">
-                                                <span
-                                                    class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-primary-inverse size-6 ring-success-light bg-success">
-                                                    +16
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>

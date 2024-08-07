@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class Reply extends Model
 {
     protected $fillable = [
-        'user_id', 'message', 'type', 'status',
+        'thread_id', 'user_id', 'content',
     ];
+
+    public function thread()
+    {
+        return $this->belongsTo(Thread::class);
+    }
 
     public function user()
     {

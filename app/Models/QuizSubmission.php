@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class QuizSubmission extends Model
 {
     protected $fillable = [
-        'user_id', 'message', 'type', 'status',
+        'quiz_id', 'user_id', 'submitted_at', 'score',
     ];
+
+    public function quiz()
+    {
+        return $this->belongsTo(Quiz::class);
+    }
 
     public function user()
     {
