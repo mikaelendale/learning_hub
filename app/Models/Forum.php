@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Forum extends Model
 {
     protected $fillable = [
-        'course_id', 'title', 'description',
+        'course_id', 'title', 'description', 'is_active',
     ];
 
     public function course()

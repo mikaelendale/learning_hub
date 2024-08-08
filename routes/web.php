@@ -34,17 +34,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/notifications', [NotificationController::class, 'showNotifications']);   
     Route::get('/send-notification', [ExampleController::class, 'sendNotification']);
-
-
-Route::get('/send-test-email', function () {
-    Mail::to('mikaelendale00@gmail.com')->send(new TestMail());
-    return 'Test email sent!';
-});
-
+    Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
 });
 
 //courses pages
-Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
 
 
 
