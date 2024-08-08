@@ -24,5 +24,10 @@ class Courses extends Model
     protected $casts = [
         'published_at' => 'datetime',
     ];
+    public function subsections()
+{
+    return $this->hasMany(Subsection::class, 'course_id');
+}
+
 
 }

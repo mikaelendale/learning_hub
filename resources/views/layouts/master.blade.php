@@ -3,14 +3,14 @@
 
 <head>
     <title>
-        Lalo Dev Learning Hub
+        Lalo Dev Learning Hub | @yield('head')
     </title>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
-    <link href="assets/vendors/apexcharts/apexcharts.css" rel="stylesheet" />
-    <link href="assets/vendors/keenicons/styles.bundle.css" rel="stylesheet" />
-    <link href="assets/css/styles.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
+    <link href="{{asset('assets/vendors/apexcharts/apexcharts.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/vendors/keenicons/styles.bundle.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/styles.css')}}" rel="stylesheet" />
+    <link rel="shortcut icon" href="{{asset('images/icon.png')}}" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -75,9 +75,9 @@
     </div> 
     <!-- End of Page -->
     <!-- Scripts -->
-    <script src="assets/js/core.bundle.js"></script>
-    <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/js/widgets/general.js"></script>
+    <script src="{{asset('assets/js/core.bundle.js')}}"></script>
+    <script src="{{asset('assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('assets/js/widgets/general.js')}}"></script>
     <!-- End of Scripts -->
 </body>
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Students;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +35,12 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/notifications', [NotificationController::class, 'showNotifications']);   
     Route::get('/send-notification', [ExampleController::class, 'sendNotification']);
+
+});
+ 
+Route::middleware('auth')->group(function (){
     Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
-    Route::get('/courses/level', [CoursesController::class, 'index'])->name('courses.index');
+    Route::get('/courses/level', [CoursesController::class, 'level'])->name('courses.level');
 });
 
 //courses pages
