@@ -41,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware('auth')->group(function (){
     Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
     Route::get('/courses/level', [CoursesController::class, 'level'])->name('courses.level');
+    Route::get('/courses/detail', [CoursesController::class, 'detail'])->name('courses.detail');
+    Route::post('/courses/set-detail', [CoursesController::class, 'setDetail'])->name('courses.setDetail');
 });
 
 //courses pages
