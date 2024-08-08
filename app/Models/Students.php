@@ -41,4 +41,8 @@ class Students extends Authenticatable
     /**
      * Get the notifications for the student.
      */ 
+    public function enrollments()
+    {
+        return $this->hasMany(Enrolled::class, 'students_id');
+    }
 }

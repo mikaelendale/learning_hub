@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('enrolled', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('subsection_id')->constrained('1')->onDelete('cascade');
+            $table->foreignId('subsection_id')->constrained('subsection')->onDelete('cascade');
+            $table->foreignId('students_id')->constrained()->onDelete('cascade');
+            $table->string('status')->default('locked');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ennrolled');
+        Schema::dropIfExists('enrolled'); // Fixed table name
     }
 };

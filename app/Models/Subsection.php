@@ -16,9 +16,18 @@ class Subsection extends Model
         'detail',
         'order',
     ];
+// App\Models\Subsection.php
     public function course()
-{
-    return $this->belongsTo(Courses::class, 'course_id');
-}
+    {
+        return $this->belongsTo(Courses::class, 'course_id');
+    }
 
+    public function enrolledStudents()
+    {
+        return $this->hasMany(Enrolled::class, 'subsection_id');
+    }
+    public function courseContents()
+    {
+        return $this->hasMany(CourseContent::class);
+    }
 }

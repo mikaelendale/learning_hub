@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseContent;
 use App\Models\Courses;
+use App\Models\Enrolled;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,14 +40,38 @@ class CoursesController extends Controller
 
     public function detail()
     {
-        // Retrieve the course ID from the session
         $courseId = session('course_id');
+        $course = Courses::with(['subsections' => function ($query) {
+            $query->orderBy('order'); // Ensure subsections are ordered
+        }])->findOrFail($courseId);
 
-        // Fetch the course details
-        $course = Courses::with('subsections')->findOrFail($courseId);
+        $userId = Auth::id();
 
-        // Pass the course details to the view
+        // Fetch the user's completed subsections
+        $completedSubsections = Enrolled::where('students_id', $userId)
+            ->pluck('subsection_id');
+
+        // Determine if the user has completed the previous subsection
+        foreach ($course->subsections as $subsection) {
+            $subsection->can_access = true; // Default to true
+            if ($subsection->order > 1) {
+                // Find the previous subsection
+                $previousSubsection = $course->subsections->where('order', $subsection->order - 1)->first();
+                if ($previousSubsection && !$completedSubsections->contains($previousSubsection->id)) {
+                    $subsection->can_access = false;
+                }
+            }
+        }
+
         return view('pages.courses.detail', compact('course'));
     }
 
+    public function show($id)
+    {
+        // Fetch the course content details
+        $courseContent = CourseContent::with('subsection')->findOrFail($id);
+
+        // Pass the course content details to the view
+        return view('pages.course.course', compact('courseContent'));
+    }
 }
