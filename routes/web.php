@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/notifications', [NotificationController::class, 'showNotifications']);   
     Route::get('/send-notification', [ExampleController::class, 'sendNotification']);
     Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
+    Route::get('/courses/level', [CoursesController::class, 'index'])->name('courses.index');
 });
 
 //courses pages

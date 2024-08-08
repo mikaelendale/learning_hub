@@ -40,9 +40,5 @@ class Students extends Authenticatable
 
     /**
      * Get the notifications for the student.
-     */
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class, 'user_id');
-    }
+     */ 
 }

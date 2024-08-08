@@ -7,6 +7,9 @@
         @slot('title')
             Edit
         @endslot
+        @slot('subtitle')
+            Edit
+        @endslot
     @endcomponent
 @endsection
 @section('content')

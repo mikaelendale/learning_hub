@@ -16,9 +16,4 @@
             {{ $subtitle }}
         </span>
     </div>
-</div>
-<div class="flex items-center gap-1">
-    <a class="btn btn-light btn-sm" href="/profile">
-        View Profile
-    </a>
-</div>
+</div> 

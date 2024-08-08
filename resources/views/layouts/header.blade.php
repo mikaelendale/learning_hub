@@ -347,7 +347,12 @@
                     <div class="menu-toggle btn btn-icon rounded-full">
                         <img alt=""
                             class="size-9 rounded-full justify-center rounded-full border border-gray-900 shrink-0"
-                            src="{{ asset('students_pic/' . Auth::user()->profile_pic) }}">
+                            @if (Auth::user()->profile_pic == null)
+                                src="{{ asset('students_pic/' . Auth::user()->profile_pic) }}"
+                             @else
+                                src="{{ asset('students_pic/' . Auth::user()->profile_pic) }}"
+                            @endif
+                            >
                         </img>
                     </div>
                     <div class="menu-dropdown menu-default light:border-gray-300 w-full max-w-[250px]">

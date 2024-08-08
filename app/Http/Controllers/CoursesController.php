@@ -10,8 +10,7 @@ class CoursesController extends Controller
     public function index()
     {
         $courses = Courses::all();
-        $user = Auth::user();
-        $notifications = $user->notifications()->where('is_read', false)->get();
-        return view('pages.courses.index', compact('notifications', 'courses'));
+        $user = Auth::user(); 
+        return view('pages.courses.index', compact( 'courses'));
     }
 }

@@ -11,8 +11,7 @@ class DashboardController extends Controller
     {
         $courses = Courses::all();
         $user = Auth::user();
-        $notifications = $user->notifications()->where('is_read', false)->get();
 
-        return view('pages/index', compact('courses', 'notifications'));
+        return view('pages/index', compact('courses'));
     }
 }
