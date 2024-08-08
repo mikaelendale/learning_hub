@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CourseContent;
 use App\Models\Courses;
 use App\Models\Enrolled;
+use App\Models\Subsection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,10 +69,16 @@ class CoursesController extends Controller
 
     public function show($id)
     {
-        // Fetch the course content details
-        $courseContent = CourseContent::with('subsection')->findOrFail($id);
+        // Fetch the course content based on the subsection ID
+        $courseContent = CourseContent::where('subsection_id', $id)->get();
 
-        // Pass the course content details to the view
-        return view('pages.course.course', compact('courseContent'));
+        // Fetch the subsection details to include in the view
+        $subsection = Subsection::findOrFail($id);
+
+        // Pass the course content and subsection details to the view
+        return view('pages.courses.course', [
+            'courseContent' => $courseContent,
+            'subsection' => $subsection,
+        ]);
     }
 }

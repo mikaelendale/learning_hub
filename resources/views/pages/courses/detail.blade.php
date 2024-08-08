@@ -41,7 +41,7 @@
                                 </div>
 
                                 @if ($subsection->can_access)
-                                    <a href="{{route('courses.enroll', $subsection->order)}}" class="badge badge-success badge-outline">
+                                    <a href="{{route('courses.enroll', $subsection->id)}}" class="badge badge-success badge-outline">
                                         {{ $subsection->enrolled ? 'Enrolled' : 'Enroll' }}</a>
                                 @else
                                     <span class="badge badge-secondary badge-outline">
