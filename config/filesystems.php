@@ -42,6 +42,12 @@ return [
             'url' => env('APP_URL') . '/students_pic', // URL to access the files
             'visibility' => 'public',
         ],
+        'course_codes' => [
+            'driver' => 'local',
+            'root' => '../../course_codes', // Full path to the directory outside the Laravel project folder
+            'url' => env('APP_URL') . '/students_pic', // URL to access the files
+            'visibility' => 'public',
+        ],
 
         'public' => [
             'driver' => 'local',
@@ -78,6 +84,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('course_codes') => storage_path('../../course_codes'),
     ],
 
 ];

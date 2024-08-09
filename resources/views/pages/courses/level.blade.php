@@ -15,6 +15,7 @@
         @endslot
     @endcomponent
 @endsection
+
 @section('content')
     @if ($courses->isNotEmpty())
         <div class="container-fixed">

@@ -25,146 +25,124 @@
                                  <div class="flex flex-col">
                                      <div class="flex items-start relative">
                                          <div
+                                             class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-300 size-9 text-gray-600">
+                                             <i class="ki-filled ki-star text-base">
+                                             </i>
+                                         </div>
+                                         <div class="pl-2.5 mb-7 text-md grow">
+                                             <div class="flex flex-col">
+                                                 <div class="text-sm font-medium text-gray-800">
+                                                     Todays Topic
+                                                     <span class="text-sm font-medium link">
+                                                         {{ $courseContent->title }}
+                                                     </span>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <br><br>
+                                     <div class="flex items-start relative">
+                                         <div
                                              class="w-9 left-0 top-9 absolute bottom-0 translate-x-1/2 border-l border-l-gray-300">
                                          </div>
                                          <div
                                              class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-300 size-9 text-gray-600">
-                                             <i class="ki-filled ki-youtub text-base">
+                                             <i class="ki-filled ki-youtube text-base">
                                              </i>
                                          </div>
                                          <div class="pl-2.5 mb-7 text-md grow">
                                              <div class="flex flex-col pb-2.5">
                                                  <span class="text-sm font-medium text-gray-700">
-                                                     Jenny attended a Nature Photography Immersion workshop
-                                                 </span>
-                                                 <span class="text-xs font-medium text-gray-500">
-                                                     3 days ago, 11:45 AM
+                                                     Starting video
                                                  </span>
                                              </div>
-                                             <div class="card shadow-none">
-                                                 <div class="card-body">
-                                                     <div class="grid gap-4">
-                                                         <div class="flex flex-col md:flex-row md:items-center gap-5">
-                                                             <div class="flex items-center gap-5 shrink-0">
-                                                                 <div
-                                                                     class="border border-brand-clarity rounded-lg max-h-20">
-                                                                     <div
-                                                                         class="flex items-center justify-center border-b border-b-brand-clarity bg-brand-light rounded-t-lg">
-                                                                         <span class="text-2sm text-brand fw-medium p-2">
-                                                                             Apr
-                                                                         </span>
-                                                                     </div>
-                                                                     <div class="flex items-center justify-center size-12">
-                                                                         <span
-                                                                             class="fw-semibold text-gray-800 text-1.5xl tracking-tight">
-                                                                             02
-                                                                         </span>
-                                                                     </div>
-                                                                 </div>
-                                                                 <img alt="" class="rounded-lg max-h-20 max-w-full"
-                                                                     src="{{ asset('assets/media/images/600x400/8.jpg') }}">
+                                             <div class="w-full max-w-full aspect-w-16 aspect-h-9 mx-auto">
+                                                 <iframe class="w-full rounded-lg" height="400"
+                                                     src="{{ $courseContent->video_url }}" title="YouTube video player"
+                                                     frameborder="0"
+                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                                                 </iframe>
+                                             </div>
 
-                                                             </div>
-                                                             <div class="flex flex-col gap-2">
-                                                                 <a class="text-xs font-medium text-brand leading-[14px] hover:text-primary-active mb-px"
-                                                                     href="#">
-                                                                     Photo Workshop
-                                                                 </a>
-                                                                 <a class="text-md font-semibold hover:text-primary text-gray-900 leading-4"
-                                                                     href="#">
-                                                                     Nature Photography Immersion
-                                                                 </a>
-                                                                 <p
-                                                                     class="text-xs font-medium text-gray-700 leading-[22px]">
-                                                                     Enhance your nature photography skills in a hands-on
-                                                                     workshop
-                                                                     guided by experienced photographers.
-                                                                 </p>
-                                                             </div>
-                                                         </div>
+                                         </div>
+                                     </div>
+
+                                     <div class="flex items-start relative">
+                                         <div
+                                             class="w-9 left-0 top-9 absolute bottom-0 translate-x-1/2 border-l border-l-gray-300">
+                                         </div>
+                                         <div
+                                             class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-300 size-9 text-gray-600">
+                                             <i class="ki-filled ki-note text-base">
+                                             </i>
+                                         </div>
+                                         <div class="pl-2.5 mb-7 text-md grow">
+                                             <div class="flex flex-col">
+                                                 <div class="text-sm font-medium text-gray-800">
+                                                     <h1 class="text-lg text-bold text-gray-950">Content</h1> <br>
+                                                     {{ $courseContent->content }}
+                                                 </div>
+                                             </div>
+
+                                         </div>
+                                     </div>
+                                     <div class="flex items-start relative">
+                                         <div
+                                             class="w-9 left-0 top-9 absolute bottom-0 translate-x-1/2 border-l border-l-gray-300">
+                                         </div>
+                                         <div
+                                             class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-300 size-9 text-gray-600">
+                                             <i class="ki-filled ki-code text-base">
+                                             </i>
+                                         </div>
+                                         <div class="pl-2.5 text-md grow">
+                                             <div class="flex flex-col">
+                                                 <div class="relative justify-end w-full  ">
+                                                     <div class="w-full max-w-full aspect-w-16 aspect-h-9 mx-auto">
+                                                         <img class="rounded"
+                                                             src="{{ asset('course_codes/' . $courseContent->code_examples) }}"
+                                                             alt="">
                                                      </div>
                                                  </div>
                                              </div>
                                          </div>
                                      </div>
+
                                      <div class="flex items-start relative">
                                          <div
                                              class="w-9 left-0 top-9 absolute bottom-0 translate-x-1/2 border-l border-l-gray-300">
-                                         </div>
+                                         </div><br><br>
                                          <div
                                              class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-300 size-9 text-gray-600">
-                                             <i class="ki-filled ki-people text-base">
+                                             <i class="ki-filled ki-note text-base">
                                              </i>
                                          </div>
                                          <div class="pl-2.5 mb-7 text-md grow">
                                              <div class="flex flex-col">
                                                  <div class="text-sm font-medium text-gray-800">
-                                                     Posted a new article
-                                                     <a class="text-sm font-medium link"
-                                                         href="/metronic/tailwind/demo2/public-profile/profiles/blogger">
-                                                         Top 10 Tech Trends
-                                                     </a>
+                                                     <h1 class="text-lg text-bold text-gray-950">External link</h1> <br>
+                                                     <a href="{{ $courseContent->external_links }}" target="_blank"
+                                                         rel="noopener noreferrer">{{ $courseContent->external_links }}</a>
                                                  </div>
-                                                 <span class="text-xs font-medium text-gray-500">
-                                                     Today, 9:00 AM
-                                                 </span>
                                              </div>
-                                         </div>
-                                     </div>
-                                     <div class="flex items-start relative">
-                                         <div
-                                             class="w-9 left-0 top-9 absolute bottom-0 translate-x-1/2 border-l border-l-gray-300">
-                                         </div>
-                                         <div
-                                             class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-300 size-9 text-gray-600">
-                                             <i class="ki-filled ki-like-shapes text-base">
-                                             </i>
-                                         </div>
-                                         <div class="pl-2.5 mb-7 text-md grow">
-                                             <div class="flex flex-col">
-                                                 <div class="text-sm font-medium text-gray-800">
-                                                     Hosted a virtual
-                                                     <a class="text-sm font-medium link"
-                                                         href="/metronic/tailwind/demo2/public-profile/profiles/creator">
-                                                         team-building event
-                                                     </a>
-                                                     , fostering collaboration and strengthening bonds among team members.
-                                                 </div>
-                                                 <span class="text-xs font-medium text-gray-500">
-                                                     1 month ago, 13:56 PM
-                                                 </span>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="flex items-start relative">
-                                         <div
-                                             class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-300 size-9 text-gray-600">
-                                             <i class="ki-filled ki-cup text-base">
-                                             </i>
-                                         </div>
-                                         <div class="pl-2.5 text-md grow">
-                                             <div class="flex flex-col">
-                                                 <div class="text-sm font-medium text-gray-800">
-                                                     We recently
-                                                     <a class="text-sm font-medium link"
-                                                         href="/metronic/tailwind/demo2/public-profile/profiles/nft">
-                                                         celebrated
-                                                     </a>
-                                                     the blog's 1-year anniversary
-                                                 </div>
-                                                 <span class="text-xs font-medium text-gray-500">
-                                                     3 months ago, 4:07 PM
-                                                 </span>
-                                             </div>
+
                                          </div>
                                      </div>
                                  </div>
                              </div>
-                             <div class="card-footer justify-center">
-                                 <a class="btn btn-link" href="#">
-                                     All-time Activity
-                                 </a>
-                             </div>
+                             <div class="card-footer bg-gray-50 p-4 rounded-lg shadow-md">
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="btn btn-secondary" disabled>
+                            Previous
+                        </button>&nbsp;&nbsp;
+                        <button
+                            class="btn btn-success">
+                            Next
+                        </button>
+                    </div>
+                </div>
                          </div>
                      </div>
                  </div>
@@ -185,14 +163,14 @@
                                          xmlns="http://www.w3.org/2000/svg">
                                          <path
                                              d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                               18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                               39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                                                   18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                                                   39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                              fill="">
                                          </path>
                                          <path
                                              d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                               18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                               39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                                                   18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                                                   39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                              stroke="">
                                          </path>
                                      </svg>
@@ -207,14 +185,14 @@
                                          xmlns="http://www.w3.org/2000/svg">
                                          <path
                                              d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                               18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                               39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                                                   18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                                                   39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                              fill="">
                                          </path>
                                          <path
                                              d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                               18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                               39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                                                   18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                                                   39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                              stroke="">
                                          </path>
                                      </svg>
@@ -229,14 +207,14 @@
                                          xmlns="http://www.w3.org/2000/svg">
                                          <path
                                              d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                               18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                               39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                                                   18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                                                   39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                              fill="">
                                          </path>
                                          <path
                                              d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                               18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                               39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                                                   18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                                                   39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                              stroke="">
                                          </path>
                                      </svg>
@@ -251,14 +229,14 @@
                                          xmlns="http://www.w3.org/2000/svg">
                                          <path
                                              d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                               18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                               39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                                                   18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                                                   39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                              fill="">
                                          </path>
                                          <path
                                              d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                               18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                               39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                                                   18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                                                   39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                              stroke="">
                                          </path>
                                      </svg>
