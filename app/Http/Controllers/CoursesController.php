@@ -76,9 +76,15 @@ class CoursesController extends Controller
         $subsection = Subsection::findOrFail($id);
 
         // Pass the course content and subsection details to the view
-        return view('pages.courses.course', [
-            'courseContent' => $courseContent,
-            'subsection' => $subsection,
-        ]);
+
+        if ($courseContent) {
+            return view('pages.courses.course', [
+                'subsection' => $subsection,
+                'courseContent' => $courseContent->content,
+            ]);
+        } else {
+            return abort(404, 'Course content not found');
+        }
+
     }
 }

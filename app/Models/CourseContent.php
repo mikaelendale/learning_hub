@@ -23,6 +23,7 @@ class CourseContent extends Model
     ];
     protected $casts = [
         'published_at' => 'datetime',
+        'content' => 'array',
     ];
     public function subsection()
     {

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('subsection_id')->constrained('subsection')->onDelete('cascade');
             $table->string('title');
-            $table->string('content');
+            $table->json('content')->nullable();
             $table->string('video_url');
             $table->string('code_examples');
             $table->string('files');
