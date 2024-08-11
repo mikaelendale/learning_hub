@@ -856,9 +856,6 @@
 
 
  <body class="bg-white">
-    @dd($courseModules)
-
-
      <div id="wrapper" class="course-watch">
 
          <!-- sidebar -->
@@ -871,330 +868,383 @@
              <div class="flex justify-between lg:-ml-1 mt-1 mr-2">
                  <a href="/courses/detail" class="flex items-center text-blue-500">
                      <ion-icon name="chevron-back-outline" class="md:text-lg text-2xl"></ion-icon>
-                     <span class="text-sm md:inline hidden"> back</span>
+                     <span class="text-sm md:inline hidden"> Back</span>
                  </a>
              </div>
 
              <!-- title -->
-             <h1 class="lg:text-2xl text-lg font-bold mt-2 line-clamp-2"> {{ $subsection->name }} </h1>
+             <h1 class="lg:text-2xl text-lg font-bold mt-2 line-clamp-2">{{ $subsection->name }}</h1>
 
-             <!-- Sidebar List -->
+             <!-- sidebar list -->
              <div class="sidebar_inner is-watch-2" data-simplebar>
-                 <hr><br>
+
+                 <div class="lg:inline hidden">
+                     <div class="relative overflow-hidden rounded-md bg-gray-200 h-1 mt-4">
+                         <div class="w-2/4 h-full bg-green-500"></div>
+                     </div>
+                     <div class="mt-2 mb-3 text-sm border-b pb-3">
+                         <div> 46% Complete</div>
+                         <div> Last activity on April 20, 2021</div>
+                     </div>
+                 </div>
+
                  <div id="curriculum">
                      <div uk-accordion="multiple: true" class="divide-y space-y-3">
+
                          <div class="uk-open">
                              <a class="uk-accordion-title text-md mx-2 font-semibold" href="#">
-                                 <div class="mb-1 text-sm font-medium"> Section 1 </div> Html Introduction
+                                 <div class="mb-1 text-sm font-medium"> Section</div>
                              </a>
                              <div class="uk-accordion-content mt-3">
-                                 @if ($courseModules)
-                                     <ul class="course-curriculum-list"
-                                         uk-switcher="connect: #video_tabs; animation: animation: uk-animation-slide-right-small, uk-animation-slide-left-medium">
-                                         @foreach ($courseModules as $courseModule)
-                                             <li>
-                                                 <a href="#">
-                                                     {{ $courseModule->name }}
-                                                 </a>
-                                             </li>
-                                         @endforeach
-                                     @else
-                                         <p>No course modules available.</p>
-
-                                     </ul>
-                                 @endif
+                                 <ul class="course-curriculum-list"
+                                     uk-switcher="connect: #video_tabs; animation: animation: uk-animation-slide-right-small, uk-animation-slide-left-medium">
+                                     @foreach ($subsection->courseModules as $courseModule)
+                                         <li>
+                                             <a href="#">
+                                                 {{ $courseModule->name }}
+                                             </a>
+                                         </li>
+                                     @endforeach
+                                 </ul>
                              </div>
                          </div>
                      </div>
                  </div>
+
+                 <div class="mt-5">
+                     <h3 class="mb-4 text-lg font-semibold"> Quizzes</h3>
+                     <ul>
+                         <li><a href="#"> <ion-icon name="timer-outline" class="side-icon"></ion-icon> Taking
+                                 small eco-friendly steps </a></li>
+                         <li><a href="#"> <ion-icon name="timer-outline" class="side-icon"></ion-icon> Making your
+                                 house eco-friendly </a></li>
+                         <li><a href="#"> <ion-icon name="timer-outline" class="side-icon"></ion-icon> Building
+                                 and renovating for eco-friendly homes </a></li>
+                         <li><a href="#"> <ion-icon name="log-in-outline" class="side-icon"></ion-icon> Taking
+                                 small eco-friendly </a>
+                             <ul>
+                                 <li><a href="#"> Making your house </a></li>
+                                 <li><a href="#"> Building and renovating </a></li>
+                                 <li><a href="#"> Taking small </a></li>
+                             </ul>
+                         </li>
+                     </ul>
+
+                 </div>
+
              </div>
 
-             <!-- Main Contents -->
-             <div class="main_content">
-                 <div class="relative">
-                     <ul class="uk-switcher relative z-10" id="video_tabs">
-                         @foreach ($courseModules as $courseModule)
-                             <li>
-                                 <div class="embed-video">
-                                     <iframe src="{{ $courseModule->video_url }}" frameborder="0" allowfullscreen
-                                         uk-responsive></iframe>
+             <!-- overly for mobile -->
+             <div class="side_overly" uk-toggle="target: #wrapper ; cls: is-collapse is-active"></div>
+
+         </div>
+
+         <!-- Main Contents -->
+         <div class="main_content">
+
+             <div class="relative">
+
+                 <ul class="uk-switcher relative z-10" id="video_tabs">
+
+                     @foreach ($subsection->courseModules as $courseModule)
+                         <li>
+                             <div class="embed-video">
+                                 <iframe src="{{ $courseModule->video_url }}" frameborder="0" allowfullscreen
+                                     uk-responsive></iframe>
+                             </div>
+                         </li>
+                     @endforeach
+
+                 </ul>
+
+                 <div class="bg-gray-200 w-full h-full absolute inset-0 animate-pulse"></div>
+
+             </div>
+
+             <nav class="cd-secondary-nav border-b md:p-0 lg:px-6 bg-white "
+                 uk-sticky="cls-active:shadow-sm ; media: @s">
+                 <ul uk-switcher="connect: #course-tabs; animation: uk-animation-fade">
+                     <li><a href="#" class="lg:px-2"> Overview </a></li>
+                     <li><a href="#" class="lg:px-2"> Announcements </a></li>
+                     <li><a href="#" class="lg:px-2"> Faq </a></li>
+                 </ul>
+             </nav>
+
+             <div class="container">
+
+                 <div class="max-w-2xl lg:py-6 mx-auto uk-switcher" id="course-tabs">
+
+                     <!--  Overview -->
+                     <div>
+
+                         <h4 class="text-2xl font-semibold"> About this course </h4>
+
+                         <p> Learn Web Development Without Writing Much Code </p>
+
+                         <hr class="my-5">
+
+                         <div class="grid lg:grid-cols-3 mt-8 gap-8">
+                             <div>
+                                 <h3 class="text-lg font-semibold"> Description </h3>
+                             </div>
+                             <div class="col-span-2">
+                                 <p>
+                                     {{ $subsection->description }}
+                                 </p>
+                             </div>
+                         </div>
+                         <!-- Subsection Details -->
+                         <h1 class="lg:text-2xl text-lg font-bold mt-2 line-clamp-2"> Comments
+                             ({{ $subsection->comments->count() }}) </h1>
+
+                         <!-- Comments Section -->
+                         <div class="lg:flex lg:space-x-6 mt-6">
+                             <div class="p-6">
+                                 <div class="space-y-5">
+                                     @foreach ($subsection->comments as $comment)
+                                         @if ($comment->students)
+                                             <div class="flex gap-x-4 relative rounded-md">
+                                                 <img src="{{ asset('students_pic/' . ($comment->students->profile_pic ?? 'default.png')) }}"
+                                                     alt="" class="rounded-full shadow w-12 h-12">
+                                                 <div>
+                                                     <h4 class="text-base m-0 font-semibold">
+                                                         {{ $comment->students->name }}</h4>
+                                                     <span class="text-gray-700 text-sm">
+                                                         {{ $comment->created_at ? $comment->created_at->format('jS, F Y') : 'Date not available' }}
+                                                     </span>
+                                                     <p class="mt-3 md:ml-0 -ml-16">{{ $comment->comment }}</p>
+                                                 </div>
+                                             </div>
+                                         @else
+                                             <div class="flex gap-x-4 relative rounded-md">
+                                                 <div>
+                                                     <h4 class="text-base m-0 font-semibold">[Deleted students]</h4>
+                                                     <span class="text-gray-700 text-sm">
+                                                         {{ $comment->created_at ? $comment->created_at->format('jS, F Y') : 'Date not available' }}
+                                                     </span>
+                                                     <p class="mt-3 md:ml-0 -ml-16">{{ $comment->comment }}</p>
+                                                 </div>
+                                             </div>
+                                         @endif
+                                     @endforeach
+
+
+                                 </div> 
+                             </div>
+                         </div>
+
+                         <!-- Comment Form -->
+                         <div class="grid lg:grid-cols-3 mt-8 gap-8">
+                             <div class="col-span-8">
+                                 <div class="rounded-md">
+                                     <ul class="rounded-md uk-accordion" uk-accordion="">
+                                         <li class="uk-open">
+                                             <div class="uk-accordion-content py-6 px-8 mt-0 border-b"
+                                                 aria-hidden="false">
+                                                 @if (session('success'))
+                                                     <div class="bg-green-500 text-white p-4 rounded-md">
+                                                         {{ session('success') }}
+                                                     </div>
+                                                 @endif 
+                                                 <form class="grid sm:grid-cols-4 gap-4 mt-3" method="POST"
+                                                     action="{{ route('comments.store') }}">
+                                                     @csrf
+                                                     <div class="col-span-8">
+                                                         <textarea type="text" name="comment" placeholder="Your comment" class="uk-textarea p-4 with-border"></textarea>
+                                                     </div>
+                                                     <input type="hidden" name="subsection_id"
+                                                         value="{{ $subsection->id }}">
+                                                     <button type="submit"
+                                                         class="bg-blue-600 text-white flex font-medium items-center justify-center py-3 rounded-md hover:text-white">Submit</button>
+                                                 </form>
+
+
+                                             </div>
+                                         </li>
+                                     </ul>
+                                 </div>
+                             </div>
+                         </div>
+
+                     </div>
+                     <!--  Announcements -->
+                     <div>
+                         <h3 class="text-xl font-semibold mb-3"> Announcement </h3>
+
+                         <div class="flex items-center gap-x-4 mb-5">
+                             <img src="../assets/images/avatars/avatar-4.jpg" alt=""
+                                 class="rounded-full shadow w-12 h-12">
+                             <div>
+                                 <h4 class="-mb-1 text-base"> Stella Johnson</h4>
+                                 <span class="text-sm"> Instructor <span class="text-gray-500"> 1 year ago </span>
+                                 </span>
+                             </div>
+                         </div>
+
+                         <h4 class="leading-8 text-xl"> Nam liber tempor cum soluta nobis eleifend option congue
+                             imperdiet
+                             doming id quod mazim placerat facer possim assum.</h4>
+                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                             ut
+                             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                             laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                             voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                             cupidatat
+                             non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                         <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                             tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+                             nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+                             consequat. Nam
+                             liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim
+                             placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                             diam
+                             nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                             ad
+                             minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
+                             ea
+                             commodo consequat.</p>
+
+                     </div>
+
+                     <!-- faq -->
+                     <div>
+                         <h3 class="text-xl font-semibold mb-3"> Course Faq </h3>
+                         <ul uk-accordion="multiple: true" class="divide-y space-y-3 space-y-6">
+                             <li class="uk-open">
+                                 <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Html
+                                     Introduction </a>
+                                 <div class="uk-accordion-content mt-3">
+                                     <p> The primary goal of this quick start guide is to introduce you to
+                                         Unreal
+                                         Engine 4`s (UE4) development environment. By the end of this guide,
+                                         you`ll
+                                         know how to set up and develop C++ Projects in UE4. This guide shows
+                                         you
+                                         how
+                                         to create a new Unreal Engine project, add a new C++ class to it,
+                                         compile
+                                         the project, and add an instance of a new class to your level. By
+                                         the
+                                         time
+                                         you reach the end of this guide, you`ll be able to see your
+                                         programmed
+                                         Actor
+                                         floating above a table in the level. </p>
                                  </div>
                              </li>
-                         @endforeach
-                     </ul>
-                     <div class="bg-gray-200 w-full h-full absolute inset-0 animate-pulse"></div>
-                 </div>
-
-                 <nav class="cd-secondary-nav border-b md:p-0 lg:px-6 bg-white "
-                     uk-sticky="cls-active:shadow-sm ; media: @s">
-                     <ul uk-switcher="connect: #course-tabs; animation: uk-animation-fade">
-                         <li><a href="#" class="lg:px-2"> Overview </a></li>
-                         <li><a href="#" class="lg:px-2"> Announcements </a></li>
-                         <li><a href="#" class="lg:px-2"> Faq </a></li>
-                     </ul>
-                 </nav>
-
-                 <div class="container">
-
-                     <div class="max-w-2xl lg:py-6 mx-auto uk-switcher" id="course-tabs">
-
-                         <!--  Overview -->
-                         <div>
-
-                             <h4 class="text-2xl font-semibold"> About this course </h4>
-
-                             <p> Learn Web Development Without Writing Much Code </p>
-
-                             <hr class="my-5">
-
-                             <div class="grid lg:grid-cols-3 mt-8 gap-8">
-                                 <div>
-                                     <h3 class="text-lg font-semibold"> Description </h3>
+                             <li>
+                                 <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Your First
+                                     webpage</a>
+                                 <div class="uk-accordion-content mt-3">
+                                     <p> The primary goal of this quick start guide is to introduce you to
+                                         Unreal
+                                         Engine 4`s (UE4) development environment. By the end of this guide,
+                                         you`ll
+                                         know how to set up and develop C++ Projects in UE4. This guide shows
+                                         you
+                                         how
+                                         to create a new Unreal Engine project, add a new C++ class to it,
+                                         compile
+                                         the project, and add an instance of a new class to your level. By
+                                         the
+                                         time
+                                         you reach the end of this guide, you`ll be able to see your
+                                         programmed
+                                         Actor
+                                         floating above a table in the level. </p>
                                  </div>
-                                 <div class="col-span-2">
-                                     <p>
-                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                         euismod
-                                         tincidunt ut
-                                         laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim laoreet
-                                         dolore
-                                         magna
-                                         aliquam erat
-                                         volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-                                         suscipit
-                                         lobortis
-                                         nisl ut aliquip ex ea commodo consequat
-
-                                         <br>
-                                         <a href="#" class="text-blue-500">Read more .</a>
-                                     </p>
+                             </li>
+                             <li>
+                                 <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Some Special
+                                     Tags </a>
+                                 <div class="uk-accordion-content mt-3">
+                                     <p> The primary goal of this quick start guide is to introduce you to
+                                         Unreal
+                                         Engine 4`s (UE4) development environment. By the end of this guide,
+                                         you`ll
+                                         know how to set up and develop C++ Projects in UE4. This guide shows
+                                         you
+                                         how
+                                         to create a new Unreal Engine project, add a new C++ class to it,
+                                         compile
+                                         the project, and add an instance of a new class to your level. By
+                                         the
+                                         time
+                                         you reach the end of this guide, you`ll be able to see your
+                                         programmed
+                                         Actor
+                                         floating above a table in the level. </p>
                                  </div>
-
-                                 <div>
-                                     <h3 class="text-lg font-semibold"> What You’ll Learn </h3>
+                             </li>
+                             <li>
+                                 <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Html
+                                     Introduction </a>
+                                 <div class="uk-accordion-content mt-3">
+                                     <p> The primary goal of this quick start guide is to introduce you to
+                                         Unreal
+                                         Engine 4`s (UE4) development environment. By the end of this guide,
+                                         you`ll
+                                         know how to set up and develop C++ Projects in UE4. This guide shows
+                                         you
+                                         how
+                                         to create a new Unreal Engine project, add a new C++ class to it,
+                                         compile
+                                         the project, and add an instance of a new class to your level. By
+                                         the
+                                         time
+                                         you reach the end of this guide, you`ll be able to see your
+                                         programmed
+                                         Actor
+                                         floating above a table in the level. </p>
                                  </div>
-                                 <div class="col-span-2">
-                                     <ul>
-                                         <li> <i class="uil-check text-xl font-bold mr-2"></i>Setting up the environment
-                                         </li>
-                                         <li> <i class="uil-check text-xl font-bold mr-2"></i>Advanced HTML Practices
-                                         </li>
-                                         <li> <i class="uil-check text-xl font-bold mr-2"></i>Build a portfolio website
-                                         </li>
-                                         <li> <i class="uil-check text-xl font-bold mr-2"></i>Responsive Designs</li>
-                                         <li> <i class="uil-check text-xl font-bold mr-2"></i>Understand HTML
-                                             Programming
-                                         </li>
-                                         <li> <i class="uil-check text-xl font-bold mr-2"></i>Code HTML</li>
-                                         <li> <i class="uil-check text-xl font-bold mr-2"></i>Start building beautiful
-                                             websites</li>
-                                     </ul>
-                                 </div>
-
-                                 <div>
-                                     <h3 class="text-lg font-semibold"> Requirements </h3>
-                                 </div>
-                                 <div class="col-span-2">
-                                     <ul class="list-disc ml-5 space-y-1">
-                                         <li>Any computer will work: Windows, macOS or Linux</li>
-                                         <li>Basic programming HTML and CSS.</li>
-                                         <li>Basic/Minimal understanding of JavaScript</li>
-                                     </ul>
-                                 </div>
-
-                             </div>
-
-
-                         </div>
-
-                         <!--  Announcements -->
-                         <div>
-                             <h3 class="text-xl font-semibold mb-3"> Announcement </h3>
-
-                             <div class="flex items-center gap-x-4 mb-5">
-                                 <img src="demo/assets/images/avatars/avatar-4.jpg" alt=""
-                                     class="rounded-full shadow w-12 h-12">
-                                 <div>
-                                     <h4 class="-mb-1 text-base"> Stella Johnson</h4>
-                                     <span class="text-sm"> Instructor <span class="text-gray-500"> 1 year ago </span>
-                                     </span>
-                                 </div>
-                             </div>
-
-                             <h4 class="leading-8 text-xl"> Nam liber tempor cum soluta nobis eleifend option congue
-                                 imperdiet
-                                 doming id quod mazim placerat facer possim assum.</h4>
-                             <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                 incididunt
-                                 ut
-                                 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                 ullamco
-                                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                                 in
-                                 voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                 cupidatat
-                                 non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                             <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                 tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                                 quis
-                                 nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                                 consequat. Nam
-                                 liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod
-                                 mazim
-                                 placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                 sed
-                                 diam
-                                 nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-                                 enim
-                                 ad
-                                 minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-                                 ex
-                                 ea
-                                 commodo consequat.</p>
-
-                         </div>
-
-                         <!-- faq -->
-                         <div>
-                             <h3 class="text-xl font-semibold mb-3"> Course Faq </h3>
-                             <ul uk-accordion="multiple: true" class="divide-y space-y-3 space-y-6">
-                                 <li class="uk-open">
-                                     <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Html
-                                         Introduction </a>
-                                     <div class="uk-accordion-content mt-3">
-                                         <p> The primary goal of this quick start guide is to introduce you to
-                                             Unreal
-                                             Engine 4`s (UE4) development environment. By the end of this guide,
-                                             you`ll
-                                             know how to set up and develop C++ Projects in UE4. This guide shows
-                                             you
-                                             how
-                                             to create a new Unreal Engine project, add a new C++ class to it,
-                                             compile
-                                             the project, and add an instance of a new class to your level. By
-                                             the
-                                             time
-                                             you reach the end of this guide, you`ll be able to see your
-                                             programmed
-                                             Actor
-                                             floating above a table in the level. </p>
-                                     </div>
-                                 </li>
-                                 <li>
-                                     <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Your
-                                         First
-                                         webpage</a>
-                                     <div class="uk-accordion-content mt-3">
-                                         <p> The primary goal of this quick start guide is to introduce you to
-                                             Unreal
-                                             Engine 4`s (UE4) development environment. By the end of this guide,
-                                             you`ll
-                                             know how to set up and develop C++ Projects in UE4. This guide shows
-                                             you
-                                             how
-                                             to create a new Unreal Engine project, add a new C++ class to it,
-                                             compile
-                                             the project, and add an instance of a new class to your level. By
-                                             the
-                                             time
-                                             you reach the end of this guide, you`ll be able to see your
-                                             programmed
-                                             Actor
-                                             floating above a table in the level. </p>
-                                     </div>
-                                 </li>
-                                 <li>
-                                     <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Some
-                                         Special
-                                         Tags </a>
-                                     <div class="uk-accordion-content mt-3">
-                                         <p> The primary goal of this quick start guide is to introduce you to
-                                             Unreal
-                                             Engine 4`s (UE4) development environment. By the end of this guide,
-                                             you`ll
-                                             know how to set up and develop C++ Projects in UE4. This guide shows
-                                             you
-                                             how
-                                             to create a new Unreal Engine project, add a new C++ class to it,
-                                             compile
-                                             the project, and add an instance of a new class to your level. By
-                                             the
-                                             time
-                                             you reach the end of this guide, you`ll be able to see your
-                                             programmed
-                                             Actor
-                                             floating above a table in the level. </p>
-                                     </div>
-                                 </li>
-                                 <li>
-                                     <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Html
-                                         Introduction </a>
-                                     <div class="uk-accordion-content mt-3">
-                                         <p> The primary goal of this quick start guide is to introduce you to
-                                             Unreal
-                                             Engine 4`s (UE4) development environment. By the end of this guide,
-                                             you`ll
-                                             know how to set up and develop C++ Projects in UE4. This guide shows
-                                             you
-                                             how
-                                             to create a new Unreal Engine project, add a new C++ class to it,
-                                             compile
-                                             the project, and add an instance of a new class to your level. By
-                                             the
-                                             time
-                                             you reach the end of this guide, you`ll be able to see your
-                                             programmed
-                                             Actor
-                                             floating above a table in the level. </p>
-                                     </div>
-                                 </li>
-                             </ul>
-                         </div>
-
-
-
+                             </li>
+                         </ul>
                      </div>
-                 </div>
 
 
-             </div>
 
-             <!-- This is the modal -->
-             <div id="modal-example" class="lg:ml-80" uk-modal>
-                 <div class="uk-modal-dialog uk-modal-body rounded-md shadow-xl">
-
-                     <button
-                         class="absolute block top-0 right-0 m-6 rounded-full bg-gray-100 leading-4 p-1 text-2xl uk-modal-close"
-                         type="button">
-                         <i class="icon-feather-x"></i>
-                     </button>
-
-                     <div class="text-sm mb-2"> Section 2 </div>
-                     <h2 class="mb-5 font-semibold text-2xl"> Your First webpage </h2>
-                     <p class="text-base">Do You want to skip the rest of this chapter and chumb to next chapter.</p>
-
-                     <div class="text-right  pt-3 mt-3">
-                         <a href="#" class="py-2 inline-block px-8 rounded-md hover:bg-gray-200 uk-modal-close">
-                             Stay </a>
-                         <a href="#" class="button"> Continue </a>
-                     </div>
                  </div>
              </div>
 
 
          </div>
 
+         <!-- This is the modal -->
+         <div id="modal-example" class="lg:ml-80" uk-modal>
+             <div class="uk-modal-dialog uk-modal-body rounded-md shadow-xl">
 
-         <!-- Javascript
+                 <button
+                     class="absolute block top-0 right-0 m-6 rounded-full bg-gray-100 leading-4 p-1 text-2xl uk-modal-close"
+                     type="button">
+                     <i class="icon-feather-x"></i>
+                 </button>
+
+                 <div class="text-sm mb-2"> Section 2 </div>
+                 <h2 class="mb-5 font-semibold text-2xl"> Your First webpage </h2>
+                 <p class="text-base">Do You want to skip the rest of this chapter and chumb to next chapter.</p>
+
+                 <div class="text-right  pt-3 mt-3">
+                     <a href="#" class="py-2 inline-block px-8 rounded-md hover:bg-gray-200 uk-modal-close">
+                         Stay </a>
+                     <a href="#" class="button"> Continue </a>
+                 </div>
+             </div>
+         </div>
+
+
+     </div>
+
+
+     <!-- Javascript
     ================================================== -->
-         <script src="{{ asset('demo/code.jquery.com/jquery-3.6.0.min.js') }}"
-             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-         <script src="{{ asset('demo/assets/js/uikit.js') }}"></script>
-         <script src="{{ asset('demo/assets/js/tippy.all.min.js') }}"></script>
-         <script src="{{ asset('demo/assets/js/simplebar.js') }}"></script>
-         <script src="{{ asset('demo/assets/js/custom.js') }}"></script>
-         <script src="{{ asset('demo/assets/js/bootstrap-select.min.js') }}"></script>
-         <script src="{{ asset('demo/unpkg.com/ionicons%405.2.3/dist/ionicons.js') }}"></script>
+     <script src="{{ asset('demo/code.jquery.com/jquery-3.6.0.min.js') }}"
+         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+     <script src="{{ asset('demo/assets/js/uikit.js') }}"></script>
+     <script src="{{ asset('demo/assets/js/tippy.all.min.js') }}"></script>
+     <script src="{{ asset('demo/assets/js/simplebar.js') }}"></script>
+     <script src="{{ asset('demo/assets/js/custom.js') }}"></script>
+     <script src="{{ asset('demo/assets/js/bootstrap-select.min.js') }}"></script>
+     <script src="{{ asset('demo/unpkg.com/ionicons%405.2.3/dist/ionicons.js') }}"></script>
 
  </body>
 

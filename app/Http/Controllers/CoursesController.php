@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CourseModule;
+use App\Models\Comment;
 use App\Models\Courses;
 use App\Models\Enrolled;
 use App\Models\Subsection;
@@ -69,16 +69,35 @@ class CoursesController extends Controller
 
     public function show($id)
     {
-        $subsection = Subsection::with('courseModules')->findOrFail($id);
-        $courseModules = CourseModule::where('subsection_id', $subsection->id)->get();
-        dd($courseModules);
+        $subsection = Subsection::with(['courseModules', 'comments.students'])->findOrFail($id);
 
-        return view('pages.courses.course', compact('subsection', 'courseModules'));
-
+        return view('pages.courses.course', compact('subsection'));
     }
+
     public function list()
     {
         $courses = Courses::all();
         return view('pages.courses.list', compact('courses'));
     }
+    //commenting func
+
+    public function store(Request $request)
+    {
+        // Validate the form data
+        $request->validate([
+            'comment' => 'required|string',
+            'subsection_id' => 'required|exists:subsection,id',
+        ]);
+
+        // Create and save the comment
+        Comment::create([
+            'comment' => $request->comment,
+            'subsection_id' => $request->subsection_id,
+            'students_id' => auth()->id(), // Assuming the student is logged in
+        ]);
+
+        // Redirect back to the subsection page
+        return redirect()->back()->with('success', 'Comment added successfully!');
+    }
+
 }

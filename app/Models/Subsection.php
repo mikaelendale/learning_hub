@@ -14,6 +14,7 @@ class Subsection extends Model
         'course_id',
         'name',
         'detail',
+        'description',
         'order',
     ];
 // App\Models\Subsection.php
@@ -27,8 +28,12 @@ class Subsection extends Model
         return $this->hasMany(Enrolled::class, 'subsection_id');
     }
     public function courseModules()
-{
-    return $this->hasMany(CourseModule::class);
-}
+    {
+        return $this->hasMany(CourseModule::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
 }
