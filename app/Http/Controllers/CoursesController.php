@@ -80,7 +80,7 @@ class CoursesController extends Controller
         if ($courseContent) {
             return view('pages.courses.course', [
                 'subsection' => $subsection,
-                'courseContent' => $courseContent->content,
+                'courseContent' => $courseContent,
             ]);
         } else {
             return abort(404, 'Course content not found');

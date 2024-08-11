@@ -1042,6 +1042,5 @@
                 </div>
             </div>
         </div>
-        <!-- end: activity -->
     </div>
 @endsection
