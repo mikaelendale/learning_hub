@@ -26,8 +26,8 @@ class Subsection extends Model
     {
         return $this->hasMany(Enrolled::class, 'subsection_id');
     }
-    public function courseContents()
+    public function CourseModule()
     {
-        return $this->hasMany(CourseContent::class);
+        return $this->hasMany(CourseModule::class);
     }
 }

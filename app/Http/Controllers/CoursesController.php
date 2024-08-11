@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CourseContent;
+use App\Models\CourseModule;
 use App\Models\Courses;
 use App\Models\Enrolled;
 use App\Models\Subsection;
@@ -70,17 +71,17 @@ class CoursesController extends Controller
     public function show($id)
     {
         // Fetch the course content based on the subsection ID
-        $courseContent = CourseContent::where('subsection_id', $id)->get();
+        $courseModule = CourseModule::where('subsection_id', $id)->get();
 
         // Fetch the subsection details to include in the view
         $subsection = Subsection::findOrFail($id);
 
         // Pass the course content and subsection details to the view
 
-        if ($courseContent) {
+        if ($courseModule) {
             return view('pages.courses.course', [
                 'subsection' => $subsection,
-                'courseContent' => $courseContent,
+                'courseModule' => $courseModule,
             ]);
         } else {
             return abort(404, 'Course content not found');
