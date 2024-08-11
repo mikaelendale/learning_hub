@@ -12,6 +12,6 @@ class DashboardController extends Controller
         $courses = Courses::all();
         $user = Auth::user();
 
-        return view('pages/index', compact('courses'));
+        return view('pages/page', compact('courses'));
     }
 }

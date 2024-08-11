@@ -87,4 +87,8 @@ class CoursesController extends Controller
         }
 
     }
+    public function list(){
+        $courses = Courses::all();
+        return view('pages.courses.list', compact('courses'));
+    }
 }
