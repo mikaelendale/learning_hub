@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('video_url');
-            $table->string('order');
+            $table->integer('order');
             $table->timestamps();
         });
     }
