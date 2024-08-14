@@ -80,7 +80,7 @@
                                     <x-input-error :messages="$errors->get('dob')" class="mt-2" />
                                 </div>
                                 <div>
-                                    <label class="cpnvy cvwst clsb1 c5sy4" for="role">Which trach are you enrolling <span class="co8du">*</span></label>
+                                    <label class="cpnvy cvwst clsb1 c5sy4" for="role">Which track are you enrolling <span class="co8du">*</span></label>
                                     <select id="role" name="class_attended" class="c4jp2 cocui" required="">
                                         <option value="beginners">Beginners</option>
                                         <option value="intermediate">Intermediate</option>
