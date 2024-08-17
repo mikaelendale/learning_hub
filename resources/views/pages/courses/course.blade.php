@@ -832,7 +832,7 @@
      <!-- Basic Page Needs
     ================================================== -->
      <title>
-         Lalo Dev Learning Hub | @yield('head')
+         Lalo Dev Learning Hub | Module
      </title>
      <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" type="image/x-icon">
      <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -911,7 +911,7 @@
                      </div>
                  </div>
 
-                 <div class="mt-5">
+                 {{-- <div class="mt-5">
                      <h3 class="mb-4 text-lg font-semibold"> Quizzes</h3>
                      <ul>
                          <li><a href="#"> <ion-icon name="timer-outline" class="side-icon"></ion-icon> Taking
@@ -930,7 +930,7 @@
                          </li>
                      </ul>
 
-                 </div>
+                 </div> --}}
 
              </div>
 
@@ -943,270 +943,158 @@
          <div class="main_content">
 
              <div class="relative">
-
                  <ul class="uk-switcher relative z-10" id="video_tabs">
-
                      @foreach ($subsection->courseModules as $courseModule)
                          <li>
                              <div class="embed-video">
                                  <iframe src="{{ $courseModule->video_url }}" frameborder="0" allowfullscreen
                                      uk-responsive></iframe>
                              </div>
-                         </li>
-                     @endforeach
-
-                 </ul>
-
-                 <div class="bg-gray-200 w-full h-full absolute inset-0 animate-pulse"></div>
-
-             </div>
-
-             <nav class="cd-secondary-nav border-b md:p-0 lg:px-6 bg-white "
-                 uk-sticky="cls-active:shadow-sm ; media: @s">
-                 <ul uk-switcher="connect: #course-tabs; animation: uk-animation-fade">
-                     <li><a href="#" class="lg:px-2"> Overview </a></li>
-                     <li><a href="#" class="lg:px-2"> Announcements </a></li>
-                     <li><a href="#" class="lg:px-2"> Faq </a></li>
-                 </ul>
-             </nav>
-
-             <div class="container">
-
-                 <div class="max-w-2xl lg:py-6 mx-auto uk-switcher" id="course-tabs">
-
-                     <!--  Overview -->
-                     <div>
-
-                         <h4 class="text-2xl font-semibold"> About this course </h4>
-
-                         <p> Learn Web Development Without Writing Much Code </p>
-
-                         <hr class="my-5">
-
-                         <div class="grid lg:grid-cols-3 mt-8 gap-8">
-                             <div>
-                                 <h3 class="text-lg font-semibold"> Description </h3>
-                             </div>
-                             <div class="col-span-2">
-                                 <p>
-                                     {{ $subsection->description }}
-                                 </p>
-                             </div>
-                         </div>
-                         <!-- Subsection Details -->
-                         <h1 class="lg:text-2xl text-lg font-bold mt-2 line-clamp-2"> Comments
-                             ({{ $subsection->comments->count() }}) </h1>
-
-                         <!-- Comments Section -->
-                         <div class="lg:flex lg:space-x-6 mt-6">
-                             <div class="p-6">
-                                 <div class="space-y-5">
-                                     @foreach ($subsection->comments as $comment)
-                                         @if ($comment->students)
-                                             <div class="flex gap-x-4 relative rounded-md">
-                                                 <img src="{{ asset('students_pic/' . ($comment->students->profile_pic ?? 'default.png')) }}"
-                                                     alt="" class="rounded-full shadow w-12 h-12">
-                                                 <div>
-                                                     <h4 class="text-base m-0 font-semibold">
-                                                         {{ $comment->students->name }}</h4>
-                                                     <span class="text-gray-700 text-sm">
-                                                         {{ $comment->created_at ? $comment->created_at->format('jS, F Y') : 'Date not available' }}
-                                                     </span>
-                                                     <p class="mt-3 md:ml-0 -ml-16">{{ $comment->comment }}</p>
+                             <!-- Announcements Bar -->
+                             <nav class="cd-secondary-nav border-b md:p-0 lg:px-6 bg-white"
+                                 uk-sticky="cls-active:shadow-sm; media: @s">
+                                 <ul
+                                     uk-switcher="connect: #course-tabs-{{ $courseModule->id }}; animation: uk-animation-fade">
+                                     <li><a href="#" class="lg:px-2"> Overview </a></li>
+                                     {{-- <li><a href="#" class="lg:px-2"> Announcements </a></li> --}}
+                                     <li><a href="#" class="lg:px-2"> Faq </a></li>
+                                 </ul>
+                             </nav>
+                             <div class="max-w-2xl lg:py-6 mx-auto uk-switcher"
+                                 id="course-tabs-{{ $courseModule->id }}">
+                                 <!-- Overview -->
+                                 <div>
+                                     <div class="grid lg:grid-cols-3 mt-8 gap-8">
+                                         <div class="col-span-4">
+                                             <p>{!! $courseModule->description !!}</p>
+                                             <div class="container">
+                                                 <div class="flex justify-end  mt-4">
+                                                     <a class="button " href="#">
+                                                         Add New
+                                                     </a>
                                                  </div>
                                              </div>
-                                         @else
-                                             <div class="flex gap-x-4 relative rounded-md">
-                                                 <div>
-                                                     <h4 class="text-base m-0 font-semibold">[Deleted students]</h4>
-                                                     <span class="text-gray-700 text-sm">
-                                                         {{ $comment->created_at ? $comment->created_at->format('jS, F Y') : 'Date not available' }}
-                                                     </span>
-                                                     <p class="mt-3 md:ml-0 -ml-16">{{ $comment->comment }}</p>
+                                         </div>
+                                     </div>
+
+                                     <!-- Subsection Details -->
+                                     <h1 class="lg:text-2xl text-lg font-bold mt-2 line-clamp-2"> &nbsp;&nbsp;Comments
+                                         ({{ $subsection->comments->count() }}) </h1>
+
+                                     <!-- Comments Section -->
+                                     <div class="container mx-auto px-4 lg:px-0">
+                                         <div class="lg:flex lg:space-x-6 mt-6">
+                                             <div class="w-full">
+                                                 <div class="space-y-4">
+                                                     @foreach ($subsection->comments as $comment)
+                                                         <div
+                                                             class="flex items-start space-x-3 bg-gray-100 p-3 rounded-md shadow-sm">
+                                                             <!-- Avatar -->
+                                                             <img src="{{ asset('students_pic/' . ($comment->students->profile_pic ?? 'default.png')) }}"
+                                                                 alt="User Avatar"
+                                                                 class="rounded-full w-10 h-10 object-cover border border-gray-300">
+
+                                                             <!-- Comment Content -->
+                                                             <div class="flex-1">
+                                                                 <div class="flex justify-between items-center">
+                                                                     <!-- User Name -->
+                                                                     <h4 class="text-sm font-semibold text-gray-700">
+                                                                         {{ $comment->students->name ?? '[Deleted Student]' }}
+                                                                     </h4>
+
+                                                                     <!-- Timestamp -->
+                                                                     <span class="text-xs text-gray-500">
+                                                                         {{ $comment->created_at ? $comment->created_at->format('jS, F Y') : 'Date not available' }}
+                                                                     </span>
+                                                                 </div>
+
+                                                                 <!-- Comment Text -->
+                                                                 <p class="text-sm text-gray-600 mt-1">
+                                                                     {{ $comment->comment }}
+                                                                 </p>
+
+                                                                 <!-- Comment Actions -->
+                                                                 <div
+                                                                     class="mt-2 flex items-center space-x-2 text-xs text-gray-400">
+                                                                     <button
+                                                                         class="hover:text-blue-500 transition">Reply</button>
+                                                                     <span>•</span>
+                                                                     <button
+                                                                         class="hover:text-blue-500 transition">Like</button>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     @endforeach
                                                  </div>
                                              </div>
-                                         @endif
-                                     @endforeach
+                                         </div>
+                                     </div>
 
 
-                                 </div> 
-                             </div>
-                         </div>
+                                     <!-- Comment Form -->
+                                     <div class="mt-8">
+                                         <div class="rounded-md">
+                                             @if (session('success'))
+                                                 <div class="bg-green-500 text-white p-3 rounded-md mb-4 text-sm">
+                                                     {{ session('success') }}
+                                                 </div>
+                                             @endif
 
-                         <!-- Comment Form -->
-                         <div class="grid lg:grid-cols-3 mt-8 gap-8">
-                             <div class="col-span-8">
-                                 <div class="rounded-md">
-                                     <ul class="rounded-md uk-accordion" uk-accordion="">
+                                             <!-- Comment Form -->
+                                             <form method="POST" action="{{ route('comments.store') }}"
+                                                 class="flex items-center bg-white border border-gray-300 rounded-full px-3 py-1.5 shadow-sm">
+                                                 @csrf
+                                                 <input type="hidden" name="subsection_id"
+                                                     value="{{ $subsection->id }}">
+
+                                                 <input type="text" name="comment" id="comment"
+                                                     placeholder="Write a comment..."
+                                                     class="flex-grow bg-transparent border-none focus:outline-none focus:ring-0 placeholder-gray-500 text-sm px-2">
+
+                                                 <button type="submit"
+                                                     class="ml-2 bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 transition-colors duration-300">
+                                                     <svg class="h-5 w-5" width="24" height="24"
+                                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                         fill="none" stroke-linecap="round"
+                                                         stroke-linejoin="round">
+                                                         <path stroke="none" d="M0 0h24v24H0z" />
+                                                         <circle cx="12" cy="12" r="9" />
+                                                         <line x1="16" y1="12" x2="8"
+                                                             y2="12" />
+                                                         <line x1="16" y1="12" x2="12"
+                                                             y2="16" />
+                                                         <line x1="16" y1="12" x2="12"
+                                                             y2="8" />
+                                                     </svg>
+                                                 </button>
+                                             </form>
+                                             <br><br>
+                                         </div>
+                                     </div>
+
+                                 </div>
+                                 <br><br>
+
+                                 <!-- Faq -->
+                                 <div>
+                                     <h3 class="text-xl font-semibold mb-3"> Course Faq </h3>
+                                     <ul uk-accordion="multiple: true" class="divide-y space-y-3 space-y-6">
                                          <li class="uk-open">
-                                             <div class="uk-accordion-content py-6 px-8 mt-0 border-b"
-                                                 aria-hidden="false">
-                                                 @if (session('success'))
-                                                     <div class="bg-green-500 text-white p-4 rounded-md">
-                                                         {{ session('success') }}
-                                                     </div>
-                                                 @endif 
-                                                 <form class="grid sm:grid-cols-4 gap-4 mt-3" method="POST"
-                                                     action="{{ route('comments.store') }}">
-                                                     @csrf
-                                                     <div class="col-span-8">
-                                                         <textarea type="text" name="comment" placeholder="Your comment" class="uk-textarea p-4 with-border"></textarea>
-                                                     </div>
-                                                     <input type="hidden" name="subsection_id"
-                                                         value="{{ $subsection->id }}">
-                                                     <button type="submit"
-                                                         class="bg-blue-600 text-white flex font-medium items-center justify-center py-3 rounded-md hover:text-white">Submit</button>
-                                                 </form>
-
-
+                                             <a class="uk-accordion-title font-semibold text-xl mt-4" href="#">
+                                                 Html Introduction </a>
+                                             <div class="uk-accordion-content mt-3">
+                                                 <p> The primary goal of this quick start guide is to introduce you
+                                                     to Unreal Engine 4's (UE4) development environment...</p>
                                              </div>
                                          </li>
+                                         <!-- Additional Faq Items... -->
                                      </ul>
                                  </div>
                              </div>
-                         </div>
-
-                     </div>
-                     <!--  Announcements -->
-                     <div>
-                         <h3 class="text-xl font-semibold mb-3"> Announcement </h3>
-
-                         <div class="flex items-center gap-x-4 mb-5">
-                             <img src="../assets/images/avatars/avatar-4.jpg" alt=""
-                                 class="rounded-full shadow w-12 h-12">
-                             <div>
-                                 <h4 class="-mb-1 text-base"> Stella Johnson</h4>
-                                 <span class="text-sm"> Instructor <span class="text-gray-500"> 1 year ago </span>
-                                 </span>
-                             </div>
-                         </div>
-
-                         <h4 class="leading-8 text-xl"> Nam liber tempor cum soluta nobis eleifend option congue
-                             imperdiet
-                             doming id quod mazim placerat facer possim assum.</h4>
-                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                             ut
-                             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                             laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                             voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                             cupidatat
-                             non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                         <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                             tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                             nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                             consequat. Nam
-                             liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim
-                             placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                             diam
-                             nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                             ad
-                             minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
-                             ea
-                             commodo consequat.</p>
-
-                     </div>
-
-                     <!-- faq -->
-                     <div>
-                         <h3 class="text-xl font-semibold mb-3"> Course Faq </h3>
-                         <ul uk-accordion="multiple: true" class="divide-y space-y-3 space-y-6">
-                             <li class="uk-open">
-                                 <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Html
-                                     Introduction </a>
-                                 <div class="uk-accordion-content mt-3">
-                                     <p> The primary goal of this quick start guide is to introduce you to
-                                         Unreal
-                                         Engine 4`s (UE4) development environment. By the end of this guide,
-                                         you`ll
-                                         know how to set up and develop C++ Projects in UE4. This guide shows
-                                         you
-                                         how
-                                         to create a new Unreal Engine project, add a new C++ class to it,
-                                         compile
-                                         the project, and add an instance of a new class to your level. By
-                                         the
-                                         time
-                                         you reach the end of this guide, you`ll be able to see your
-                                         programmed
-                                         Actor
-                                         floating above a table in the level. </p>
-                                 </div>
-                             </li>
-                             <li>
-                                 <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Your First
-                                     webpage</a>
-                                 <div class="uk-accordion-content mt-3">
-                                     <p> The primary goal of this quick start guide is to introduce you to
-                                         Unreal
-                                         Engine 4`s (UE4) development environment. By the end of this guide,
-                                         you`ll
-                                         know how to set up and develop C++ Projects in UE4. This guide shows
-                                         you
-                                         how
-                                         to create a new Unreal Engine project, add a new C++ class to it,
-                                         compile
-                                         the project, and add an instance of a new class to your level. By
-                                         the
-                                         time
-                                         you reach the end of this guide, you`ll be able to see your
-                                         programmed
-                                         Actor
-                                         floating above a table in the level. </p>
-                                 </div>
-                             </li>
-                             <li>
-                                 <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Some Special
-                                     Tags </a>
-                                 <div class="uk-accordion-content mt-3">
-                                     <p> The primary goal of this quick start guide is to introduce you to
-                                         Unreal
-                                         Engine 4`s (UE4) development environment. By the end of this guide,
-                                         you`ll
-                                         know how to set up and develop C++ Projects in UE4. This guide shows
-                                         you
-                                         how
-                                         to create a new Unreal Engine project, add a new C++ class to it,
-                                         compile
-                                         the project, and add an instance of a new class to your level. By
-                                         the
-                                         time
-                                         you reach the end of this guide, you`ll be able to see your
-                                         programmed
-                                         Actor
-                                         floating above a table in the level. </p>
-                                 </div>
-                             </li>
-                             <li>
-                                 <a class="uk-accordion-title font-semibold text-xl mt-4" href="#"> Html
-                                     Introduction </a>
-                                 <div class="uk-accordion-content mt-3">
-                                     <p> The primary goal of this quick start guide is to introduce you to
-                                         Unreal
-                                         Engine 4`s (UE4) development environment. By the end of this guide,
-                                         you`ll
-                                         know how to set up and develop C++ Projects in UE4. This guide shows
-                                         you
-                                         how
-                                         to create a new Unreal Engine project, add a new C++ class to it,
-                                         compile
-                                         the project, and add an instance of a new class to your level. By
-                                         the
-                                         time
-                                         you reach the end of this guide, you`ll be able to see your
-                                         programmed
-                                         Actor
-                                         floating above a table in the level. </p>
-                                 </div>
-                             </li>
-                         </ul>
-                     </div>
-
-
-
-                 </div>
+                         </li>
+                     @endforeach
+                 </ul>
              </div>
-
-
          </div>
 
          <!-- This is the modal -->
@@ -1245,7 +1133,18 @@
      <script src="{{ asset('demo/assets/js/custom.js') }}"></script>
      <script src="{{ asset('demo/assets/js/bootstrap-select.min.js') }}"></script>
      <script src="{{ asset('demo/unpkg.com/ionicons%405.2.3/dist/ionicons.js') }}"></script>
-
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             UIkit.util.on('#video_tabs', 'show', function() {
+                 var iframes = document.querySelectorAll('iframe');
+                 iframes.forEach(function(iframe) {
+                     var src = iframe.src;
+                     iframe.src = '';
+                     iframe.src = src;
+                 });
+             });
+         });
+     </script>
  </body>
 
  </html>
