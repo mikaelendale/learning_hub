@@ -987,90 +987,141 @@
                                              <div class="w-full">
                                                  <div class="space-y-4">
                                                      @foreach ($subsection->comments as $comment)
-                                                         <div
-                                                             class="flex items-start space-x-3 bg-gray-100 p-3 rounded-md shadow-sm">
-                                                             <!-- Avatar -->
-                                                             <img src="{{ asset('students_pic/' . ($comment->students->profile_pic ?? 'default.png')) }}"
-                                                                 alt="User Avatar"
-                                                                 class="rounded-full w-10 h-10 object-cover border border-gray-300">
+                                                         <div class="relative">
+                                                             <div
+                                                                 class="flex items-start space-x-3 bg-gray-100 p-3 rounded-md shadow-sm">
+                                                                 <!-- Avatar -->
+                                                                 <img src="{{ asset('students_pic/' . ($comment->students->profile_pic ?? 'default.png')) }}"
+                                                                     alt="User Avatar"
+                                                                     class="rounded-full w-10 h-10 object-cover border border-gray-300">
 
-                                                             <!-- Comment Content -->
-                                                             <div class="flex-1">
-                                                                 <div class="flex justify-between items-center">
-                                                                     <!-- User Name -->
-                                                                     <h4 class="text-sm font-semibold text-gray-700">
-                                                                         {{ $comment->students->name ?? '[Deleted Student]' }}
-                                                                     </h4>
+                                                                 <!-- Comment Content -->
+                                                                 <div class="flex-1">
+                                                                     <div class="flex justify-between items-center">
+                                                                         <!-- User Name -->
+                                                                         <h4
+                                                                             class="text-sm font-semibold text-gray-700">
+                                                                             {{ $comment->students->name ?? '[Deleted Student]' }}
+                                                                         </h4>
 
-                                                                     <!-- Timestamp -->
-                                                                     <span class="text-xs text-gray-500">
-                                                                         {{ $comment->created_at ? $comment->created_at->format('jS, F Y') : 'Date not available' }}
-                                                                     </span>
-                                                                 </div>
+                                                                         <!-- Timestamp -->
+                                                                         <span class="text-xs text-gray-500">
+                                                                             {{ $comment->created_at ? $comment->created_at->format('jS, F Y') : 'Date not available' }}
+                                                                         </span>
+                                                                     </div>
 
-                                                                 <!-- Comment Text -->
-                                                                 <p class="text-sm text-gray-600 mt-1">
-                                                                     {{ $comment->comment }}
-                                                                 </p>
+                                                                     <!-- Comment Text -->
+                                                                     <p class="text-sm text-gray-600 mt-1">
+                                                                         {{ $comment->comment }}
+                                                                     </p>
 
-                                                                 <!-- Comment Actions -->
-                                                                 <div
-                                                                     class="mt-2 flex items-center space-x-2 text-xs text-gray-400">
-                                                                     <button
-                                                                         class="hover:text-blue-500 transition">Reply</button>
-                                                                     <span>•</span>
-                                                                     <button
-                                                                         class="hover:text-blue-500 transition">Like</button>
+                                                                     <!-- Comment Actions -->
+                                                                     <div
+                                                                         class="mt-2 flex items-center space-x-2 text-xs text-gray-400">
+                                                                         <button class="hover:text-blue-500 transition"
+                                                                             onclick="setReply('{{ $comment->students->name }}', '{{ $comment->id }}')">Reply</button>
+                                                                         <span>•</span>
+                                                                         <button
+                                                                             class="hover:text-blue-500 transition">Like</button>
+                                                                     </div>
                                                                  </div>
                                                              </div>
+
+                                                             <!-- Replies -->
+                                                             @if ($comment->replies->count())
+                                                                 <div class="ml-12 mt-4 space-y-4">
+                                                                     @foreach ($comment->replies as $reply)
+                                                                         <div
+                                                                             class="flex items-start space-x-3 bg-gray-50 p-3 rounded-md shadow-sm">
+                                                                             <!-- Avatar -->
+                                                                             <img src="{{ asset('students_pic/' . ($reply->students->profile_pic ?? 'default.png')) }}"
+                                                                                 alt="User Avatar"
+                                                                                 class="rounded-full w-8 h-8 object-cover border border-gray-300">
+
+                                                                             <!-- Reply Content -->
+                                                                             <div class="flex-1">
+                                                                                 <div
+                                                                                     class="flex justify-between items-center">
+                                                                                     <!-- User Name -->
+                                                                                     <h4
+                                                                                         class="text-sm font-semibold text-gray-700">
+                                                                                         {{ $reply->students->name ?? '[Deleted Student]' }}
+                                                                                     </h4>
+
+                                                                                     <!-- Timestamp -->
+                                                                                     <span
+                                                                                         class="text-xs text-gray-500">
+                                                                                         {{ $reply->created_at ? $reply->created_at->format('jS, F Y') : 'Date not available' }}
+                                                                                     </span>
+                                                                                 </div>
+
+                                                                                 <!-- Reply Text -->
+                                                                                 <p class="text-sm text-gray-600 mt-1">
+                                                                                     {{ $reply->comment }}
+                                                                                 </p>
+                                                                             </div>
+                                                                         </div>
+                                                                     @endforeach
+                                                                 </div>
+                                                             @endif
                                                          </div>
                                                      @endforeach
                                                  </div>
                                              </div>
                                          </div>
-                                     </div>
 
+                                         <!-- Comment Form -->
+                                         <div class="mt-8">
+                                             <div class="rounded-md">
+                                                 @if (session('success'))
+                                                     <div class="bg-green-500 text-white p-3 rounded-md mb-4 text-sm">
+                                                         {{ session('success') }}
+                                                     </div>
+                                                 @endif
 
-                                     <!-- Comment Form -->
-                                     <div class="mt-8">
-                                         <div class="rounded-md">
-                                             @if (session('success'))
-                                                 <div class="bg-green-500 text-white p-3 rounded-md mb-4 text-sm">
-                                                     {{ session('success') }}
-                                                 </div>
-                                             @endif
+                                                 <!-- Comment Form -->
+                                                 <div id="reply-message" class="mb-2 text-sm text-gray-600"></div>
+                                                 <form method="POST" action="{{ route('comments.store') }}"
+                                                     class="flex items-center bg-white border border-gray-300 rounded-full px-3 py-1.5 shadow-sm">
+                                                     @csrf
+                                                     <input type="hidden" name="subsection_id"
+                                                         value="{{ $subsection->id }}">
+                                                     <input type="hidden" name="parent_id" id="parent_id">
 
-                                             <!-- Comment Form -->
-                                             <form method="POST" action="{{ route('comments.store') }}"
-                                                 class="flex items-center bg-white border border-gray-300 rounded-full px-3 py-1.5 shadow-sm">
-                                                 @csrf
-                                                 <input type="hidden" name="subsection_id"
-                                                     value="{{ $subsection->id }}">
+                                                     <input type="text" name="comment" id="comment"
+                                                         placeholder="Write a comment..."
+                                                         class="flex-grow bg-transparent border-none focus:outline-none focus:ring-0 placeholder-gray-500 text-sm px-2">
 
-                                                 <input type="text" name="comment" id="comment"
-                                                     placeholder="Write a comment..."
-                                                     class="flex-grow bg-transparent border-none focus:outline-none focus:ring-0 placeholder-gray-500 text-sm px-2">
-
-                                                 <button type="submit"
-                                                     class="ml-2 bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 transition-colors duration-300">
-                                                     <svg class="h-5 w-5" width="24" height="24"
-                                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                         fill="none" stroke-linecap="round"
-                                                         stroke-linejoin="round">
-                                                         <path stroke="none" d="M0 0h24v24H0z" />
-                                                         <circle cx="12" cy="12" r="9" />
-                                                         <line x1="16" y1="12" x2="8"
-                                                             y2="12" />
-                                                         <line x1="16" y1="12" x2="12"
-                                                             y2="16" />
-                                                         <line x1="16" y1="12" x2="12"
-                                                             y2="8" />
-                                                     </svg>
-                                                 </button>
-                                             </form>
-                                             <br><br>
+                                                     <button type="submit"
+                                                         class="ml-2 bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 transition-colors duration-300">
+                                                         <svg class="h-5 w-5" width="24" height="24"
+                                                             viewBox="0 0 24 24" stroke-width="2"
+                                                             stroke="currentColor" fill="none"
+                                                             stroke-linecap="round" stroke-linejoin="round">
+                                                             <path stroke="none" d="M0 0h24v24H0z" />
+                                                             <circle cx="12" cy="12" r="9" />
+                                                             <line x1="16" y1="12" x2="8"
+                                                                 y2="12" />
+                                                             <line x1="16" y1="12" x2="12"
+                                                                 y2="16" />
+                                                             <line x1="16" y1="12" x2="12"
+                                                                 y2="8" />
+                                                         </svg>
+                                                     </button>
+                                                 </form>
+                                                 <br><br>
+                                             </div>
                                          </div>
                                      </div>
+
+                                     <script>
+                                         function setReply(name, id) {
+                                             document.getElementById('reply-message').textContent = `Replying to ${name}`;
+                                             document.getElementById('parent_id').value = id;
+                                             document.getElementById('comment').focus();
+                                         }
+                                     </script>
+
 
                                  </div>
                                  <br><br>

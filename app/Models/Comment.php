@@ -25,5 +25,14 @@ class Comment extends Model
     {
         return $this->belongsTo(Subsection::class);
     }
+    public function replies()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Comment::class, 'parent_id');
+    }
 
 }

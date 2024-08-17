@@ -87,14 +87,16 @@ class CoursesController extends Controller
         $request->validate([
             'comment' => 'required|string',
             'subsection_id' => 'required|exists:subsection,id',
+            'parent_id' => 'nullable|integer|exists:comments,id', // Validate if it's a valid comment ID for replies
         ]);
 
         // Create and save the comment
-        Comment::create([
-            'comment' => $request->comment,
-            'subsection_id' => $request->subsection_id,
-            'students_id' => auth()->id(), // Assuming the student is logged in
-        ]);
+        $comment = new Comment();
+        $comment->comment = $request->comment;
+        $comment->subsection_id = $request->subsection_id;
+        $comment->parent_id = $request->parent_id; // Set parent_id if it's a reply
+        $comment->students_id = auth()->id(); // Assuming the student is logged in
+        $comment->save();
 
         // Redirect back to the subsection page
         return redirect()->back()->with('success', 'Comment added successfully!');
