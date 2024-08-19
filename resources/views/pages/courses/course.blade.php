@@ -987,88 +987,93 @@
                                              <div class="w-full">
                                                  <div class="space-y-4">
                                                      @foreach ($subsection->comments as $comment)
-                                                         <div class="relative">
-                                                             <div
-                                                                 class="flex items-start space-x-3 bg-gray-100 p-3 rounded-md shadow-sm">
-                                                                 <!-- Avatar -->
-                                                                 <img src="{{ asset('students_pic/' . ($comment->students->profile_pic ?? 'default.png')) }}"
-                                                                     alt="User Avatar"
-                                                                     class="rounded-full w-10 h-10 object-cover border border-gray-300">
+                                                         @if (!$comment->parent_id)
+                                                             <div class="relative">
+                                                                 <div
+                                                                     class="flex items-start space-x-3 bg-gray-100 p-3 rounded-md shadow-sm">
+                                                                     <!-- Avatar -->
+                                                                     <img src="{{ asset('students_pic/' . ($comment->students->profile_pic ?? 'default.png')) }}"
+                                                                         alt="User Avatar"
+                                                                         class="rounded-full w-10 h-10 object-cover border border-gray-300">
 
-                                                                 <!-- Comment Content -->
-                                                                 <div class="flex-1">
-                                                                     <div class="flex justify-between items-center">
-                                                                         <!-- User Name -->
-                                                                         <h4
-                                                                             class="text-sm font-semibold text-gray-700">
-                                                                             {{ $comment->students->name ?? '[Deleted Student]' }}
-                                                                         </h4>
+                                                                     <!-- Comment Content -->
+                                                                     <div class="flex-1">
+                                                                         <div class="flex justify-between items-center">
+                                                                             <!-- User Name -->
+                                                                             <h4
+                                                                                 class="text-sm font-semibold text-gray-700">
+                                                                                 {{ $comment->students->name ?? '[Deleted Student]' }}
+                                                                             </h4>
 
-                                                                         <!-- Timestamp -->
-                                                                         <span class="text-xs text-gray-500">
-                                                                             {{ $comment->created_at ? $comment->created_at->format('jS, F Y') : 'Date not available' }}
-                                                                         </span>
-                                                                     </div>
-
-                                                                     <!-- Comment Text -->
-                                                                     <p class="text-sm text-gray-600 mt-1">
-                                                                         {{ $comment->comment }}
-                                                                     </p>
-
-                                                                     <!-- Comment Actions -->
-                                                                     <div
-                                                                         class="mt-2 flex items-center space-x-2 text-xs text-gray-400">
-                                                                         <button class="hover:text-blue-500 transition"
-                                                                             onclick="setReply('{{ $comment->students->name }}', '{{ $comment->id }}')">Reply</button>
-                                                                         <span>•</span>
-                                                                         <button
-                                                                             class="hover:text-blue-500 transition">Like</button>
-                                                                     </div>
-                                                                 </div>
-                                                             </div>
-
-                                                             <!-- Replies -->
-                                                             @if ($comment->replies->count())
-                                                                 <div class="ml-12 mt-4 space-y-4">
-                                                                     @foreach ($comment->replies as $reply)
-                                                                         <div
-                                                                             class="flex items-start space-x-3 bg-gray-50 p-3 rounded-md shadow-sm">
-                                                                             <!-- Avatar -->
-                                                                             <img src="{{ asset('students_pic/' . ($reply->students->profile_pic ?? 'default.png')) }}"
-                                                                                 alt="User Avatar"
-                                                                                 class="rounded-full w-8 h-8 object-cover border border-gray-300">
-
-                                                                             <!-- Reply Content -->
-                                                                             <div class="flex-1">
-                                                                                 <div
-                                                                                     class="flex justify-between items-center">
-                                                                                     <!-- User Name -->
-                                                                                     <h4
-                                                                                         class="text-sm font-semibold text-gray-700">
-                                                                                         {{ $reply->students->name ?? '[Deleted Student]' }}
-                                                                                     </h4>
-
-                                                                                     <!-- Timestamp -->
-                                                                                     <span
-                                                                                         class="text-xs text-gray-500">
-                                                                                         {{ $reply->created_at ? $reply->created_at->format('jS, F Y') : 'Date not available' }}
-                                                                                     </span>
-                                                                                 </div>
-
-                                                                                 <!-- Reply Text -->
-                                                                                 <p class="text-sm text-gray-600 mt-1">
-                                                                                     {{ $reply->comment }}
-                                                                                 </p>
-                                                                             </div>
+                                                                             <!-- Timestamp -->
+                                                                             <span class="text-xs text-gray-500">
+                                                                                 {{ $comment->created_at ? $comment->created_at->format('jS, F Y') : 'Date not available' }}
+                                                                             </span>
                                                                          </div>
-                                                                     @endforeach
+
+                                                                         <!-- Comment Text -->
+                                                                         <p class="text-sm text-gray-600 mt-1">
+                                                                             {{ $comment->comment }}
+                                                                         </p>
+
+                                                                         <!-- Comment Actions -->
+                                                                         <div
+                                                                             class="mt-2 flex items-center space-x-2 text-xs text-gray-400">
+                                                                             <button
+                                                                                 class="hover:text-blue-500 transition"
+                                                                                 onclick="setReply('{{ $comment->students->name }}', '{{ $comment->id }}')">Reply</button>
+                                                                             <span>•</span>
+                                                                             <button
+                                                                                 class="hover:text-blue-500 transition">Like</button>
+                                                                         </div>
+                                                                     </div>
                                                                  </div>
-                                                             @endif
-                                                         </div>
+
+                                                                 <!-- Replies -->
+                                                                 @if ($comment->replies->count())
+                                                                     <div class="ml-12 mt-4 space-y-4">
+                                                                         @foreach ($comment->replies as $reply)
+                                                                             <div
+                                                                                 class="flex items-start space-x-3 bg-gray-50 p-3 rounded-md shadow-sm">
+                                                                                 <!-- Avatar -->
+                                                                                 <img src="{{ asset('students_pic/' . ($reply->students->profile_pic ?? 'default.png')) }}"
+                                                                                     alt="User Avatar"
+                                                                                     class="rounded-full w-8 h-8 object-cover border border-gray-300">
+
+                                                                                 <!-- Reply Content -->
+                                                                                 <div class="flex-1">
+                                                                                     <div
+                                                                                         class="flex justify-between items-center">
+                                                                                         <!-- User Name -->
+                                                                                         <h4
+                                                                                             class="text-sm font-semibold text-gray-700">
+                                                                                             {{ $reply->students->name ?? '[Deleted Student]' }}
+                                                                                         </h4>
+
+                                                                                         <!-- Timestamp -->
+                                                                                         <span
+                                                                                             class="text-xs text-gray-500">
+                                                                                             {{ $reply->created_at ? $reply->created_at->format('jS, F Y') : 'Date not available' }}
+                                                                                         </span>
+                                                                                     </div>
+
+                                                                                     <!-- Reply Text -->
+                                                                                     <p
+                                                                                         class="text-sm text-gray-600 mt-1">
+                                                                                         {{ $reply->comment }}
+                                                                                     </p>
+                                                                                 </div>
+                                                                             </div>
+                                                                         @endforeach
+                                                                     </div>
+                                                                 @endif
+                                                             </div>
+                                                         @endif
                                                      @endforeach
                                                  </div>
                                              </div>
                                          </div>
+
 
                                          <!-- Comment Form -->
                                          <div class="mt-8">
