@@ -968,12 +968,19 @@
                                          <div class="col-span-4">
                                              <p>{!! $courseModule->description !!}</p>
                                              <div class="container">
-                                                 <div class="flex justify-end  mt-4">
-                                                     <a class="button " href="#">
-                                                         Add New
-                                                     </a>
+                                                 <div class="flex justify-end mt-4">
+                                                     <!-- Form to mark course module as done -->
+                                                     <form method="POST"
+                                                         action="{{ route('coursemodule.markdone', $coursemodule->id) }}">
+                                                         @csrf
+                                                         @method('PATCH') <!-- or POST depending on your logic -->
+                                                         <button type="submit" class="button">
+                                                             Mark Done
+                                                         </button>
+                                                     </form>
                                                  </div>
                                              </div>
+
                                          </div>
                                      </div>
 
