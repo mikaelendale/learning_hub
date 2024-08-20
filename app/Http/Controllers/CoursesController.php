@@ -14,12 +14,27 @@ class CoursesController extends Controller
 {
     public function index()
     {
-        // Count courses where level matches the user's class_attended
         $student = Auth::user();
         $courses = Courses::where('level', $student->class_attended)->get();
 
         $coursesWithProgress = $courses->map(function ($course) use ($student) {
-            $subsections = $course->subsections;
+            $studentsStartedCourse = collect();
+
+            $subsections = $course->subsections->map(function ($subsection) use ($studentsStartedCourse) {
+                $startedBy = SubsectionCompleted::where('subsection_id', $subsection->id)
+                    ->join('students', 'subsections_completed.student_id', '=', 'students.id')
+                    ->get(['students.name', 'students.profile_pic']); // Assuming students table has 'avatar' field
+
+                // Add unique students to the collection
+                $startedBy->each(function ($student) use ($studentsStartedCourse) {
+                    $studentsStartedCourse->put($student->name, $student);
+                });
+
+                $subsection->startedBy = $startedBy;
+                return $subsection;
+            });
+
+            // Existing logic for progress and status
             $completedSubsectionsCount = SubsectionCompleted::where('student_id', $student->id)
                 ->whereIn('subsection_id', $subsections->pluck('id'))
                 ->count();
@@ -28,16 +43,26 @@ class CoursesController extends Controller
             if ($completedSubsectionsCount === 0) {
                 $course->status = 'Not Started';
                 $course->progress = 0;
+                $course->progressColor = 'bg-secondary';
+            } elseif ($completedSubsectionsCount === $totalSubsectionsCount) {
+                $course->status = 'Completed';
+                $course->progress = 100;
+                $course->progressColor = 'bg-success';
             } else {
                 $course->status = 'In Progress';
-                $course->progress = $totalSubsectionsCount > 0 ? ($completedSubsectionsCount / $totalSubsectionsCount) * 100 : 0;
+                $course->progress = ($completedSubsectionsCount / $totalSubsectionsCount) * 100;
+                $course->progressColor = 'bg-primary'; // You can change this to the desired color for "In Progress"
             }
+
+            // Attach the unique students collection to the course
+            $course->studentsStartedCourse = $studentsStartedCourse;
 
             return $course;
         });
 
         return view('pages.courses.index', compact('coursesWithProgress'));
     }
+
     public function level()
     {
         // Assuming Auth::user()->class_attended is the level of the course

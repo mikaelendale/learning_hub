@@ -27,7 +27,8 @@ class DashboardController extends Controller
         $user = Auth::user();
         $classAttended = $user->class_attended;
 
-
+// Count courses where level matches the user's class_attended
+        $courseCount = Courses::where('level', $classAttended)->count();  
 
         return view('pages/index', compact('courses', 'enrolledStudents', 'availableCourses', 'totalStudents', 'courseCount', 'enrolledCount'));
     }
