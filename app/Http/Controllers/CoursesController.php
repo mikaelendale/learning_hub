@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-use App\Models\CourseModule;
 use App\Models\Courses;
 use App\Models\Enrolled;
 use App\Models\Subsection;
@@ -151,18 +150,29 @@ class CoursesController extends Controller
         // Redirect back to the subsection page
         return redirect()->back()->with('success', 'Comment added successfully!');
     }
-    public function markDone($id)
-{
-    $courseModule = CourseModule::findOrFail($id);
+    public function markSubsectionDone($subsectionId)
+    {
+        $studentId = Auth::id(); // Assuming the user is authenticated
 
-    // Mark the course module as done
-    $courseModule->update([
-        'status' => 'done', // or whatever column indicates completion
-    ]);
+        // Check if the subsection is already marked as completed by this student
+        $alreadyCompleted = SubsectionCompleted::where('subsection_id', $subsectionId)
+            ->where('student_id', $studentId)
+            ->exists();
 
-    // Redirect back with a success message
-    return redirect()->back()->with('success', 'Course module marked as done!');
-}
+        if (!$alreadyCompleted) {
+            // Mark the subsection as done
+            SubsectionCompleted::create([
+                'subsection_id' => $subsectionId,
+                'student_id' => $studentId,
+                'status' => 'completed', // Assuming there's a 'status' column to indicate completion
+            ]);
 
+            // Redirect back with a success message
+            return redirect()->back()->with('success', 'Subsection marked as done!');
+        }
+
+        // If already completed, return with a message
+        return redirect()->back()->with('info', 'You have already completed this subsection.');
+    }
 
 }

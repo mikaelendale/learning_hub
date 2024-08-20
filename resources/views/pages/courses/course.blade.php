@@ -911,29 +911,7 @@
                              </div>
                          </div>
                      </div>
-                 </div>
-
-                 {{-- <div class="mt-5">
-                     <h3 class="mb-4 text-lg font-semibold"> Quizzes</h3>
-                     <ul>
-                         <li><a href="#"> <ion-icon name="timer-outline" class="side-icon"></ion-icon> Taking
-                                 small eco-friendly steps </a></li>
-                         <li><a href="#"> <ion-icon name="timer-outline" class="side-icon"></ion-icon> Making your
-                                 house eco-friendly </a></li>
-                         <li><a href="#"> <ion-icon name="timer-outline" class="side-icon"></ion-icon> Building
-                                 and renovating for eco-friendly homes </a></li>
-                         <li><a href="#"> <ion-icon name="log-in-outline" class="side-icon"></ion-icon> Taking
-                                 small eco-friendly </a>
-                             <ul>
-                                 <li><a href="#"> Making your house </a></li>
-                                 <li><a href="#"> Building and renovating </a></li>
-                                 <li><a href="#"> Taking small </a></li>
-                             </ul>
-                         </li>
-                     </ul>
-
-                 </div> --}}
-
+                 </div> 
              </div>
 
              <!-- overly for mobile -->
