@@ -29,7 +29,7 @@
                                         src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/plurk.svg" />
                                 </div>
                                 <span class="badge badge-primary badge-outline">
-                                    In Progress
+                                    {{ $course->status }}
                                 </span>
                             </div>
                             <div class="flex flex-col mb-3 lg:mb-6">
@@ -51,7 +51,7 @@
                                 <span class="text-sm font-medium text-gray-500">
                                     End:
                                     <span class="text-sm font-semibold text-gray-700">
-                                        {{ $course->created_at->format('M d') }}
+                                        {{ $course->created_at->format('Dec d') }}
                                     </span>
                                 </span>
                             </div>

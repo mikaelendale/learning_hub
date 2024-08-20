@@ -24,11 +24,17 @@ class CoursesController extends Controller
                 ->whereIn('subsection_id', $subsections->pluck('id'))
                 ->count();
             $totalSubsectionsCount = $subsections->count();
-            $progress = $totalSubsectionsCount > 0 ? ($completedSubsectionsCount / $totalSubsectionsCount) * 100 : 0;
 
-            $course->progress = $progress;
+            if ($completedSubsectionsCount === 0) {
+                $course->status = 'Not Started';
+                $course->progress = 0;
+            } else {
+                $course->status = 'In Progress';
+                $course->progress = $totalSubsectionsCount > 0 ? ($completedSubsectionsCount / $totalSubsectionsCount) * 100 : 0;
+            }
+
             return $course;
-        }); 
+        });
 
         return view('pages.courses.index', compact('coursesWithProgress'));
     }
