@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\CourseModule;
 use App\Models\Courses;
 use App\Models\Enrolled;
 use App\Models\Subsection;
@@ -119,8 +120,20 @@ class CoursesController extends Controller
     public function show($id)
     {
         $subsection = Subsection::with(['courseModules', 'comments.students'])->findOrFail($id);
+        $studentId = Auth::id();
 
-        return view('pages.courses.course', compact('subsection'));
+// Get the course module
+        $courseModule = CourseModule::with('subsections')->findOrFail($courseModuleId);
+
+// Get the last subsection
+        $lastSubsection = $courseModule->subsections->sortByDesc('order')->first();
+
+// Check if the last subsection is completed by the student
+        $isCompleted = SubsectionCompleted::where('subsection_id', $lastSubsection->id)
+            ->where('student_id', $studentId)
+            ->exists();
+
+        return view('pages.courses.course', compact('subsection', 'courseModule', 'isCompleted', 'lastSubsection'));
     }
 
     public function list()
@@ -164,7 +177,6 @@ class CoursesController extends Controller
             SubsectionCompleted::create([
                 'subsection_id' => $subsectionId,
                 'student_id' => $studentId,
-                'status' => 'completed', // Assuming there's a 'status' column to indicate completion
             ]);
 
             // Redirect back with a success message

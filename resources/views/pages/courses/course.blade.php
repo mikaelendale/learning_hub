@@ -911,7 +911,7 @@
                              </div>
                          </div>
                      </div>
-                 </div> 
+                 </div>
              </div>
 
              <!-- overly for mobile -->
@@ -949,30 +949,49 @@
                                              <div class="container">
                                                  <div class="flex justify-end mt-4">
                                                      <!-- Form to mark course module as done -->
-                                                     <form method="POST"
-                                                         action="{{ route('coursemodule.markdone', $courseModule->id) }}">
-                                                         @csrf
-                                                         @method('PATCH') <!-- or POST depending on your logic -->
-                                                         <button type="submit" class="button">
-                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                 viewBox="0 0 24 24" stroke-width="1.5"
-                                                                 stroke="currentColor" class="w-6 h-6 size-6">
-                                                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                                                     d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                             </svg>&nbsp;
-                                                             Mark Done
-                                                         </button>
-                                                     </form>
+                                                     @if ($lastSubsection->id == $courseModule->subsections->sortByDesc('order')->first()->id)
+                                                         <form method="POST"
+                                                             action="{{ route('coursemodule.markdone', $courseModule->id) }}">
+                                                             @csrf
+                                                             @method('PATCH') <!-- or POST depending on your logic -->
+
+                                                             <button type="submit" class="button"
+                                                                 @if ($isCompleted) disabled @endif>
+                                                                 @if ($isCompleted)
+                                                                     <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         fill="none" viewBox="0 0 24 24"
+                                                                         stroke-width="1.5" stroke="currentColor"
+                                                                         class="w-6 h-6 size-6">
+                                                                         <path stroke-linecap="round"
+                                                                             stroke-linejoin="round"
+                                                                             d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                     </svg>&nbsp;
+                                                                     Completed
+                                                                 @else
+                                                                     <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         fill="none" viewBox="0 0 24 24"
+                                                                         stroke-width="1.5" stroke="currentColor"
+                                                                         class="w-6 h-6 size-6">
+                                                                         <path stroke-linecap="round"
+                                                                             stroke-linejoin="round"
+                                                                             d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                     </svg>&nbsp;
+                                                                     Mark Done
+                                                                 @endif
+                                                             </button>
+                                                         </form>
+                                                     @endif
                                                  </div>
                                              </div>
-
                                          </div>
                                      </div>
+
                                      @if (session('success'))
                                          <div class="bg-green-300 text-white p-3 rounded-md mb-4 text-sm">
                                              {{ session('success') }}
                                          </div>
                                      @endif
+
                                      <!-- Subsection Details -->
                                      <h1 class="lg:text-2xl text-lg font-bold mt-2 line-clamp-2"> &nbsp;&nbsp;Comments
                                          ({{ $subsection->comments->count() }}) </h1>
@@ -994,7 +1013,8 @@
 
                                                                      <!-- Comment Content -->
                                                                      <div class="flex-1">
-                                                                         <div class="flex justify-between items-center">
+                                                                         <div
+                                                                             class="flex justify-between items-center">
                                                                              <!-- User Name -->
                                                                              <h4
                                                                                  class="text-sm font-semibold text-gray-700">
