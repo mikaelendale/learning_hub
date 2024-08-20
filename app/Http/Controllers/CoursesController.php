@@ -44,14 +44,17 @@ class CoursesController extends Controller
                 $course->status = 'Not Started';
                 $course->progress = 0;
                 $course->progressColor = 'bg-secondary';
+                $course->badgeColor = 'badge-secondary';
             } elseif ($completedSubsectionsCount === $totalSubsectionsCount) {
                 $course->status = 'Completed';
                 $course->progress = 100;
                 $course->progressColor = 'bg-success';
+                $course->badgeColor = 'badge-success';
             } else {
                 $course->status = 'In Progress';
                 $course->progress = ($completedSubsectionsCount / $totalSubsectionsCount) * 100;
                 $course->progressColor = 'bg-primary'; // You can change this to the desired color for "In Progress"
+                $course->badgeColor = 'badge-primary';
             }
 
             // Attach the unique students collection to the course

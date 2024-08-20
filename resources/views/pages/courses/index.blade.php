@@ -24,11 +24,11 @@
                 @foreach ($coursesWithProgress as $course)
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
-                            <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
+                            <div class="flex items-center justify-center size-[50px] rounded-lg ">
                                 <img alt="" class=""
-                                    src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/plurk.svg" />
+                                    src="{{ $course->image }}" />
                             </div>
-                            <span class="badge badge-primary badge-outline">
+                            <span class="badge {{ $course->badgeColor }} badge-outline">
                                 {{ $course->status }}
                             </span>
                         </div>
