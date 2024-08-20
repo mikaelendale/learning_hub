@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\CourseModule;
 use App\Models\Courses;
 use App\Models\Enrolled;
 use App\Models\Subsection;
@@ -150,5 +151,18 @@ class CoursesController extends Controller
         // Redirect back to the subsection page
         return redirect()->back()->with('success', 'Comment added successfully!');
     }
+    public function markDone($id)
+{
+    $courseModule = CourseModule::findOrFail($id);
+
+    // Mark the course module as done
+    $courseModule->update([
+        'status' => 'done', // or whatever column indicates completion
+    ]);
+
+    // Redirect back with a success message
+    return redirect()->back()->with('success', 'Course module marked as done!');
+}
+
 
 }

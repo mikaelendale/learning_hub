@@ -851,7 +851,9 @@
      <link rel="stylesheet" href="{{ asset('demo/assets/css/uikit.css') }}">
      <link rel="stylesheet" href="{{ asset('demo/assets/css/style.css') }}">
      <link href="{{ asset('demo/unpkg.com/tailwindcss%402.2.19/dist/tailwind.min.css') }}" rel="stylesheet">
-
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+         crossorigin="anonymous" referrerpolicy="no-referrer" />
  </head>
 
 
@@ -867,7 +869,7 @@
              <!-- back to home link -->
              <div class="flex justify-between lg:-ml-1 mt-1 mr-2">
                  <a href="/courses/detail" class="flex items-center text-blue-500">
-                     <ion-icon name="chevron-back-outline" class="md:text-lg text-2xl"></ion-icon>
+                     <i class="fa-solid fa-arrow-left"></i>&nbsp;
                      <span class="text-sm md:inline hidden"> Back</span>
                  </a>
              </div>
@@ -957,7 +959,6 @@
                                      uk-switcher="connect: #course-tabs-{{ $courseModule->id }}; animation: uk-animation-fade">
                                      <li><a href="#" class="lg:px-2"> Overview </a></li>
                                      {{-- <li><a href="#" class="lg:px-2"> Announcements </a></li> --}}
-                                     <li><a href="#" class="lg:px-2"> Faq </a></li>
                                  </ul>
                              </nav>
                              <div class="max-w-2xl lg:py-6 mx-auto uk-switcher"
@@ -971,10 +972,16 @@
                                                  <div class="flex justify-end mt-4">
                                                      <!-- Form to mark course module as done -->
                                                      <form method="POST"
-                                                         action="{{ route('coursemodule.markdone', $coursemodule->id) }}">
+                                                         action="{{ route('coursemodule.markdone', $courseModule->id) }}">
                                                          @csrf
                                                          @method('PATCH') <!-- or POST depending on your logic -->
                                                          <button type="submit" class="button">
+                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                 viewBox="0 0 24 24" stroke-width="1.5"
+                                                                 stroke="currentColor" class="w-6 h-6 size-6">
+                                                                 <path stroke-linecap="round" stroke-linejoin="round"
+                                                                     d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                             </svg>&nbsp;
                                                              Mark Done
                                                          </button>
                                                      </form>
@@ -983,7 +990,11 @@
 
                                          </div>
                                      </div>
-
+                                     @if (session('success'))
+                                         <div class="bg-green-300 text-white p-3 rounded-md mb-4 text-sm">
+                                             {{ session('success') }}
+                                         </div>
+                                     @endif
                                      <!-- Subsection Details -->
                                      <h1 class="lg:text-2xl text-lg font-bold mt-2 line-clamp-2"> &nbsp;&nbsp;Comments
                                          ({{ $subsection->comments->count() }}) </h1>
@@ -1030,8 +1041,6 @@
                                                                                  class="hover:text-blue-500 transition"
                                                                                  onclick="setReply('{{ $comment->students->name }}', '{{ $comment->id }}')">Reply</button>
                                                                              <span>•</span>
-                                                                             <button
-                                                                                 class="hover:text-blue-500 transition">Like</button>
                                                                          </div>
                                                                      </div>
                                                                  </div>
@@ -1085,11 +1094,7 @@
                                          <!-- Comment Form -->
                                          <div class="mt-8">
                                              <div class="rounded-md">
-                                                 @if (session('success'))
-                                                     <div class="bg-green-500 text-white p-3 rounded-md mb-4 text-sm">
-                                                         {{ session('success') }}
-                                                     </div>
-                                                 @endif
+
 
                                                  <!-- Comment Form -->
                                                  <div id="reply-message" class="mb-2 text-sm text-gray-600"></div>
