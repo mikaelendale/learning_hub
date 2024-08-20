@@ -325,33 +325,33 @@
                                         9.3k
                                     </span>
                                     <span class="text-2sm font-medium text-gray-600">
-                                        Courses avaliable
+                                        Courses avaliable in beginners
                                     </span>
                                 </div>
                             </div>
                             <div
                                 class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
                                 <img alt="" class="w-7 mt-4 ms-5"
-                                    src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/youtube-2.svg" />
+                                    src="https://cdn3.iconfinder.com/data/icons/education-and-school-filled-outline-2/64/Education_FilledOutline21-64.png" />
                                 <div class="flex flex-col gap-1 pb-4 px-5">
                                     <span class="text-3xl font-semibold text-gray-900">
-                                        24k
+                                        0
                                     </span>
                                     <span class="text-2sm font-medium text-gray-600">
-                                        Lessons Views
+                                        Enrolled courses
                                     </span>
                                 </div>
                             </div>
                             <div
                                 class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
                                 <img alt="" class="w-7 mt-4 ms-5"
-                                    src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/instagram-03.svg" />
+                                    src="https://cdn4.iconfinder.com/data/icons/education-8-2/66/395-64.png" />
                                 <div class="flex flex-col gap-1 pb-4 px-5">
                                     <span class="text-3xl font-semibold text-gray-900">
-                                        608
+                                        60
                                     </span>
                                     <span class="text-2sm font-medium text-gray-600">
-                                        New subscribers
+                                        Students 
                                     </span>
                                 </div>
                             </div>
@@ -360,13 +360,13 @@
                                 <img alt="" class="dark:hidden w-7 mt-4 ms-5"
                                     src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/tiktok.svg" />
                                 <img alt="" class="light:hidden w-7 mt-4 ms-5"
-                                    src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/tiktok-dark.svg" />
+                                    src="https://cdn2.iconfinder.com/data/icons/learning-1/64/video-tutorial-clip-online-course-512.png" />
                                 <div class="flex flex-col gap-1 pb-4 px-5">
                                     <span class="text-3xl font-semibold text-gray-900">
-                                        2.5k
+                                        23
                                     </span>
                                     <span class="text-2sm font-medium text-gray-600">
-                                        Stream audience
+                                        overall courses
                                     </span>
                                 </div>
                             </div>
