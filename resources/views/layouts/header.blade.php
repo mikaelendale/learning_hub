@@ -8,7 +8,7 @@
         <div class="flex items-center 2xl:-ml-[60px]">
             <div
                 class="flex items-center justify-center rounded-full border border-gray-300 bg-light size-[42px] shrink-0 mr-2 lg:mr-5">
-                <a href="index.html">
+                <a href="/dashboard">
                     <img class="default-logo min-h-[22px] max-w-none" src="{{ asset('images/icon.png') }}"
                         width="30" />
                 </a>
