@@ -51,14 +51,14 @@
                                         height="48" viewbox="0 0 44 48" width="44" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                                                                                               18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                                                                                               39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                                                                   18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                                                                   39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                             fill="">
                                         </path>
                                         <path
                                             d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                                                                                               18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                                                                                               39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                                                                   18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                                                                   39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                             stroke="">
                                         </path>
                                     </svg>
@@ -158,14 +158,14 @@
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                                                                                               18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                                                                                               39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                                                                   18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                                                                   39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                             fill="">
                                         </path>
                                         <path
                                             d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                                                                                               18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                                                                                               39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                                                                   18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                                                                   39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                             stroke="">
                                         </path>
                                     </svg>
@@ -266,14 +266,14 @@
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                                                       18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                                                       39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                           18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                           39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                                 fill="">
                                             </path>
                                             <path
                                                 d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                                                       18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                                                       39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                           18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                           39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                                 stroke="">
                                             </path>
                                         </svg>
@@ -316,17 +316,14 @@
                                     background-image: url('assets/media/images/2600x1600/bg-3-dark.png');
                                 }
                             </style>
+                            <!-- Course Stats Cards -->
                             <div
                                 class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
                                 <img alt="" class="w-7 mt-4 ms-5"
                                     src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/book-64.png" />
                                 <div class="flex flex-col gap-1 pb-4 px-5">
-                                    <span class="text-3xl font-semibold text-gray-900">
-                                        9.3k
-                                    </span>
-                                    <span class="text-2sm font-medium text-gray-600">
-                                        Courses avaliable in beginners
-                                    </span>
+                                    <span class="text-3xl font-semibold text-gray-900">9.3k</span>
+                                    <span class="text-2sm font-medium text-gray-600">Courses available in beginners</span>
                                 </div>
                             </div>
                             <div
@@ -334,12 +331,8 @@
                                 <img alt="" class="w-7 mt-4 ms-5"
                                     src="https://cdn3.iconfinder.com/data/icons/education-and-school-filled-outline-2/64/Education_FilledOutline21-64.png" />
                                 <div class="flex flex-col gap-1 pb-4 px-5">
-                                    <span class="text-3xl font-semibold text-gray-900">
-                                        0
-                                    </span>
-                                    <span class="text-2sm font-medium text-gray-600">
-                                        Enrolled courses
-                                    </span>
+                                    <span class="text-3xl font-semibold text-gray-900">0</span>
+                                    <span class="text-2sm font-medium text-gray-600">Enrolled courses</span>
                                 </div>
                             </div>
                             <div
@@ -347,88 +340,69 @@
                                 <img alt="" class="w-7 mt-4 ms-5"
                                     src="https://cdn4.iconfinder.com/data/icons/education-8-2/66/395-64.png" />
                                 <div class="flex flex-col gap-1 pb-4 px-5">
-                                    <span class="text-3xl font-semibold text-gray-900">
-                                        60
-                                    </span>
-                                    <span class="text-2sm font-medium text-gray-600">
-                                        Students 
-                                    </span>
+                                    <span class="text-3xl font-semibold text-gray-900">60</span>
+                                    <span class="text-2sm font-medium text-gray-600">Students</span>
                                 </div>
                             </div>
                             <div
-                                class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg"> 
+                                class="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
                                 <img alt="" class="w-7 mt-4 ms-5"
                                     src="https://cdn4.iconfinder.com/data/icons/education-759/2050/Education_flat-31-512.png" />
                                 <div class="flex flex-col gap-1 pb-4 px-5">
-                                    <span class="text-3xl font-semibold text-gray-900">
-                                        23
-                                    </span>
-                                    <span class="text-2sm font-medium text-gray-600">
-                                        overall courses
-                                    </span>
+                                    <span class="text-3xl font-semibold text-gray-900">23</span>
+                                    <span class="text-2sm font-medium text-gray-600">Overall courses</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="lg:col-span-2">
-                        <style>
-                            .entry-callout-bg {
-                                background-image: url('assets/media/images/2600x1600/2.png');
-                            }
-
-                            .dark .entry-callout-bg {
-                                background-image: url('assets/media/images/2600x1600/2-dark.png');
-                            }
-                        </style>
-                        <div class="card h-full h-full">
+                        <div class="card h-full">
                             <div
                                 class="card-body p-10 bg-[length:80%] [background-position:175%_25%] bg-no-repeat entry-callout-bg">
                                 <div class="flex flex-col justify-center gap-4">
+                                    <!-- Student Avatars -->
                                     <div class="flex -space-x-2">
-                                        <div class="flex">
-                                            <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-10"
-                                                src="assets/media/avatars/300-4.png" />
-                                        </div>
-                                        <div class="flex">
-                                            <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-10"
-                                                src="assets/media/avatars/300-1.png" />
-                                        </div>
-                                        <div class="flex">
-                                            <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-10"
-                                                src="assets/media/avatars/300-2.png" />
-                                        </div>
-                                        <div class="flex">
-                                            <span
-                                                class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-10 text-success-inverse text-xs ring-success-light bg-success">
-                                                S
-                                            </span>
-                                        </div>
+                                        @foreach ($enrolledStudents as $student)
+                                            <div class="flex">
+                                                <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-10"
+                                                    src="{{ asset('students_pic/' . ($student->profile_pic ?? 'default.png')) }}"
+                                                    alt="{{ $student->name }}" />
+                                            </div>
+                                        @endforeach
+                                        <!-- Additional Students Placeholder -->
+                                        @if (count($enrolledStudents) > 3)
+                                            <div class="flex">
+                                                <span
+                                                    class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-10 text-success-inverse text-xs ring-success-light bg-success">
+                                                    +{{ count($enrolledStudents) - 3 }}
+                                                </span>
+                                            </div>
+                                        @endif
                                     </div>
                                     <h2 class="text-1.5xl font-semibold text-gray-900">
-                                        Connect Today &amp; Join
+                                        Join today &amp; connect
                                         <br />
                                         the
-                                        <a class="link" href="#">
-                                            KeenThemes Network
+                                        <a class="link" href="https://t.me/lalo_dev_community" target="_blank">
+                                            lalo dev Network
                                         </a>
                                     </h2>
                                     <p class="text-sm font-medium text-gray-700 leading-5.5">
-                                        Enhance your projects with premium themes and
+                                        Enroll in the available courses within your subscription period.
                                         <br />
-                                        templates. Join the KeenThemes community today
-                                        <br />
-                                        for top-quality designs and resources.
+                                        Join the community and stay updated.
                                     </p>
                                 </div>
                             </div>
                             <div class="card-footer justify-center">
-                                <a class="btn btn-link" href="../account/home/get-started.html">
-                                    Get Started
+                                <a class="btn btn-link" href="/courses/level">
+                                    View courses
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <!-- end: grid -->
                 <!-- begin: grid -->
                 <div class="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">

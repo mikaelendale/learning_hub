@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Courses;
+use App\Models\Students;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -11,7 +12,8 @@ class DashboardController extends Controller
     {
         $courses = Courses::all();
         $user = Auth::user();
+        $enrolledStudents = Students::inRandomOrder()->limit(7)->get();
 
-        return view('pages/index', compact('courses'));
+        return view('pages/index', compact('courses', 'enrolledStudents'));
     }
 }
