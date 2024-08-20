@@ -119,16 +119,20 @@ class CoursesController extends Controller
 
     public function show($id)
     {
-        $subsection = Subsection::with(['courseModules', 'comments.students'])->findOrFail($id);
         $studentId = Auth::id();
 
-// Get the course module
-        $courseModule = CourseModule::with('subsections')->findOrFail($courseModuleId);
+        // Fetch the subsection
+        $subsection = Subsection::with(['courseModule', 'comments.students'])->findOrFail($id);
 
-// Get the last subsection
-        $lastSubsection = $courseModule->subsections->sortByDesc('order')->first();
+        // Fetch the course module based on the course_id
+        $courseModule = CourseModule::where('id', $subsection->course_id)->firstOrFail();
 
-// Check if the last subsection is completed by the student
+        // Get the last subsection for the course
+        $lastSubsection = Subsection::where('course_id', $subsection->course_id)
+            ->orderBy('order', 'desc')
+            ->first();
+
+        // Check if the last subsection is completed by the student
         $isCompleted = SubsectionCompleted::where('subsection_id', $lastSubsection->id)
             ->where('student_id', $studentId)
             ->exists();

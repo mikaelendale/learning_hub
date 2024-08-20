@@ -986,6 +986,7 @@
                                          </div>
                                      </div>
 
+
                                      @if (session('success'))
                                          <div class="bg-green-300 text-white p-3 rounded-md mb-4 text-sm">
                                              {{ session('success') }}

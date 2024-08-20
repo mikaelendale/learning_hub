@@ -35,5 +35,9 @@ class Subsection extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function courseModule()
+    {
+        return $this->belongsTo(CourseModule::class, 'course_id', 'course_id');
+    }
 
 }
