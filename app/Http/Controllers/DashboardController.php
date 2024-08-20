@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Courses;
+use App\Models\Enrollment;
 use App\Models\Students;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,21 +16,19 @@ class DashboardController extends Controller
         $enrolledStudents = Students::inRandomOrder()->limit(7)->get();
         // Fetch the number of available courses from the courses table
         $availableCourses = Courses::count(); // Total number of courses
-
-        // Fetch the number of students based on class_attended and level
-        $studentsByClassAndLevel = Students::select('class_attended', 'level')
-            ->groupBy('class_attended', 'level')
-            ->get()
-            ->mapWithKeys(function ($item) {
-                return [$item->class_attended . '-' . $item->level => $item->count()];
-            });
-
         // Fetch the total number of enrolled students
-        $enrolledCourses = Students::whereHas('courses')->count();
+        $studentId = Auth::user()->id; // Replace with the specific student ID
 
+        $enrolledCount = Enrollment::where('student_id', $studentId)
+            ->count();
         // Fetch the total number of students
-        $totalStudents = Students::count(); 
+        $totalStudents = Students::count();
 
-        return view('pages/index', compact('courses', 'enrolledStudents','availableCourses', 'studentsByClassAndLevel', 'enrolledCourses', 'totalStudents'));
+        $user = Auth::user();
+        $classAttended = $user->class_attended;
+
+
+
+        return view('pages/index', compact('courses', 'enrolledStudents', 'availableCourses', 'totalStudents', 'courseCount', 'enrolledCount'));
     }
 }

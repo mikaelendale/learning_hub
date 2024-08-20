@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Courses;
 use App\Models\Enrolled;
 use App\Models\Subsection;
+use App\Models\SubsectionCompleted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,9 +14,23 @@ class CoursesController extends Controller
 {
     public function index()
     {
-        $courses = Courses::all();
-        $user = Auth::user();
-        return view('pages.courses.index', compact('courses'));
+        // Count courses where level matches the user's class_attended
+        $student = Auth::user();
+        $courses = Courses::where('level', $student->class_attended)->get();
+
+        $coursesWithProgress = $courses->map(function ($course) use ($student) {
+            $subsections = $course->subsections;
+            $completedSubsectionsCount = SubsectionCompleted::where('student_id', $student->id)
+                ->whereIn('subsection_id', $subsections->pluck('id'))
+                ->count();
+            $totalSubsectionsCount = $subsections->count();
+            $progress = $totalSubsectionsCount > 0 ? ($completedSubsectionsCount / $totalSubsectionsCount) * 100 : 0;
+
+            $course->progress = $progress;
+            return $course;
+        }); 
+
+        return view('pages.courses.index', compact('coursesWithProgress'));
     }
     public function level()
     {
