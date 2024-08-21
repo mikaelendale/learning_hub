@@ -177,29 +177,30 @@ class CoursesController extends Controller
         // Redirect back to the subsection page
         return redirect()->back()->with('success', 'Comment added successfully!');
     }
-    public function markModuleDone($courseModuleId)
+    public function markModuleDone($id)
     {
-        $studentId = Auth::id(); // Get the authenticated student ID
+        $studentId = Auth::id();
 
-        // Check if the module is already marked as completed
-        $alreadyCompleted = ModuleCompleted::where('course_module_id', $courseModuleId)
+        // Check if the module is already marked as completed by this student
+        $alreadyCompleted = ModuleCompleted::where('course_module_id', $id)
             ->where('student_id', $studentId)
             ->exists();
 
         if (!$alreadyCompleted) {
             // Mark the module as done
             ModuleCompleted::create([
-                'course_module_id' => $courseModuleId,
+                'course_module_id' => $id,
                 'student_id' => $studentId,
             ]);
 
             // Redirect back with a success message
-            return redirect()->back()->with('success', 'Module marked as done!');
+            return redirect()->back()->with('success', 'Course module marked as done!');
         }
 
         // If already completed, return with a message
         return redirect()->back()->with('info', 'You have already completed this module.');
     }
+
     public function markSubsectionDone($subsectionId)
     {
         $studentId = Auth::id(); // Get the authenticated student ID
