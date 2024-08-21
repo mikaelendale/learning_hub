@@ -25,19 +25,28 @@
             <!-- begin: cards -->
             <div id="projects_cards">
                 <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
-                    @foreach ($course->subsections as $subsection)
-                        <div class="card p-7.5 {{ !$subsection->can_access ? 'opacity-50 pointer-events-none' : '' }}">
+                    @foreach ($course->subsections as $index => $subsection)
+                        @php
+                            // Determine if the previous subsection is completed
+                            $previousSubsectionCompleted = $index > 0 && $course->subsections[$index - 1]->is_completed;
+                            $canAccess = $index == 0 || $previousSubsectionCompleted; // Allow access if it's the first subsection or the previous one is completed
+                        @endphp
+
+                        <div class="card p-7.5 {{ !$canAccess ? 'opacity-50 pointer-events-none' : '' }}">
                             <div class="flex items-center justify-between mb-3 lg:mb-6">
                                 <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
                                     {{ $subsection->order }} <!-- Display subsection order -->
                                 </div>
 
-                                @if ($subsection->can_access)
-                                    <a href="{{route('courses.enroll', $subsection->id)}}" class="badge badge-success badge-outline">
-                                        {{ $subsection->enrolled ? 'Enrolled' : 'Enroll' }}</a>
+                                @if ($canAccess)
+                                    <a href="{{ route('courses.enroll', $subsection->id) }}"
+                                        class="badge badge-success badge-outline">
+                                        {{ $subsection->enrolled ? 'Enrolled' : 'Enroll' }}
+                                    </a>
                                 @else
                                     <span class="badge badge-secondary badge-outline">
-                                        {{ $subsection->enrolled ? 'Enrolled' : 'Locked' }}</span>
+                                        {{ $subsection->enrolled ? 'Enrolled' : 'Locked' }}
+                                    </span>
                                 @endif
 
                             </div>
@@ -78,6 +87,7 @@
                     </a>
                 </div>
             </div>
+
 
             <!-- end: list -->
         </div>

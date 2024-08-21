@@ -952,9 +952,9 @@
                                                  <div class="flex justify-end mt-4">
                                                      @if ($completedModuleIds->contains($courseModule->id))
                                                          <!-- Course Module is Completed -->
-                                                         <div class="text-green-600 font-semibold">
-                                                             Course Module is Completed!
-                                                         </div>
+                                                         <span
+                                                             class="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">🎉
+                                                             Course module is Completed! 🎉 </span>
                                                      @else
                                                          <!-- Mark as Done Button -->
                                                          <form method="POST"
@@ -978,8 +978,12 @@
                                                  <div class="flex flex-col mt-4">
                                                      @if ($isSubsectionCompleted)
                                                          <!-- Completion Message -->
-                                                         <div class="text--600 font-semibold">
-                                                             🎉 Course Subsection is Completed! 🎉 
+                                                         <div class="flex justify-end mt-4">
+                                                             <div class="text--600 font-semibold">
+                                                                 <span
+                                                                     class="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">🎉
+                                                                     Course Subsection is Completed! 🎉 </span>
+                                                             </div>
                                                          </div>
                                                      @else
                                                          <!-- Check if all modules are completed to enable the button -->
@@ -991,7 +995,7 @@
                                                                  @method('PATCH')
 
                                                                  <button type="submit"
-                                                                     class="button bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 transition-colors duration-300">
+                                                                     class="button ">
                                                                      <svg xmlns="http://www.w3.org/2000/svg"
                                                                          fill="none" viewBox="0 0 24 24"
                                                                          stroke-width="1.5" stroke="currentColor"
@@ -1006,7 +1010,7 @@
                                                          @else
                                                              <!-- Button Disabled -->
                                                              <button type="button"
-                                                                 class="button bg-gray-400 text-white rounded-full p-2 cursor-not-allowed"
+                                                                 class="button gray"
                                                                  disabled>
                                                                  <svg xmlns="http://www.w3.org/2000/svg"
                                                                      fill="none" viewBox="0 0 24 24"
@@ -1039,6 +1043,45 @@
 
                                      <!-- Comments Section -->
                                      <div class="container mx-auto px-4 lg:px-0">
+                                         <div class="mt-8">
+                                             <div class="rounded-md">
+
+
+                                                 <!-- Comment Form -->
+                                                 <div id="reply-message" class="mb-2 text-sm text-gray-600 rounded p-2 "></div>
+
+
+                                                 <form method="POST" action="{{ route('comments.store') }}"
+                                                     class="flex items-center bg-white border border-gray-300 rounded-full px-3 py-1.5 shadow-sm">
+                                                     @csrf
+                                                     <input type="hidden" name="subsection_id"
+                                                         value="{{ $subsection->id }}">
+                                                     <input type="hidden" name="parent_id" id="parent_id">
+
+                                                     <input type="text" name="comment" id="comment"
+                                                         placeholder="Write a comment..."
+                                                         class="flex-grow bg-transparent border-none focus:outline-none focus:ring-0 placeholder-gray-500 text-sm px-2">
+
+                                                     <button type="submit"
+                                                         class="ml-2 bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 transition-colors duration-300">
+                                                         <svg class="h-5 w-5" width="24" height="24"
+                                                             viewBox="0 0 24 24" stroke-width="2"
+                                                             stroke="currentColor" fill="none"
+                                                             stroke-linecap="round" stroke-linejoin="round">
+                                                             <path stroke="none" d="M0 0h24v24H0z" />
+                                                             <circle cx="12" cy="12" r="9" />
+                                                             <line x1="16" y1="12" x2="8"
+                                                                 y2="12" />
+                                                             <line x1="16" y1="12" x2="12"
+                                                                 y2="16" />
+                                                             <line x1="16" y1="12" x2="12"
+                                                                 y2="8" />
+                                                         </svg>
+                                                     </button>
+                                                 </form>
+                                                 <br><br>
+                                             </div>
+                                         </div>
                                          <div class="lg:flex lg:space-x-6 mt-6">
                                              <div class="w-full">
                                                  <div class="space-y-4">
@@ -1129,44 +1172,18 @@
                                              </div>
                                          </div>
 
+
                                          <!-- Comment Form -->
-                                         <div class="mt-8">
-                                             <div class="rounded-md">
 
-                                                 <!-- Comment Form -->
-                                                 <div id="reply-message" class="mb-2 text-sm text-gray-600"></div>
-                                                 <form method="POST" action="{{ route('comments.store') }}"
-                                                     class="flex items-center bg-white border border-gray-300 rounded-full px-3 py-1.5 shadow-sm">
-                                                     @csrf
-                                                     <input type="hidden" name="subsection_id"
-                                                         value="{{ $subsection->id }}">
-                                                     <input type="hidden" name="parent_id" id="parent_id">
-
-                                                     <input type="text" name="comment" id="comment"
-                                                         placeholder="Write a comment..."
-                                                         class="flex-grow bg-transparent border-none focus:outline-none focus:ring-0 placeholder-gray-500 text-sm px-2">
-
-                                                     <button type="submit"
-                                                         class="ml-2 bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 transition-colors duration-300">
-                                                         <svg class="h-5 w-5" width="24" height="24"
-                                                             viewBox="0 0 24 24" stroke-width="2"
-                                                             stroke="currentColor" fill="none"
-                                                             stroke-linecap="round" stroke-linejoin="round">
-                                                             <path stroke="none" d="M0 0h24v24H0z" />
-                                                             <circle cx="12" cy="12" r="9" />
-                                                             <line x1="16" y1="12" x2="8"
-                                                                 y2="12" />
-                                                             <line x1="16" y1="12" x2="12"
-                                                                 y2="16" />
-                                                             <line x1="16" y1="12" x2="12"
-                                                                 y2="8" />
-                                                         </svg>
-                                                     </button>
-                                                 </form>
-                                                 <br><br>
-                                             </div>
-                                         </div>
                                      </div>
+
+                                     <script>
+                                         function setReply(name, id) {
+                                             document.getElementById('reply-message').textContent = `Replying to ${name}`;
+                                             document.getElementById('parent_id').value = id;
+                                             document.getElementById('comment').focus();
+                                         }
+                                     </script>
                                  </div>
 
                                  <!-- Faq -->
