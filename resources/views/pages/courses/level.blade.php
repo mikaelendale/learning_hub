@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="flex flex-col gap-1 lg:gap-2.5">
                                         <a class="text-base font-semibold text-gray-900 hover:text-primary-active"
-                                            href="/metronic/tailwind/demo2/account/billing/basic">
+                                            href="">
                                             {{ $course->name }}
                                         </a>
                                         <span class="text-2sm font-medium text-gray-600">

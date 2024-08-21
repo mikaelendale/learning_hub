@@ -189,9 +189,11 @@ class CoursesController extends Controller
 
     public function list()
     {
-        $courses = Courses::all();
+        $courses = Courses::with('students')->get();
+
         return view('pages.courses.list', compact('courses'));
     }
+
     //commenting func
 
     public function store(Request $request)

@@ -29,6 +29,10 @@ public function subsections()
 {
     return $this->hasMany(Subsection::class, 'course_id');
 }
+public function students()
+    {
+        return $this->hasMany(Students::class, 'class_attended', 'level');
+    }
 
 
 }
