@@ -30,14 +30,22 @@
                             // Determine if the previous subsection is completed
                             $previousSubsectionCompleted = $index > 0 && $course->subsections[$index - 1]->is_completed;
                             $canAccess = $index == 0 || $previousSubsectionCompleted; // Allow access if it's the first subsection or the previous one is completed
+
+                            // Calculate progress based on completed modules
+                            $totalModules = $subsection->courseModules->count();
+                            $completedModules = $subsection->courseModules
+                                ->filter(function ($module) use ($userId) {
+                                    return $module->isCompletedBy($userId);
+                                })
+                                ->count();
+                            $progress = $totalModules > 0 ? ($completedModules / $totalModules) * 100 : 0;
                         @endphp
 
                         <div class="card p-7.5 {{ !$canAccess ? 'opacity-50 pointer-events-none' : '' }}">
                             <div class="flex items-center justify-between mb-3 lg:mb-6">
                                 <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
                                     {{ $subsection->order }} <!-- Display subsection order -->
-                                </div> 
-                                
+                                </div>
 
                                 @if ($canAccess)
                                     <a href="{{ route('courses.enroll', $subsection->id) }}"
@@ -69,7 +77,8 @@
                                 </span>
                             </div>
                             <div class="progress h-1.5 progress-primary mb-4 lg:mb-8">
-                                <div class="progress-bar" style="width: {{ $subsection->progress }}%"></div>
+                                <div class="progress-bar" style="width: {{ $progress }}%"></div>
+                                <!-- Set progress bar width -->
                             </div>
                             <div class="flex -space-x-2">
                                 @foreach ($subsection->enrolledStudents as $student)
@@ -88,6 +97,7 @@
                     </a>
                 </div>
             </div>
+
 
 
             <!-- end: list -->

@@ -105,17 +105,22 @@ class CoursesController extends Controller
 
         // Determine if the user has completed the previous subsection
         foreach ($course->subsections as $subsection) {
-            $subsection->can_access = true; // Default to true
-            if ($subsection->order > 1) {
-                // Find the previous subsection
+            if ($subsection->order == 1) {
+                // The first subsection is always accessible
+                $subsection->can_access = true;
+            } else {
+                // Check if the previous subsection is completed
                 $previousSubsection = $course->subsections->where('order', $subsection->order - 1)->first();
                 if ($previousSubsection && !$completedSubsections->contains($previousSubsection->id)) {
                     $subsection->can_access = false;
+                } else {
+                    $subsection->can_access = true;
                 }
             }
         }
 
-        return view('pages.courses.detail', compact('course'));
+        // Pass $userId to the view along with the course
+        return view('pages.courses.detail', compact('course', 'userId'));
     }
 
     public function show($id)

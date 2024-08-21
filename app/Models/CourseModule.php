@@ -16,15 +16,25 @@ class CourseModule extends Model
         'video_url',
         'order',
     ];
+    /**
+ * Check if the course module is completed by a specific user.
+ *
+ * @param int $userId
+ * @return bool
+ */
+
+    public function isCompletedBy($userId)
+    {
+        return $this->completed()->where('user_id', $userId)->exists();
+    }
     public function subsection()
-{
-    return $this->belongsTo(Subsection::class, 'subsection_id');
-}
+    {
+        return $this->belongsTo(Subsection::class, 'subsection_id');
+    }
 
-public function subsections()
-{
-    return $this->hasMany(Subsection::class, 'course_id', 'course_id'); // Assuming subsections share the same course_id
-}
-
+    public function subsections()
+    {
+        return $this->hasMany(Subsection::class, 'course_id', 'course_id'); // Assuming subsections share the same course_id
+    }
 
 }
