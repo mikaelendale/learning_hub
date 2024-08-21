@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/courses/list', [CoursesController::class, 'list'])->name('courses.list');
     Route::post('/comments/store', [CoursesController::class, 'store'])->name('comments.store');
     Route::patch('/courses/coursemodule/markdone/{id}', [CoursesController::class, 'markModuleDone'])->name('coursemodule.markdone');
+    Route::patch('/courses/subsection/{id}/complete', [CoursesController::class, 'completeSubsection'])->name('subsection.complete');
+
 });
 
 //courses pages
