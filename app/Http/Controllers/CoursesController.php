@@ -119,38 +119,36 @@ class CoursesController extends Controller
     }
 
     public function show($id)
-{
-    $studentId = Auth::id(); // Get the authenticated student ID
+    {
+        // Retrieve the subsection with related courseModules and comments
+        $subsection = Subsection::with(['courseModules', 'comments.students'])->findOrFail($id);
 
-    // Fetch the course module with its related subsections
-    $courseModule = CourseModule::with('subsections')->find($id);
+        // Get the authenticated student ID
+        $studentId = Auth::id();
 
-    if (!$courseModule) {
-        // Handle the case where the course module is not found
-        return abort(404, 'Course Module not found');
+        // Get the course module associated with this subsection
+        $courseModule = CourseModule::where('subsection_id', $subsection->id)->first();
+
+        // Check if $courseModule is null
+        if (!$courseModule) {
+            return redirect()->back()->with('error', 'Course module not found.');
+        }
+
+        // Get the last subsection within the same course module
+        $lastSubsection = $courseModule->subsections->sortByDesc('order')->first();
+
+        // Check if the last subsection is completed by the student
+        $isCompleted = $lastSubsection ? SubsectionCompleted::where('subsection_id', $lastSubsection->id)
+            ->where('student_id', $studentId)
+            ->exists() : false;
+
+        // Check if the course module is marked as completed
+        $isModuleCompleted = ModuleCompleted::where('course_module_id', $courseModule->id)
+            ->where('student_id', $studentId)
+            ->exists();
+
+        return view('pages.courses.course', compact('subsection', 'courseModule', 'isCompleted', 'lastSubsection', 'isModuleCompleted'));
     }
-
-    // Get the last subsection in this module
-    $lastSubsection = $courseModule->subsections->sortByDesc('order')->first();
-
-    if (!$lastSubsection) {
-        // Handle the case where there are no subsections
-        return abort(404, 'No subsections found for this course module');
-    }
-
-    // Check if the last subsection is completed
-    $isCompleted = SubsectionCompleted::where('subsection_id', $lastSubsection->id)
-                                      ->where('student_id', $studentId)
-                                      ->exists();
-
-    // Check if the module is completed
-    $isModuleCompleted = ModuleCompleted::where('course_module_id', $courseModule->id)
-                                        ->where('student_id', $studentId)
-                                        ->exists();
-
-    return view('pages.courses.course', compact('courseModule', 'isCompleted', 'lastSubsection', 'isModuleCompleted'));
-}
-
 
     public function list()
     {

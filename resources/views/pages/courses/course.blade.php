@@ -948,48 +948,24 @@
                                              <p>{!! $courseModule->description !!}</p>
                                              <div class="container">
                                                  <div class="flex justify-end mt-4">
-                                                     <!-- Form to mark course module as done -->
-                                                     @if (!$isModuleCompleted)
-                                                         <form method="POST"
-                                                             action="{{ route('coursemodule.markdone', $courseModule->id) }}">
-                                                             @csrf
-                                                             @method('PATCH') <!-- or POST depending on your logic -->
+                                                     <form method="POST"
+                                                         action="{{ route('coursemodule.markdone', $courseModule->id) }}">
+                                                         @csrf
+                                                         @method('PATCH')
 
-                                                             <button type="submit" class="button">
-                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                     viewBox="0 0 24 24" stroke-width="1.5"
-                                                                     stroke="currentColor" class="w-6 h-6 size-6">
-                                                                     <path stroke-linecap="round"
-                                                                         stroke-linejoin="round"
-                                                                         d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                                 </svg>&nbsp;
-                                                                 Mark Done
-                                                             </button>
-                                                         </form>
-                                                     @endif
-                                                 </div>
-                                                 <div class="flex justify-end mt-4">
-                                                     <!-- Form to mark subsection as done -->
-                                                     @if ($subsection->id == $lastSubsection->id && !$isCompleted)
-                                                         <form method="POST"
-                                                             action="{{ route('subsection.markdone', $subsection->id) }}">
-                                                             @csrf
-                                                             @method('PATCH') <!-- or POST depending on your logic -->
-
-                                                             <button type="submit" class="button">
-                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                     viewBox="0 0 24 24" stroke-width="1.5"
-                                                                     stroke="currentColor" class="w-6 h-6 size-6">
-                                                                     <path stroke-linecap="round"
-                                                                         stroke-linejoin="round"
-                                                                         d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                                 </svg>&nbsp;
-                                                                 Complete Subsection
-                                                             </button>
-                                                         </form>
-                                                     @endif
+                                                         <button type="submit" class="button">
+                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                 viewBox="0 0 24 24" stroke-width="1.5"
+                                                                 stroke="currentColor" class="w-6 h-6 size-6">
+                                                                 <path stroke-linecap="round" stroke-linejoin="round"
+                                                                     d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                             </svg>&nbsp;
+                                                             Mark Done
+                                                         </button>
+                                                     </form>
                                                  </div>
                                              </div>
+
 
                                          </div>
                                      </div>
@@ -1022,8 +998,7 @@
 
                                                                      <!-- Comment Content -->
                                                                      <div class="flex-1">
-                                                                         <div
-                                                                             class="flex justify-between items-center">
+                                                                         <div class="flex justify-between items-center">
                                                                              <!-- User Name -->
                                                                              <h4
                                                                                  class="text-sm font-semibold text-gray-700">

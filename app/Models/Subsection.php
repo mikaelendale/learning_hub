@@ -28,17 +28,15 @@ class Subsection extends Model
         return $this->hasMany(Enrolled::class, 'subsection_id');
     }
     public function courseModules()
-    {
-        return $this->hasMany(CourseModule::class);
-    }
+{
+    return $this->hasMany(CourseModule::class, 'subsection_id');
+}
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
-   public function courseModule()
-    {
-        return $this->belongsTo(CourseModule::class, 'course_id', 'id'); // Update 'course_id' and 'id' based on your actual foreign key and local key
-    }
+    
     
 
 }

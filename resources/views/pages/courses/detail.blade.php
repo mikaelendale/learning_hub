@@ -20,14 +20,6 @@
                 <h3 class="text-lg text-gray-900 font-semibold">
                     {{ $course->name }}
                 </h3>
-                <div class="btn-tabs" data-tabs="true">
-                    <a class="btn btn-icon active" data-tab-toggle="#projects_cards" href="#">
-                        <i class="ki-filled ki-category"></i>
-                    </a>
-                    <a class="btn btn-icon" data-tab-toggle="#projects_list" href="#">
-                        <i class="ki-filled ki-row-horizontal"></i>
-                    </a>
-                </div>
             </div>
             <!-- end: toolbar -->
             <!-- begin: cards -->
