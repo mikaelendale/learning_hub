@@ -16,16 +16,11 @@ class CourseModule extends Model
         'video_url',
         'order',
     ];
-    /**
- * Check if the course module is completed by a specific user.
- *
- * @param int $userId
- * @return bool
- */
-
-    public function isCompletedBy($userId)
+    public function isCompletedBy($studentId)
     {
-        return $this->completed()->where('user_id', $userId)->exists();
+        return ModuleCompleted::where('course_module_id', $this->id)
+            ->where('student_id', $studentId)
+            ->exists();
     }
     public function subsection()
     {

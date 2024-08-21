@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\CourseModule;
 use App\Models\Courses;
-use App\Models\Enrolled;
 use App\Models\ModuleCompleted;
 use App\Models\Subsection;
 use App\Models\SubsectionCompleted;
@@ -99,8 +98,8 @@ class CoursesController extends Controller
 
         $userId = Auth::id();
 
-        // Fetch the user's completed subsections
-        $completedSubsections = Enrolled::where('students_id', $userId)
+        // Fetch the user's completed subsections using the SubsectionCompleted model
+        $completedSubsections = SubsectionCompleted::where('student_id', $userId)
             ->pluck('subsection_id');
 
         // Determine if the user has completed the previous subsection
@@ -117,9 +116,18 @@ class CoursesController extends Controller
                     $subsection->can_access = true;
                 }
             }
+
+            // Calculate progress based on the course modules
+            $courseModules = $subsection->courseModules;
+            $completedModulesCount = $courseModules->filter(function ($module) use ($userId) {
+                return $module->isCompletedBy($userId);
+            })->count();
+
+            $subsection->progress = $courseModules->count() > 0
+            ? ($completedModulesCount / $courseModules->count()) * 100
+            : 0;
         }
 
-        // Pass $userId to the view along with the course
         return view('pages.courses.detail', compact('course', 'userId'));
     }
 

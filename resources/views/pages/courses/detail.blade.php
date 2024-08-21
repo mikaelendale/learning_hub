@@ -27,9 +27,15 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
                     @foreach ($course->subsections as $index => $subsection)
                         @php
-                            // Determine if the previous subsection is completed
-                            $previousSubsectionCompleted = $index > 0 && $course->subsections[$index - 1]->is_completed;
-                            $canAccess = $index == 0 || $previousSubsectionCompleted; // Allow access if it's the first subsection or the previous one is completed
+                            // Determine if the previous subsection is completed using SubsectionCompleted model
+                            $previousSubsection = $index > 0 ? $course->subsections[$index - 1] : null;
+                            $previousSubsectionCompleted = $previousSubsection
+                                ? \App\Models\SubsectionCompleted::where('student_id', $userId)
+                                    ->where('subsection_id', $previousSubsection->id)
+                                    ->exists()
+                                : true; // Allow access if there's no previous subsection
+
+                            $canAccess = $index == 0 || $previousSubsectionCompleted;
 
                             // Calculate progress based on completed modules
                             $totalModules = $subsection->courseModules->count();
@@ -44,7 +50,7 @@
                         <div class="card p-7.5 {{ !$canAccess ? 'opacity-50 pointer-events-none' : '' }}">
                             <div class="flex items-center justify-between mb-3 lg:mb-6">
                                 <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                    {{ $subsection->order }} <!-- Display subsection order -->
+                                    {{ $subsection->order }}
                                 </div>
 
                                 @if ($canAccess)
@@ -62,34 +68,34 @@
                             <div class="flex flex-col mb-3 lg:mb-6">
                                 <a class="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px"
                                     href="#">
-                                    {{ $subsection->name }} <!-- Display subsection name -->
+                                    {{ $subsection->name }}
                                 </a>
                                 <span class="text-sm font-medium text-gray-600">
-                                    {{ $subsection->details }} <!-- Display subsection details -->
+                                    {{ $subsection->details }}
                                 </span>
                             </div>
                             <div class="flex items-center gap-5 mb-3.5 lg:mb-7">
                                 <span class="text-sm font-medium text-gray-500">
                                     Start:
                                     <span class="text-sm font-semibold text-gray-700">
-                                        {{ $subsection->enrolled_at }} <!-- Display enrollment timestamp -->
+                                        {{ $subsection->enrolled_at }}
                                     </span>
                                 </span>
                             </div>
                             <div class="progress h-1.5 progress-primary mb-4 lg:mb-8">
                                 <div class="progress-bar" style="width: {{ $progress }}%"></div>
-                                <!-- Set progress bar width -->
                             </div>
                             <div class="flex -space-x-2">
                                 @foreach ($subsection->enrolledStudents as $student)
                                     <div class="flex">
                                         <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                            src="{{ $student->avatar_url }}"> <!-- Display enrolled students' picture -->
+                                            src="{{ $student->avatar_url }}">
                                     </div>
                                 @endforeach
                             </div>
                         </div>
                     @endforeach
+
                 </div>
                 <div class="flex grow justify-center pt-5 lg:pt-7.5">
                     <a class="btn btn-link" href="#">
