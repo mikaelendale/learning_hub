@@ -125,10 +125,11 @@ class CoursesController extends Controller
         $subsection = Subsection::with(['courseModule', 'comments.students'])->findOrFail($id);
 
         // Fetch the course module based on the course_id
-        $courseModule = CourseModule::where('id', $subsection->course_id)->firstOrFail();
+        $courseModule = CourseModule::where('subsection_id', $subsection->id)->firstOrFail();
+
 
         // Get the last subsection for the course
-        $lastSubsection = Subsection::where('course_id', $subsection->course_id)
+        $lastSubsection = Subsection::where('id', $subsection->id)
             ->orderBy('order', 'desc')
             ->first();
 
