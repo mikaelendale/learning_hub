@@ -74,17 +74,7 @@
                     <div class="flex flex-wrap items-center gap-5 justify-between">
                         <h3 class="text-lg text-gray-900 font-semibold">
                             All courses
-                        </h3>
-                        <div class="btn-tabs" data-tabs="true">
-                            <a class="btn btn-icon active" data-tab-toggle="#projects_cards" href="#">
-                                <i class="ki-filled ki-category">
-                                </i>
-                            </a>
-                            <a class="btn btn-icon" data-tab-toggle="#projects_list" href="#">
-                                <i class="ki-filled ki-row-horizontal">
-                                </i>
-                            </a>
-                        </div>
+                        </h3> 
                     </div>
                     <!-- end: toolbar -->
                     <!-- begin: cards -->
@@ -95,7 +85,7 @@
                                 <div class="flex items-center justify-between mb-3 lg:mb-6">
                                     <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
                                         <img alt="" class=""
-                                            src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/plurk.svg">
+                                            src="{{$course->image}}">
                                     </div>
                                     <span class="badge badge-primary badge-outline">
                                         {{$course->category}}
@@ -109,14 +99,6 @@
                                     <span class="text-sm font-medium text-gray-600">
                                         {{$course->description}}
                                     </span>
-                                </div>
-                                <div class="flex items-center gap-5 mb-3.5 lg:mb-7">
-                                    <span class="text-sm font-medium text-gray-500">
-                                        Duration:
-                                        <span class="text-sm font-semibold text-gray-700">
-                                            {{$course->duration}}
-                                        </span>
-                                    </span> 
                                 </div> 
                                 <div class="flex -space-x-2">
                                     <div class="flex">
@@ -145,128 +127,6 @@
                         </div>
                     </div>
                     <!-- end: cards -->
-                    <!-- begin: list -->
-                    <div class="hidden" id="projects_list">
-                        <div class="flex flex-col gap-5 lg:gap-7.5">
-                            <div class="card p-7">
-                                <div class="flex items-center flex-wrap justify-between gap-5">
-                                    <div class="flex items-center gap-3.5">
-                                        <div
-                                            class="flex items-center justify-center size-14 shrink-0 rounded-lg bg-gray-100">
-                                            <img alt="" class=""
-                                                src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/plurk.svg">
-                                        </div>
-                                        <div class="flex flex-col">
-                                            <a class="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px"
-                                                href="#">
-                                                Phoenix SaaS
-                                            </a>
-                                            <span class="text-sm font-medium text-gray-600">
-                                                Real-time photo sharing app
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center flex-wrap gap-5 lg:gap-20">
-                                        <div class="flex items-center flex-wrap gap-5 lg:gap-14">
-                                            <span class="badge badge-primary badge-outline">
-                                                In Progress
-                                            </span>
-                                            <div class="progress h-1.5 w-36 progress-primary">
-                                                <div class="progress-bar" style="width: 55%">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-5 lg:gap-14">
-                                            <div class="flex justify-end w-24">
-                                                <div class="flex -space-x-2">
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                                            src="assets/media/avatars/300-4.png">
-                                                    </div>
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                                            src="assets/media/avatars/300-2.png">
-                                                    </div>
-                                                    <div class="flex">
-                                                        <span
-                                                            class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-[30px] text-primary-inverse ring-primary-light bg-primary">
-                                                            S
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu" data-menu="true">
-                                                <div class="menu-item menu-item-dropdown" data-menu-item-offset="0, 10px"
-                                                    data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown"
-                                                    data-menu-item-trigger="click|lg:click">
-                                                    <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                                        <i class="ki-filled ki-dots-vertical">
-                                                        </i>
-                                                    </button>
-                                                    <div class="menu-dropdown menu-default w-full max-w-[200px]"
-                                                        data-menu-dismiss="true">
-                                                        <div class="menu-item">
-                                                            <a class="menu-link"
-                                                                href="../../account/home/settings-enterprise.html">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-setting-3">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Settings
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link"
-                                                                href="../../account/members/import-members.html">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-some-files">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Import
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="../../account/activity.html">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-cloud-change">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Activity
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" data-modal-toggle="#report_user_modal"
-                                                                href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-dislike">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Report
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="flex grow justify-center pt-5 lg:pt-7.5">
-                            <a class="btn btn-link" href="#">
-                                Show more projects
-                            </a>
-                        </div>
-                    </div>
-                    <!-- end: list -->
                 </div>
             </div>
         </div>
