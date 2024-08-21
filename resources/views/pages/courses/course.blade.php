@@ -949,57 +949,39 @@
                                              <div class="container">
                                                  <div class="flex justify-end mt-4">
                                                      <!-- Form to mark course module as done -->
-                                                     @if ($courseModule->subsections && $courseModule->subsections->isNotEmpty())
-                                                         @php
-                                                             $sortedSubsections = $courseModule->subsections->sortByDesc(
-                                                                 'order',
-                                                             );
-                                                             $firstSortedSubsection = $sortedSubsections->first();
-                                                         @endphp
+                                                     @if ($lastSubsection->id == $courseModule->subsections->sortByDesc('order')->first()->id)
+                                                         <form method="POST"
+                                                             action="{{ route('coursemodule.markdone', $courseModule->id) }}">
+                                                             @csrf
+                                                             @method('PATCH') <!-- or POST depending on your logic -->
 
-                                                         <!-- Debugging: Print values to ensure they're set correctly -->
-                                                         <div>
-                                                             <p>Last Subsection ID: {{ $lastSubsection->id }}</p>
-                                                             <p>First Sorted Subsection ID:
-                                                                 {{ $firstSortedSubsection->id }}</p>
-                                                         </div> 
-                                                             <form method="POST"
-                                                                 action="{{ route('coursemodule.markdone', $courseModule->id) }}">
-                                                                 @csrf
-                                                                 @method('PATCH')
-                                                                 <!-- or POST depending on your logic -->
-
-                                                                 <button type="submit" class="button"
-                                                                     @if ($isCompleted) disabled @endif>
-                                                                     @if ($isCompleted)
-                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             fill="none" viewBox="0 0 24 24"
-                                                                             stroke-width="1.5" stroke="currentColor"
-                                                                             class="w-6 h-6 size-6">
-                                                                             <path stroke-linecap="round"
-                                                                                 stroke-linejoin="round"
-                                                                                 d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                                         </svg>&nbsp;
-                                                                         Completed
-                                                                     @else
-                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             fill="none" viewBox="0 0 24 24"
-                                                                             stroke-width="1.5" stroke="currentColor"
-                                                                             class="w-6 h-6 size-6">
-                                                                             <path stroke-linecap="round"
-                                                                                 stroke-linejoin="round"
-                                                                                 d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                                         </svg>&nbsp;
-                                                                         Mark Done
-                                                                     @endif
-                                                                 </button>
-                                                             </form> 
-                                                     @else
-                                                         <!-- Debugging: Show message if no subsections are found -->
-                                                         <p>No subsections found for this course module.</p>
+                                                             <button type="submit" class="button"
+                                                                 @if ($isCompleted) disabled @endif>
+                                                                 @if ($isCompleted)
+                                                                     <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         fill="none" viewBox="0 0 24 24"
+                                                                         stroke-width="1.5" stroke="currentColor"
+                                                                         class="w-6 h-6 size-6">
+                                                                         <path stroke-linecap="round"
+                                                                             stroke-linejoin="round"
+                                                                             d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                     </svg>&nbsp;
+                                                                     Completed
+                                                                 @else
+                                                                     <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         fill="none" viewBox="0 0 24 24"
+                                                                         stroke-width="1.5" stroke="currentColor"
+                                                                         class="w-6 h-6 size-6">
+                                                                         <path stroke-linecap="round"
+                                                                             stroke-linejoin="round"
+                                                                             d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                     </svg>&nbsp;
+                                                                     Mark Done
+                                                                 @endif
+                                                             </button>
+                                                         </form>
                                                      @endif
                                                  </div>
-
                                              </div>
                                          </div>
                                      </div>
