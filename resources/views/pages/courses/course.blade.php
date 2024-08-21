@@ -975,41 +975,53 @@
                                                          </form>
                                                      @endif
                                                  </div>
-                                                 <div class="flex justify-end mt-4">
-                                                     @if ($allModulesCompleted)
-                                                         <!-- Finish Course Section Button -->
-                                                         <form method="POST"
-                                                             action="{{ route('subsection.complete', $subsection->id) }}">
-                                                             @csrf
-                                                             @method('PATCH')
+                                                 <div class="flex flex-col mt-4">
+                                                     @if ($isSubsectionCompleted)
+                                                         <!-- Completion Message -->
+                                                         <div class="text--600 font-semibold">
+                                                             🎉 Course Subsection is Completed! 🎉 
+                                                         </div>
+                                                     @else
+                                                         <!-- Check if all modules are completed to enable the button -->
+                                                         @if ($allModulesCompleted)
+                                                             <!-- Finish Course Section Button -->
+                                                             <form method="POST"
+                                                                 action="{{ route('subsection.complete', $subsection->id) }}">
+                                                                 @csrf
+                                                                 @method('PATCH')
 
-                                                             <button type="submit"
-                                                                 class="button bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 transition-colors duration-300"
-                                                                 {{ $isModuleCompleted ? '' : 'disabled' }}>
-                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                     viewBox="0 0 24 24" stroke-width="1.5"
-                                                                     stroke="currentColor" class="w-6 h-6">
+                                                                 <button type="submit"
+                                                                     class="button bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 transition-colors duration-300">
+                                                                     <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         fill="none" viewBox="0 0 24 24"
+                                                                         stroke-width="1.5" stroke="currentColor"
+                                                                         class="w-6 h-6">
+                                                                         <path stroke-linecap="round"
+                                                                             stroke-linejoin="round"
+                                                                             d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                     </svg>
+                                                                     &nbsp; Finish Course Section
+                                                                 </button>
+                                                             </form>
+                                                         @else
+                                                             <!-- Button Disabled -->
+                                                             <button type="button"
+                                                                 class="button bg-gray-400 text-white rounded-full p-2 cursor-not-allowed"
+                                                                 disabled>
+                                                                 <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     fill="none" viewBox="0 0 24 24"
+                                                                     stroke-width="1.5" stroke="currentColor"
+                                                                     class="w-6 h-6">
                                                                      <path stroke-linecap="round"
                                                                          stroke-linejoin="round"
                                                                          d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                                  </svg>
                                                                  &nbsp; Finish Course Section
                                                              </button>
-                                                         </form>
-                                                     @else
-                                                         <!-- Button Disabled -->
-                                                         <button type="button"
-                                                             class="button bg-gray-400 text-white rounded-full p-2 cursor-not-allowed">
-                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                 viewBox="0 0 24 24" stroke-width="1.5"
-                                                                 stroke="currentColor" class="w-6 h-6">
-                                                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                                                     d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                             </svg>
-                                                             &nbsp; Finish Course Section
-                                                         </button>
+                                                         @endif
                                                      @endif
                                                  </div>
+
                                              </div>
                                          </div>
                                      </div>

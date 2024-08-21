@@ -137,6 +137,11 @@ class CoursesController extends Controller
             return $completedModuleIds->contains($module->id);
         });
 
+        // Check if the subsection is completed by the student
+        $isSubsectionCompleted = SubsectionCompleted::where('subsection_id', $subsection->id)
+            ->where('student_id', $studentId)
+            ->exists();
+
         // Calculate the count of completed modules for the logged-in student
         $completedModulesCount = $completedModuleIds->intersect($courseModules->pluck('id'))->count();
 
@@ -166,7 +171,7 @@ class CoursesController extends Controller
             ->exists();
 
         // Return the view with variables
-        return view('pages.courses.course', compact('subsection', 'courseModule', 'isCompleted', 'lastSubsection', 'isModuleCompleted', 'completedModuleIds', 'progress', 'totalModules', 'allModulesCompleted'));
+        return view('pages.courses.course', compact('subsection', 'courseModule', 'isCompleted', 'lastSubsection', 'isModuleCompleted', 'completedModuleIds', 'progress', 'totalModules', 'allModulesCompleted', 'isSubsectionCompleted'));
     }
 
     public function list()
