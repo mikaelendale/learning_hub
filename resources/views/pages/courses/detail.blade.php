@@ -36,7 +36,8 @@
                             <div class="flex items-center justify-between mb-3 lg:mb-6">
                                 <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
                                     {{ $subsection->order }} <!-- Display subsection order -->
-                                </div>
+                                </div> 
+                                
 
                                 @if ($canAccess)
                                     <a href="{{ route('courses.enroll', $subsection->id) }}"
