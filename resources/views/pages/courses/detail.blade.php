@@ -97,11 +97,6 @@
                     @endforeach
 
                 </div>
-                <div class="flex grow justify-center pt-5 lg:pt-7.5">
-                    <a class="btn btn-link" href="#">
-                        Show more projects
-                    </a>
-                </div>
             </div>
 
 
