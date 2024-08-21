@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\CourseModule;
 use App\Models\Courses;
 use App\Models\Enrolled;
+use App\Models\ModuleCompleted;
 use App\Models\Subsection;
 use App\Models\SubsectionCompleted;
 use Illuminate\Http\Request;
@@ -118,27 +119,38 @@ class CoursesController extends Controller
     }
 
     public function show($id)
-    {
-        $studentId = Auth::id();
+{
+    $studentId = Auth::id(); // Get the authenticated student ID
 
-        // Fetch the subsection
-        $subsection = Subsection::with(['courseModule', 'comments.students'])->findOrFail($id);
+    // Fetch the course module with its related subsections
+    $courseModule = CourseModule::with('subsections')->find($id);
 
-        // Fetch the course module based on the course_id
-        $courseModule = CourseModule::where('id', $subsection->course_id)->firstOrFail();
-
-        // Get the last subsection for the course
-        $lastSubsection = Subsection::where('course_id', $subsection->course_id)
-            ->orderBy('order', 'desc')
-            ->first();
-
-        // Check if the last subsection is completed by the student
-        $isCompleted = SubsectionCompleted::where('subsection_id', $lastSubsection->id)
-            ->where('student_id', $studentId)
-            ->exists();
-
-        return view('pages.courses.course', compact('subsection', 'courseModule', 'isCompleted', 'lastSubsection'));
+    if (!$courseModule) {
+        // Handle the case where the course module is not found
+        return abort(404, 'Course Module not found');
     }
+
+    // Get the last subsection in this module
+    $lastSubsection = $courseModule->subsections->sortByDesc('order')->first();
+
+    if (!$lastSubsection) {
+        // Handle the case where there are no subsections
+        return abort(404, 'No subsections found for this course module');
+    }
+
+    // Check if the last subsection is completed
+    $isCompleted = SubsectionCompleted::where('subsection_id', $lastSubsection->id)
+                                      ->where('student_id', $studentId)
+                                      ->exists();
+
+    // Check if the module is completed
+    $isModuleCompleted = ModuleCompleted::where('course_module_id', $courseModule->id)
+                                        ->where('student_id', $studentId)
+                                        ->exists();
+
+    return view('pages.courses.course', compact('courseModule', 'isCompleted', 'lastSubsection', 'isModuleCompleted'));
+}
+
 
     public function list()
     {
@@ -167,11 +179,34 @@ class CoursesController extends Controller
         // Redirect back to the subsection page
         return redirect()->back()->with('success', 'Comment added successfully!');
     }
+    public function markModuleDone($courseModuleId)
+    {
+        $studentId = Auth::id(); // Get the authenticated student ID
+
+        // Check if the module is already marked as completed
+        $alreadyCompleted = ModuleCompleted::where('course_module_id', $courseModuleId)
+            ->where('student_id', $studentId)
+            ->exists();
+
+        if (!$alreadyCompleted) {
+            // Mark the module as done
+            ModuleCompleted::create([
+                'course_module_id' => $courseModuleId,
+                'student_id' => $studentId,
+            ]);
+
+            // Redirect back with a success message
+            return redirect()->back()->with('success', 'Module marked as done!');
+        }
+
+        // If already completed, return with a message
+        return redirect()->back()->with('info', 'You have already completed this module.');
+    }
     public function markSubsectionDone($subsectionId)
     {
-        $studentId = Auth::id(); // Assuming the user is authenticated
+        $studentId = Auth::id(); // Get the authenticated student ID
 
-        // Check if the subsection is already marked as completed by this student
+        // Check if the subsection is already marked as completed
         $alreadyCompleted = SubsectionCompleted::where('subsection_id', $subsectionId)
             ->where('student_id', $studentId)
             ->exists();

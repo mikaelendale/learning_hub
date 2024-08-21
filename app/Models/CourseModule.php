@@ -17,8 +17,12 @@ class CourseModule extends Model
         'order',
     ];
     public function subsection()
-{
-    return $this->belongsTo(Subsection::class, 'subsection_id');
-}
+    {
+        return $this->belongsTo(Subsection::class, 'subsection_id');
+    }
+    public function subsections()
+    {
+        return $this->hasMany(Subsection::class, 'course_id', 'id'); // Update 'course_id' and 'id' based on your actual foreign key and local key
+    }
 
 }
