@@ -954,8 +954,15 @@
                                                              $sortedSubsections = $courseModule->subsections->sortByDesc(
                                                                  'order',
                                                              );
+                                                             $firstSortedSubsection = $sortedSubsections->first();
                                                          @endphp
-                                                         @if ($lastSubsection->id == $sortedSubsections->first()->id)
+
+                                                         <!-- Debugging: Print values to ensure they're set correctly -->
+                                                         <div>
+                                                             <p>Last Subsection ID: {{ $lastSubsection->id }}</p>
+                                                             <p>First Sorted Subsection ID:
+                                                                 {{ $firstSortedSubsection->id }}</p>
+                                                         </div> 
                                                              <form method="POST"
                                                                  action="{{ route('coursemodule.markdone', $courseModule->id) }}">
                                                                  @csrf
@@ -986,8 +993,10 @@
                                                                          Mark Done
                                                                      @endif
                                                                  </button>
-                                                             </form>
-                                                         @endif
+                                                             </form> 
+                                                     @else
+                                                         <!-- Debugging: Show message if no subsections are found -->
+                                                         <p>No subsections found for this course module.</p>
                                                      @endif
                                                  </div>
 
