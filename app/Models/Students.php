@@ -45,4 +45,8 @@ class Students extends Authenticatable
     {
         return $this->hasMany(Enrolled::class, 'students_id');
     }
+    public function completedModules()
+{
+    return $this->hasMany(ModuleCompleted::class, 'student_id'); // Adjust as needed
+}
 }

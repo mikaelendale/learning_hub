@@ -119,36 +119,51 @@ class CoursesController extends Controller
     }
 
     public function show($id)
-    {
-        // Retrieve the subsection with related courseModules and comments
-        $subsection = Subsection::with(['courseModules', 'comments.students'])->findOrFail($id);
+{
+    // Retrieve the subsection with related courseModules and comments
+    $subsection = Subsection::with(['courseModules', 'comments.students'])->findOrFail($id);
 
-        // Get the authenticated student ID
-        $studentId = Auth::id();
+    // Get the authenticated student ID
+    $studentId = Auth::id();
 
-        // Get the course module associated with this subsection
-        $courseModule = CourseModule::where('subsection_id', $subsection->id)->first();
+    // Retrieve completed module IDs for the student
+    $completedModuleIds = auth()->user()->completedModules->pluck('course_module_id');
 
-        // Check if $courseModule is null
-        if (!$courseModule) {
-            return redirect()->back()->with('error', 'Course module not found.');
-        }
+    // Get the course modules associated with this subsection
+    $courseModuleIds = $subsection->courseModules->pluck('id');
 
-        // Get the last subsection within the same course module
-        $lastSubsection = $courseModule->subsections->sortByDesc('order')->first();
+    // Calculate the count of completed modules for the logged-in student
+    $completedModulesCount = $completedModuleIds->intersect($courseModuleIds)->count();
 
-        // Check if the last subsection is completed by the student
-        $isCompleted = $lastSubsection ? SubsectionCompleted::where('subsection_id', $lastSubsection->id)
-            ->where('student_id', $studentId)
-            ->exists() : false;
+    // Calculate the progress percentage
+    $totalModules = $subsection->courseModules->count();
+    $progress = $totalModules > 0 ? ($completedModulesCount / $totalModules) * 100 : 0;
 
-        // Check if the course module is marked as completed
-        $isModuleCompleted = ModuleCompleted::where('course_module_id', $courseModule->id)
-            ->where('student_id', $studentId)
-            ->exists();
+    // Get the course module associated with this subsection
+    $courseModule = CourseModule::where('subsection_id', $subsection->id)->first();
 
-        return view('pages.courses.course', compact('subsection', 'courseModule', 'isCompleted', 'lastSubsection', 'isModuleCompleted'));
+    // Check if $courseModule is null
+    if (!$courseModule) {
+        return redirect()->back()->with('error', 'Course module not found.');
     }
+
+    // Get the last subsection within the same course module
+    $lastSubsection = $courseModule->subsections->sortByDesc('order')->first();
+
+    // Check if the last subsection is completed by the student
+    $isCompleted = $lastSubsection ? SubsectionCompleted::where('subsection_id', $lastSubsection->id)
+        ->where('student_id', $studentId)
+        ->exists() : false;
+
+    // Check if the course module is marked as completed
+    $isModuleCompleted = ModuleCompleted::where('course_module_id', $courseModule->id)
+        ->where('student_id', $studentId)
+        ->exists();
+
+    // Return the view with variables
+    return view('pages.courses.course', compact('subsection', 'courseModule', 'isCompleted', 'lastSubsection', 'isModuleCompleted', 'completedModuleIds', 'progress', 'totalModules'));
+}
+
 
     public function list()
     {
@@ -191,6 +206,7 @@ class CoursesController extends Controller
             ModuleCompleted::create([
                 'course_module_id' => $id,
                 'student_id' => $studentId,
+                'completed_at' => now(), // Set the completion timestamp
             ]);
 
             // Redirect back with a success message

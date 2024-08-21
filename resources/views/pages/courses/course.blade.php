@@ -882,13 +882,14 @@
 
                  <div class="lg:inline hidden">
                      <div class="relative overflow-hidden rounded-md bg-gray-200 h-1 mt-4">
-                         <div class="w-2/4 h-full bg-green-500"></div>
+                         <div class="h-full bg-green-500" style="width: {{ $progress }}%;"></div>
                      </div>
                      <div class="mt-2 mb-3 text-sm border-b pb-3">
-                         <div> 46% Complete</div>
-                         <div> Last activity on April 20, 2021</div>
+                         <div> {{ number_format($progress, 2) }}% Complete</div>
+                         <div> Last activity on {{ \Carbon\Carbon::now()->format('F j, Y') }}</div>
                      </div>
                  </div>
+
 
                  <div id="curriculum">
                      <div uk-accordion="multiple: true" class="divide-y space-y-3">
@@ -930,15 +931,16 @@
                                  <iframe src="{{ $courseModule->video_url }}" frameborder="0" allowfullscreen
                                      uk-responsive></iframe>
                              </div>
+
                              <!-- Announcements Bar -->
                              <nav class="cd-secondary-nav border-b md:p-0 lg:px-6 bg-white"
                                  uk-sticky="cls-active:shadow-sm; media: @s">
                                  <ul
                                      uk-switcher="connect: #course-tabs-{{ $courseModule->id }}; animation: uk-animation-fade">
                                      <li><a href="#" class="lg:px-2"> Overview </a></li>
-                                     {{-- <li><a href="#" class="lg:px-2"> Announcements </a></li> --}}
                                  </ul>
                              </nav>
+
                              <div class="max-w-2xl lg:py-6 mx-auto uk-switcher"
                                  id="course-tabs-{{ $courseModule->id }}">
                                  <!-- Overview -->
@@ -948,23 +950,38 @@
                                              <p>{!! $courseModule->description !!}</p>
                                              <div class="container">
                                                  <div class="flex justify-end mt-4">
-                                                     <form method="POST"
-                                                         action="{{ route('coursemodule.markdone', $courseModule->id) }}">
-                                                         @csrf
-                                                         <button type="submit" class="button">
-                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                 viewBox="0 0 24 24" stroke-width="1.5"
-                                                                 stroke="currentColor" class="w-6 h-6">
-                                                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                                                     d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                             </svg>
-                                                             &nbsp; Mark Done
-                                                         </button>
-                                                     </form>
+                                                     @if ($completedModuleIds->contains($courseModule->id))
+                                                         <!-- Course Module is Completed -->
+                                                         <div class="text-green-600 font-semibold">
+                                                             Course Module is Completed!
+                                                         </div>
+                                                     @else
+                                                         <!-- Mark as Done Button -->
+                                                         <form method="POST"
+                                                             action="{{ route('coursemodule.markdone', $courseModule->id) }}">
+                                                             @csrf
+                                                             @method('PATCH')
+
+                                                             <button type="submit" class="button">
+                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                     viewBox="0 0 24 24" stroke-width="1.5"
+                                                                     stroke="currentColor" class="w-6 h-6">
+                                                                     <path stroke-linecap="round"
+                                                                         stroke-linejoin="round"
+                                                                         d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                 </svg>
+                                                                 &nbsp; Mark Done
+                                                             </button>
+                                                         </form>
+                                                     @endif
                                                  </div>
+
+
                                              </div>
                                          </div>
                                      </div>
+
+                                     <!-- Display success message for form submission -->
                                      @if (session('success'))
                                          <div class="bg-green-300 text-white p-3 rounded-md mb-4 text-sm">
                                              {{ session('success') }}
@@ -1066,11 +1083,9 @@
                                              </div>
                                          </div>
 
-
                                          <!-- Comment Form -->
                                          <div class="mt-8">
                                              <div class="rounded-md">
-
 
                                                  <!-- Comment Form -->
                                                  <div id="reply-message" class="mb-2 text-sm text-gray-600"></div>
@@ -1106,18 +1121,7 @@
                                              </div>
                                          </div>
                                      </div>
-
-                                     <script>
-                                         function setReply(name, id) {
-                                             document.getElementById('reply-message').textContent = `Replying to ${name}`;
-                                             document.getElementById('parent_id').value = id;
-                                             document.getElementById('comment').focus();
-                                         }
-                                     </script>
-
-
                                  </div>
-                                 <br><br>
 
                                  <!-- Faq -->
                                  <div>
@@ -1127,16 +1131,47 @@
                                              <a class="uk-accordion-title font-semibold text-xl mt-4" href="#">
                                                  Html Introduction </a>
                                              <div class="uk-accordion-content mt-3">
-                                                 <p> The primary goal of this quick start guide is to introduce you
-                                                     to Unreal Engine 4's (UE4) development environment...</p>
+                                                 <p> The primary goal of this quick start guide is to introduce you to
+                                                     Unreal Engine 4's (UE4) development environment...</p>
                                              </div>
                                          </li>
-                                         <!-- Additional Faq Items... -->
+                                         <li class="uk-open">
+                                             <a class="uk-accordion-title font-semibold text-xl mt-4" href="#">
+                                                 Getting started with CSS </a>
+                                             <div class="uk-accordion-content mt-3">
+                                                 <p> HTML is a markup language that defines the structure of your
+                                                     content...</p>
+                                             </div>
+                                         </li>
+                                     </ul>
+                                 </div>
+
+                                 <!-- Announcement -->
+                                 <div>
+                                     <h3 class="text-xl font-semibold mb-3"> Announcement </h3>
+                                     <ul uk-accordion="multiple: true" class="divide-y space-y-3 space-y-6">
+                                         <li class="uk-open">
+                                             <a class="uk-accordion-title font-semibold text-xl mt-4" href="#">
+                                                 Html Introduction </a>
+                                             <div class="uk-accordion-content mt-3">
+                                                 <p> The primary goal of this quick start guide is to introduce you to
+                                                     Unreal Engine 4's (UE4) development environment...</p>
+                                             </div>
+                                         </li>
+                                         <li class="uk-open">
+                                             <a class="uk-accordion-title font-semibold text-xl mt-4" href="#">
+                                                 Getting started with CSS </a>
+                                             <div class="uk-accordion-content mt-3">
+                                                 <p> HTML is a markup language that defines the structure of your
+                                                     content...</p>
+                                             </div>
+                                         </li>
                                      </ul>
                                  </div>
                              </div>
                          </li>
                      @endforeach
+
                  </ul>
              </div>
          </div>

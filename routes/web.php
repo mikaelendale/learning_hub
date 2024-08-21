@@ -43,8 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/courses/enroll/{id}', [CoursesController::class, 'show'])->name('courses.enroll');
     Route::get('/courses/list', [CoursesController::class, 'list'])->name('courses.list');
     Route::post('/comments/store', [CoursesController::class, 'store'])->name('comments.store');
-    Route::post('/courses/coursesection//markdone{id}/', [CoursesController::class, 'markSubsectionDone'])->name('coursesubsection.markdone');
-    Route::post('/courses/coursemodule/markdone/{id}', [CoursesController::class, 'markModuleDone'])->name('coursemodule.markdone');
+    Route::patch('/courses/coursemodule/markdone/{id}', [CoursesController::class, 'markModuleDone'])->name('coursemodule.markdone');
 });
 
 //courses pages
