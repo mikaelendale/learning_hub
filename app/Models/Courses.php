@@ -33,6 +33,9 @@ public function students()
     {
         return $this->hasMany(Students::class, 'class_attended', 'level');
     }
-
+public function courseBadges()
+    {
+        return $this->hasMany(CourseBadge::class, 'course_id');
+    }
 
 }
