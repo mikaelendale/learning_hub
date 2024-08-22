@@ -16,13 +16,15 @@ class ClaimedBadge extends Model
     ];
 
     // Define the relationships
-    public function student()
-    {
-        return $this->belongsTo(Students::class);
-    }
-
+     
     public function badge()
-    {
-        return $this->belongsTo(Badge::class);
-    }
+{
+    return $this->belongsTo(CourseBadge::class, 'badge_id');
+}
+
+public function student()
+{
+    return $this->belongsTo(Students::class, 'student_id');
+}
+
 }

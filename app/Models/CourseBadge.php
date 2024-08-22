@@ -44,4 +44,10 @@ class CourseBadge extends Model
     {
         return $this->belongsTo(Badge::class);
     }
+
+public function claimedBadges()
+{
+    return $this->hasMany(ClaimedBadge::class, 'badge_id');
+}
+
 }

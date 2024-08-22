@@ -53,25 +53,6 @@ class CoursesController extends Controller
                 $course->progress = 100;
                 $course->progressColor = 'bg-success';
                 $course->badgeColor = 'badge-success';
-
-                // Check and claim badges
-                $badgesToClaim = $course->courseBadges;
-
-                foreach ($badgesToClaim as $badge) {
-                    // Check if the badge is not already claimed
-                    $alreadyClaimed = ClaimedBadge::where('student_id', $student->id)
-                        ->where('badge_id', $badge->id)
-                        ->exists();
-
-                    if (!$alreadyClaimed) {
-                        // Claim the badge
-                        ClaimedBadge::create([
-                            'student_id' => $student->id,
-                            'badge_id' => $badge->id,
-                            'claimed_at' => now(),
-                        ]);
-                    }
-                }
             } else {
                 $course->status = 'In Progress';
                 $course->progress = ($completedSubsectionsCount / $totalSubsectionsCount) * 100;
