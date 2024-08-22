@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClaimedBadge;
 use App\Models\Comment;
 use App\Models\CourseModule;
 use App\Models\Courses;
@@ -93,7 +94,8 @@ class CoursesController extends Controller
     {
         $courseId = session('course_id');
         $course = Courses::with(['subsections' => function ($query) {
-            $query->orderBy('order'); // Ensure subsections are ordered
+            $query->orderBy('order') // Ensure subsections are ordered
+                ->with('badges');
         }])->findOrFail($courseId);
 
         $userId = Auth::id();
@@ -101,6 +103,9 @@ class CoursesController extends Controller
         // Fetch the user's completed subsections using the SubsectionCompleted model
         $completedSubsections = SubsectionCompleted::where('student_id', $userId)
             ->pluck('subsection_id');
+
+        $claimedBadges = ClaimedBadge::where('student_id', $userId)
+            ->pluck('badge_id');
 
         // Determine if the user has completed the previous subsection
         foreach ($course->subsections as $subsection) {
@@ -128,7 +133,31 @@ class CoursesController extends Controller
             : 0;
         }
 
-        return view('pages.courses.detail', compact('course', 'userId'));
+        return view('pages.courses.detail', compact('course', 'userId','claimedBadges'));
+    }
+
+    //claiming badges
+    public function claimBadge(Request $request, $badgeId)
+    {
+        $userId = Auth::id();
+
+        // Check if the badge has already been claimed
+        $alreadyClaimed = ClaimedBadge::where('student_id', $userId)
+            ->where('badge_id', $badgeId)
+            ->exists();
+
+        if ($alreadyClaimed) {
+            return redirect()->back()->with('error', 'Badge already claimed');
+        }
+
+        // Create a new claimed badge entry
+        ClaimedBadge::create([
+            'student_id' => $userId,
+            'badge_id' => $badgeId,
+            'claimed_at' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Badge claimed successfully');
     }
 
     public function show($id)
@@ -276,7 +305,7 @@ class CoursesController extends Controller
     {
         $courses = Courses::where('level', auth()->user()->class_attended)
             ->with('subsections')
-            ->get(); 
+            ->get();
         $student = Auth::user();
         $courses = Courses::where('level', $student->class_attended)->get();
 
@@ -330,7 +359,8 @@ class CoursesController extends Controller
     }
 
     //progress
-    public function progress(){
+    public function progress()
+    {
         return view('pages.courses.progress');
     }
 }

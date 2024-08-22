@@ -16,7 +16,8 @@
     @endcomponent
 @endsection
 @section('content')
-    <div class="container-fixed">
+
+    <div class="container-fixed"> 
         <div class="flex flex-col items-stretch gap-5 lg:gap-7.5">
             <!-- begin: toolbar -->
             <div class="flex flex-wrap items-center gap-5 justify-between">
@@ -39,16 +40,21 @@
                                         ->exists()
                                     : true; // Allow access if there's no previous subsection
 
-                                $canAccess = $index == 0 || $previousSubsectionCompleted;
+$canAccess = $index == 0 || $previousSubsectionCompleted;
 
-                                // Calculate progress based on completed modules
-                                $totalModules = $subsection->courseModules->count();
-                                $completedModules = $subsection->courseModules
-                                    ->filter(function ($module) use ($userId) {
-                                        return $module->isCompletedBy($userId);
-                                    })
-                                    ->count();
-                                $progress = $totalModules > 0 ? ($completedModules / $totalModules) * 100 : 0;
+// Calculate progress based on completed modules
+$totalModules = $subsection->courseModules->count();
+$completedModules = $subsection->courseModules
+    ->filter(function ($module) use ($userId) {
+        return $module->isCompletedBy($userId);
+    })
+    ->count();
+$progress = $totalModules > 0 ? ($completedModules / $totalModules) * 100 : 0;
+
+// Check if the current subsection is completed
+$subsectionCompleted = \App\Models\SubsectionCompleted::where('student_id', $userId)
+    ->where('subsection_id', $subsection->id)
+                                    ->exists();
                             @endphp
 
                             <div class="card p-7.5 {{ !$canAccess ? 'opacity-50 pointer-events-none' : '' }}">
@@ -75,27 +81,34 @@
                                         {{ $subsection->name }}
                                     </a>
                                     <span class="text-sm font-medium text-gray-600">
-                                        {{ $subsection->details }}
-                                    </span>
-                                </div>
-                                <div class="flex items-center gap-5 mb-3.5 lg:mb-7">
-                                    <span class="text-sm font-medium text-gray-500">
-                                        Start:
-                                        <span class="text-sm font-semibold text-gray-700">
-                                            {{ $subsection->enrolled_at }}
-                                        </span>
+                                        {{ $subsection->detail }}
                                     </span>
                                 </div>
                                 <div class="progress h-1.5 progress-primary mb-4 lg:mb-8">
                                     <div class="progress-bar" style="width: {{ $progress }}%"></div>
                                 </div>
                                 <div class="flex -space-x-2">
-                                    @foreach ($subsection->enrolledStudents as $student)
-                                        <div class="flex">
-                                            <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                                src="{{ $student->avatar_url }}">
-                                        </div>
-                                    @endforeach
+                                    <div class="flex">
+                                        @if ($canAccess && $subsectionCompleted)
+                                            @foreach ($subsection->badges as $badge)
+                                                @if (!$claimedBadges->contains($badge->id))
+                                                    <!-- Check if the badge has already been claimed -->
+                                                    <form action="{{ route('claim.badge', $badge->id) }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-sm btn-success">
+                                                            <i class="ki-filled ki-badge"></i>
+                                                            Claim Badge
+                                                        </button>
+                                                    </form>
+                                                @else
+                                                    <span class="btn btn-sm btn-secondary" aria-disabled="true">
+                                                        <i class="ki-filled ki-badge"></i>
+                                                        Claimed Badge
+                                                    </span>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

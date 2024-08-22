@@ -37,6 +37,10 @@ class Subsection extends Model
         return $this->hasMany(Comment::class);
     }
     
+    public function badges()
+{
+    return $this->belongsToMany(Badge::class, 'subsection_badges');
+}
     
 
 }
