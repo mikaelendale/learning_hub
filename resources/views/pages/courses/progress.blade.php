@@ -59,99 +59,83 @@
                                                     class="ki-filled ki-{{ $badge->icon }} text-1.5xl ps-px text-{{ $badge->color }}">
                                                 </i>
                                             </div>
-                                        </div>
+                                        </div> 
                                     </a>
                                 @endforeach
 
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
             <div class="col-span-2">
                 <div class="flex flex-col gap-5 lg:gap-7.5">
-                    <div class="card">
+                    <div class="card"> 
                         <div class="card-table scrollable-x-auto">
                             <table class="table text-right">
-                                <thead>
-                                    <tr>
-                                        <th class="text-left min-w-52">Course Name</th>
-                                        <th class="min-w-40">Progress</th>
-                                        <th class="min-w-32">People</th>
-                                        <th class="w-[30px]"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($coursesWithProgress as $course)
-                                        <tr>
-                                            <td class="text-left">
-                                                <a class="text-sm font-semibold text-gray-900 hover:text-primary"
-                                                    href="#">
-                                                    {{ $course->name }}
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="progress {{ $course->progressColor }}">
-                                                    <div class="progress-bar" style="width: {{ $course->progress }}%">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="flex justify-end shrink-0">
-                                                    <div class="flex -space-x-2">
-                                                        @php
-                                                            // Initialize students as an empty collection if null
-                                                            $students = $course->studentsStartedCourse ?? collect();
-                                                        @endphp
-
-                                                        @foreach ($students as $student)
-                                                            @if ($student)
-                                                                <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                                    src="{{ asset('students_pic/' . ($student->profile_pic ?? 'default.png')) }}"
-                                                                    alt="{{ $student->name }}" />
-                                                            @endif
-                                                        @endforeach
-
-                                                        @if ($students->count() > 3)
-                                                            <span
-                                                                class="relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-success-inverse ring-success-light bg-success">
-                                                                +{{ $students->count() - 3 }}
-                                                            </span>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </td>
-
-
-                                            <td class="text-left">
-                                                <div class="menu" data-menu="true">
-                                                    <div class="menu-item" data-menu-item-offset="0, 10px"
-                                                        data-menu-item-placement="bottom-end"
-                                                        data-menu-item-toggle="dropdown"
-                                                        data-menu-item-trigger="click|lg:click">
-                                                        <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                                            <i class="ki-filled ki-dots-vertical"></i>
-                                                        </button>
-                                                        <div class="menu-dropdown menu-default w-full max-w-[175px]"
-                                                            data-menu-dismiss="true">
-                                                            <div class="menu-item">
-                                                                <a class="menu-link" href="#">
-                                                                    <span class="menu-icon">
-                                                                        <i class="ki-filled ki-search-list"></i>
-                                                                    </span>
-                                                                    <span class="menu-title">View</span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-
+    <thead>
+        <tr>
+            <th class="text-left min-w-52">Project Name</th>
+            <th class="min-w-40">Progress</th>
+            <th class="min-w-32">People</th>
+            <th class="w-[30px]"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($coursesWithProgress as $course)
+            <tr>
+                <td class="text-left">
+                    <a class="text-sm font-semibold text-gray-900 hover:text-primary" href="#">
+                        {{ $course->name }}
+                    </a>
+                </td>
+                <td>
+                    <div class="progress {{ $course->progressColor }}">
+                        <div class="progress-bar" style="width: {{ $course->progress }}%">
                         </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="flex justify-end shrink-0">
+                        <div class="flex -space-x-2">
+                            @foreach ($course->studentsStartedCourse as $student)
+                                @if ($student)
+                                    <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
+                                        src="{{ asset('students_pic/' . ($student->profile_pic ?? 'default.png')) }}"
+                                        alt="{{ $student->name }}" />
+                                @endif
+                            @endforeach
+                            @if ($course->studentsStartedCourse->count() > 3)
+                                <span class="relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-success-inverse ring-success-light bg-success">
+                                    +{{ $course->studentsStartedCourse->count() - 3 }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                </td>
+                <td class="text-left">
+                    <div class="menu" data-menu="true">
+                        <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                            <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+                                <i class="ki-filled ki-dots-vertical"></i>
+                            </button>
+                            <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
+                                <div class="menu-item">
+                                    <a class="menu-link" href="#">
+                                        <span class="menu-icon"><i class="ki-filled ki-search-list"></i></span>
+                                        <span class="menu-title">View</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+
+                        </div> 
                     </div>
                 </div>
             </div>

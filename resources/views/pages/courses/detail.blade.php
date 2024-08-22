@@ -96,13 +96,13 @@
                                                     <form action="{{ route('claim.badge', $badge->id) }}" method="POST">
                                                         @csrf
                                                         <button type="submit" class="btn btn-sm btn-success">
-                                                            <i class="ki-filled ki-badge"></i>
+                                                            <i class="ki-filled ki-{{$badge->icon}}"></i>
                                                             Claim Badge
                                                         </button>
                                                     </form>
                                                 @else
                                                     <span class="btn btn-sm btn-secondary" aria-disabled="true">
-                                                        <i class="ki-filled ki-badge"></i>
+                                                        <i class="ki-filled ki-{{$badge->icon}}"></i>
                                                         Claimed Badge
                                                     </span>
                                                 @endif

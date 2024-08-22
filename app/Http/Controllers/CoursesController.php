@@ -364,17 +364,48 @@ class CoursesController extends Controller
 
     //progress
     public function progress()
-    {
-        $userId = Auth::id();
+{
+    $userId = Auth::id();
 
-        // Fetch the user's claimed badges
-        $claimedBadgeIds = ClaimedBadge::where('student_id', $userId)
-            ->pluck('badge_id');
+    // Fetch the user's claimed badges
+    $claimedBadgeIds = ClaimedBadge::where('student_id', $userId)
+        ->pluck('badge_id');
 
-        // Fetch only the badges that have been claimed by the user
-        $badges = Badge::whereIn('id', $claimedBadgeIds)->get();
+    // Fetch only the badges that have been claimed by the user
+    $badges = Badge::whereIn('id', $claimedBadgeIds)->get();
 
-        return view('pages.courses.progress', compact('badges'));
-    }
+    // Fetch courses and calculate progress
+    $courses = Courses::where('level', auth()->user()->class_attended)
+        ->with('subsections')
+        ->get();
+
+    $coursesWithProgress = $courses->map(function ($course) use ($userId) {
+        $subsections = $course->subsections;
+        $totalSubsectionsCount = $subsections->count();
+        $completedSubsectionsCount = SubsectionCompleted::where('student_id', $userId)
+            ->whereIn('subsection_id', $subsections->pluck('id'))
+            ->count();
+
+        $progress = ($totalSubsectionsCount > 0) ? ($completedSubsectionsCount / $totalSubsectionsCount) * 100 : 0;
+
+        $course->progress = $progress;
+        $course->progressColor = ($progress === 100) ? 'progress-success' : 'progress-primary';
+
+        // Get unique students who started the course
+        $studentsStartedCourse = $subsections->flatMap(function ($subsection) use ($userId) {
+            return SubsectionCompleted::where('subsection_id', $subsection->id)
+                ->where('student_id', $userId)
+                ->get()
+                ->map->student;
+        })->unique('id'); // Ensure uniqueness by student ID
+
+        $course->studentsStartedCourse = $studentsStartedCourse;
+
+        return $course;
+    });
+
+    return view('pages.courses.progress', compact('badges', 'coursesWithProgress'));
+}
+
 
 }
