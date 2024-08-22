@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                Developer Badges
+                                Achieved Badges
                             </h3>
                             <div class="menu" data-menu="true">
                                 <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end"

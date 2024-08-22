@@ -70,24 +70,29 @@
 
                             <!-- Badge Section -->
                             <div class="badge-section mt-4">
-                                @foreach ($course->badges as $badge)
-                                    @if (!$claimedBadges->contains($badge->id))
-                                        <!-- Check if the badge has already been claimed -->
-                                        <form action="{{ route('claimBadge', $badge->id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-success">
+                                @if ($course->status === 'Completed')
+                                    @foreach ($course->badges as $badge)
+                                        @if (!in_array($badge->id, $claimedBadges))
+                                            <!-- Check if the badge has already been claimed -->
+                                            <form action="{{ route('claim.badge', $badge->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-success">
+                                                    <i class="ki-filled ki-badge"></i>
+                                                    Claim Badge
+                                                </button>
+                                            </form>
+                                        @else
+                                            <span class="btn btn-sm btn-secondary" aria-disabled="true">
                                                 <i class="ki-filled ki-badge"></i>
-                                                Claim Badge
-                                            </button>
-                                        </form>
-                                    @else
-                                        <span class="btn btn-sm btn-secondary" aria-disabled="true">
-                                            <i class="ki-filled ki-badge"></i>
-                                            Claimed Badge
-                                        </span>
-                                    @endif
-                                @endforeach
+                                                Claimed Badge
+                                            </span>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <span class="text-muted">Complete all subsections to claim badges.</span>
+                                @endif
                             </div>
+
                         </div>
                     @endforeach
 
