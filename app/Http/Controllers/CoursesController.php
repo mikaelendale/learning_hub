@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Badge;
 use App\Models\ClaimedBadge;
 use App\Models\Comment;
 use App\Models\CourseModule;
@@ -52,6 +53,25 @@ class CoursesController extends Controller
                 $course->progress = 100;
                 $course->progressColor = 'bg-success';
                 $course->badgeColor = 'badge-success';
+
+                // Check and claim badges
+                $badgesToClaim = $course->courseBadges;
+
+                foreach ($badgesToClaim as $badge) {
+                    // Check if the badge is not already claimed
+                    $alreadyClaimed = ClaimedBadge::where('student_id', $student->id)
+                        ->where('badge_id', $badge->id)
+                        ->exists();
+
+                    if (!$alreadyClaimed) {
+                        // Claim the badge
+                        ClaimedBadge::create([
+                            'student_id' => $student->id,
+                            'badge_id' => $badge->id,
+                            'claimed_at' => now(),
+                        ]);
+                    }
+                }
             } else {
                 $course->status = 'In Progress';
                 $course->progress = ($completedSubsectionsCount / $totalSubsectionsCount) * 100;
@@ -133,7 +153,7 @@ class CoursesController extends Controller
             : 0;
         }
 
-        return view('pages.courses.detail', compact('course', 'userId','claimedBadges'));
+        return view('pages.courses.detail', compact('course', 'userId', 'claimedBadges'));
     }
 
     //claiming badges
@@ -361,6 +381,16 @@ class CoursesController extends Controller
     //progress
     public function progress()
     {
-        return view('pages.courses.progress');
+        $userId = Auth::id();
+
+        // Fetch the user's claimed badges
+        $claimedBadgeIds = ClaimedBadge::where('student_id', $userId)
+            ->pluck('badge_id');
+
+        // Fetch only the badges that have been claimed by the user
+        $badges = Badge::whereIn('id', $claimedBadgeIds)->get();
+
+        return view('pages.courses.progress', compact('badges'));
     }
+
 }
