@@ -59,78 +59,11 @@
                                                     class="ki-filled ki-{{ $badge->icon }} text-1.5xl ps-px text-{{ $badge->color }}">
                                                 </i>
                                             </div>
-                                        </div> 
+                                        </div>
                                     </a>
                                 @endforeach
 
                             </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                Work Experience
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="grid gap-y-5">
-                                <div class="flex align-start gap-3.5">
-                                    <img alt="" class="h-9"
-                                        src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/jira.svg" />
-                                    <div class="flex flex-col gap-1">
-                                        <a class="text-sm font-semibold text-primary leading-none hover:text-primary-active"
-                                            href="#">
-                                            Esprito Studios
-                                        </a>
-                                        <span class="text-sm font-medium text-gray-800">
-                                            Senior Project Manager
-                                        </span>
-                                        <span class="text-xs font-medium text-gray-500 leading-none">
-                                            2019 - Present
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-gray-600 font-semibold text-sm leading-none">
-                                    Previous Jobs
-                                </div>
-                                <div class="flex align-start gap-3.5">
-                                    <img alt="" class="h-9"
-                                        src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/paccion.svg" />
-                                    <div class="flex flex-col gap-1">
-                                        <a class="text-sm font-semibold text-primary leading-none hover:text-primary-active"
-                                            href="#">
-                                            Pesto Plus
-                                        </a>
-                                        <span class="text-sm font-medium text-gray-800">
-                                            CRM Product Lead
-                                        </span>
-                                        <span class="text-xs font-medium text-gray-500 leading-none">
-                                            2012 - 2019
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="flex align-start gap-3.5">
-                                    <img alt="" class="h-9"
-                                        src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/perrier.svg" />
-                                    <div class="flex flex-col gap-1">
-                                        <a class="text-sm font-semibold text-primary leading-none hover:text-primary-active"
-                                            href="#">
-                                            Perrier Technologies
-                                        </a>
-                                        <span class="text-sm font-medium text-gray-800">
-                                            UX Research
-                                        </span>
-                                        <span class="text-xs font-medium text-gray-500 leading-none">
-                                            2010 - 2012
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer justify-center">
-                            <a class="btn btn-link" href="../works.html">
-                                Open to Work
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -138,684 +71,86 @@
             <div class="col-span-2">
                 <div class="flex flex-col gap-5 lg:gap-7.5">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                Projects
-                            </h3>
-                            <div class="menu" data-menu="true">
-                                <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end"
-                                    data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
-                                    <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                        <i class="ki-filled ki-dots-vertical">
-                                        </i>
-                                    </button>
-                                    <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
-                                        <div class="menu-item">
-                                            <a class="menu-link" href="../../account/home/settings-plain.html">
-                                                <span class="menu-icon">
-                                                    <i class="ki-filled ki-add-files">
-                                                    </i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Add
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="menu-item">
-                                            <a class="menu-link" href="../../account/members/import-members.html">
-                                                <span class="menu-icon">
-                                                    <i class="ki-filled ki-file-down">
-                                                    </i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Import
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="menu-item" data-menu-item-offset="-15px, 0"
-                                            data-menu-item-placement="right-start" data-menu-item-toggle="dropdown"
-                                            data-menu-item-trigger="click|lg:hover">
-                                            <div class="menu-link">
-                                                <span class="menu-icon">
-                                                    <i class="ki-filled ki-file-up">
-                                                    </i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Export
-                                                </span>
-                                                <span class="menu-arrow">
-                                                    <i class="ki-filled ki-right text-3xs">
-                                                    </i>
-                                                </span>
-                                            </div>
-                                            <div class="menu-dropdown menu-default w-full max-w-[125px]">
-                                                <div class="menu-item">
-                                                    <a class="menu-link" href="../../account/home/settings-sidebar.html">
-                                                        <span class="menu-title">
-                                                            PDF
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link" href="../../account/home/settings-sidebar.html">
-                                                        <span class="menu-title">
-                                                            CVS
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link" href="../../account/home/settings-sidebar.html">
-                                                        <span class="menu-title">
-                                                            Excel
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item">
-                                            <a class="menu-link" href="../../account/security/privacy-settings.html">
-                                                <span class="menu-icon">
-                                                    <i class="ki-filled ki-setting-3">
-                                                    </i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Settings
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="card-table scrollable-x-auto">
                             <table class="table text-right">
                                 <thead>
                                     <tr>
-                                        <th class="text-left min-w-52">
-                                            Project Name
-                                        </th>
-                                        <th class="min-w-40">
-                                            Progress
-                                        </th>
-                                        <th class="min-w-32">
-                                            People
-                                        </th>
-                                        <th class="min-w-32">
-                                            Due Date
-                                        </th>
-                                        <th class="w-[30px]">
-                                        </th>
+                                        <th class="text-left min-w-52">Course Name</th>
+                                        <th class="min-w-40">Progress</th>
+                                        <th class="min-w-32">People</th>
+                                        <th class="w-[30px]"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="text-left">
-                                            <a class="text-sm font-semibold text-gray-900 hover:text-primary"
-                                                href="#">
-                                                Acme software development
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <div class="progress progress-primary">
-                                                <div class="progress-bar" style="width: 60%">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="flex justify-end shrink-0">
-                                                <div class="flex -space-x-2">
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-4.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-1.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-2.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <span
-                                                            class="relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-success-inverse ring-success-light bg-success">
-                                                            +3
-                                                        </span>
+                                    @foreach ($coursesWithProgress as $course)
+                                        <tr>
+                                            <td class="text-left">
+                                                <a class="text-sm font-semibold text-gray-900 hover:text-primary"
+                                                    href="#">
+                                                    {{ $course->name }}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="progress {{ $course->progressColor }}">
+                                                    <div class="progress-bar" style="width: {{ $course->progress }}%">
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-sm font-medium text-gray-700">
-                                            24 Aug, 2024
-                                        </td>
-                                        <td class="text-left">
-                                            <div class="menu" data-menu="true">
-                                                <div class="menu-item" data-menu-item-offset="0, 10px"
-                                                    data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown"
-                                                    data-menu-item-trigger="click|lg:click">
-                                                    <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                                        <i class="ki-filled ki-dots-vertical">
-                                                        </i>
-                                                    </button>
-                                                    <div class="menu-dropdown menu-default w-full max-w-[175px]"
-                                                        data-menu-dismiss="true">
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-search-list">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    View
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-file-up">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Export
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-pencil">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Edit
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-copy">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Make a copy
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-trash">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Remove
-                                                                </span>
-                                                            </a>
+                                            </td>
+                                            <td>
+                                                <div class="flex justify-end shrink-0">
+                                                    <div class="flex -space-x-2">
+                                                        @php
+                                                            // Initialize students as an empty collection if null
+                                                            $students = $course->studentsStartedCourse ?? collect();
+                                                        @endphp
+
+                                                        @foreach ($students as $student)
+                                                            @if ($student)
+                                                                <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
+                                                                    src="{{ asset('students_pic/' . ($student->profile_pic ?? 'default.png')) }}"
+                                                                    alt="{{ $student->name }}" />
+                                                            @endif
+                                                        @endforeach
+
+                                                        @if ($students->count() > 3)
+                                                            <span
+                                                                class="relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-success-inverse ring-success-light bg-success">
+                                                                +{{ $students->count() - 3 }}
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+
+
+                                            <td class="text-left">
+                                                <div class="menu" data-menu="true">
+                                                    <div class="menu-item" data-menu-item-offset="0, 10px"
+                                                        data-menu-item-placement="bottom-end"
+                                                        data-menu-item-toggle="dropdown"
+                                                        data-menu-item-trigger="click|lg:click">
+                                                        <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+                                                            <i class="ki-filled ki-dots-vertical"></i>
+                                                        </button>
+                                                        <div class="menu-dropdown menu-default w-full max-w-[175px]"
+                                                            data-menu-dismiss="true">
+                                                            <div class="menu-item">
+                                                                <a class="menu-link" href="#">
+                                                                    <span class="menu-icon">
+                                                                        <i class="ki-filled ki-search-list"></i>
+                                                                    </span>
+                                                                    <span class="menu-title">View</span>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">
-                                            <a class="text-sm font-semibold text-gray-900 hover:text-primary"
-                                                href="#">
-                                                Strategic Partnership Deal
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar" style="width: 100%">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="flex justify-end shrink-0">
-                                                <div class="flex -space-x-2">
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-1.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-2.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <span
-                                                            class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-danger-inverse ring-danger-light bg-danger">
-                                                            M
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-sm font-medium text-gray-700">
-                                            10 Sep, 2024
-                                        </td>
-                                        <td class="text-left">
-                                            <div class="menu" data-menu="true">
-                                                <div class="menu-item" data-menu-item-offset="0, 10px"
-                                                    data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown"
-                                                    data-menu-item-trigger="click|lg:click">
-                                                    <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                                        <i class="ki-filled ki-dots-vertical">
-                                                        </i>
-                                                    </button>
-                                                    <div class="menu-dropdown menu-default w-full max-w-[175px]"
-                                                        data-menu-dismiss="true">
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-search-list">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    View
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-file-up">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Export
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-pencil">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Edit
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-copy">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Make a copy
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-trash">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Remove
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">
-                                            <a class="text-sm font-semibold text-gray-900 hover:text-primary"
-                                                href="#">
-                                                Client Onboarding
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <div class="progress progress-primary">
-                                                <div class="progress-bar" style="width: 20%">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="flex justify-end shrink-0">
-                                                <div class="flex -space-x-2">
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-20.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-7.png" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-sm font-medium text-gray-700">
-                                            19 Sep, 2024
-                                        </td>
-                                        <td class="text-left">
-                                            <div class="menu" data-menu="true">
-                                                <div class="menu-item" data-menu-item-offset="0, 10px"
-                                                    data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown"
-                                                    data-menu-item-trigger="click|lg:click">
-                                                    <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                                        <i class="ki-filled ki-dots-vertical">
-                                                        </i>
-                                                    </button>
-                                                    <div class="menu-dropdown menu-default w-full max-w-[175px]"
-                                                        data-menu-dismiss="true">
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-search-list">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    View
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-file-up">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Export
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-pencil">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Edit
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-copy">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Make a copy
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-trash">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Remove
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">
-                                            <a class="text-sm font-semibold text-gray-900 hover:text-primary"
-                                                href="#">
-                                                Widget Supply Agreement
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <div class="progress progress-success">
-                                                <div class="progress-bar" style="width: 100%">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="flex justify-end shrink-0">
-                                                <div class="flex -space-x-2">
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-6.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-23.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-12.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <span
-                                                            class="relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-primary-inverse ring-primary-light bg-primary">
-                                                            +1
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-sm font-medium text-gray-700">
-                                            5 May, 2024
-                                        </td>
-                                        <td class="text-left">
-                                            <div class="menu" data-menu="true">
-                                                <div class="menu-item" data-menu-item-offset="0, 10px"
-                                                    data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown"
-                                                    data-menu-item-trigger="click|lg:click">
-                                                    <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                                        <i class="ki-filled ki-dots-vertical">
-                                                        </i>
-                                                    </button>
-                                                    <div class="menu-dropdown menu-default w-full max-w-[175px]"
-                                                        data-menu-dismiss="true">
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-search-list">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    View
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-file-up">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Export
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-pencil">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Edit
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-copy">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Make a copy
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-trash">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Remove
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">
-                                            <a class="text-sm font-semibold text-gray-900 hover:text-primary"
-                                                href="#">
-                                                Project X Redesign
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <div class="progress progress-primary">
-                                                <div class="progress-bar" style="width: 80%">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="flex justify-end shrink-0">
-                                                <div class="flex -space-x-2">
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-2.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-15.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                            src="../../../../../static/metronic/tailwind/dist/assets/media/avatars/300-18.png" />
-                                                    </div>
-                                                    <div class="flex">
-                                                        <span
-                                                            class="relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-success-inverse ring-success-light bg-success">
-                                                            +2
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-sm font-medium text-gray-700">
-                                            1 Feb, 2025
-                                        </td>
-                                        <td class="text-left">
-                                            <div class="menu" data-menu="true">
-                                                <div class="menu-item" data-menu-item-offset="0, 10px"
-                                                    data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown"
-                                                    data-menu-item-trigger="click|lg:click">
-                                                    <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                                        <i class="ki-filled ki-dots-vertical">
-                                                        </i>
-                                                    </button>
-                                                    <div class="menu-dropdown menu-default w-full max-w-[175px]"
-                                                        data-menu-dismiss="true">
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-search-list">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    View
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-file-up">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Export
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-pencil">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Edit
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-copy">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Make a copy
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-trash">
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Remove
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="card-footer justify-center">
-                            <a class="btn btn-link" href="../projects/3-columns/index.html">
-                                All Projects
-                            </a>
+
                         </div>
                     </div>
                 </div>
