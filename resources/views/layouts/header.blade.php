@@ -1,4 +1,25 @@
 <!-- Header -->
+<style>
+    #digital-clock {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+        font-weight: bold;
+    }
+</style>
+<script>
+    function updateClock() {
+        var now = new Date();
+        var hours = now.getHours().toString().padStart(2, '0');
+        var minutes = now.getMinutes().toString().padStart(2, '0');
+        var seconds = now.getSeconds().toString().padStart(2, '0');
+        var timeString = hours + ':' + minutes + ':' + seconds;
+
+        document.getElementById('digital-clock').textContent = timeString;
+    }
+
+    setInterval(updateClock, 1000); // Update the clock every second
+    updateClock(); // Initial call to display the time immediately
+</script>
 <header class="flex items-center transition-[height] shrink-0 bg-[#fefefe] dark:bg-coal-500 h-[--tw-header-height]"
     data-sticky="true"
     data-sticky-class="transition-[height] fixed z-10 top-0 left-0 right-0 shadow-sm backdrop-blur-md bg-white/70 dark:bg-coal-500/70 dark:border-b dark:border-b-coal-100"
@@ -34,6 +55,9 @@
         <!-- Topbar -->
         <div class="flex items-center gap-3.5">
             <div class="flex items-center gap-1">
+                <a href="/account/timer" class="rounded  hover:bg-gray-light hover:text-gray-200 text-gray-900 font-large mt-1" id="digital-clock">
+                    <!-- Time will be displayed here -->
+                </a>&nbsp;
                 <div class="dropdown" data-dropdown="true" data-dropdown-offset="115px, 10px"
                     data-dropdown-placement="bottom-end" data-dropdown-trigger="click|lg:click">
                     <button
