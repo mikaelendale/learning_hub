@@ -347,12 +347,9 @@
                     <div class="menu-toggle btn btn-icon rounded-full">
                         <img alt=""
                             class="size-9 rounded-full justify-center rounded-full border border-gray-900 shrink-0"
-                            @if (Auth::user()->profile_pic == null)
-                                src="{{ asset('students_pic/' . Auth::user()->profile_pic) }}"
+                            @if (Auth::user()->profile_pic == null) src="{{ asset('students_pic/' . Auth::user()->profile_pic) }}"
                              @else
-                                src="{{ asset('students_pic/' . Auth::user()->profile_pic) }}"
-                            @endif
-                            >
+                                src="{{ asset('students_pic/' . Auth::user()->profile_pic) }}" @endif>
                         </img>
                     </div>
                     <div class="menu-dropdown menu-default light:border-gray-300 w-full max-w-[250px]">
@@ -587,7 +584,7 @@
                         </div>
                     @endif
                     @if (Auth::user()->status == 'approved')
-                        <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900 here"
+                        <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900 {{ request()->is('dashboard') || request()->is('courses') || request()->is('courses/level') ? 'here' : '' }} "
                             data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
                             data-menu-item-trigger="click">
                             <div class="menu-link gap-1.5 pb-2 lg:pb-4" tabindex="0">
@@ -625,7 +622,7 @@
                             </div>
                         </div>
 
-                        <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900"
+                        <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900 {{ request()->is('courses/list') || request()->is('courses/enrolled') || request()->is('courses/progress') ? 'here' : '' }}"
                             data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
                             data-menu-item-trigger="click">
                             <div class="menu-link gap-1.5 pb-2 lg:pb-4" tabindex="0">
@@ -662,7 +659,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900"
+                        <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900  {{ request()->is('status/rank') || request()->is('status/leaderboard') ? 'here' : '' }}"
                             data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
                             data-menu-item-trigger="click">
                             <div class="menu-link gap-1.5 pb-2 lg:pb-4" tabindex="0">
