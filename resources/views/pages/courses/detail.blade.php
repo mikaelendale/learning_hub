@@ -40,21 +40,21 @@
                                         ->exists()
                                     : true; // Allow access if there's no previous subsection
 
-$canAccess = $index == 0 || $previousSubsectionCompleted;
-
-// Calculate progress based on completed modules
-$totalModules = $subsection->courseModules->count();
-$completedModules = $subsection->courseModules
-    ->filter(function ($module) use ($userId) {
-        return $module->isCompletedBy($userId);
-    })
-    ->count();
-$progress = $totalModules > 0 ? ($completedModules / $totalModules) * 100 : 0;
-
-// Check if the current subsection is completed
-$subsectionCompleted = \App\Models\SubsectionCompleted::where('student_id', $userId)
-    ->where('subsection_id', $subsection->id)
-                                    ->exists();
+                                $canAccess = $index == 0 || $previousSubsectionCompleted;
+                                
+                                // Calculate progress based on completed modules
+                                $totalModules = $subsection->courseModules->count();
+                                $completedModules = $subsection->courseModules
+                                    ->filter(function ($module) use ($userId) {
+                                        return $module->isCompletedBy($userId);
+                                    })
+                                    ->count();
+                                $progress = $totalModules > 0 ? ($completedModules / $totalModules) * 100 : 0;
+                                
+                                // Check if the current subsection is completed
+                                $subsectionCompleted = \App\Models\SubsectionCompleted::where('student_id', $userId)
+                                    ->where('subsection_id', $subsection->id)
+                                                                    ->exists();
                             @endphp
 
                             <div class="card p-7.5 {{ !$canAccess ? 'opacity-50 pointer-events-none' : '' }}">
