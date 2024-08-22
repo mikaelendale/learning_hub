@@ -331,6 +331,6 @@ class CoursesController extends Controller
 
     //progress
     public function progress(){
-        
+        return view('pages.courses.progress');
     }
 }
