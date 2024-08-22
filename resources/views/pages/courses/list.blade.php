@@ -173,19 +173,16 @@
                     </div>
                     <div class="flex flex-center justify-between flex-wrap gap-2 mb-1">
                         <div class="flex flex-center gap-1.5">
-                            <i class="ki-filled ki-email text-gray-500">
+                            <i class="ki-filled ki-code text-gray-500">
                             </i>
                             <div class="flex flex-center text-gray-700 font-medium text-xs">
-                                Email
+                                Devs
                             </div>
                         </div>
-                        <a class="btn btn-sm btn-link">
-                            Email
+                        <a class="btn btn-sm btn-link" href="mailto:developer@lalodev.com">
+                            Developer@lalodev.com
                         </a>
                     </div>
-                    <button class="btn btn-primary justify-center">
-                        Done
-                    </button>
                 </div>
             </div>
         </div>

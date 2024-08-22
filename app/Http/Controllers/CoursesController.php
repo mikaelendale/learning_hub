@@ -270,4 +270,62 @@ class CoursesController extends Controller
         return redirect()->back()->with('error', 'Not all modules are completed.');
     }
 
+    //enrolled
+
+    public function enrolled()
+    {
+        $courses = Courses::where('level', auth()->user()->class_attended)
+            ->with('subsections')
+            ->get(); 
+        $student = Auth::user();
+        $courses = Courses::where('level', $student->class_attended)->get();
+
+        $coursesWithProgress = $courses->map(function ($course) use ($student) {
+            $studentsStartedCourse = collect();
+
+            $subsections = $course->subsections->map(function ($subsection) use ($studentsStartedCourse) {
+                $startedBy = SubsectionCompleted::where('subsection_id', $subsection->id)
+                    ->join('students', 'subsections_completed.student_id', '=', 'students.id')
+                    ->get(['students.name', 'students.profile_pic']); // Assuming students table has 'avatar' field
+
+                // Add unique students to the collection
+                $startedBy->each(function ($student) use ($studentsStartedCourse) {
+                    $studentsStartedCourse->put($student->name, $student);
+                });
+
+                $subsection->startedBy = $startedBy;
+                return $subsection;
+            });
+
+            // Existing logic for progress and status
+            $completedSubsectionsCount = SubsectionCompleted::where('student_id', $student->id)
+                ->whereIn('subsection_id', $subsections->pluck('id'))
+                ->count();
+            $totalSubsectionsCount = $subsections->count();
+
+            if ($completedSubsectionsCount === 0) {
+                $course->status = 'Not Started';
+                $course->progress = 0;
+                $course->progressColor = 'progress-secondary';
+                $course->badgeColor = 'badge-secondary';
+            } elseif ($completedSubsectionsCount === $totalSubsectionsCount) {
+                $course->status = 'Completed';
+                $course->progress = 100;
+                $course->progressColor = 'progress-success';
+                $course->badgeColor = 'badge-success';
+            } else {
+                $course->status = 'In Progress';
+                $course->progress = ($completedSubsectionsCount / $totalSubsectionsCount) * 100;
+                $course->progressColor = 'progress-primary'; // You can change this to the desired color for "In Progress"
+                $course->badgeColor = 'badge-primary';
+            }
+
+            // Attach the unique students collection to the course
+            $course->studentsStartedCourse = $studentsStartedCourse;
+
+            return $course;
+        });
+
+        return view('pages.courses.enrolled', compact('coursesWithProgress'));
+    }
 }
