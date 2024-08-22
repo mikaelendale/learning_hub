@@ -20,6 +20,9 @@ class CoursesController extends Controller
         $student = Auth::user();
         $courses = Courses::where('level', $student->class_attended)->get();
 
+        // Fetch claimed badges for the student
+        $claimedBadges = ClaimedBadge::where('student_id', $student->id)->pluck('badge_id')->toArray();
+
         $coursesWithProgress = $courses->map(function ($course) use ($student) {
             $studentsStartedCourse = collect();
 
@@ -66,7 +69,7 @@ class CoursesController extends Controller
             return $course;
         });
 
-        return view('pages.courses.index', compact('coursesWithProgress'));
+        return view('pages.courses.index', compact('coursesWithProgress', 'claimedBadges'));
     }
 
     public function level()
