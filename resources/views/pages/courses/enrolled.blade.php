@@ -32,8 +32,8 @@
                                             <img alt="" class="" src="{{ $course->image }}" />
                                         </div>
                                         <div class="flex flex-col">
-                                            <a class="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px"
-                                                href="#">
+                                            <a class="text-lg font-semibold text-gray-900   mb-px"
+                                                 >
                                                 {{ $course->name }}
                                             </a>
                                             <span class="text-sm font-medium text-gray-600">
@@ -90,31 +90,10 @@
                                                                 <input type="hidden" name="course_id"
                                                                     value="{{ $course->id }}">
                                                             </form>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link"
-                                                                href="../../account/members/import-members.html">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-some-files"></i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Import
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="../../account/activity.html">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-filled ki-cloud-change"></i>
-                                                                </span>
-                                                                <span class="menu-title">
-                                                                    Activity
-                                                                </span>
-                                                            </a>
-                                                        </div>
+                                                        </div> 
                                                         <div class="menu-item">
                                                             <a class="menu-link" data-modal-toggle="#report_user_modal"
-                                                                href="#">
+                                                                href="https://t.me/lalo_dev">
                                                                 <span class="menu-icon">
                                                                     <i class="ki-filled ki-dislike"></i>
                                                                 </span>

@@ -328,4 +328,9 @@ class CoursesController extends Controller
 
         return view('pages.courses.enrolled', compact('coursesWithProgress'));
     }
+
+    //progress
+    public function progress(){
+        
+    }
 }

@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/courses/coursemodule/markdone/{id}', [CoursesController::class, 'markModuleDone'])->name('coursemodule.markdone');
     Route::patch('/courses/subsection/{id}/complete', [CoursesController::class, 'completeSubsection'])->name('subsection.complete');
     Route::get('/courses/enrolled', [CoursesController::class, 'enrolled'])->name('courses.enrolled');
+    Route::get('/courses/progress', [CoursesController::class, 'progress'])->name('courses.progress');
 });
 
 //courses pages
