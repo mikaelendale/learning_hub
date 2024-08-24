@@ -42,7 +42,7 @@
              <!-- begin: activity -->
              <div class="flex justify-center gap-2.5">
                  <div class="flex justify-center items-center min-h-screen">
-                     <div class="card grow" style="width: 600px;" id="question_1" >
+                     <div class="card grow" style="width: 600px;" id="question_1">
                          <div class="card-body px-12 py-10 lg:px-16 lg:py-12">
                              <div class="flex flex-col gap-6">
                                  <h2 class="text-2xl font-semibold text-gray-900 text-start">
@@ -248,7 +248,7 @@
                              All-time Activity
                          </a>
                      </div>
-                 </div> 
+                 </div>
              </div>
              <div class="flex justify-center gap-2.5" data-tabs="true">
                  <a class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary active"
@@ -258,7 +258,7 @@
                  <a class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary"
                      data-tab-toggle="#question_2" href="#">
                      Next
-                 </a> 
+                 </a>
              </div>
          </div>
      </div>
