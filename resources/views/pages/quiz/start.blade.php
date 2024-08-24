@@ -41,35 +41,52 @@
 
              <!-- begin: activity -->
              <div class="flex justify-center gap-2.5">
-                 <div class="card grow" id="question_1">
-                     <div class="card-body px-10 py-7.5 lg:pr-12.5">
-                         <div class="flex flex-wrap md:flex-nowrap items-center gap-6 md:gap-10">
-                             <div class="flex flex-col gap-3">
-                                 <h2 class="text-1.5xl font-semibold text-gray-900">
-                                    1, Unlock Creative
-                                     <br>
-                                     Partnerships on Our Blog
-                                 </h2>
-                                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
-                                    <div class="col-span-1">
-                                         <div class="text-sm text-gray-700 leading-5.5">
-                                             Discover new opportunities to share your creative thoughts and ideas with our audience.
-                                             Join our blog and let us know what you think.
-                                             We're excited to help you connect with like-minded individuals and share your unique insights.
-                                         </div>
-    
-                                    </div>
-                                 </div>
-                                 <p class="text-sm text-gray-700 leading-5.5">
-                                     Explore exciting collaboration opportunities with our blog.
-                                     We're open to partnerships, guest posts, and more.
-                                     Join us to share your insights and grow your audience.
-                                 </p>
-                             </div>
-                              
-                         </div>
-                     </div> 
-                 </div>
+                 <div class="flex justify-center items-center min-h-screen">
+    <div class="card grow max-w-2xl" id="question_1">
+        <div class="card-body px-12 py-10 lg:px-16 lg:py-12">
+            <div class="flex flex-col gap-6">
+                <h2 class="text-2xl font-semibold text-gray-900 text-center">
+                    1. What is the purpose of our blog?
+                </h2>
+                <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
+                    <div class="col-span-1">
+                        <div class="flex flex-col items-start gap-4">
+                            <label class="radio-group">
+                                <input class="radio" name="desktop_notification" type="radio" value="1">
+                                <span class="radio-label radio-label-sm">
+                                    All new messages (Recommended)
+                                </span>
+                            </label>
+                            <label class="radio-group">
+                                <input checked="" class="radio" name="desktop_notification" type="radio" value="2">
+                                <span class="radio-label radio-label-sm">
+                                    Direct @mentions
+                                </span>
+                            </label>
+                            <label class="radio-group">
+                                <input checked="" class="radio" name="desktop_notification" type="radio" value="3">
+                                <span class="radio-label radio-label-sm">
+                                    Disabled
+                                </span>
+                            </label>
+                        </div>
+                        <div class="flex items-center gap-2.5 justify-end mt-5">
+                            <button class="btn btn-lg btn-light">
+                                Previous
+                            </button>
+                            <button class="btn btn-lg btn-primary">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
                  <div class="card grow hidden" id="question_2">
                      <div class="card-header">
                          <h3 class="card-title">
@@ -183,7 +200,8 @@
                                  </div>
                              </div>
                              <div class="flex items-start relative">
-                                 <div class="w-9 left-0 top-9 absolute bottom-0 translate-x-1/2 border-l border-l-gray-300">
+                                 <div
+                                     class="w-9 left-0 top-9 absolute bottom-0 translate-x-1/2 border-l border-l-gray-300">
                                  </div>
                                  <div
                                      class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-300 size-9 text-gray-600">
