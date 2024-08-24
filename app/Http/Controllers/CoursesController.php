@@ -82,9 +82,12 @@ class CoursesController extends Controller
             ->with(['subsections', 'quizzes.questions']) // Include subsections and quizzes with their questions
             ->get()
             ->map(function ($course) use ($userId) {
+                // Fetch all subsections for this course
+                $subsectionIds = $course->subsections->pluck('id');
+
                 // Check if the user has completed all subsections for this course
                 $completedSubsections = SubsectionCompleted::where('student_id', $userId)
-                    ->whereIn('subsection_id', $course->subsections->pluck('id'))
+                    ->whereIn('subsection_id', $subsectionIds)
                     ->pluck('subsection_id')
                     ->count();
 

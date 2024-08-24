@@ -63,13 +63,14 @@
                                     </div>
                                 </div>
                                 <div class="card-footer justify-between items-center py-3.5">
-                                    @if ($course->is_quiz_available && $course->questions->count() > 0)
+                                    @if ($course->is_quiz_available)
                                         <a class="btn btn-sm btn-light btn-success btn-outline btn-sm"
                                             href="{{ route('courses.quiz', ['course_id' => $course->id]) }}">
                                             Take Quiz
                                         </a>
                                     @else
-                                        <a class="btn btn-sm btn-light btn-secondary btn-outline btn-sm"data-modal-toggle="#share_profile_modal">
+                                        <a class="btn btn-sm btn-light btn-secondary btn-outline btn-sm"
+                                            data-modal-toggle="#share_profile_modal">
                                             Take Quiz
                                         </a>
                                     @endif
@@ -97,7 +98,7 @@
         <div class="modal-content max-w-[500px] top-5 lg:top-[15%]">
             <div class="modal-header pr-2.5">
                 <h3 class="modal-title badge badge-xs badge-danger badge-outline">
-                   Finish the course first
+                    Finish the course first
                 </h3>
                 <button class="btn btn-sm btn-icon btn-light btn-clear shrink-0" data-modal-dismiss="true">
                     <i class="ki-filled ki-cross">
@@ -108,10 +109,10 @@
                 <div class="flex flex-col px-5 gap-2.5">
                     <div class="flex flex-center gap-1">
                         <label class="text-gray-900 font-semibold text-2sm">
-                           In order to take the final Quiz you have to finish the course
+                            In order to take the final Quiz you have to finish the course
                         </label>
-                    </div> 
-                </div>   
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -14,12 +14,12 @@ class QuizController extends Controller
      * @param int $courseId
      * @return \Illuminate\View\View
      */
-    public function showQuizLandingPage($courseId)
+    public function showQuizLandingPage($course_id)
     {
         $userId = Auth::id();
 
         // Fetch the quiz related to the course
-        $quiz = Quiz::where('course_id', $courseId)->first();
+        $quiz = Quiz::where('course_id', $course_id)->first();
 
         if (!$quiz) {
             abort(404, 'Quiz not found for this course.');
@@ -32,7 +32,7 @@ class QuizController extends Controller
 
         $attempts = $studentQuiz ? $studentQuiz->attempts : 0;
 
-        return view('quiz.landing', compact('quiz', 'attempts'));
+        return view('pages.quiz.index', compact('quiz', 'attempts'));
     }
     
 }
