@@ -64,15 +64,20 @@
                                 </div>
                                 <div class="card-footer justify-between items-center py-3.5">
                                     @if ($course->is_quiz_available)
-                                        <a class="btn btn-sm btn-light btn-success btn-outline btn-sm"
-                                            href="{{ route('courses.quiz', ['course_id' => $course->id]) }}">
-                                            Take Quiz
-                                        </a>
+                                        @php
+                                            $quiz = $course->quizzes->firstWhere('course_id', $course->id);
+                                        @endphp
+                                        @if ($quiz)
+                                            <a class="btn btn-sm btn-light btn-success btn-outline btn-sm"
+                                                href="{{ route('courses.quiz', ['quiz_id' => $quiz->id]) }}">
+                                                Take Quiz
+                                            </a>
+                                        @endif
                                     @else
-                                        <a class="btn btn-sm btn-light btn-secondary btn-outline btn-sm"
+                                        <p class="btn btn-sm btn-light btn-secondary btn-outline btn-sm"
                                             data-modal-toggle="#share_profile_modal">
-                                            Take Quiz
-                                        </a>
+                                            No quiz
+                                        </p>
                                     @endif
                                     <div class="flex items-center gap-2.5">
                                         <div class="switch">
@@ -84,6 +89,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         @endforeach
 

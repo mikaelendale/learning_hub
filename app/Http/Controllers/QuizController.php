@@ -34,6 +34,31 @@ class QuizController extends Controller
 
         return view('pages.quiz.index', compact('quiz', 'attempts'));
     }
-    
-}
+    public function startQuiz($quizId)
+    {
+        $quiz = Quiz::with(['questions.answers'])->findOrFail($quizId);
 
+        // Any additional logic for starting the quiz
+        return view('pages.quiz.start', compact('quiz'));
+    }
+    public function submitQuiz(Request $request, $quizId)
+    {
+        $quiz = Quiz::with(['questions.answers'])->findOrFail($quizId);
+        $totalScore = 0;
+
+        foreach ($quiz->questions as $question) {
+            $selectedAnswer = $request->input("answers.{$question->id}");
+            $correctAnswer = $question->answers->firstWhere('is_correct', true);
+
+            if ($selectedAnswer == $correctAnswer->id) {
+                $totalScore += $question->point;
+            }
+        }
+
+        // Save the quiz result to the database, e.g., in a `student_quiz` table.
+
+        return redirect()->route('quizzes.result', ['quizId' => $quizId])
+            ->with('success', 'Quiz submitted successfully. Your score is: ' . $totalScore);
+    }
+
+}

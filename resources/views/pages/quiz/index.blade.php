@@ -37,13 +37,13 @@
                             <h3 class="text-gray-900 text-lg font-semibold leading-6 mb-1.5">
                                 Start Quiz Now
                                 <br>
-                                Time alloted
+                                Time alloted 12 min
                             </h3>
                             <span class="text-gray-700 text-sm font-medium block mb-5">
                                 Discover promotions crafted to match your preferences.
                             </span>
-                            <a class="btn btn-dark btn-sm" href="../../network/user-table/visitors.html">
-                                Start Now
+                            <a class="btn btn-dark btn-sm" href="{{ route('quizzes.start', ['quizId' => $quiz->id]) }}">
+                                Take Quiz
                             </a>
                         </div>
                         <div class="text-center">

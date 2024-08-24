@@ -55,9 +55,9 @@ Route::middleware('auth')->group(function () {
 
 //quiz routing
 Route::middleware(['auth'])->group(function () { 
-    Route::get('/quizzes/landing/{course_id}', [QuizController::class, 'showQuizLandingPage'])->name('courses.quiz');
+    Route::get('/quizzes/landing/{quiz_id}', [QuizController::class, 'showQuizLandingPage'])->name('courses.quiz');
     Route::get('/quizzes/start/{quizId}', [QuizController::class, 'startQuiz'])->name('quizzes.start');
-
+    Route::post('/quizzes/submit/{quizId}', [QuizController::class,'submitQuiz'])->name('quizzes.submit');
 });
 
 //admin routes
