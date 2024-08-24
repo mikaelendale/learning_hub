@@ -42,6 +42,15 @@ public function claimedBadges()
 {
     return $this->hasManyThrough(ClaimedBadge::class, CourseBadge::class, 'course_id', 'badge_id', 'id', 'id');
 }
+public function questions()
+{
+    return $this->hasMany(Question::class);
+}
+
+public function scores()
+{
+    return $this->hasMany(Score::class);
+}
 
 
 }

@@ -66,8 +66,8 @@
                                     </div>
                                 </div>
                                 <div class="card-footer justify-between items-center py-3.5">
-                                    <a class="btn btn-light btn-sm">
-                                        {{ $course->category }}
+                                    <a class="btn btn-sm btn-light btn-success btn-outline btn-sm">
+                                       Take Quiz
                                     </a>
                                     <div class="flex items-center gap-2.5">
                                         <div class="switch">

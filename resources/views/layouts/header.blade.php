@@ -632,7 +632,7 @@
                                 <div class="menu-item {{ request()->is('courses') ? 'active' : '' }}">
                                     <a class="menu-link" href="/courses" tabindex="0">
                                         <span class="menu-title">
-                                            Courses Attended
+                                            Courses Status
                                         </span>
                                     </a>
                                 </div>

@@ -49,4 +49,12 @@ class Students extends Authenticatable
 {
     return $this->hasMany(ModuleCompleted::class, 'student_id'); // Adjust as needed
 }
+public function scores()
+{
+    return $this->hasMany(Score::class);
+}
+public function courses()
+{
+    return $this->belongsToMany(Courses::class, 'class_attended', 'level');
+}
 }
