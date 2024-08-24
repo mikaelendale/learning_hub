@@ -146,8 +146,8 @@
                         </label>
                     </div>
                     <label class="input">
-                        <input type="text" disabled value="You can only access {{Auth::user()->class_attended}} courses only "> 
-                        </input>
+                        <p > {{Auth::user()->class_attended}} courses only 
+                        </p>
                     </label>
                 </div> 
                 <div class="border-b border-b-gray-200">

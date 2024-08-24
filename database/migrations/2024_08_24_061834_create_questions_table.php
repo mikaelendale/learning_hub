@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('quiz_id'); // Use quiz_id instead of course_id
             $table->integer('point');
             $table->text('question');
             $table->integer('order');
             $table->timestamps();
 
             // Foreign key constraint
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade'); // Assuming the table name is quizzes
         });
     }
 

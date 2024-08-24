@@ -74,17 +74,34 @@ class CoursesController extends Controller
 
     public function level()
     {
-        // Assuming Auth::user()->class_attended is the level of the course
+        $userId = Auth::id();
         $userClassAttended = Auth::user()->class_attended;
 
-        // Fetch courses that match the user's attended class level and load subsections
+        // Fetch courses that match the user's attended class level and load subsections and quizzes
         $courses = Courses::where('level', $userClassAttended)
-            ->with('subsections')
-            ->get();
+            ->with(['subsections', 'quizzes.questions']) // Include subsections and quizzes with their questions
+            ->get()
+            ->map(function ($course) use ($userId) {
+                // Check if the user has completed all subsections for this course
+                $completedSubsections = SubsectionCompleted::where('student_id', $userId)
+                    ->whereIn('subsection_id', $course->subsections->pluck('id'))
+                    ->pluck('subsection_id')
+                    ->count();
 
-        // Pass the filtered courses to the view
+                $totalSubsections = $course->subsections->count();
+                $isQuizAvailable = $totalSubsections > 0 && $completedSubsections >= $totalSubsections;
+
+                // Check if the course has quizzes
+                $hasQuizzes = $course->quizzes->isNotEmpty();
+
+                // Add the flags to the course
+                $course->is_quiz_available = $isQuizAvailable && $hasQuizzes;
+                return $course;
+            });
+
         return view('pages.courses.level', compact('courses'));
     }
+
     public function setDetail(Request $request)
     {
         // Store the course ID in the session
@@ -364,48 +381,47 @@ class CoursesController extends Controller
 
     //progress
     public function progress()
-{
-    $userId = Auth::id();
+    {
+        $userId = Auth::id();
 
-    // Fetch the user's claimed badges
-    $claimedBadgeIds = ClaimedBadge::where('student_id', $userId)
-        ->pluck('badge_id');
+        // Fetch the user's claimed badges
+        $claimedBadgeIds = ClaimedBadge::where('student_id', $userId)
+            ->pluck('badge_id');
 
-    // Fetch only the badges that have been claimed by the user
-    $badges = Badge::whereIn('id', $claimedBadgeIds)->get();
+        // Fetch only the badges that have been claimed by the user
+        $badges = Badge::whereIn('id', $claimedBadgeIds)->get();
 
-    // Fetch courses and calculate progress
-    $courses = Courses::where('level', auth()->user()->class_attended)
-        ->with('subsections')
-        ->get();
+        // Fetch courses and calculate progress
+        $courses = Courses::where('level', auth()->user()->class_attended)
+            ->with('subsections')
+            ->get();
 
-    $coursesWithProgress = $courses->map(function ($course) use ($userId) {
-        $subsections = $course->subsections;
-        $totalSubsectionsCount = $subsections->count();
-        $completedSubsectionsCount = SubsectionCompleted::where('student_id', $userId)
-            ->whereIn('subsection_id', $subsections->pluck('id'))
-            ->count();
+        $coursesWithProgress = $courses->map(function ($course) use ($userId) {
+            $subsections = $course->subsections;
+            $totalSubsectionsCount = $subsections->count();
+            $completedSubsectionsCount = SubsectionCompleted::where('student_id', $userId)
+                ->whereIn('subsection_id', $subsections->pluck('id'))
+                ->count();
 
-        $progress = ($totalSubsectionsCount > 0) ? ($completedSubsectionsCount / $totalSubsectionsCount) * 100 : 0;
+            $progress = ($totalSubsectionsCount > 0) ? ($completedSubsectionsCount / $totalSubsectionsCount) * 100 : 0;
 
-        $course->progress = $progress;
-        $course->progressColor = ($progress === 100) ? 'progress-success' : 'progress-primary';
+            $course->progress = $progress;
+            $course->progressColor = ($progress === 100) ? 'progress-success' : 'progress-primary';
 
-        // Get unique students who started the course
-        $studentsStartedCourse = $subsections->flatMap(function ($subsection) use ($userId) {
-            return SubsectionCompleted::where('subsection_id', $subsection->id)
-                ->where('student_id', $userId)
-                ->get()
-                ->map->student;
-        })->unique('id'); // Ensure uniqueness by student ID
+            // Get unique students who started the course
+            $studentsStartedCourse = $subsections->flatMap(function ($subsection) use ($userId) {
+                return SubsectionCompleted::where('subsection_id', $subsection->id)
+                    ->where('student_id', $userId)
+                    ->get()
+                    ->map->student;
+            })->unique('id'); // Ensure uniqueness by student ID
 
-        $course->studentsStartedCourse = $studentsStartedCourse;
+            $course->studentsStartedCourse = $studentsStartedCourse;
 
-        return $course;
-    });
+            return $course;
+        });
 
-    return view('pages.courses.progress', compact('badges', 'coursesWithProgress'));
-}
-
+        return view('pages.courses.progress', compact('badges', 'coursesWithProgress'));
+    }
 
 }

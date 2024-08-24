@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,7 +43,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/courses/claim-badge/{badgeId}', [CoursesController::class, 'claimBadge'])
         ->name('claim.badge');
     Route::post('/claim-badge/{badge}', [CoursesController::class, 'claim'])->name('claimBadge');
-
     Route::post('/courses/set-detail', [CoursesController::class, 'setDetail'])->name('courses.setDetail');
     Route::get('/courses/enroll/{id}', [CoursesController::class, 'show'])->name('courses.enroll');
     Route::get('/courses/list', [CoursesController::class, 'list'])->name('courses.list');
@@ -52,6 +52,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/courses/enrolled', [CoursesController::class, 'enrolled'])->name('courses.enrolled');
     Route::get('/courses/progress', [CoursesController::class, 'progress'])->name('courses.progress');
 });
+
+//quiz routing
+Route::middleware(['auth'])->group(function () { 
+    Route::get('/quizzes/{courseId}/landing', [QuizController::class, 'showQuizLandingPage'])->name('quizzes.landing');
+    Route::get('/quizzes/start/{quizId}', [QuizController::class, 'startQuiz'])->name('quizzes.start');
+
+});
+
+//admin routes
 
 //courses pages
 
