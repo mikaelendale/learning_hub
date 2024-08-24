@@ -24,20 +24,20 @@
                 <div class="grid gap-5 lg:gap-7.5">
                     <style>
                         .start-now-bg {
-                            background-image: url('{{asset('assets/media/images/2600x1200/bg-5.png')}}');
+                            background-image: url('{{ asset('assets/media/images/2600x1200/bg-5.png') }}');
                         }
 
                         .dark .start-now-bg {
-                            background-image: url('{{asset('assets/media/images/2600x1200/bg-5-dark.png')}}');
+                            background-image: url('{{ asset('assets/media/images/2600x1200/bg-5-dark.png') }}');
                         }
                     </style>
                     <div
                         class="card flex-col gap-5 justify-between bg-[center_top_1.3rem] bg-no-repeat pt-5 lg:pt-10 px-5 start-now-bg bg-[length:700px]">
                         <div class="text-center">
                             <h3 class="text-gray-900 text-lg font-semibold leading-6 mb-1.5">
-                                Individually Tailored
+                                Start Quiz Now
                                 <br>
-                                Deals for Personal Satisfaction
+                                Time alloted
                             </h3>
                             <span class="text-gray-700 text-sm font-medium block mb-5">
                                 Discover promotions crafted to match your preferences.
@@ -47,8 +47,7 @@
                             </a>
                         </div>
                         <div class="text-center">
-                            <img alt="" class="dark:hidden max-h-[300px]"
-                                src="assets/media/images/2600x1200/3.png">
+                            <img alt="" class="dark:hidden max-h-[300px]" src="assets/media/images/2600x1200/3.png">
                             <img alt="" class="light:hidden max-h-[300px]"
                                 src="assets/media/images/2600x1200/3-dark.png">
                         </div>
@@ -74,14 +73,14 @@
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                                                    18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                                                    39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                        18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                        39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                                     fill="">
                                                 </path>
                                                 <path
                                                     d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                                                    18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                                                    39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                        18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                        39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                                     stroke="">
                                                 </path>
                                             </svg>
@@ -111,19 +110,19 @@
                                     class="flex items-center justify-between flex-wrap group border border-gray-200 rounded-xl gap-2 px-3.5 py-2.5">
                                     <div class="flex items-center flex-wrap gap-2.5">
                                         <div class="relative size-[50px] shrink-0">
-                                            <svg class="w-full h-full stroke-brand-clarity fill-brand-light"
-                                                fill="none" height="48" viewBox="0 0 44 48" width="44"
+                                            <svg class="w-full h-full stroke-brand-clarity fill-brand-light" fill="none"
+                                                height="48" viewBox="0 0 44 48" width="44"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                                                    18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                                                    39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                        18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                        39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                                     fill="">
                                                 </path>
                                                 <path
                                                     d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                                                    18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                                                    39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                        18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                        39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                                     stroke="">
                                                 </path>
                                             </svg>
@@ -158,14 +157,14 @@
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                                                    18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                                                    39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                        18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                        39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                                     fill="">
                                                 </path>
                                                 <path
                                                     d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                                                    18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                                                    39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                        18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                        39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                                     stroke="">
                                                 </path>
                                             </svg>
@@ -200,14 +199,14 @@
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506
-                                                    18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
-                                                    39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
+                                                        18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937
+                                                        39.9641C2.63655 37.8205 0.349365 33.859 0.349365 29.5718V18.4282C0.349365 14.141 2.63655 10.1795 6.34937 8.0359L16 2.4641Z"
                                                     fill="">
                                                 </path>
                                                 <path
                                                     d="M16.25 2.89711C19.8081 0.842838 24.1919 0.842837 27.75 2.89711L37.4006 8.46891C40.9587 10.5232 43.1506 14.3196 43.1506
-                                                    18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
-                                                    39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
+                                                        18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937
+                                                        39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                                                     stroke="">
                                                 </path>
                                             </svg>
@@ -235,78 +234,74 @@
                                 </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
             </div>
             <div class="col-span-1">
                 <div class="grid gap-5 lg:gap-7.5">
-                    
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                Calendar Accounts
-                                <span class="text-gray-600 font-medium text-2sm">
-                                    1/5
-                                </span>
-                            </h3>
-                            <button class="btn btn-light btn-sm">
-                                <i class="ki-filled ki-calendar-remove">
-                                </i>
-                                Add New
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="grid gap-2.5">
-                                <div
-                                    class="flex items-center justify-between flex-wrap border border-gray-200 rounded-xl gap-2 px-3.5 py-2.5">
-                                    <div class="flex items-center flex-wrap gap-3.5">
-                                        <img alt="" class="size-6 shrink-0"
-                                            src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/google-calendar.svg">
-                                        <div class="flex flex-col">
-                                            <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
-                                                href="#">
-                                                Google
-                                            </a>
-                                            <a class="text-2sm font-medium text-gray-600 hover:text-primary-active"
-                                                href="#">
-                                                jasontt@studio.co
-                                            </a>
+                        <div class="card-body lg:py-7.5">
+                            <div class="flex flex-col items-stretch gap-5 lg:gap-7.5">
+                                <div class="flex flex-wrap items-center gap-5 justify-between">
+                                    <div class="flex flex-col gap-1">
+                                        <div class="flex items-center gap-2.5">
+                                            <h2 class="text-2xl font-semibold text-gray-900">
+                                                Basic Plan
+                                            </h2>
+                                            <span class="badge badge-sm badge-success badge-outline">
+                                                Monthly
+                                            </span>
                                         </div>
+                                        <p class="text-2sm font-medium text-gray-600">
+                                            Essential Features for Startups and Individuals
+                                        </p>
                                     </div>
-                                    <div class="btn btn-sm btn-icon btn-clear btn-light">
-                                        <i class="ki-filled ki-trash">
-                                        </i>
+                                    <div class="flex gap-2.5">
+                                        <a class="btn btn-sm btn-light" href="#">
+                                            Cancel Plan
+                                        </a>
+                                        <a class="btn btn-sm btn-primary" href="#">
+                                            Upgrade Plan
+                                        </a>
                                     </div>
                                 </div>
-                                <div
-                                    class="flex items-center justify-between flex-wrap border border-gray-200 rounded-xl gap-2 px-3.5 py-2.5">
-                                    <div class="flex items-center flex-wrap gap-3.5">
-                                        <img alt="" class="size-6 shrink-0"
-                                            src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/monday.svg">
-                                        <div class="flex flex-col">
-                                            <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
-                                                href="#">
-                                                Monday
-                                            </a>
-                                            <a class="text-2sm font-medium text-gray-600 hover:text-primary-active"
-                                                href="#">
-                                                jasontatum@keenthemes.com
-                                            </a>
-                                        </div>
+                                <div class="flex items-center flex-wrap gap-2 lg:gap-5">
+                                    <div
+                                        class="grid grid-cols-1 content-between gap-1.5 border border-dashed border-gray-400 shrink-0 rounded-md px-3.5 py-2 min-w-24 max-w-auto">
+                                        <span class="text-gray-900 text-md leading-none font-semibold">
+                                            $769.00
+                                        </span>
+                                        <span class="text-gray-600 text-2sm font-medium">
+                                            Annual Total
+                                        </span>
                                     </div>
-                                    <div class="btn btn-sm btn-icon btn-clear btn-light">
-                                        <i class="ki-filled ki-trash">
-                                        </i>
+                                    <div
+                                        class="grid grid-cols-1 content-between gap-1.5 border border-dashed border-gray-400 shrink-0 rounded-md px-3.5 py-2 min-w-24 max-w-auto">
+                                        <span class="text-gray-900 text-md leading-none font-semibold">
+                                            $69.00
+                                        </span>
+                                        <span class="text-gray-600 text-2sm font-medium">
+                                            Next Bill Amount
+                                        </span>
+                                    </div> 
+                                </div>
+                                <div class="flex flex-col gap-3.5">
+                                    <span class="text-2sm font-medium text-gray-600">
+                                        Usage (32 of 40 users)
+                                    </span>
+                                    <div class="progress progress-primary">
+                                        <div class="progress-bar" style="width: 80%">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
                                 My Files
-                            </h3> 
+                            </h3>
                         </div>
                         <div class="card-body">
                             <div class="grid gap-2.5 lg:gap-5">
