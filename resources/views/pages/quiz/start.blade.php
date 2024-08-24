@@ -18,116 +18,131 @@
 
  @section('content')
      <div class="container-fixed">
-         <div class="grid gap-5 lg:gap-7.5">
+    <div class="grid gap-5 lg:gap-7.5">
+        <!-- Navigation for questions -->
+        <div class="flex justify-center gap-2.5" data-tabs="true">
+            @foreach ($quiz->questions as $index => $question)
+                <p class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary {{ $index === 0 ? 'active' : '' }}"
+                  aria-disabled="true"  data-tab-toggle="#question_{{ $index + 1 }}" href="#">
+                    {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                </p>
+            @endforeach
+            <!-- Tab for submit -->
+            <a hidden class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary"
+                data-tab-toggle="#question_submit" href="#">
+                Submit
+            </a>
+        </div>
 
-             <div class="flex justify-center gap-2.5" data-tabs="true">
-                 <a class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary active"
-                     data-tab-toggle="#question_1" href="#">
-                     01
-                 </a>
-                 <a class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary"
-                     data-tab-toggle="#question_2" href="#">
-                     02
-                 </a>
-                 <a class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary"
-                     data-tab-toggle="#question_3" href="#">
-                     03
-                 </a>
-                 <a class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary"
-                     data-tab-toggle="#question_4" href="#">
-                     04
-                 </a>
-             </div>
+        <!-- Questions -->
+        <div class="flex justify-center gap-2.5">
+            <div class="flex justify-center items-center min-h-screen">
+                <form id="quiz-form" action="{{ route('quizzes.submit') }}" method="POST">
+                    @csrf
+                    @foreach ($quiz->questions as $index => $question)
+                        <div class="card grow {{ $index === 0 ? '' : 'hidden' }}" style="width: 600px;"
+                            id="question_{{ $index + 1 }}">
+                            <div class="card-body px-12 py-10 lg:px-16 lg:py-12" style="user-select: none;">
+                                <div class="flex flex-col gap-6">
+                                    <h2 class="text-2xl font-semibold text-gray-900 text-start"
+                                        style="user-select: none;">
+                                        {{ $index + 1 }}. {{ $question->question }}
+                                    </h2>
+                                    <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
+                                        <div class="col-span-1">
+                                            <div class="flex flex-col items-start gap-4" style="user-select: none;">
+                                                @foreach ($question->answers as $answer)
+                                                    <label class="radio-group" style="user-select: none;">
+                                                        <input class="radio" name="answers[{{ $question->id }}]"
+                                                            type="radio" value="{{ $answer->id }}">
+                                                        <span class="radio-label radio-label-sm"
+                                                            style="user-select: none;">
+                                                            {{ $answer->answer }}
+                                                        </span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    <!-- Submit tab content -->
+                    <div class="card grow hidden" style="width: 600px;"
+                        id="question_submit">
+                        <div class="card-body px-12 py-10 lg:px-16 lg:py-12" style="user-select: none;">
+                            <div class="flex flex-col gap-6">
+                                <h2 class="text-2xl font-semibold text-gray-900 text-center"
+                                    style="user-select: none;">
+                                    Thank you for completing the quiz!
+                                </h2>
+                                <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
+                                    <div class="col-span-1 flex justify-center">
+                                        <button type="submit" class="btn btn-sm btn-primary">
+                                            Submit Quiz
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-             <!-- begin: activity -->
-             <div class="flex justify-center gap-2.5">
-                 <div class="flex justify-center items-center min-h-screen">
-                     <div class="card grow" style="width: 600px;" id="question_1">
-                         <div class="card-body px-12 py-10 lg:px-16 lg:py-12" style="user-select: none;">
-                             <div class="flex flex-col gap-6">
-                                 <h2 class="text-2xl font-semibold text-gray-900 text-start" style="user-select: none;">
-                                     1. What is the purpose of our blog?
-                                 </h2>
-                                 <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
-                                     <div class="col-span-1">
-                                         <div class="flex flex-col items-start gap-4" style="user-select: none;">
-                                             <label class="radio-group" style="user-select: none;">
-                                                 <input class="radio" name="desktop_notification" type="radio"
-                                                     value="1">
-                                                 <span class="radio-label radio-label-sm" style="user-select: none;">
-                                                     All new messages (Recommended)
-                                                 </span>
-                                             </label>
-                                             <label class="radio-group" style="user-select: none;">
-                                                 <input checked="" class="radio" name="desktop_notification"
-                                                     type="radio" value="2">
-                                                 <span class="radio-label radio-label-sm" style="user-select: none;">
-                                                     Direct @mentions
-                                                 </span>
-                                             </label>
-                                             <label class="radio-group" style="user-select: none;">
-                                                 <input checked="" class="radio" name="desktop_notification"
-                                                     type="radio" value="3">
-                                                 <span class="radio-label radio-label-sm" style="user-select: none;">
-                                                     Disabled
-                                                 </span>
-                                             </label>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                      <div class="card grow hidden" style="width: 600px;" id="question_2">
-                         <div class="card-body px-12 py-10 lg:px-16 lg:py-12" style="user-select: none;">
-                             <div class="flex flex-col gap-6">
-                                 <h2 class="text-2xl font-semibold text-gray-900 text-start" style="user-select: none;">
-                                     2. What is the purpose of our blog?
-                                 </h2>
-                                 <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
-                                     <div class="col-span-1">
-                                         <div class="flex flex-col items-start gap-4" style="user-select: none;">
-                                             <label class="radio-group" style="user-select: none;">
-                                                 <input class="radio" name="" type="radio"
-                                                     value="1">
-                                                 <span class="radio-label radio-label-sm" style="user-select: none;">
-                                                     All new messages (Recommended)
-                                                 </span>
-                                             </label>
-                                             <label class="radio-group" style="user-select: none;">
-                                                 <input checked="" class="radio" name="desktop_notification"
-                                                     type="radio" value="2">
-                                                 <span class="radio-label radio-label-sm" style="user-select: none;">
-                                                     Direct @mentions
-                                                 </span>
-                                             </label>
-                                             <label class="radio-group" style="user-select: none;">
-                                                 <input checked="" class="radio" name="desktop_notification"
-                                                     type="radio" value="3">
-                                                 <span class="radio-label radio-label-sm" style="user-select: none;">
-                                                     Disabled
-                                                 </span>
-                                             </label>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-             <div class="flex justify-center gap-2.5" data-tabs="true">
-                 <a class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary active"
-                     data-tab-toggle="#question_1" href="#">
-                     Previous
-                 </a>
-                 <a class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary"
-                     data-tab-toggle="#question_2" href="#">
-                     Next
-                 </a>
-             </div>
-         </div>
-     </div>
+        <!-- Navigation buttons for previous/next -->
+        <div class="flex justify-center gap-2.5" data-tabs="true">
+            <a class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary"
+                id="prev-btn" href="#">
+                Previous
+            </a>
+            <a class="btn btn-sm text-gray-600 hover:text-primary tab-active:bg-primary-light tab-active:text-primary"
+                id="next-btn" href="#">
+                Next
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('[data-tab-toggle]');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let activeIndex = 0;
+
+        function updateTabs() {
+            tabs.forEach((tab, index) => {
+                const target = document.querySelector(tab.dataset.tabToggle);
+                if (index === activeIndex) {
+                    tab.classList.add('active');
+                    target.classList.remove('hidden');
+                } else {
+                    tab.classList.remove('active');
+                    target.classList.add('hidden');
+                }
+            });
+        }
+
+        nextBtn.addEventListener('click', function() {
+            if (activeIndex < tabs.length - 1) {
+                activeIndex++;
+                updateTabs();
+            }
+        });
+
+        prevBtn.addEventListener('click', function() {
+            if (activeIndex > 0) {
+                activeIndex--;
+                updateTabs();
+            }
+        });
+
+        updateTabs();
+    });
+</script>
+
  @endsection
 
  {{-- <div class="quiz-container">

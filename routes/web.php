@@ -54,10 +54,13 @@ Route::middleware('auth')->group(function () {
 });
 
 //quiz routing
-Route::middleware(['auth'])->group(function () { 
-    Route::get('/quizzes/landing/{quiz_id}', [QuizController::class, 'showQuizLandingPage'])->name('courses.quiz');
-    Route::get('/quizzes/start/{quizId}', [QuizController::class, 'startQuiz'])->name('quizzes.start');
-    Route::post('/quizzes/submit/{quizId}', [QuizController::class,'submitQuiz'])->name('quizzes.submit');
+Route::middleware(['auth'])->group(function () {
+    Route::post('/quizzes/set-quiz', [QuizController::class, 'setQuiz'])->name('courses.setQuiz');
+    Route::get('/quizzes/landing', [QuizController::class, 'quizLandingPage'])->name('courses.quizLandingPage');
+    Route::post('/quizzes/start', [QuizController::class, 'startQuiz'])->name('quizzes.startQuiz');
+    Route::get('/quizzes/start', [QuizController::class, 'quizStartPage'])->name('quizzes.start');
+    Route::post('/quizzes/submit', [QuizController::class, 'submit'])->name('quizzes.submit');
+
 });
 
 //admin routes

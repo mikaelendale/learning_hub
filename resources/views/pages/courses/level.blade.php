@@ -68,10 +68,18 @@
                                             $quiz = $course->quizzes->firstWhere('course_id', $course->id);
                                         @endphp
                                         @if ($quiz)
-                                            <a class="btn btn-sm btn-light btn-success btn-outline btn-sm"
-                                                href="{{ route('courses.quiz', ['quiz_id' => $quiz->id]) }}">
+                                            <a href="{{ route('courses.setQuiz') }}"
+                                                onclick="event.preventDefault(); document.getElementById('quiz-form-{{ $quiz->id }}').submit();"
+                                                class="btn btn-sm btn-light btn-success btn-outline btn-sm">
                                                 Take Quiz
                                             </a>
+
+                                            <form id="quiz-form-{{ $quiz->id }}"
+                                                action="{{ route('courses.setQuiz') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                                <input type="hidden" name="quiz_id" value="{{ $quiz->id }}">
+                                            </form>
                                         @endif
                                     @else
                                         <p class="btn btn-sm btn-light btn-secondary btn-outline btn-sm"

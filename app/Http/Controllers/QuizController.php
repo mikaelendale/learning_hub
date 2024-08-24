@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use App\Models\StudentQuiz;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
@@ -14,15 +15,20 @@ class QuizController extends Controller
      * @param int $courseId
      * @return \Illuminate\View\View
      */
-    public function showQuizLandingPage($course_id)
+    public function quizLandingPage()
     {
         $userId = Auth::id();
+        $quizId = session('quiz_id'); // Retrieve quiz_id from the session
 
-        // Fetch the quiz related to the course
-        $quiz = Quiz::where('course_id', $course_id)->first();
+        if (!$quizId) {
+            abort(404, 'Quiz not found.');
+        }
+
+        // Fetch the quiz by ID
+        $quiz = Quiz::find($quizId);
 
         if (!$quiz) {
-            abort(404, 'Quiz not found for this course.');
+            abort(404, 'Quiz not found.');
         }
 
         // Check if the student has already taken the quiz and the number of attempts
@@ -34,12 +40,14 @@ class QuizController extends Controller
 
         return view('pages.quiz.index', compact('quiz', 'attempts'));
     }
-    public function startQuiz($quizId)
-    {
-        $quiz = Quiz::with(['questions.answers'])->findOrFail($quizId);
 
-        // Any additional logic for starting the quiz
-        return view('pages.quiz.start', compact('quiz'));
+    public function setQuiz(Request $request)
+    {
+        // Store the quiz ID in the session
+        session(['quiz_id' => $request->input('quiz_id')]);
+
+        // Redirect to the clean URL
+        return redirect()->route('courses.quizLandingPage');
     }
     public function submitQuiz(Request $request, $quizId)
     {
@@ -60,5 +68,40 @@ class QuizController extends Controller
         return redirect()->route('quizzes.result', ['quizId' => $quizId])
             ->with('success', 'Quiz submitted successfully. Your score is: ' . $totalScore);
     }
+
+    public function startQuiz(Request $request)
+{
+    // Store the quiz ID in the session
+    session(['quiz_id' => $request->input('quiz_id')]);
+
+    // Redirect to the clean URL
+    return redirect()->route('quizzes.start');
+}
+public function quizStartPage()
+{
+    $userId = Auth::id();
+    $quizId = session('quiz_id'); // Retrieve quiz_id from the session
+
+    if (!$quizId) {
+        abort(404, 'Quiz not found.');
+    }
+
+    // Fetch the quiz by ID
+    $quiz = Quiz::find($quizId);
+
+    if (!$quiz) {
+        abort(404, 'Quiz not found.');
+    }
+
+    // Check if the student has already taken the quiz and the number of attempts
+    $studentQuiz = StudentQuiz::where('quiz_id', $quiz->id)
+        ->where('student_id', $userId)
+        ->first();
+
+    $attempts = $studentQuiz ? $studentQuiz->attempts : 0;
+
+    return view('pages.quiz.start', compact('quiz', 'attempts'));
+}
+
 
 }
