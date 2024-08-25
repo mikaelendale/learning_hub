@@ -71,7 +71,7 @@
                                             <a href="{{ route('courses.setQuiz') }}"
                                                 onclick="event.preventDefault(); document.getElementById('quiz-form-{{ $quiz->id }}').submit();"
                                                 class="btn btn-sm btn-light btn-success btn-outline btn-sm">
-                                                Take Quiz
+                                                View Quiz
                                             </a>
 
                                             <form id="quiz-form-{{ $quiz->id }}"

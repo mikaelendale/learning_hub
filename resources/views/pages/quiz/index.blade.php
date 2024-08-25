@@ -44,7 +44,7 @@
                             </span>
                             <a href="{{ route('quizzes.start') }}"
                                 onclick="event.preventDefault(); document.getElementById('start-quiz-form-{{ $quiz->id }}').submit();"
-                                class="btn btn-dark btn-sm">
+                                class="btn btn-primary btn-sm">
                                 Take Quiz
                             </a>
 

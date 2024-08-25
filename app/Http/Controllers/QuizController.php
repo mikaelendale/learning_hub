@@ -75,15 +75,31 @@ class QuizController extends Controller
             abort(404, 'Quiz not found.');
         }
 
-        // Check if the student has already taken the quiz and the number of attempt
+        // Check if the student has already taken the quiz and the number of attempts
         $studentQuiz = StudentQuiz::where('quiz_id', $quiz->id)
             ->where('student_id', $userId)
             ->first();
 
         $attempt = $studentQuiz ? $studentQuiz->attempt : 0;
 
+        // Redirect if the student has reached the maximum number of attempts
+        if ($attempt >= 2) {
+            return redirect()->route('courses.quizLandingPage', [
+            ])->with('error', 'You have already completed this quiz and cannot retake it.');
+        }
+
+        // Redirect if the student has completed the quiz
+        if ($studentQuiz && $studentQuiz->score !== null) {
+            return redirect()->route('quizzes.results', [
+                'quizId' => $quiz->id,
+                'studentQuizId' => $studentQuiz->id,
+            ])->with('info', 'You have already submitted this quiz.');
+        }
+
+        // Allow access to the quiz start page if the conditions are met
         return view('pages.quiz.start', compact('quiz', 'attempt'));
     }
+
     public function submitQuiz(Request $request)
     {
         // Retrieve the quiz by ID
@@ -116,17 +132,23 @@ class QuizController extends Controller
             }
         }
 
-        // Save the result in the student_quizzes table
-        $studentQuiz = StudentQuiz::updateOrCreate(
+        // Retrieve or create the studentQuiz record
+        $studentQuiz = StudentQuiz::firstOrNew(
             [
                 'student_id' => auth()->id(),
                 'quiz_id' => $quiz->id,
-            ],
-            [
-                'score' => $totalScore,
-                'attempt' => \DB::raw('attempt + 1'),
             ]
         );
+
+        // Check if the student has already attempted the quiz twice
+        if ($studentQuiz->exists && $studentQuiz->attempt >= 2) {
+            return redirect()->back()->with('error', 'You have reached the maximum number of attempts.');
+        }
+
+        // Increment the attempt count
+        $studentQuiz->attempt = $studentQuiz->exists ? $studentQuiz->attempt + 1 : 1;
+        $studentQuiz->score = $totalScore;
+        $studentQuiz->save();
 
         // Store unanswered questions in the session
         session()->put('unanswered_questions', $answersProvided);
