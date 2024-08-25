@@ -39,14 +39,15 @@
                  <div class="flex justify-center items-center min-h-screen">
                      <form id="quiz-form" action="{{ route('quizzes.submit') }}" method="POST">
                          @csrf
-                         @foreach ($quiz->questions as $index => $question)
-                             <div class="card grow {{ $index === 0 ? '' : 'hidden' }}" style="width: 600px;"
-                                 id="question_{{ $index + 1 }}">
+                         <input type="hidden" name="quiz_id" value="{{ $quiz->id }}">
+                         @foreach ($quiz->questions as $question)
+                             <div class="card grow {{ $loop->first ? '' : 'hidden' }}" style="width: 600px;"
+                                 id="question_{{ $loop->index + 1 }}">
                                  <div class="card-body px-12 py-10 lg:px-16 lg:py-12" style="user-select: none;">
                                      <div class="flex flex-col gap-6">
                                          <h2 class="text-2xl font-semibold text-gray-900 text-start"
                                              style="user-select: none;">
-                                             {{ $index + 1 }}. {{ $question->question }}
+                                             {{ $loop->iteration }}. {{ $question->question }}
                                          </h2>
                                          <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
                                              <div class="col-span-1">
@@ -68,7 +69,6 @@
                                  </div>
                              </div>
                          @endforeach
-                         <!-- Submit tab content -->
                          <div class="card grow hidden" style="width: 600px;" id="question_submit">
                              <div class="card-body px-12 py-10 lg:px-16 lg:py-12" style="user-select: none;">
                                  <div class="flex flex-col gap-6">
@@ -86,6 +86,8 @@
                              </div>
                          </div>
                      </form>
+
+
                  </div>
              </div>
 
