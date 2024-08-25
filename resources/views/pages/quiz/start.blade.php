@@ -47,7 +47,7 @@
                                      <div class="flex flex-col gap-6">
                                          <h2 class="text-2xl font-semibold text-gray-900 text-start"
                                              style="user-select: none;">
-                                             {{ $loop->iteration }}. {{ $question->question }}
+                                             {{ $loop->iteration }}. {{ $question->question }} <span class="badge badge-xs badge-light mt-1 badge-outline">({{ $question->point }} pts)</span>
                                          </h2>
                                          <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
                                              <div class="col-span-1">

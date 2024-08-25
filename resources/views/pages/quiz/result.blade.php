@@ -21,8 +21,10 @@
          <!-- begin: works -->
          <div class="flex flex-col items-stretch gap-5 lg:gap-7.5">
              <!-- begin: list -->
-             <p class="badge badge-xs badge-light badge-outline text-xl text-gray-100">Your Score: {{ $studentQuiz->score }} /
-                 {{ count($quiz->questions) }}</p>
+             <p class="badge badge-xs badge-light badge-outline text-xl text-gray-100">
+                 Your Score: {{ $studentQuiz->score }} /
+                 {{ $quiz->questions->sum('point') }}
+             </p>
              <div id="teams_list">
                  <div class="flex flex-col gap-5 lg:gap-7.5">
                      @foreach ($quiz->questions as $question)
