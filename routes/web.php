@@ -65,6 +65,8 @@ Route::middleware(['auth', 'check.status'])->group(function () {
     Route::get('/account/subscription', [AccountController::class, 'index'])->name('account.subscription');
     Route::post('/update-status', [AccountController::class, 'updateStatus'])->name('update.status');
     Route::get('/get-status', [AccountController::class, 'getStatus'])->name('get.status');
+    Route::get('/download-invoice', [Route::get('/download-invoice', [InvoiceController::class, 'downloadPDF'])->name('invoice.download');
+::class, 'downloadPDF'])->name('invoice.download');
 
 });
 
