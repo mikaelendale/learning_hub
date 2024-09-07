@@ -130,7 +130,7 @@
                              <div class="flex items-center flex-wrap justify-between gap-5">
                                  <div class="flex items-center gap-3.5">
                                      <div class="flex items-center justify-center w-[50px]">
-                                         <img alt="" class="size-[50px] shrink-0"
+                                         <img alt="" class="size-9 rounded-full justify-center rounded-full border border-gray-900 shrink-0"
                                              src="{{ asset('students_pic/' . ($student->profile_pic ?? 'default.png')) }}"
                                              alt="{{ $student->name }}" />
                                      </div>
@@ -162,7 +162,7 @@
                                          </div>
                                          <div class="flex justify-center w-20">
                                              <span class="badge badge-success badge-outline">
-                                                 {{ $student->name }}
+                                                 {{ $student->status }}
                                              </span>
                                          </div>
                                      </div>

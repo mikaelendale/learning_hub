@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExampleController;
@@ -68,6 +69,11 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/status/leaderboard', [RankController::class, 'index'])->name('course.leader');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/account/subscription', [AccountController::class, 'index'])->name('account.subscription');
+});
+
 //admin routes
 
 //courses pages
