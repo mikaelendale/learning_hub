@@ -43,6 +43,9 @@
         <div class="flex items-center gap-3.5">
             <div class="flex items-center gap-1">
                 <script>
+                    // Get the CSRF token from the meta tag
+                    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
                     var timeDuration = "{{ Auth::user()->time_duration }}"; // Format: YYYY-MM-DD HH:MM:SS
 
                     function updateClock() {
@@ -54,28 +57,47 @@
 
                             if (timeRemaining <= 0) {
                                 // Time is up
-                                document.getElementById('digital-clock').textContent = "Time's up!";
-                                document.getElementById('digital-clock').style.color = 'red';
+                                document.getElementById('digital-clock').textContent = "Expired";
 
-                                // Update status to 'pending'
-                                fetch('{{ route('update.status') }}', {
-                                        method: 'POST',
+                                // Check current status before updating
+                                fetch('{{ route('get.status') }}', { // Ensure this route is defined
+                                        method: 'GET',
                                         headers: {
-                                            'Content-Type': 'application/json',
-                                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                                        },
-                                        body: JSON.stringify({})
+                                            'X-CSRF-TOKEN': csrfToken
+                                        }
                                     })
                                     .then(response => response.json())
                                     .then(data => {
-                                        if (data.success) {
-                                            console.log('Status updated to pending.');
+                                        if (data.status === 'pending') {
+                                            console.log('Status is already pending.');
                                         } else {
-                                            console.error('Failed to update status.');
+                                            // Update status to 'pending'
+                                            fetch('{{ route('update.status') }}', { // Ensure this route is defined
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
+                                                    },
+                                                    body: JSON.stringify({
+                                                        status: 'pending'
+                                                    }) // Sending the status as JSON
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    if (data.success) {
+                                                        console.log('Status updated to pending.');
+                                                        window.location.href =
+                                                        '{{ route('dashboard') }}'; // Redirect to dashboard
+                                                    } else {
+                                                        console.error('Failed to update status.');
+                                                    }
+                                                })
+                                                .catch(error => console.error('Error:', error));
                                         }
-                                    });
 
-                                clearInterval(timer); // Stop the timer
+                                        clearInterval(timer); // Stop the timer
+                                    })
+                                    .catch(error => console.error('Error fetching status:', error));
                             } else {
                                 var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                                 var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
@@ -94,13 +116,9 @@
 
                     updateClock();
                 </script>
-
-
-                <a href="#" class="rounded hover:bg-gray-light hover:text-gray-200 text-gray-900 font-large mt-1"
+                <a href="" class="badge badge-xs badge-warning badge-outline rounded hover:bg-gray-light hover:text-gray-200 text-gray-900 font-sm mt-1"
                     id="digital-clock">
-                    <!-- Time will be displayed here -->
                 </a>
-
                 <div class="dropdown" data-dropdown="true" data-dropdown-offset="115px, 10px"
                     data-dropdown-placement="bottom-end" data-dropdown-trigger="click|lg:click">
                     <button
@@ -645,7 +663,7 @@
                                 tabindex="0">
                                 <span
                                     class="menu-title text-nowrap font-medium text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-                                    !! There will be more menu once you finish the transaction
+                                    There will be more menu once you finish the transaction
                                 </span>
                             </a>
                         </div>
@@ -762,11 +780,11 @@
                         </div>
 
                         <div
-                            class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900">
-                            <a class="menu-link gap-2.5 pb-2 lg:pb-4 {{ request()->is('account/subscription') ? 'active' : '' }}"
+                            class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900 {{ request()->is('account/subscription') ? 'here' : '' }}">
+                            <a class="menu-link gap-2.5 pb-2 lg:pb-4 "
                                 href="/account/subscription" tabindex="0">
                                 <span
-                                    class="menu-title text-nowrap font-medium text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
+                                    class="menu-title text-nowrap font-medium text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900 ">
                                     Subscription
                                 </span>
                             </a>

@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'check.status'])->group(function () {
     Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
     Route::get('/courses/level', [CoursesController::class, 'level'])->name('courses.level');
     Route::get('/courses/detail', [CoursesController::class, 'detail'])->name('courses.detail');
@@ -53,10 +53,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/courses/subsection/{id}/complete', [CoursesController::class, 'completeSubsection'])->name('subsection.complete');
     Route::get('/courses/enrolled', [CoursesController::class, 'enrolled'])->name('courses.enrolled');
     Route::get('/courses/progress', [CoursesController::class, 'progress'])->name('courses.progress');
-});
-
-//quiz routing
-Route::middleware(['auth'])->group(function () {
     Route::post('/quizzes/set-quiz', [QuizController::class, 'setQuiz'])->name('courses.setQuiz');
     Route::get('/quizzes/landing', [QuizController::class, 'quizLandingPage'])->name('courses.quizLandingPage');
     Route::post('/quizzes/start', [QuizController::class, 'startQuiz'])->name('quizzes.startQuiz');
@@ -65,14 +61,10 @@ Route::middleware(['auth'])->group(function () {
     // web.php
     Route::get('/quizzes/results/{quizId}/{studentQuizId}', [QuizController::class, 'showResults'])->name('quizzes.results');
     Route::get('/quizzes', [QuizController::class, 'quizLanding'])->name('quizzes.landing');
-});
-Route::middleware(['auth'])->group(function () {
     Route::get('/status/leaderboard', [RankController::class, 'index'])->name('course.leader');
-});
-
-Route::middleware(['auth'])->group(function () {
     Route::get('/account/subscription', [AccountController::class, 'index'])->name('account.subscription');
     Route::post('/update-status', [AccountController::class, 'updateStatus'])->name('update.status');
+    Route::get('/get-status', [AccountController::class, 'getStatus'])->name('get.status');
 
 });
 

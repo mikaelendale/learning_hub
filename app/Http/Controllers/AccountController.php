@@ -12,12 +12,28 @@ class AccountController extends Controller
         return view('pages.account.subscription');
     }
     public function updateStatus(Request $request)
-{
-    $user = Auth::user();
-    $user->status = $request->status; // Assuming 'status' is the column to be updated
-    $user->save();
+    {
+        $user = Auth::user();
 
-    return response()->json(['message' => 'Status updated']);
-}
+        // Check if 'status' is provided in the request
+        if ($request->has('status')) {
+            $user->status = $request->input('status'); // Assuming 'status' is the column to be updated
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'Status updated']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Status not provided'], 400);
+        }
+    }
+    public function getStatus()
+    {
+        $user = Auth::user();
+
+        if ($user) {
+            return response()->json(['status' => $user->status]);
+        }
+
+        return response()->json(['status' => 'unknown'], 401);
+    }
 
 }
