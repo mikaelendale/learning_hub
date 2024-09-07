@@ -72,6 +72,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/account/subscription', [AccountController::class, 'index'])->name('account.subscription');
+    Route::post('/update-status', [AccountController::class, 'updateStatus'])->name('update.status');
+
 });
 
 //admin routes

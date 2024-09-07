@@ -6,53 +6,7 @@
         font-weight: bold;
     }
 </style>
-<script>
-    // Get the time duration from the server-side
-    var timeDuration = "{{ Auth::user()->time_duration }}"; // Format: HH:MM:SS
 
-    // Function to update the clock
-    function updateClock() {
-        // Split the timeDuration into hours, minutes, and seconds
-        var timeParts = timeDuration.split(':');
-        var hours = parseInt(timeParts[0], 10);
-        var minutes = parseInt(timeParts[1], 10);
-        var seconds = parseInt(timeParts[2], 10);
-
-        // Update the time every second
-        var timer = setInterval(function() {
-            // Increment seconds
-            seconds++;
-
-            if (seconds >= 60) {
-                seconds = 0;
-                minutes++;
-            }
-
-            if (minutes >= 60) {
-                minutes = 0;
-                hours++;
-            }
-
-            if (hours >= 24) {
-                hours = 0; // Reset hours if it exceeds 24
-            }
-
-            // Format the time parts to always be two digits
-            var formattedTime = [
-                hours.toString().padStart(2, '0'),
-                minutes.toString().padStart(2, '0'),
-                seconds.toString().padStart(2, '0')
-            ].join(':');
-
-            // Display the updated time
-            document.getElementById('digital-clock').textContent = formattedTime;
-
-        }, 1000);
-    }
-
-    // Start the clock
-    updateClock();
-</script>
 <header class="flex items-center transition-[height] shrink-0 bg-[#fefefe] dark:bg-coal-500 h-[--tw-header-height]"
     data-sticky="true"
     data-sticky-class="transition-[height] fixed z-10 top-0 left-0 right-0 shadow-sm backdrop-blur-md bg-white/70 dark:bg-coal-500/70 dark:border-b dark:border-b-coal-100"
@@ -88,12 +42,65 @@
         <!-- Topbar -->
         <div class="flex items-center gap-3.5">
             <div class="flex items-center gap-1">
-                <a href="/account/timer"
-                    class="rounded  hover:bg-gray-light hover:text-gray-200 text-gray-900 font-large mt-1"
+                <script>
+                    var timeDuration = "{{ Auth::user()->time_duration }}"; // Format: YYYY-MM-DD HH:MM:SS
+
+                    function updateClock() {
+                        var endTime = new Date(timeDuration);
+
+                        var timer = setInterval(function() {
+                            var now = new Date();
+                            var timeRemaining = endTime - now;
+
+                            if (timeRemaining <= 0) {
+                                // Time is up
+                                document.getElementById('digital-clock').textContent = "Time's up!";
+                                document.getElementById('digital-clock').style.color = 'red';
+
+                                // Update status to 'pending'
+                                fetch('{{ route('update.status') }}', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                        },
+                                        body: JSON.stringify({})
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            console.log('Status updated to pending.');
+                                        } else {
+                                            console.error('Failed to update status.');
+                                        }
+                                    });
+
+                                clearInterval(timer); // Stop the timer
+                            } else {
+                                var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                                var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                                var formattedTime = [
+                                    hours.toString().padStart(2, '0'),
+                                    minutes.toString().padStart(2, '0'),
+                                    seconds.toString().padStart(2, '0')
+                                ].join(':');
+
+                                document.getElementById('digital-clock').textContent = formattedTime;
+                            }
+                        }, 1000);
+                    }
+
+                    updateClock();
+                </script>
+
+
+                <a href="#" class="rounded hover:bg-gray-light hover:text-gray-200 text-gray-900 font-large mt-1"
                     id="digital-clock">
                     <!-- Time will be displayed here -->
                 </a>
-                &nbsp;
+
                 <div class="dropdown" data-dropdown="true" data-dropdown-offset="115px, 10px"
                     data-dropdown-placement="bottom-end" data-dropdown-trigger="click|lg:click">
                     <button
