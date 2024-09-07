@@ -7,18 +7,51 @@
     }
 </style>
 <script>
-    function updateClock() {
-        var now = new Date();
-        var hours = now.getHours().toString().padStart(2, '0');
-        var minutes = now.getMinutes().toString().padStart(2, '0');
-        var seconds = now.getSeconds().toString().padStart(2, '0');
-        var timeString = hours + ':' + minutes + ':' + seconds;
+    // Get the time duration from the server-side
+    var timeDuration = "{{ Auth::user()->time_duration }}"; // Format: HH:MM:SS
 
-        document.getElementById('digital-clock').textContent = timeString;
+    // Function to update the clock
+    function updateClock() {
+        // Split the timeDuration into hours, minutes, and seconds
+        var timeParts = timeDuration.split(':');
+        var hours = parseInt(timeParts[0], 10);
+        var minutes = parseInt(timeParts[1], 10);
+        var seconds = parseInt(timeParts[2], 10);
+
+        // Update the time every second
+        var timer = setInterval(function() {
+            // Increment seconds
+            seconds++;
+
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes++;
+            }
+
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+            }
+
+            if (hours >= 24) {
+                hours = 0; // Reset hours if it exceeds 24
+            }
+
+            // Format the time parts to always be two digits
+            var formattedTime = [
+                hours.toString().padStart(2, '0'),
+                minutes.toString().padStart(2, '0'),
+                seconds.toString().padStart(2, '0')
+            ].join(':');
+
+            // Display the updated time
+            document.getElementById('digital-clock').textContent = formattedTime;
+
+        }, 1000);
     }
 
-    setInterval(updateClock, 1000); // Update the clock every second
-    updateClock(); // Initial call to display the time immediately
+    // Start the clock
+    updateClock();
 </script>
 <header class="flex items-center transition-[height] shrink-0 bg-[#fefefe] dark:bg-coal-500 h-[--tw-header-height]"
     data-sticky="true"
@@ -55,9 +88,12 @@
         <!-- Topbar -->
         <div class="flex items-center gap-3.5">
             <div class="flex items-center gap-1">
-                <a href="/account/timer" class="rounded  hover:bg-gray-light hover:text-gray-200 text-gray-900 font-large mt-1" id="digital-clock">
+                <a href="/account/timer"
+                    class="rounded  hover:bg-gray-light hover:text-gray-200 text-gray-900 font-large mt-1"
+                    id="digital-clock">
                     <!-- Time will be displayed here -->
-                </a>&nbsp;
+                </a>
+                &nbsp;
                 <div class="dropdown" data-dropdown="true" data-dropdown-offset="115px, 10px"
                     data-dropdown-placement="bottom-end" data-dropdown-trigger="click|lg:click">
                     <button
@@ -697,13 +733,6 @@
                                 </span>
                             </div>
                             <div class="menu-dropdown menu-default py-2 min-w-[200px]">
-                                <div class="menu-item {{ request()->is('status/rank') ? 'active' : '' }}">
-                                    <a class="menu-link" href="/status/rank" tabindex="0">
-                                        <span class="menu-title">
-                                            Rank
-                                        </span>
-                                    </a>
-                                </div>
                                 <div class="menu-item {{ request()->is('status/leaderboard') ? 'active' : '' }}">
                                     <a class="menu-link" href="/status/leaderboard" tabindex="0">
                                         <span class="menu-title">

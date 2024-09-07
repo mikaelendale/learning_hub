@@ -6,6 +6,7 @@ use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\RankController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,11 +62,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/quizzes/start', [QuizController::class, 'quizStartPage'])->name('quizzes.start');
     Route::post('/quizzes/submit', [QuizController::class, 'submitQuiz'])->name('quizzes.submit');
     // web.php
-Route::get('/quizzes/results/{quizId}/{studentQuizId}', [QuizController::class, 'showResults'])->name('quizzes.results');
-
+    Route::get('/quizzes/results/{quizId}/{studentQuizId}', [QuizController::class, 'showResults'])->name('quizzes.results');
     Route::get('/quizzes', [QuizController::class, 'quizLanding'])->name('quizzes.landing');
 });
-
+Route::middleware(['auth'])->group(function () {
+    Route::get('/status/leaderboard', [RankController::class, 'index'])->name('course.leader');
+});
 //admin routes
 
 //courses pages

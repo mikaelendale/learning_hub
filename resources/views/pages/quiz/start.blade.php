@@ -19,6 +19,12 @@
  @section('content')
      <div class="container-fixed">
          <div class="grid gap-5 lg:gap-7.5">
+             <div class="flex justify-center">
+                 <div class="timer">
+                     Time Remaining: <span id="timer">00:00:00</span>
+                 </div>
+
+             </div>
              <!-- Navigation for questions -->
              <div class="flex justify-center gap-2.5" data-tabs="true">
                  @foreach ($quiz->questions as $index => $question)
@@ -47,7 +53,9 @@
                                      <div class="flex flex-col gap-6">
                                          <h2 class="text-2xl font-semibold text-gray-900 text-start"
                                              style="user-select: none;">
-                                             {{ $loop->iteration }}. {{ $question->question }} <span class="badge badge-xs badge-light mt-1 badge-outline">({{ $question->point }} pts)</span>
+                                             {{ $loop->iteration }}. {{ $question->question }} <span
+                                                 class="badge badge-xs badge-light mt-1 badge-outline">({{ $question->point }}
+                                                 pts)</span>
                                          </h2>
                                          <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
                                              <div class="col-span-1">
@@ -163,31 +171,38 @@
              updateTabs();
          });
      </script>
+     <script>
+         document.addEventListener("DOMContentLoaded", function() {
+             let timeRemaining = {{ $totalTimeInSeconds }}; // Time in seconds
+
+             function startTimer() {
+                 const timerDisplay = document.getElementById('timer');
+
+                 let hours, minutes, seconds;
+                 const timerInterval = setInterval(function() {
+                     // Calculate hours, minutes, and seconds
+                     hours = Math.floor(timeRemaining / 3600);
+                     minutes = Math.floor((timeRemaining % 3600) / 60);
+                     seconds = timeRemaining % 60;
+
+                     // Display the timer
+                     timerDisplay.textContent =
+                         `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                     // Check if time has run out
+                     if (timeRemaining <= 0) {
+                         clearInterval(timerInterval);
+                         alert("Time is up!");
+                         // Optionally submit the quiz automatically
+                         document.getElementById('quiz-form').submit();
+                     }
+
+                     // Decrease time remaining by 1 second
+                     timeRemaining--;
+                 }, 1000);
+             }
+
+             startTimer(); // Start the timer
+         });
+     </script>
  @endsection
-
- {{-- <div class="quiz-container">
-         <h1>{{ $quiz->course->name }} - Quiz</h1>
-         <p>Time Allotted: {{ $quiz->time_alloted }} minutes</p>
-         <p>Total Score: {{ $quiz->score }}</p>
-
-         <!-- Display quiz questions and answers -->
-         <form action="{{ route('quizzes.submit', ['quizId' => $quiz->id]) }}" method="POST">
-             @csrf
-             @foreach ($quiz->questions as $index => $question)
-                 <div class="question mb-4">
-                     <p><strong>Question {{ $index + 1 }}:</strong> {{ $question->question }}</p>
-                     @foreach ($question->answers as $answer)
-                         <div class="answer mb-2">
-                             <input type="radio" name="answers[{{ $question->id }}]" value="{{ $answer->id }}"
-                                 id="answer_{{ $answer->id }}">
-                             <label for="answer_{{ $answer->id }}">
-                                 {{ $answer->answer }}
-                             </label>
-                         </div>
-                     @endforeach
-                 </div>
-             @endforeach
-
-             <button type="submit" class="btn btn-primary">Submit Quiz</button>
-         </form>
-     </div> --}}

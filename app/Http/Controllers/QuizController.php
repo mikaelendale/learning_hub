@@ -26,20 +26,24 @@ class QuizController extends Controller
         }
 
         // Fetch the quiz by ID
-        $quiz = Quiz::find($quizId);
+        $quiz = Quiz::with('questions')->find($quizId);
 
         if (!$quiz) {
             abort(404, 'Quiz not found.');
         }
 
-        // Check if the student has already taken the quiz and the number of attempt
+        // Check if the student has already taken the quiz and the number of attempts
         $studentQuiz = StudentQuiz::where('quiz_id', $quiz->id)
             ->where('student_id', $userId)
             ->first();
 
         $attempt = $studentQuiz ? $studentQuiz->attempt : 0;
+        $score = $studentQuiz ? $studentQuiz->score : 0;
 
-        return view('pages.quiz.index', compact('quiz', 'attempt'));
+        // Calculate total points
+        $totalPoints = $quiz->questions->sum('point');
+
+        return view('pages.quiz.index', compact('quiz', 'attempt', 'studentQuiz', 'score', 'totalPoints'));
     }
 
     public function setQuiz(Request $request)
@@ -82,22 +86,21 @@ class QuizController extends Controller
 
         $attempt = $studentQuiz ? $studentQuiz->attempt : 0;
 
-        // Redirect if the student has reached the maximum number of attempts
+        // Redirect if the student has reached or exceeded the maximum number of attempts
         if ($attempt >= 2) {
-            return redirect()->route('courses.quizLandingPage', [
-            ])->with('error', 'You have already completed this quiz and cannot retake it.');
+            return redirect()->route('courses.quizLandingPage')->with('error', '!! You have already completed this quiz and cannot retake it.');
         }
 
-        // Redirect if the student has completed the quiz
-        if ($studentQuiz && $studentQuiz->score !== null) {
-            return redirect()->route('quizzes.results', [
-                'quizId' => $quiz->id,
-                'studentQuizId' => $studentQuiz->id,
-            ])->with('info', 'You have already submitted this quiz.');
-        }
+        // Assuming you fetched the quiz record
+        $timeAllotted = $quiz->time_alloted; // This is in the format "HH:MM:SS"
 
-        // Allow access to the quiz start page if the conditions are met
-        return view('pages.quiz.start', compact('quiz', 'attempt'));
+// Convert the timeAllotted to seconds
+        list($hours, $minutes, $seconds) = explode(':', $timeAllotted);
+        $totalTimeInSeconds = ($hours * 3600) + ($minutes * 60) + $seconds;
+
+// Pass the total time in seconds to the view
+        return view('pages.quiz.start', compact('quiz', 'attempt', 'totalTimeInSeconds'));
+
     }
 
     public function submitQuiz(Request $request)
