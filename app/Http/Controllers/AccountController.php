@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SubscriptionRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,7 @@ class AccountController extends Controller
         // Fetch the student's class and time duration data
         $student = $request->user();
         $classAttended = $student->class_attended; // Beginner, Intermediate, Advanced
-        $timeDuration = $student->time_duration;   // End date of the subscription (datetime)
+        $timeDuration = $student->time_duration; // End date of the subscription (datetime)
 
         // Calculate remaining time
         $remainingDays = Carbon::now()->diffInDays(Carbon::parse($timeDuration), false); // Get the remaining days
@@ -23,28 +24,53 @@ class AccountController extends Controller
 
     public function upgrade(Request $request)
     {
-        // Logic for upgrading the student's subscription class
         $student = $request->user();
 
-        // Upgrade based on current class level
-        switch ($student->class_attended) {
-            case 'Beginner':
-                $student->class_attended = 'Intermediate';
-                break;
-            case 'Intermediate':
-                $student->class_attended = 'Advanced';
-                break;
-            case 'Advanced':
-                return redirect()->route('subscription.index')->with('info', 'You are already at the highest level!');
-            default:
-                return redirect()->route('subscription.index')->with('error', 'Invalid class level.');
+        // Ensure all subsections are completed before upgrading
+        if (!$this->areAllSubsectionsCompleted($student)) {
+            return redirect()->route('subscription.index')->with('error', 'Please complete all subsections before upgrading.');
         }
 
-        // Update the subscription end date, e.g., adding 30 more days to the current duration
-        $student->time_duration = Carbon::now()->addDays(30); // Extend by 30 days
-        $student->save();
+        // Determine the new plan
+        $newPlan = $this->getNewPlan($student->class_attended);
 
-        return redirect()->route('subscription.index')->with('success', 'Class upgraded successfully to ' . $student->class_attended . '!');
+        if (!$newPlan) {
+            return redirect()->route('subscription.index')->with('error', 'Invalid class level.');
+        }
+
+        // Create a subscription request record
+        SubscriptionRequest::create([
+            'student_id' => $student->id,
+            'current_plan' => $student->class_attended,
+            'requested_plan' => $newPlan,
+            'read_by_student' => false,
+            'read_by_admin' => false,
+        ]);
+
+        // Redirect to the payment page
+        return redirect()->route('payment.page')->with('success', 'Your request for an upgrade has been received. Please proceed with the payment.');
+    }
+    
+
+    private function getNewPlan($currentPlan)
+    {
+        switch ($currentPlan) {
+            case 'Beginner':
+                return 'Intermediate';
+            case 'Intermediate':
+                return 'Advanced';
+            case 'Advanced':
+                return null;
+            default:
+                return null;
+        }
+    }
+
+    private function areAllSubsectionsCompleted($student)
+    {
+        // Logic to check if all subsections are completed
+        // Return true if all subsections are completed, otherwise false
+        return true; // Placeholder logic
     }
 
     public function cancel(Request $request)

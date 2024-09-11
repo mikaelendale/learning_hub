@@ -87,7 +87,7 @@
                                                     if (data.success) {
                                                         console.log('Status updated to pending.');
                                                         window.location.href =
-                                                        '{{ route('dashboard') }}'; // Redirect to dashboard
+                                                            '{{ route('dashboard') }}'; // Redirect to dashboard
                                                     } else {
                                                         console.error('Failed to update status.');
                                                     }
@@ -116,7 +116,8 @@
 
                     updateClock();
                 </script>
-                <a href="" class="badge badge-xs badge-warning badge-outline rounded hover:bg-gray-light hover:text-gray-200 text-gray-900 font-sm mt-1"
+                <a href=""
+                    class="badge badge-xs badge-warning badge-outline rounded hover:bg-gray-light hover:text-gray-200 text-gray-900 font-sm mt-1"
                     id="digital-clock">
                 </a>
                 <div class="dropdown" data-dropdown="true" data-dropdown-offset="115px, 10px"
@@ -147,7 +148,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="{{asset('assets/media/avatars/300-4.png')}}" />
+                                                    src="{{ asset('assets/media/avatars/300-4.png') }}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -204,7 +205,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="{{asset('assets/media/avatars/300-5.png')}}" />
+                                                    src="{{ asset('assets/media/avatars/300-5.png') }}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -249,7 +250,7 @@
                                         <div class="flex grow gap-2.5 px-5" id="notification_request_3">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="{{asset('assets/media/avatars/300-27.png')}}" />
+                                                    src="{{ asset('assets/media/avatars/300-27.png') }}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -296,7 +297,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="{{asset('assets/media/avatars/300-1.png')}}" />
+                                                    src="{{ asset('assets/media/avatars/300-1.png') }}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -338,7 +339,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="{{asset('assets/media/avatars/300-11.png')}}" />
+                                                    src="{{ asset('assets/media/avatars/300-11.png') }}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -369,7 +370,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="{{asset('assets/media/avatars/300-14.png')}}" />
+                                                    src="{{ asset('assets/media/avatars/300-14.png') }}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -478,92 +479,49 @@
                                     </span>
                                 </a>
                             </div>
-                            <div class="menu-item" data-menu-item-offset="-50px, 0"
-                                data-menu-item-placement="left-start" data-menu-item-toggle="dropdown"
-                                data-menu-item-trigger="click|lg:hover">
-                                <div class="menu-link">
+                            <div class="menu-item">
+                                <a class="menu-link" href="/getstarted">
                                     <span class="menu-icon">
-                                        <i class="ki-filled ki-setting-2">
+                                        <i class="ki-filled ki-coffee">
                                         </i>
                                     </span>
                                     <span class="menu-title">
-                                        My Account
+                                        Get Started
                                     </span>
-                                    <span class="menu-arrow">
-                                        <i class="ki-filled ki-right text-3xs">
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link" href="/courses">
+                                    <span class="menu-icon">
+                                        <i class="ki-filled ki-medal-star">
                                         </i>
                                     </span>
-                                </div>
-                                <div class="menu-dropdown menu-default light:border-gray-300 w-full max-w-[220px]">
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="/getstarted">
-                                            <span class="menu-icon">
-                                                <i class="ki-filled ki-coffee">
-                                                </i>
-                                            </span>
-                                            <span class="menu-title">
-                                                Get Started
-                                            </span>
-                                        </a>
-                                    </div>
-                                    @if (Auth::user()->payment == 'done')
-                                        <div class="menu-item">
-                                            <a class="menu-link" href="/billing">
-                                                <span class="menu-icon">
-                                                    <i class="ki-filled ki-icon">
-                                                    </i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Billing
-                                                </span>
-                                                <span class="menu-badge" data-tooltip="true"
-                                                    data-tooltip-placement="top">
-                                                    <i class="ki-filled ki-information-2 text-md text-gray-500">
-                                                    </i>
-                                                    <span class="tooltip" data-tooltip-content="true">
-                                                        Payment and subscription info
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    @endif
-
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="/courses">
-                                            <span class="menu-icon">
-                                                <i class="ki-filled ki-medal-star">
-                                                </i>
-                                            </span>
-                                            <span class="menu-title">
-                                                Courses
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="/courses/completed">
-                                            <span class="menu-icon">
-                                                <i class="ki-filled ki-graph-up">
-                                                </i>
-                                            </span>
-                                            <span class="menu-title">
-                                                completed courses
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-separator">
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('profile.edit') }}">
-                                            <span class="menu-icon">
-                                                <i class="ki-filled ki-switch">
-                                                </i>
-                                            </span>
-                                            <span class="menu-title">
-                                                Edit profile
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
+                                    <span class="menu-title">
+                                        Courses
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link" href="/courses/enrolled">
+                                    <span class="menu-icon">
+                                        <i class="ki-filled ki-graph-up">
+                                        </i>
+                                    </span>
+                                    <span class="menu-title">
+                                        completed courses
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('profile.edit') }}">
+                                    <span class="menu-icon">
+                                        <i class="ki-filled ki-switch">
+                                        </i>
+                                    </span>
+                                    <span class="menu-title">
+                                        Edit profile
+                                    </span>
+                                </a>
                             </div>
                             <div class="menu-item" data-menu-item-offset="-10px, 0"
                                 data-menu-item-placement="left-start" data-menu-item-toggle="dropdown"
@@ -781,8 +739,7 @@
 
                         <div
                             class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900 {{ request()->is('account/subscription') ? 'here' : '' }}">
-                            <a class="menu-link gap-2.5 pb-2 lg:pb-4 "
-                                href="/account/subscription" tabindex="0">
+                            <a class="menu-link gap-2.5 pb-2 lg:pb-4 " href="/account/subscription" tabindex="0">
                                 <span
                                     class="menu-title text-nowrap font-medium text-sm text-gray-800 menu-item-active:text-gray-900 menu-item-active:font-medium menu-item-here:text-gray-900 menu-item-here:font-medium menu-item-show:text-gray-900 menu-link-hover:text-gray-900 ">
                                     Subscription
