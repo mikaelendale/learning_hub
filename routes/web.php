@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
@@ -63,12 +64,16 @@ Route::middleware(['auth', 'check.status'])->group(function () {
     Route::get('/quizzes', [QuizController::class, 'quizLanding'])->name('quizzes.landing');
     Route::get('/status/leaderboard', [RankController::class, 'index'])->name('course.leader');
     Route::get('/account/subscription', [AccountController::class, 'index'])->name('account.subscription');
+    Route::post('/account/subscription/upgrade', [AccountController::class, 'upgrade'])->name('subscription.upgrade');
+    Route::post('/account/subscription/cancel', [AccountController::class, 'cancel'])->name('subscription.cancel');
+
     Route::post('/update-status', [AccountController::class, 'updateStatus'])->name('update.status');
     Route::get('/get-status', [AccountController::class, 'getStatus'])->name('get.status');
-    Route::get('/download-invoice', [Route::get('/download-invoice', [InvoiceController::class, 'downloadPDF'])->name('invoice.download');
-::class, 'downloadPDF'])->name('invoice.download');
+    Route::get('/invoice/download', [InvoiceController::class, 'downloadInvoice'])->name('invoice.download');
 
 });
+
+//admin routes
 
 //admin routes
 

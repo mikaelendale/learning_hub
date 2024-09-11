@@ -147,7 +147,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="assets/media/avatars/300-4.png" />
+                                                    src="{{asset('assets/media/avatars/300-4.png')}}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -204,7 +204,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="assets/media/avatars/300-5.png" />
+                                                    src="{{asset('assets/media/avatars/300-5.png')}}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -249,7 +249,7 @@
                                         <div class="flex grow gap-2.5 px-5" id="notification_request_3">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="assets/media/avatars/300-27.png" />
+                                                    src="{{asset('assets/media/avatars/300-27.png')}}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -296,7 +296,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="assets/media/avatars/300-1.png" />
+                                                    src="{{asset('assets/media/avatars/300-1.png')}}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -338,7 +338,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="assets/media/avatars/300-11.png" />
+                                                    src="{{asset('assets/media/avatars/300-11.png')}}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
@@ -369,7 +369,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                    src="assets/media/avatars/300-14.png" />
+                                                    src="{{asset('assets/media/avatars/300-14.png')}}" />
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                                                 </span>
