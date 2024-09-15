@@ -64,12 +64,13 @@ Route::middleware(['auth', 'check.status'])->group(function () {
     Route::get('/quizzes', [QuizController::class, 'quizLanding'])->name('quizzes.landing');
     Route::get('/status/leaderboard', [RankController::class, 'index'])->name('course.leader');
     Route::get('/account/subscription', [AccountController::class, 'index'])->name('account.subscription');
-    Route::post('/account/subscription/upgrade', [AccountController::class, 'upgrade'])->name('subscription.upgrade');
+    Route::get('/account/subscription/upgrade', [AccountController::class, 'upgrade'])->name('subscription.upgrade');
     Route::post('/account/subscription/cancel', [AccountController::class, 'cancel'])->name('subscription.cancel');
     Route::get('/account/subscription/payment', [AccountController::class, 'showPaymentPage'])->name('payment.page');
     Route::post('/update-status', [AccountController::class, 'updateStatus'])->name('update.status');
     Route::get('/get-status', [AccountController::class, 'getStatus'])->name('get.status');
     Route::get('/invoice/download', [InvoiceController::class, 'downloadInvoice'])->name('invoice.download');
+    Route::get('/account/completed-certificates', [AccountController::class, 'completedCertificates'])->name('account.certificates');
 
 });
 

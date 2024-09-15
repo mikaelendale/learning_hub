@@ -20,12 +20,12 @@
         <div class="grid gap-5 lg:gap-7.5">
             <div class="scrollable-x-auto pt-3 -mt-3">
                 <table
-                    class="table table-fixed min-w-[1000px] table-border-b table-border-r table-rounded card-rounded [&amp;_tr:nth-of-type(2)>td]:table-border-t [&amp;_tr:nth-of-type(2)>td:first-child]:card-rounded-tl">
+                    class="table table-fixed min-w-[1000px] table-border-b table-border-r table-rounded card-rounded [&_tr:nth-of-type(2)>td]:table-border-t [&_tr:nth-of-type(2)>td:first-child]:card-rounded-tl">
                     <tbody>
                         <tr>
                             <td class="!border-b-0 align-bottom !p-5 !pt-7.5 !pb-6">
                                 <label class="switch switch-sm">
-                                    <input checked="" class="order-1" name="check" type="checkbox" value="1">
+                                    <input checked class="order-1" name="check" type="checkbox" value="1">
                                     <div class="switch-label order-2">
                                         <span class="text-gray-800 text-2sm font-semibold">
                                             Annual Billing
@@ -36,14 +36,14 @@
                             <td
                                 class="!border-b-0 table-border-l table-border-t card-rounded-tl bg-light-active dark:bg-coal-100 !p-5 !pt-7.5 relative">
                                 <span
-                                    class="absolute badge badge-sm badge-outline badge-success absolutes top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                    class="absolute badge badge-sm badge-outline badge-success absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
                                     Current Plan
                                 </span>
                                 <h3 class="text-lg text-gray-900 font-semibold pb-2">
                                     Basic
                                 </h3>
                                 <div class="text-gray-600 text-2sm font-medium">
-                                    Essential features for startups individuals
+                                    Essential features for individuals
                                 </div>
                                 <div class="py-4">
                                     <h4 class="text-2xl text-gray-900 font-semibold leading-none">
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="">
                                     <button class="btn btn-light btn-sm flex justify-center w-full">
-                                        Switch to Team
+                                        Switch to Pro
                                     </button>
                                 </div>
                             </td>
@@ -61,7 +61,7 @@
                                     Pro
                                 </h3>
                                 <div class="text-gray-600 text-2sm font-medium">
-                                    Advanced tools for growing businesses
+                                    Advanced features for small businesses
                                 </div>
                                 <div class="py-4">
                                     <div class="flex items-end gap-1.5" data-plan-type="pro">
@@ -69,8 +69,8 @@
                                             data-plan-price-annual="$79" data-plan-price-regular="$99">
                                             $99
                                         </div>
-                                        <div class="text-gray-600 text-2xs font-medium" data-plan-payment-annual=">annual"
-                                            data-plan-payment-regular=">per month">
+                                        <div class="text-gray-600 text-2xs font-medium" data-plan-payment-annual="annual"
+                                            data-plan-payment-regular="per month">
                                             per month
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                                     Premium
                                 </h3>
                                 <div class="text-gray-600 text-2sm font-medium">
-                                    Comprehensive suite for large-scale operations
+                                    Comprehensive tools for medium to large businesses
                                 </div>
                                 <div class="py-4">
                                     <div class="flex items-end gap-1.5" data-plan-type="premium">
@@ -94,8 +94,8 @@
                                             data-plan-price-annual="$179" data-plan-price-regular="$199">
                                             $199
                                         </div>
-                                        <div class="text-gray-600 text-2xs font-medium" data-plan-payment-annual=">annual"
-                                            data-plan-payment-regular=">per month">
+                                        <div class="text-gray-600 text-2xs font-medium" data-plan-payment-annual="annual"
+                                            data-plan-payment-regular="per month">
                                             per month
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                     Enterprise
                                 </h3>
                                 <div class="text-gray-600 text-2sm font-medium">
-                                    Tailored solutions for enterprise needs
+                                    Custom solutions for large enterprises
                                 </div>
                                 <div class="py-4">
                                     <div class="flex items-end gap-1.5" data-plan-type="enterprise">
@@ -119,8 +119,8 @@
                                             data-plan-price-annual="$1,079" data-plan-price-regular="$1,299">
                                             $1,299
                                         </div>
-                                        <div class="text-gray-600 text-2xs font-medium" data-plan-payment-annual=">annual"
-                                            data-plan-payment-regular=">per month">
+                                        <div class="text-gray-600 text-2xs font-medium" data-plan-payment-annual="annual"
+                                            data-plan-payment-regular="per month">
                                             per month
                                         </div>
                                     </div>
@@ -189,7 +189,7 @@
                         <tr>
                             <td class="table-border-l !px-5 !py-3.5">
                                 <div class="text-gray-900 text-2sm leading-none font-semibold">
-                                    CAPI Calls
+                                    API Calls
                                 </div>
                             </td>
                             <td class="table-border-l bg-light-active dark:bg-coal-100 !px-5 !py-3.5">
@@ -226,188 +226,27 @@
                             </td>
                             <td class="table-border-l !px-5 !py-3.5">
                                 <div class="text-gray-700 text-2sm font-medium">
-                                    Email + Chat
+                                    Email & Chat
                                 </div>
                             </td>
                             <td class="table-border-l !px-5 !py-3.5">
                                 <div class="text-gray-700 text-2sm font-medium">
-                                    Priority
+                                    Priority Support
                                 </div>
                             </td>
                             <td class="table-border-l !px-5 !py-3.5">
                                 <div class="text-gray-700 text-2sm font-medium">
-                                    24/7 Live Support
+                                    24/7 Dedicated Support
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-900 text-2sm leading-none font-semibold">
-                                    Data Backup
-                                </div>
-                            </td>
-                            <td class="table-border-l bg-light-active dark:bg-coal-100 !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Weekly
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Daily
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Hourly
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Real-time
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-900 text-2sm leading-none font-semibold">
-                                    Analytics Tools
-                                </div>
-                            </td>
-                            <td class="table-border-l bg-light-active dark:bg-coal-100 !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Basic
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Advanced
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Comprehensive
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Custom
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-900 text-2sm leading-none font-semibold">
-                                    Integration Options
-                                </div>
-                            </td>
-                            <td class="table-border-l bg-light-active dark:bg-coal-100 !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Limited
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Standard
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Extended
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    Full Suite
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-900 text-2sm leading-none font-semibold">
-                                    Uptime Guarantee
-                                </div>
-                            </td>
-                            <td class="table-border-l bg-light-active dark:bg-coal-100 !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    99%
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    99.9%
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    99.99%
-                                </div>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-700 text-2sm font-medium">
-                                    99.999%
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-900 text-2sm leading-none font-semibold">
-                                    Custom Reports
-                                </div>
-                            </td>
-                            <td class="table-border-l bg-light-active dark:bg-coal-100 !px-5 !py-3.5">
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <i class="ki-filled ki-check text-success text-lg">
-                                </i>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <i class="ki-filled ki-check text-success text-lg">
-                                </i>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <i class="ki-filled ki-check text-success text-lg">
-                                </i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-900 text-2sm leading-none font-semibold">
-                                    Mobile Access
-                                </div>
-                            </td>
-                            <td class="table-border-l bg-light-active dark:bg-coal-100 !px-5 !py-3.5">
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <i class="ki-filled ki-check text-success text-lg">
-                                </i>
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <i class="ki-filled ki-check text-success text-lg">
-                                </i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <div class="text-gray-900 text-2sm leading-none font-semibold">
-                                    Custom Branding
-                                </div>
-                            </td>
-                            <td class="table-border-l bg-light-active dark:bg-coal-100 !px-5 !py-3.5">
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                            </td>
-                            <td class="table-border-l !px-5 !py-3.5">
-                                <i class="ki-filled ki-check text-success text-lg">
-                                </i>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+
+
+
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">

@@ -46,18 +46,9 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-1.5 shrink-0">
-                            <form action="{{ route('subscription.cancel') }}" method="POST">
-                                @csrf
-                                <button class="btn btn-sm btn-light btn-clear" type="submit">
-                                    Cancel  
-                                </button>
-                            </form>
-                            @if ($classAttended !== 'Advanced')
+                            @if ($classAttended !== 'advanced')
                                 <!-- Button to trigger the upgrade -->
-                                <form action="{{ route('subscription.upgrade') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-dark">Upgrade </button>
-                                </form>
+                                    <a href="{{route('subscription.upgrade')}}"  class="btn btn-dark">Upgrade </a>
                             @else
                                 <button class="btn btn-sm btn-dark" type="button" disabled>
                                     Already at the highest level
@@ -76,9 +67,9 @@
                             <div
                                 class="flex flex-col gap-3 items-center justify-center size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
                                 <img alt="" class="size-[70px]"
-                                    src="https://keenthemes.com/static/metronic/tailwind/dist/assets/media/brand-logos/cloud-one.svg">
+                                    src="{{asset('images/icon.png')}}">
                                 <span class="text-sm font-semibold text-gray-900">
-                                    Cloud One
+                                  Lalo Dev 
                                 </span>
 
                             </div>

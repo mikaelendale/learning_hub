@@ -22,35 +22,15 @@ class AccountController extends Controller
         return view('pages.account.subscription', compact('classAttended', 'remainingDays'));
     }
 
-    public function upgrade(Request $request)
+    public function upgrade()
     {
-        $student = $request->user();
-
-        // Ensure all subsections are completed before upgrading
-        if (!$this->areAllSubsectionsCompleted($student)) {
-            return redirect()->route('subscription.index')->with('error', 'Please complete all subsections before upgrading.');
-        }
-
-        // Determine the new plan
-        $newPlan = $this->getNewPlan($student->class_attended);
-
-        if (!$newPlan) {
-            return redirect()->route('subscription.index')->with('error', 'Invalid class level.');
-        }
-
-        // Create a subscription request record
-        SubscriptionRequest::create([
-            'student_id' => $student->id,
-            'current_plan' => $student->class_attended,
-            'requested_plan' => $newPlan,
-            'read_by_student' => false,
-            'read_by_admin' => false,
-        ]);
-
         // Redirect to the payment page
-        return redirect()->route('payment.page')->with('success', 'Your request for an upgrade has been received. Please proceed with the payment.');
+        return redirect()->route('payment.page');
     }
-    
+    public function showPaymentPage(){
+        // Return the payment page view with the necessary data
+        return view('pages.account.payment');
+    }
 
     private function getNewPlan($currentPlan)
     {
@@ -108,4 +88,7 @@ class AccountController extends Controller
         return response()->json(['status' => 'unknown'], 401);
     }
 
+    public function completedCertificates(){
+        return view('configuration');
+    }
 }
