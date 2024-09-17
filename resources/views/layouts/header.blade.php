@@ -116,7 +116,7 @@
 
                     updateClock();
                 </script>
-                <a href=""
+                <a href="/account/subscription"
                     class="badge badge-xs badge-warning badge-outline rounded hover:bg-gray-light hover:text-gray-200 text-gray-900 font-sm mt-1"
                     id="digital-clock">
                 </a>
