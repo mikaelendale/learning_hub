@@ -82,7 +82,7 @@
                                 <div>
                                     <label class="cpnvy cvwst clsb1 c5sy4" for="role">Which track are you enrolling <span class="co8du">*</span></label>
                                     <select id="role" name="class_attended" class="c4jp2 cocui" required="">
-                                        <option value="beginners">Beginners</option>
+                                        <option value="beginner">Beginners</option>
                                         <option value="intermediate">Intermediate</option>
                                         <option value="advanced">Advanced</option>
                                     </select>

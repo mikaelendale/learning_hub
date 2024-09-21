@@ -38,14 +38,15 @@ return [
 
         'students_pic' => [
             'driver' => 'local',
-            'root' => '../../students_pic', // Full path to the directory outside the Laravel project folder
-            'url' => env('APP_URL') . '/students_pic', // URL to access the files
+            'root' => storage_path('app/public/students_pic'), // Use the storage folder inside Laravel
+            'url' => env('APP_URL') . '/storage/students_pic', // Accessible via /storage URL
             'visibility' => 'public',
         ],
+
         'course_codes' => [
             'driver' => 'local',
-            'root' => '../../course_codes', // Full path to the directory outside the Laravel project folder
-            'url' => env('APP_URL') . '/students_pic', // URL to access the files
+            'root' => storage_path('app/public/course_codes'), // Same for course_codes
+            'url' => env('APP_URL') . '/storage/course_codes',
             'visibility' => 'public',
         ],
 
@@ -84,7 +85,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
-        public_path('course_codes') => storage_path('../../course_codes'),
+        // public_path('course_codes') => storage_path('../../course_codes'),
     ],
 
 ];

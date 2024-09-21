@@ -71,7 +71,6 @@ Route::middleware(['auth', 'check.status'])->group(function () {
     Route::get('/get-status', [AccountController::class, 'getStatus'])->name('get.status');
     Route::get('/invoice/download', [InvoiceController::class, 'downloadInvoice'])->name('invoice.download');
     Route::get('/account/completed-certificates', [AccountController::class, 'completedCertificates'])->name('account.certificates');
-
 });
 
 //admin routes

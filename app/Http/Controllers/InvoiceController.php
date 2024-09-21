@@ -13,10 +13,10 @@ class InvoiceController extends Controller
     {
         // Sample dynamic data for the invoice
         $paymentDetails = [
-            'plan_type' => 'Cloud One Enterprise',
-            'payment_date' => '6 Aug, 2024',
-            'card_last_digits' => '3604',
-            'total' => '$24.00',
+            'plan_type' => 'Auth::user()->class_attended',
+            'payment_date' => 'Sep, 2024',
+            'card_last_digits' => '',
+            'total' => '1,999 ETB',
         ];
 
         // Generate the PDF with dynamic data
@@ -25,7 +25,7 @@ class InvoiceController extends Controller
         // Log the invoice download
         InvoiceDownload::create([
             'student_id' => Auth::id(), // Assuming the student is logged in
-            'invoice_number' => 'INV-001', // Example invoice number
+            'invoice_number' => 'INV-Auth::id()', // Example invoice number
             'downloaded_at' => now(),
             'ip_address' => request()->ip(),
         ]);

@@ -125,18 +125,17 @@
             <!-- Customer Details -->
             <div class="section">
                 <h2>Bill To:</h2>
-                <p><strong>Customer Name:</strong> John Doe</p>
-                <p><strong>Customer Address:</strong> 123 Elm Street, Springfield</p>
-                <p><strong>Customer Phone:</strong> (555) 123-4567</p>
-                <p><strong>Customer Email:</strong> john.doe@example.com</p>
+                <p><strong>Customer Name:</strong> {{Auth::user()->name}}</p>
+                <p><strong>Customer Address:</strong> {{Auth::user()->adress}}</p>
+                <p><strong>Customer Phone:</strong> {{Auth::user()->phone_no}}</p>
+                <p><strong>Customer Email:</strong> {{Auth::user()->email}}</p>
             </div>
 
             <!-- Course Details -->
             <div class="section">
                 <h2>Course Details:</h2>
-                <p><strong>Course Name:</strong> Advanced Web Development</p>
-                <p><strong>Course Duration:</strong> 12 weeks</p>
-                <p><strong>Course Fee:</strong> $200.00</p>
+                <p><strong>Course Name:</strong> {{Auth::user()->class_attended}}</p>
+                <p><strong>Course Fee:</strong> 1,999 ETB</p>
             </div>
 
             <!-- Invoice Table -->
@@ -152,28 +151,20 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Online Course Subscription</td>
+                            <td>{{Auth::user()->class_attended}}</td>
                             <td>1</td>
-                            <td>$200.00</td>
-                            <td>$200.00</td>
+                            <td>1,999 ETB</td>
+                            <td>1,999 ETB</td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="3">Subtotal:</td>
-                            <td>$200.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">Tax (10%):</td>
-                            <td>$20.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">Discount:</td>
-                            <td>-$10.00</td>
+                            <td>1,999 ETB</td>
                         </tr>
                         <tr>
                             <td colspan="3">Total Amount Due:</td>
-                            <td>$210.00</td>
+                            <td>1,999 ETB</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -182,10 +173,8 @@
             <!-- Payment Instructions and Notes -->
             <div class="section">
                 <h2>Payment Instructions:</h2>
-                <p>Bank: Example Bank</p>
-                <p>Account Number: 123456789</p>
-                <p>Routing Number: 987654321</p>
-                <p>Payment Link: [Insert Payment Link]</p>
+                <p>Bank: Tele birr mobile banking</p>
+                <p>Account Number: +251955133507</p>
                 <p>Notes: Thank you for enrolling in our course!</p>
             </div>
         </div>
@@ -193,8 +182,7 @@
         <!-- Footer with Company Information -->
         <div class="footer">
             <p>Lalo Dev</p>
-            <p>Address: 456 Oak Avenue, Springfield</p>
-            <p>Phone: (555) 987-6543 | Email: info@lalodev.com</p>
+            <p>Phone: +251 955133507 | Email: info@lalodev.com</p>
             <p>Date: {{ $paymentDetails['payment_date'] }}</p>
         </div>
     </div>
